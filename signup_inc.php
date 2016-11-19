@@ -9,12 +9,7 @@ if (!$conn) {
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
 $display_name = $_POST['display_name'];
-//$gender = $_POST['gender'];
-//$month = $_POST['month'];
-//$year = $_POST['year'];
-//$date = $year."-".$month."-".$day;
 $email = $_POST['email'];
-//$phone = $_POST['phone'];
 $password = $_POST['password'];
 $rdate = date("Y-m-d", time());
 
@@ -22,8 +17,8 @@ $sql =  "SELECT * FROM User WHERE Username ='$display_name' OR Email='$email'";
 $result = mysqli_query($conn, $sql); 
 
 if(!$row=mysqli_fetch_assoc($result)) {
-	$sql2 =  "INSERT INTO User (Username, Password, /*Gender,*/ Name, Surname, Email, UserType, Status, RegistrationDate, LastLoggedin/*PhoneNumber*/)
-	VALUES ('$display_name', '$password', /*'$gender'*/ '$first_name', '$last_name', '$email', 'Simple User', 'Active User', '$rdate', '$rdate' /*'$phone'*/)";
+	$sql2 =  "INSERT INTO User (Username, Password, Name, Surname, Email, UserType, Status, RegistrationDate, LastLoggedin)
+	VALUES ('$display_name', '$password', '$first_name', '$last_name', '$email', 'Simple User', 'Active User', '$rdate', '$rdate')";
 	$result2 = mysqli_query($conn, $sql2); 
 	$_SESSION['signedup'] = "You've successfully signed up!";
 	header("Location: index.php");
