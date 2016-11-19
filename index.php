@@ -926,37 +926,33 @@ session_start();
 		<!--Password check-->
 
 		<script>
-			var password = document.getElementById("password"),
-			    confirm_password = document.getElementById("password_confirmation");
+			var passwordSu = document.getElementById("password"),
+			    confirm_passwordSu = document.getElementById("password_confirmation");
 
 			function validatePassword() {
-				if (password.value != confirm_password.value) {
-					confirm_password.setCustomValidity("Passwords Don't Match");
+				if (passwordSu.value != confirm_passwordSu.value) {
+					confirm_passwordSu.setCustomValidity("Passwords Don't Match");
 				} else {
-					confirm_password.setCustomValidity('');
+					confirm_passwordSu.setCustomValidity('');
 				}
 			}
 
+			passwordSu.onchange = validatePassword;
+			confirm_passwordSu.onkeyup = validatePassword;
 
-			password.onchange = validatePassword;
-			confirm_password.onkeyup = validatePassword;
-		</script>
+			var passwordSb = document.getElementById("password2"),
+			    confirm_passwordSb = document.getElementById("password_confirmation2");
 
-		<script>
-			var password = document.getElementById("password2"),
-			    confirm_password = document.getElementById("password_confirmation2");
-
-			function validatePassword() {
-				if (password.value != confirm_password.value) {
-					confirm_password.setCustomValidity("Passwords Don't Match");
+			function validatePasswordSb() {
+				if (passwordSb.value != confirm_passwordSb.value) {
+					confirm_passwordSb.setCustomValidity("Passwords Don't Match");
 				} else {
-					confirm_password.setCustomValidity('');
+					confirm_passwordSb.setCustomValidity('');
 				}
 			}
-
-
-			password.onchange = validatePassword;
-			confirm_password.onkeyup = validatePassword;
+			
+			passwordSb.onchange = validatePasswordSb;
+			confirm_passwordSb.onkeyup = validatePasswordSb;
 		</script>
 
 	</body>
