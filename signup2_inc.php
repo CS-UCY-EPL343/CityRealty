@@ -23,8 +23,8 @@ $sql =  "SELECT * FROM User WHERE Username ='$display_name' OR Email='$email'";
 $result = mysqli_query($conn, $sql); 
 
 if(!$row=mysqli_fetch_assoc($result)) {
-	$sql2 =  "INSERT INTO User (Username, Password, Gender, Name, Surname, Email, UserType, Status, RegistrationDate, LastLoggedin, PhoneNumber)
-	VALUES ('$display_name', '$password2', '$gender', '$first_name', '$last_name', '$email', 'External Broker', 'Active User', '$rdate', '$rdate', '$phone')";
+	$sql2 =  "INSERT INTO User (Username, Password, Name, Surname, Email, UserType, Status, RegistrationDate, LastLoggedin, PhoneNumber)
+	VALUES ('$display_name', '$password2', '$first_name', '$last_name', '$email', 'External Broker', 'Active User', '$rdate', '$rdate', '$phone')";
 	$result2 = mysqli_query($conn, $sql2);
 	$sql3 = "INSERT INTO SimpleEmployee (Username, Birthday, Gender) VALUES ('$display_name', '$date', '$gender')";
 	$result3 = mysqli_query($conn, $sql3); 
