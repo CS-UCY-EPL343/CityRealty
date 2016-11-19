@@ -839,7 +839,7 @@ session_start();
 					</div>
 					<div class="modal-footer">
 						<div class="col-xs-12 col-md-6">
-							<input type="submit" value="Sign In" class="btn btn-primary btn-block btn-lg" tabindex="7">
+							<input type="submit" value="Sign Up" class="btn btn-primary btn-block btn-lg" tabindex="7">
 						</div>
 						<div class="col-xs-12 col-md-6">
 							<input type="reset" value="Reset" class="btn btn-primary btn-block btn-lg" tabindex="7">
