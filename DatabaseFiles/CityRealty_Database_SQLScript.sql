@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 19, 2016 at 01:00 PM
+-- Generation Time: Nov 20, 2016 at 12:20 AM
 -- Server version: 5.1.73
 -- PHP Version: 5.3.3
 
@@ -64,6 +64,45 @@ CREATE TABLE IF NOT EXISTS `ExtendedEmployee` (
 
 INSERT INTO `ExtendedEmployee` (`Username`, `SSN`, `Salary`, `Birthday`, `Notes`) VALUES
 ('user1', 93485976, 9999.99, 'bla bla edhfwehfhweds hwedfh efdh erhg etiojfhgp3q4we trer peo34wet ');
+
+-- --------------------------------------------------------
+
+--
+-- Dumping data for table `ExtendedEmployee`
+--
+
+INSERT INTO `ExtendedEmployee` (`Username`, `SSN`, `Salary`, `Notes`) VALUES
+('user1', 93485976, 9999.99, 'bla bla edhfwehfhweds hwedfh efdh erhg etiojfhgp3q4we trer peo34wet ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `RealEstate`
+--
+
+CREATE TABLE IF NOT EXISTS `RealEstate` (
+  `RealEstateNo` int(11) NOT NULL COMMENT 'Primary Key',
+  `Latitude` decimal(10,8) DEFAULT NULL COMMENT 'Basic Info',
+  `Longitude` decimal(11,8) DEFAULT NULL COMMENT 'Basic Info',
+  `AStreetNo` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT 'Basic Info',
+  `AStreet` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'Basic Info',
+  `ACity` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'Basic Info',
+  `AArea` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'Basic Info',
+  `ACountry` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT 'Cyprus' COMMENT 'Basic Info',
+  `APostalCode` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT 'Basic Info',
+  `RegistrationTitleNo` int(11) NOT NULL DEFAULT '0' COMMENT 'Common Info',
+  `PieceNo` int(11) NOT NULL DEFAULT '0' COMMENT 'Common Info',
+  `FolderNo` int(11) NOT NULL DEFAULT '0' COMMENT 'Common Info',
+  `ArithmosFilSxed` int(11) NOT NULL DEFAULT '0' COMMENT 'Common Info',
+  `ArithmosAdOik` int(11) NOT NULL DEFAULT '0' COMMENT 'Common Info',
+  `LegalControl` tinyint(1) DEFAULT NULL COMMENT 'Common Info',
+  `InitialPrice` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT 'Common Info',
+  `EstimatedPrice` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT 'Common Info',
+  `MortgageLoan` tinyint(1) DEFAULT NULL COMMENT 'Common Info',
+  `ObjectiveValue` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT 'Common Info',
+  `FinalPrice` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT 'Common Info',
+  PRIMARY KEY (`RealEstateNo`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
