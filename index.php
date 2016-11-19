@@ -816,12 +816,12 @@ session_start();
 								<br>
 								<div class="col-xs-12 col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" required pattern=".{6,}">
+										<input type="password" name="password2" id="password2" class="form-control input-lg" placeholder="Password" tabindex="5" required pattern=".{6,}">
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6" required>
+										<input type="password" name="password_confirmation2" id="password_confirmation2" class="form-control input-lg" placeholder="Confirm Password" tabindex="6" required>
 									</div>
 								</div>
 
