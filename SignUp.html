@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>SignUp</title>
+		<meta name="author" content="Admin" />
+		<!-- Date: 2016-11-13 -->
+	</head>
+	<body>
+
+		<div class="container">
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+					<form role="form">
+						<h2>Please Sign Up </h2>
+						<hr class="colorgraph">
+						<div class="row">
+							<small>YOUR NAME</small>
+							<br>
+							<div class="col-xs-12 col-sm-6 col-md-6">
+								<div class="form-group">
+									<input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1" autocomplete="on">
+									<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2" autocomplete="on">
+								</div>
+							</div>
+						</div>
+						<p></p>
+						<small>CHOOSE A USERNAME</small>
+						<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+						<div class="form-group">
+							<input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Username" tabindex="3" required>
+						</div>
+						<p></p>
+						<small>EMAIL ADDRESS</small>
+						<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+						<br>
+						<div class="form-group">
+							<input type="email" name="email" id="email" class="form-control input-lg" placeholder="e.g. example@domain.com" tabindex="4" autocomplete="on" size="47" required>
+						</div>
+						<div class="row">
+							<p></p>
+							<small>CREATE A PASSWORD</small>
+							<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+							<br>
+							<div class="col-xs-12 col-sm-6 col-md-6">
+								<div class="form-group">
+									<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" required pattern=".{6,}">									
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-6">
+								<div class="form-group">
+									<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6" required>
+								</div>
+							</div>
+
+						</div>
+						<div class="row">
+							<div class="col-xs-8 col-sm-9 col-md-9">
+								<p>
+									<span class="button-checkbox">
+										<input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1" required>
+									</span>
+									<i> I agree to the <a href="http://www.omegarealestate.gr/en/" data-toggle="modal" data-target="#t_and_c_m"> Terms and Conditions</a> set out by this site, including the Cookie Use. </i>
+								</p>
+							</div>
+						</div>
+						<hr class="colorgraph">
+						<div class="row">
+							<div class="col-xs-12 col-md-6">
+								<input type="submit" value="Sign Up" class="btn btn-primary btn-block btn-lg" tabindex="7">
+								<button type="reset" class="btn btn-default btn-sm">
+									Reset
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="panel-footer">
+					Already a Member? <a href="file:///C:/Users/Admin/Documents/....MY%20FOLDER/%CE%A0%CE%B1%CE%BD%CE%B5%CF%80%CE%B9%CF%83%CF%84%CE%AE%CE%BC%CE%B9%CE%BF%20%CE%9A%CF%8D%CF%80%CF%81%CE%BF%CF%85/5%CE%BF%20%CE%B5%CE%BE%CE%B1%CE%BC%CE%B7%CE%BD%CE%BF/%CE%95%CE%A0%CE%9B361/Aptana_workplace/CityRealty/logIN.html">Sign in here</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- jQuery -->
+		<script src="js/jquery.js"></script>
+
+		<!-- Bootstrap Core JavaScript -->
+		<script src="js/bootstrap.min.js"></script>
+
+		<!-- Custom Theme JavaScript -->
+
+		<script>
+			var password = document.getElementById("password"), confirm_password = document.getElementById("password_confirmation");
+
+			function validatePassword() {
+				if (password.value != confirm_password.value) {
+					confirm_password.setCustomValidity("Passwords Don't Match");
+				} else {
+					confirm_password.setCustomValidity('');
+				}
+			}
+
+
+			password.onchange = validatePassword;
+			confirm_password.onkeyup = validatePassword;
+		</script>
+
+	</body>
+</html>
+
