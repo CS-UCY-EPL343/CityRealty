@@ -11,6 +11,7 @@ $last_name = $_POST['last_name'];
 $display_name = $_POST['display_name'];
 $gender = $_POST['gender'];
 $month = $_POST['month'];
+$day = $_POST['day'];
 $year = $_POST['year'];
 $date = $year."-".$month."-".$day;
 $email = $_POST['email'];
