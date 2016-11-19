@@ -25,7 +25,7 @@ if(!$row=mysqli_fetch_assoc($result)) {
 	$sql2 =  "INSERT INTO User (Username, Password, Gender, Name, Surname, Email, UserType, Status, RegistrationDate, LastLoggedin, PhoneNumber)
 	VALUES ('$display_name', '$password', '$gender', '$first_name', '$last_name', '$email', 'External Broker', 'Active User', '$rdate', '$rdate', '$phone')";
 	$result2 = mysqli_query($conn, $sql2); 
-	$_SESSION['signedup'] = "You've successfully signed up!";
+	$_SESSION['signedup'] = "You have successfully signed up!";
 	header("Location: index.php");
 } else {
 	$_SESSION['errormessage'] = "Username or email already used!";
