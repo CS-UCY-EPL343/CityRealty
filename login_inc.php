@@ -16,7 +16,7 @@ $result = mysqli_query($conn, $sql);
 if(!$row=mysqli_fetch_assoc($result)) {
 	$_SESSION['errorlogin']= "Your username or password is incorrect!";
 } else {
-	$_SESSION['id'] = "Logged in";
+	$_SESSION['id'] = $display_name;
 }
 
 header("Location: index.php");
