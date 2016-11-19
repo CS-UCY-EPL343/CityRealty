@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 ?>
@@ -127,17 +128,29 @@ session_start();
 						<a class="page-scroll" href="#contact" style="color: #2F4F4F">Contact Us</a>
 					</li>
 
+					<script>
+						function myFunction() {
+   			 			alert("Username or email already used!");
+						}
+						function myFunction2() {
+						alert("Your username or password is incorrect!");
+						}
+						function myFunction3() {
+						alert("You have successfully signed up!");
+						}
+					</script>
+
 					<?php
 					if(isset($_SESSION['errormessage'])) {
-							echo $_SESSION['errormessage'];
+							echo "<script type='text/javascript'>myFunction();</script>";
 							unset($_SESSION['errormessage']);
 						}
 					 if(isset($_SESSION['errorlogin'])) {
-						echo $_SESSION['errorlogin'];
+						echo "<script type='text/javascript'>myFunction2();</script>";
 						unset($_SESSION['errorlogin']);
 						}						
 						if(isset($_SESSION['signedup'])) {
-						echo $_SESSION['signedup'];
+						echo "<script type='text/javascript'>myFunction3();</script>";
 						unset($_SESSION['signedup']);
 						}
 						?>
@@ -172,8 +185,8 @@ session_start();
 						<a href='#LogIn-modal' data-toggle='modal' data-target='#my-logInmodal-sm' style='color: #2F4F4F'>Log in</a>";
 						}
 						else {
-							echo "<li>
-									<a href='logout_inc.php' style='color: #2F4F4F'>Log out</a>
+							echo "<li><a href='#' style='color: #2F4F4F'>" . $_SESSION['id'] . "</a></li><li>
+									<a href='logout_inc.php' style='color: #2F4F4F'>Log Out</a>
 									</li>";
 						}
 						?>
@@ -574,7 +587,7 @@ session_start();
 					</div>
 
 					<div class="modal-body">
-						<form class="form-horizontal" role="form" action="login_inc.php" method="POST">
+						<form id="MyForm"class="form-horizontal" role="form" action="login_inc.php" method="POST">
 
 				
 							<div class="form-group">
