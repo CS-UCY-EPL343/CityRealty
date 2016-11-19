@@ -122,8 +122,21 @@ CREATE TABLE IF NOT EXISTS `User` (
 
 INSERT INTO `User` (`Username`, `Password`, `Gender`, `Name`, `Surname`, `Email`, `UserType`, `Status`, `RegistrationDate`, `LastLoggedin`, `LoginCount`, `PhoneNumber`, `ANumber`, `AStreet`, `ACity`, `AArea`, `ACountry`, `APostalCode`) VALUES
 ('lala', 'lala', 1, 'la', 'la', 'lalala@hjfri.com', 'Simple User', 'Not Specified', '2016-11-17', '0000-00-00', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('sg', '123456', 1, 'sotia', 'gregoriou', 'dn@hotmail.com', 'External Broker', 'Active User', '2016-11-17', '2016-11-17', 1, 123, NULL, NULL, NULL, NULL, NULL, NULL),
 ('user1', 'pass1', NULL, NULL, NULL, 'user1@email.com', 'Admin Broker', 'Active User', '2016-11-17', '2016-11-17', 1, 35712345678, 'a3', 'kk', 'k', 'df', 'kdf', '2200'),
-('deee', '123456', 1, 'de', 'de', 'de@gmail.com', 'External Broker', 'Active User', '2016-11-17', '2016-11-17', 1, 999999999, NULL, NULL, NULL, NULL, NULL, NULL);
+('ematsi', '123456', 1, 'elena', 'matsi', 'em@gmail.com', 'External Broker', 'Active User', '2016-11-17', '2016-11-17', 1, 54895325, NULL, NULL, NULL, NULL, NULL, NULL),
+('deee', '123456', 1, 'de', 'de', 'de@gmail.com', 'External Broker', 'Active User', '2016-11-17', '2016-11-17', 1, 999999999, NULL, NULL, NULL, NULL, NULL, NULL),
+('kkk', '123456', 0, 'Elena', 'Matsi', 'ematsi02@cs.ucy.ac.cy', 'External Broker', 'Active User', '2016-11-18', '2016-11-18', 1, 99070979, NULL, NULL, NULL, NULL, NULL, NULL),
+('trhtrh', '123456', NULL, 'efe', 'thbtfrhb', 'trhrt@hbfgb', 'Simple User', 'Active User', '2016-11-19', '2016-11-19', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('hjk', '123456', 0, 'rg', 'tg', 'gfb@rtg', 'External Broker', 'Active User', '2016-11-19', '2016-11-19', 1, 123456, NULL, NULL, NULL, NULL, NULL, NULL),
+('pamp', '123456', NULL, 'pampos', 'pampou', 'pamp01@gmail.com', 'Simple User', 'Active User', '2016-11-19', '2016-11-19', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('fdhfgh', '134354', NULL, 'sotia', 'gregoriou', 'dfgfd@fghbfh', 'Simple User', 'Active User', '2016-11-19', '2016-11-19', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('mkyria', '123456', NULL, 'Michalis', 'Kyriacou', 'mkyria@ucy.ac.cy', 'Simple User', 'Active User', '2016-11-19', '2016-11-19', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('sgrego02', '123456', NULL, 'sotia', 'gregoriou', 'erfes@rere', 'Simple User', 'Active User', '2016-11-19', '2016-11-19', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('edfrt', '123456', 1, '', '', 're@rg', 'External Broker', 'Active User', '2016-11-19', '2016-11-19', 1, 3432, NULL, NULL, NULL, NULL, NULL, NULL),
+('rdrgg', '123456', 1, '', '', 'dfgdf@rgdr', 'External Broker', 'Active User', '2016-11-19', '2016-11-19', 1, 34342, NULL, NULL, NULL, NULL, NULL, NULL),
+('fdbdghbg', '123456', 1, '', '', 'sdbdf@rgd', 'External Broker', 'Active User', '2016-11-19', '2016-11-19', 1, 345, NULL, NULL, NULL, NULL, NULL, NULL),
+('324rsf', '123456', 1, '', '', '34@342', 'External Broker', 'Active User', '2016-11-19', '2016-11-19', 1, 2300, NULL, NULL, NULL, NULL, NULL, NULL);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
