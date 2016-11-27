@@ -1,8 +1,6 @@
-
 <?php
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +41,7 @@ session_start();
 				min-height: 50px;
 				margin-bottom: 1px;
 				border: 1px solid transparent;
-				background-color: #ffffff;
+				background-color: transparent;
 			}
 		</style>
 
@@ -73,8 +71,7 @@ session_start();
 			.dropdown:hover .dropdown-content {
 				display: block;
 			}
-		</style>
-		<style>
+			
 			.btn-circle {
 				width: 49px;
 				height: 49px;
@@ -85,7 +82,7 @@ session_start();
 				border-radius: 30px;
 				border: 1px solid #999999;
 				background-color: #EEEEEE;
-				color: #2F4F4F;
+				color: #008c99;
 			}
 
 		</style>
@@ -99,33 +96,33 @@ session_start();
 
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand page-scroll" href="#page-top"> <span class="light" style="color: #2F4F4F">Home</span> </a>
+					<a class="navbar-brand page-scroll" href="#page-top"> <span class="light" style="color: #008c99 ; font-weight: bold; font-size: 120%;text-shadow: 1px 1px 1px #000000">Home</span> </a>
 				</div>
 
 				<ul class="nav navbar-nav ">
 
 					<li class="dropdown">
-						<a class="page-scroll " href="#services" style="color: #2F4F4F">Buy</span></a>
+						<a class="page-scroll " href="#services" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">Buy</span></a>
 
 					</li>
 					<li class="dropdown">
-						<a class="page-scroll " href="#services" style="color: #2F4F4F" >Rent </span></a>
+						<a class="page-scroll " href="#services" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000" >Rent </span></a>
 
 					</li>
 					<li class="dropdown">
-						<a class="page-scroll " href="#ExBroker-modal" data-toggle="modal" data-target="#ExBromodal-lg" style="color: #2F4F4F">Sell</span></a>
+						<a class="page-scroll " href="#ExBroker-modal" data-toggle="modal" data-target="#ExBromodal-lg" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">Sell</span></a>
 
 					</li>
 					<li>
-						<a class="page-scroll " href="propertyList.html" style="color: #2F4F4F">View Properties</a>
+						<a class="page-scroll " href="propertyList.html" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">View Properties</a>
 					</li>
 					
 					<li>
-						<a class="page-scroll" href="#search" style="color: #2F4F4F">Search Property</a>
+						<a class="page-scroll" href="#search" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">Search Property</a>
 					</li>
 					
 					<li>
-						<a class="page-scroll" href="#contact" style="color: #2F4F4F">Contact Us</a>
+						<a class="page-scroll" href="#contact" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">Contact Us</a>
 					</li>
 
 					<script>
@@ -154,24 +151,20 @@ session_start();
 						unset($_SESSION['signedup']);
 						}
 						?>
-					
-					
 		
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-				<?php
+				
+					<?php
 					if(!isset($_SESSION['id'])) {
-					
-						
-						
 					echo"
 					<li>
-						<a href='#SignUp-modal' data-toggle='modal' data-target='#my-modal-lg' style='color: #2F4F4F'><span class='glyphicon glyphicon-user' aria-hidden='true'></span> Sign up</a>
+						<a href='#SignUp-modal' data-toggle='modal' data-target='#my-modal-lg' style='color: #008c99'><span class='glyphicon glyphicon-user' aria-hidden='true'></span> Sign up</a>
 
 					</li>
 					<li>
-						<!--<a class='dropdown-toggle' data-toggle='dropdown' href='#'style='color: #2F4F4F'>Log in <span class='caret'></span></a>
+						<!--<a class='dropdown-toggle' data-toggle='dropdown' href='#'style='color: #008c99'>Log in <span class='caret'></span></a>
 						<ul class='dropdown-content'style = 'padding: 1em'>
 
 						<li>
@@ -182,22 +175,24 @@ session_start();
 						</li>
 						</ul>
 						</li>-->
-						<a href='#LogIn-modal' data-toggle='modal' data-target='#my-logInmodal-sm' style='color: #2F4F4F'>Log in</a>";
+						<a href='#LogIn-modal' data-toggle='modal' data-target='#my-logInmodal-sm' style='color: #008c99'>Log in</a>";
 						}
 						else {
 							echo "<li><a href='#' style='color: #2F4F4F'>" . $_SESSION['id'] . "</a></li><li>
-									<a href='logout_inc.php' style='color: #2F4F4F'>Log Out</a>
+									<a href='logout_inc.php' style='color: ##008c99'>Log Out</a>
 									</li>";
 						}
 						?>
+						
+					
 
 					<li>
-						<a href="#" style="color: #2F4F4F"><img src="img/Greece.png"> Ελληνικά</a>
+						<a href="#" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000"><img src="img/Greece.png"> Ελληνικά</a>
 
 					</li>
 
 					<li>
-						<a href="#" style="color: #2F4F4F"><img src="img/United Kingdom(Great Britain).png"> English</a>
+						<a href="#" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000"><img src="img/United Kingdom(Great Britain).png"> English</a>
 
 					</li>
 
@@ -209,24 +204,30 @@ session_start();
 		<!-- Header -->
 		<header id="top" class="header">
 			<div class="text-vertical-center">
-				<h1 style= "font-weight: lighter; color: #FAFAD2;font-size: 700% ;text-shadow: 5px 5px 10px black"; >City Realty Cyprus</h1>
+				<h1 style= " font-size: 100px; text-shadow: 2px 2px 2px #000000;
+ font-family: Georgia, 'Times New Roman', serif;
+ color: #c03e62;
+ text-align: center;
+        font-weight: 100;"; >Empire Estates</h1>
 			</div>
 		</header>
 
 		<!-- Search -->
 
-		<header class="w3-container w3-teal " style = "background-color:#FFFFFF; padding: 1em">
+		<header class="w3-container w3-teal " style = "background: transparent;
+    padding: 3em">
 			<div class="row" >
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading">Search Property</h2>
 					<h3 class="section-subheading text-muted"></h3>
 				</div>
 			</div>
 		</header>
 
-		<section id="search" style = "background-color:#F5F5DC; padding: 5em">
+		<section id="search" style =  "background: #fff;
+    background: rgba(255,255,255,0.7); padding: 5em">
 			<div class="container">
-
+			<h1 style="color: #c03e62;text-shadow: 1px 1px 1px #000000; "><center>Search Property</center></h1>
+						<hr class="small">
 				<div class="row">
 					<div class="col-lg-12">
 						<form name="sentMessage" id="contactForm" novalidate>
@@ -309,7 +310,8 @@ session_start();
 			</div>
 		</section>
 
-		<footer class="w3-container w3-teal " style = "background-color:#FFFFFF; padding: 2em">
+		<footer class="w3-container w3-teal " style = "background: transparent;
+     padding: 2em">
 			<div class="row" >
 
 			</div>
@@ -319,37 +321,38 @@ session_start();
 
 		<!-- Services -->
 		<!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
-		<section id="services" class="services bg-primary"style = "background-color:#F5F5DC">
+		<section id="services" class="services bg-primary"style = "background: #fff;
+    background: rgba(255,255,255,0.7);">
 			<div class="container">
 				<div class="row text-center">
 					<div class="col-lg-10 col-lg-offset-1">
-						<h2 style= "color: #000000";>Our Services</h2>
+						<h1 style="color: #c03e62;text-shadow: 1px 1px 1px #000000;">Our Services</h1>
 						<hr class="small">
 						<div class="row">
 							<div class="col-md-3 col-sm-6">
 								<div class="service-item">
-									<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x" style="color: #F5F5F5"></i> <i class="fa fa-credit-card fa-stack-1x text-primary"style="color: #2F4F4F"></i> </span>
+									<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x" style="color: #F5F5F5"></i> <i class="fa fa-credit-card fa-stack-1x text-primary"style="color: #008c99"></i> </span>
 									<h4 style= "color: #000000";><strong></strong></h4>
 									<a href="#" class="btn btn-light"style= "color: #000000; background-color: #D3D3D3";><strong>Buy</a>
 								</div>
 							</div>
 							<div class="col-md-3 col-sm-6">
 								<div class="service-item">
-									<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x" style="color: #F5F5F5"></i> <i class="glyphicon glyphicon-credit-card fa-stack-1x text-primary"style="color: #2F4F4F"></i> </span>
+									<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x" style="color: #F5F5F5"></i> <i class="glyphicon glyphicon-credit-card fa-stack-1x text-primary"style="color: #008c99"></i> </span>
 									<h4 style= "color: #000000";><strong></strong></h4>
 									<a href="#" class="btn btn-light"style= "color: #000000; background-color: #D3D3D3";><strong>Rent</a>
 								</div>
 							</div>
 							<div class="col-md-3 col-sm-6">
 								<div class="service-item">
-									<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x" style="color: #F5F5F5"></i> <i class="fa fa-home fa-stack-1x text-primary"style="color: #2F4F4F"></i> </span>
+									<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x" style="color: #F5F5F5"></i> <i class="fa fa-home fa-stack-1x text-primary"style="color: #008c99"></i> </span>
 									<h4 style= "color: #000000";><strong> </strong></h4>
 									<a href="propertyList.html" class="btn btn-light"style= "color: #000000; background-color: #D3D3D3";><strong>Listing</a>
 								</div>
 							</div>
 							<div class="col-md-3 col-sm-6">
 								<div class="service-item">
-									<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x" style="color: #F5F5F5"></i> <i class="fa fa-money fa-stack-1x text-primary"style="color: #2F4F4F"></i> </span>
+									<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x" style="color: #F5F5F5"></i> <i class="fa fa-money fa-stack-1x text-primary"style="color: #008c99"></i> </span>
 									<h4 style= "color: #000000";><strong></strong></h4>
 									<a href="#ExBroker-modal" data-toggle="modal" data-target="#ExBromodal-lg" class="btn btn-light"style= "color: #000000; background-color: #D3D3D3";><strong>Sell</a>
 
@@ -365,7 +368,7 @@ session_start();
 			<!-- /.container -->
 		</section>
 		
-		<footer class="w3-container w3-teal " style = "background-color:#FFFFFF; padding: 2em">
+		<footer class="w3-container w3-teal " style = "background-color:transparent; padding: 2em">
 			<div class="row" >
 
 			</div>
@@ -386,11 +389,13 @@ session_start();
 		</p>
 
 		<!-- Contact Section -->
-		<section id="contact" style = "background-color:#F5F5DC; padding: 5em">
+		<section id="contact" style =  "background: #fff;
+    background: rgba(255,255,255,0.7); padding: 5em;">
 			<div class="container">
 				<div class="row" >
 					<div class="col-lg-12 text-center">
-						<h2 class="section-heading">Contact Us</h2>
+						<h1 class="section-heading" style="color: #c03e62;text-shadow: 1px 1px 1px #000000;">Contact Us</h1>
+						<hr class="small">
 						<h3 class="section-subheading text-muted"></h3>
 					</div>
 				</div>
@@ -437,10 +442,10 @@ session_start();
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-10 col-lg-offset-1 text-center">
-						<h4><strong>CityRealty Cyprus</strong></h4>
-						<p>
+						<h4><strong style="color: #FFFFFF">Empire Estates</strong></h4>
+						<p style="color: #FFFFFF">
 							Αγχιαλού 11
-							<br>
+							<br style="color: #FFFFFF">
 							Λευκωσία,Αγίοι Ομολογητές,Κύπρος
 						</p>
 						<ul class="list-unstyled">
@@ -448,33 +453,33 @@ session_start();
 								<i class="fa fa-phone fa-fw"></i> 97-900809
 							</li>
 							<li>
-								<i class="fa fa-envelope-o fa-fw" style="color: #000000"></i><a href="mailto:marygeorgiou85@gmail.com " style="color: #000000">marygeorgiou85@gmail.com</a>
+								<i class="fa fa-envelope-o fa-fw" style="color: #FFFFFF"></i><a href="mailto:marygeorgiou85@gmail.com " style="color: #FFFFFF">marygeorgiou85@gmail.com</a>
 							</li>
 						</ul>
 						<br>
 						<ul class="list-inline">
 							<li>
-								<a href="#"><i class="fa fa-facebook fa-fw fa-3x " style="color: #2F4F4F " ></i></a>
+								<a href="#"><i class="fa fa-facebook fa-fw fa-3x " style="color: #008c99 " ></i></a>
 							</li>
 							<li>
-								<a href="#"><i class="fa fa-twitter fa-fw fa-3x" style="color: #2F4F4F"></i></a>
+								<a href="#"><i class="fa fa-twitter fa-fw fa-3x" style="color: #008c99"></i></a>
 							</li>
 							<li>
-								<a href="#"><i class="fa fa-pinterest fa-fw fa-3x " style="color: #2F4F4F " ></i></a>
+								<a href="#"><i class="fa fa-pinterest fa-fw fa-3x " style="color: #008c99 " ></i></a>
 							</li>
 							<li>
-								<a href="#"><i class="fa fa-google-plus fa-fw fa-3x " style="color: #2F4F4F " ></i></a>
+								<a href="#"><i class="fa fa-google-plus fa-fw fa-3x " style="color: #008c99 " ></i></a>
 							</li>
 							<li>
-								<a href="#"><i class="fa fa-instagram fa-fw fa-3x " style="color: #2F4F4F " ></i></a>
+								<a href="#"><i class="fa fa-instagram fa-fw fa-3x " style="color: #008c99 " ></i></a>
 							</li>
 							<li>
-								<a href="#"><i class="fa fa-tumblr fa-fw fa-3x " style="color: #2F4F4F " ></i></a>
+								<a href="#"><i class="fa fa-tumblr fa-fw fa-3x " style="color: #008c99 " ></i></a>
 							</li>
 
 						</ul>
 						<hr class="small">
-						<p class="text-muted">
+						<p class="text-muted" style="color: #FFFFFF">
 							Copyright &copy; University of Cyprus
 						</p>
 					</div>
