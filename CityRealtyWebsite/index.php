@@ -156,20 +156,19 @@ session_start();
 
 				<ul class="nav navbar-nav navbar-right">
 				
-					<?php
+							<?php
 					if(!isset($_SESSION['id'])) {
 					echo"
-					<li class="dropdown">
-						<a href="javascript:void(0)" class="dropbtn" onclick="DropDownFunction()" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000"><span class='glyphicon glyphicon-user' aria-hidden='true'></span> SignUp</a>
-						<div class="dropdown-content" id="myDropdown">
-							<a href='#SignUp-modal' data-toggle='modal' data-target='#my-modal-lg' style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">As A Client</a>
-							<a class="page-scroll " href="#ExBroker-modal" data-toggle="modal" data-target="#ExBromodal-lg" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">As An Agent </span></a>
+					<li class='dropdown'>
+						<a href='javascript:void(0)' class='dropbtn' onclick='DropDownFunction()' style='color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000'><span class='glyphicon glyphicon-user' aria-hidden='true'></span> SignUp</a>
+						<div class='dropdown-content' id='myDropdown'>
+							<a href='#SignUp-modal' data-toggle='modal' data-target='#my-modal-lg' style='color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000'>As A Client</a>
+							<a class='page-scroll' href='#ExBroker-modal' data-toggle='modal' data-target='#ExBromodal-lg' style='color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000'>As An Agent </span></a>
 						</div>
 					</li>
 					<li>
 						<!--<a class='dropdown-toggle' data-toggle='dropdown' href='#'style='color: #008c99'>Log in <span class='caret'></span></a>
 						<ul class='dropdown-content'style = 'padding: 1em'>
-
 						<li>
 						<input type='text' class='form-control' placeholder='Username *' id='name' required data-validation-required-message='Please enter your Username.'>
 						</li>
