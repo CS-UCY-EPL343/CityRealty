@@ -125,6 +125,10 @@ session_start();
 						<a class="page-scroll" href="#contact" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">Contact Us</a>
 					</li>
 
+					<li>
+						<a class="page-scroll" href="about.html" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">About</a>
+					</li>
+
 					<script>
 						function myFunction() {
    			 			alert("Username or email already used!");
