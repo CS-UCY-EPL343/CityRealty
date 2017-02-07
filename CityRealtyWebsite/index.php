@@ -12,7 +12,9 @@ session_start();
 		<meta name="description" content="">
 		<meta name="author" content="">
 
-		<title>City Realty</title>
+		<title>Empire Estates</title>
+
+		<link rel="stylesheet" href="css/home-style.css">
 
 		<!-- Bootstrap Core CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -171,17 +173,8 @@ session_start();
 						</div>
 					</li>
 					<li>
-						<!--<a class='dropdown-toggle' data-toggle='dropdown' href='#'style='color: #008c99'>Log in <span class='caret'></span></a>
-						<ul class='dropdown-content'style = 'padding: 1em'>
-						<li>
-						<input type='text' class='form-control' placeholder='Username *' id='name' required data-validation-required-message='Please enter your Username.'>
-						</li>
-						<li>
-						<input type='text' class='form-control' placeholder='Password *' id='name' required data-validation-required-message='Please enter your Password .'>
-						</li>
-						</ul>
-						</li>-->
-						<a href='#LogIn-modal' data-toggle='modal' data-target='#my-logInmodal-sm' style='color: #008c99'>Log in</a>";
+						
+						<a href='#LogIn-modal' data-toggle='modal' data-target='#my-logInmodal-sm' style='color: #008c99; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000'>Log in</a>";
 						}
 						else {
 							echo "<li><a href='#' style='color: #2F4F4F'>" . $_SESSION['id'] . "</a></li><li>
@@ -214,7 +207,7 @@ session_start();
  font-family: Georgia, 'Times New Roman', serif;
  color: #c03e62;
  text-align: center;
-        font-weight: 100;"; >Empire Estates</h1>
+        font-weight: 100;"; >Empire Estates Website</h1>
 			</div>
 		</header>
 
@@ -232,7 +225,7 @@ session_start();
 		<section id="search" style =  "background: #fff;
     background: rgba(255,255,255,0.7); padding: 5em">
 			<div class="container">
-			<h1 style="color: #c03e62;text-shadow: 1px 1px 1px #000000; "><center>Search Property</center></h1>
+			<h1 class="section_title">Search Property</h1>
 						<hr class="small">
 				<div class="row">
 					<div class="col-lg-12">
@@ -332,7 +325,7 @@ session_start();
 			<div class="container">
 				<div class="row text-center">
 					<div class="col-lg-10 col-lg-offset-1">
-						<h1 style="color: #c03e62;text-shadow: 1px 1px 1px #000000;">Our Services</h1>
+						<h1 class="section_title">Our Services</h1>
 						<hr class="small">
 						<div class="row">
 							<div class="col-md-3 col-sm-6">
@@ -400,7 +393,7 @@ session_start();
 			<div class="container">
 				<div class="row" >
 					<div class="col-lg-12 text-center">
-						<h1 class="section-heading" style="color: #c03e62;text-shadow: 1px 1px 1px #000000;">Contact Us</h1>
+						<h1 class="section-heading" class="section_title">Contact Us</h1>
 						<hr class="small">
 						<h3 class="section-subheading text-muted"></h3>
 					</div>
@@ -448,7 +441,7 @@ session_start();
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-10 col-lg-offset-1 text-center">
-						<h4><strong style="color: #FFFFFF">Empire Estates</strong></h4>
+						<h4 class="page_title">Empire Estates</h4>
 						<p style="color: #FFFFFF">
 							Αγχιαλού 11
 							<br style="color: #FFFFFF">
