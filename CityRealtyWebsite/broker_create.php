@@ -53,6 +53,5 @@ echo "Entered data successfully\n";
 header("Location: broker_create.php");
 
 mysqli_close($conn);
-}
 ?>
 
