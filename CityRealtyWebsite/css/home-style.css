@@ -1,38 +1,49 @@
 
-top_menu {
+.top_menu {
+	color:#FFCC00; 
+	font-weight: bold; 
+	font-size: 100%;
+	text-shadow: 1px 1px  #000000	
+}
+
+.top_properties {
 	
 }
 
-top_properties {
-	
+.page_title {
+	display: table-cell;
+    text-align: center;
+    padding: 100px;
+    font-size: 100px;
+   	font-weight: 100;
+    text-shadow: 2px 2px 2px #000000;
+    font-family: Georgia, 'Times New Roman', serif;
+ 	color: #c03e62;
+    
 }
 
-page_title {
-	strong style="color: #FFFFFF"
-}
-
-section_title {
+.section_title {
 	center;
 	color: #c03e62;
 	text-shadow: 1px 1px 1px #000000; 
 }
 
-home_banner {
+.home_banner {
 	
 }
 
-home_search {
+.home_search {
 	
 }
 
-home_map {
+.home_map {
 	
 }
 
-home_contactus {
+.home_contactus {
 	
 }
 
-bottom_properties {
+.bottom_properties {
 	
 }
