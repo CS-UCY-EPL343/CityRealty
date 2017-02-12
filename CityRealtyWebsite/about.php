@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +56,6 @@
 				min-width: 160px;
 				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 			}
-
 			.dropdown-content a {
 				color: #337ab7;
 				padding: 12px 16px;
@@ -60,11 +63,9 @@
 				display: block;
 				text-align: left;
 			}
-
 			.dropdown-content a:hover {
 				background-color: #ffebcd
 			}
-
 			.dropdown:hover .dropdown-content {
 				display: block;
 			}
@@ -81,7 +82,6 @@
 				background-color: #EEEEEE;
 				color: #008c99;
 			}
-
 		</style>
 
 	</head>
@@ -99,19 +99,19 @@
 				<ul class="nav navbar-nav ">
 
 					<li class="dropdown">
-						<a class="page-scroll " href="index.html#services" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">Buy</span></a>
+						<a class="page-scroll " href="index.php#services" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">Buy</span></a>
 
 					</li>
 					<li class="dropdown">
-						<a class="page-scroll " href="index.html#services" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000" >Rent </span></a>
+						<a class="page-scroll " href="index.php#services" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000" >Rent </span></a>
 
 					</li>
 					<li class="dropdown">
-						<a class="page-scroll " href="index.html#ExBroker-modal" data-toggle="modal" data-target="#ExBromodal-lg" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">Sell</span></a>
+						<a class="page-scroll " href="index.php#ExBroker-modal" data-toggle="modal" data-target="#ExBromodal-lg" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">Sell</span></a>
 
 					</li>
 					<li>
-						<a class="page-scroll " href="propertyList.html" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">View Properties</a>
+						<a class="page-scroll " href="propertyList.php" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">View Properties</a>
 					</li>
 					
 					<li>
@@ -123,7 +123,7 @@
 					</li>
 					
 					<li>
-						<a class="page-scroll" href="about.html" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">About</a>
+						<a class="page-scroll" href="about.php" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">About</a>
 					</li>
 		
 				</ul>
@@ -132,31 +132,31 @@
 				
 					
 					
-					<li class="dropdown">
-						<a href="javascript:void(0)" class="dropbtn" onclick="DropDownFunction()" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000"><span class='glyphicon glyphicon-user' aria-hidden='true'></span> SignUp</a>
-						<div class="dropdown-content" id="myDropdown">
-							<a href='index.html#SignUp-modal' data-toggle='modal' data-target='index.html#my-modal-lg' style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">As A Client</a>
-							<a class="page-scroll " href="index.html#ExBroker-modal" data-toggle="modal" data-target="index.html#ExBromodal-lg" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">As An Agent </span></a>
+					<?php
+					if(!isset($_SESSION['id'])) {
+					echo"
+					<li class='dropdown'>
+						<a href='javascript:void(0)' class='dropbtn' onclick='DropDownFunction()' style='color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000'><span class='glyphicon glyphicon-user' aria-hidden='true'></span> SignUp</a>
+						<div class='dropdown-content' id='myDropdown'>
+							<a href='#SignUp-modal' data-toggle='modal' data-target='#my-modal-lg' style='color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000'>As A Client</a>
+							<a class='page-scroll' href='#ExBroker-modal' data-toggle='modal' data-target='#ExBromodal-lg' style='color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000'>As An Agent </span></a>
 						</div>
 					</li>
 					<li>
-						<!--<a class='dropdown-toggle' data-toggle='dropdown' href='#'style='color: #008c99'>Log in <span class='caret'></span></a>
-						<ul class='dropdown-content'style = 'padding: 1em'>
-
-						<li>
-						<input type='text' class='form-control' placeholder='Username *' id='name' required data-validation-required-message='Please enter your Username.'>
-						</li>
-						<li>
-						<input type='text' class='form-control' placeholder='Password *' id='name' required data-validation-required-message='Please enter your Password .'>
-						</li>
-						</ul>
-						</li>-->
-						<a href='index.html#LogIn-modal' data-toggle='modal' data-target='index.html#my-logInmodal-sm' style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000">Log in</a>
+						
+						<a href='#LogIn-modal' data-toggle='modal' data-target='#my-logInmodal-sm' style='color: #008c99; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000'>Log in</a>";
+						}
+						else {
+							echo "<li><a href='#' style='color: #2F4F4F'>" . $_SESSION['id'] . "</a></li><li>
+									<a href='logout_inc.php' style='color: ##008c99'>Log Out</a>
+									</li>";
+						}
+						?>
 						
 					
 
 					<li>
-						<a href="#" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000"><img src="img/Greece.png"> Ελληνικά</a>
+						<a href="#" style="color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000"><img src="img/Greece.png"> ????????</a>
 
 					</li>
 
@@ -207,9 +207,9 @@
 					<div class="col-lg-10 col-lg-offset-1 text-center">
 						<h4><strong style="color: #FFFFFF">Empire Estates</strong></h4>
 						<p style="color: #FFFFFF">
-							Αγχιαλού 11
+							????a??? 11
 							<br style="color: #FFFFFF">
-							Λευκωσία,Αγίοι Ομολογητές,Κύπρος
+							?e???s?a,????? ?µ?????t??,??p???
 						</p>
 						<ul class="list-unstyled">
 							<li>
