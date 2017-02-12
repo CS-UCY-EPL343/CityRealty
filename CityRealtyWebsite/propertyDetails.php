@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +54,7 @@
 
 			<div class="container-fluid" style = "background-color:#ffffff">
 				<div class="navbar-header">
-					<a class="navbar-brand page-scroll" href="index.html"> <span class="light" style="color: #008c99">Home</span> </a>
+					<a class="navbar-brand page-scroll" href="index.php"> <span class="light" style="color: #008c99">Home</span> </a>
 				</div>
 
 				<ul class="nav navbar-nav ">
@@ -79,12 +83,26 @@
 
 				<ul class="nav navbar-nav navbar-right">
 
-					<li>
-						<a href="#" style="color: #008c99"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Sign up</a>
+					<?php
+					if(!isset($_SESSION['id'])) {
+					echo"
+					<li class='dropdown'>
+						<a href='javascript:void(0)' class='dropbtn' onclick='DropDownFunction()' style='color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000'><span class='glyphicon glyphicon-user' aria-hidden='true'></span> SignUp</a>
+						<div class='dropdown-content' id='myDropdown'>
+							<a href='#SignUp-modal' data-toggle='modal' data-target='#my-modal-lg' style='color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000'>As A Client</a>
+							<a class='page-scroll' href='#ExBroker-modal' data-toggle='modal' data-target='#ExBromodal-lg' style='color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000'>As An Agent </span></a>
+						</div>
 					</li>
 					<li>
-						<a href="#" style="color: #008c99">Log in </a>
-					</li>
+						
+						<a href='#LogIn-modal' data-toggle='modal' data-target='#my-logInmodal-sm' style='color: #008c99; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000'>Log in</a>";
+						}
+						else {
+							echo "<li><a href='#' style='color: #2F4F4F'>" . $_SESSION['id'] . "</a></li><li>
+									<a href='logout_inc.php' style='color: ##008c99'>Log Out</a>
+									</li>";
+						}
+						?>
 					<li>
 						<a href="#" style="color: #008c99"><img src="img/Greece.png"> Ελληνικά</a>
 
@@ -109,10 +127,10 @@
 					<h1 class="page-header"style="color: #c03e62;text-shadow: 1px 1px 1px #000000;">Property <small style="color: #c03e62;text-shadow: 1px 1px 1px #000000;">#1</small></h1>
 					<ol class="breadcrumb">
 						<li>
-							<a href="index.html" style="color: #008c99">Home</a>
+							<a href="index.php" style="color: #008c99">Home</a>
 						</li>
 						<li>
-							<a href="propertyList.html" style="color: #008c99">Property List</a>
+							<a href="propertyList.php" style="color: #008c99">Property List</a>
 						</li>
 						<li class="active" style="color: #008c99">
 							Property
