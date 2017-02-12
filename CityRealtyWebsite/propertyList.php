@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +54,7 @@
 
 			<div class="container-fluid" >
 				<div class="navbar-header">
-					<a class="navbar-brand page-scroll" href="index.html"> <span class="light" style="color: #008c99">Home</span> </a>
+					<a class="navbar-brand page-scroll" href="index.php"> <span class="light" style="color: #008c99">Home</span> </a>
 				</div>
 
 				<ul class="nav navbar-nav ">
@@ -79,12 +83,26 @@
 
 				<ul class="nav navbar-nav navbar-right">
 
-					<li>
-						<a href="#" style="color: #008c99"><span class="glyphicon glyphicon-user" aria-hidden="true" ></span> Sign up</a>
+					<?php
+					if(!isset($_SESSION['id'])) {
+					echo"
+					<li class='dropdown'>
+						<a href='javascript:void(0)' class='dropbtn' onclick='DropDownFunction()' style='color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000'><span class='glyphicon glyphicon-user' aria-hidden='true'></span> SignUp</a>
+						<div class='dropdown-content' id='myDropdown'>
+							<a href='#SignUp-modal' data-toggle='modal' data-target='#my-modal-lg' style='color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000'>As A Client</a>
+							<a class='page-scroll' href='#ExBroker-modal' data-toggle='modal' data-target='#ExBromodal-lg' style='color: #008c99 ; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000'>As An Agent </span></a>
+						</div>
 					</li>
 					<li>
-						<a href="#" style="color: #008c99">Log in </a>
-					</li>
+						
+						<a href='#LogIn-modal' data-toggle='modal' data-target='#my-logInmodal-sm' style='color: #008c99; font-weight: bold; font-size: 100%;text-shadow: 1px 1px 1px #000000'>Log in</a>";
+						}
+						else {
+							echo "<li><a href='#' style='color: #2F4F4F'>" . $_SESSION['id'] . "</a></li><li>
+									<a href='logout_inc.php' style='color: ##008c99'>Log Out</a>
+									</li>";
+						}
+						?>
 					<li>
 						<a href="#" style="color: #008c99"><img src="img/Greece.png"> Ελληνικά</a>
 
@@ -133,10 +151,10 @@
 
 						<div class="col-sm-4 col-lg-4 col-md-4">
 							<div class="thumbnail">
-								<a href="propertyDetails.html"><img class="img-responsive img-hover img-related" src="img/properties/1.jpg" alt="image not available"></a>
+								<a href="propertyDetails.php"><img class="img-responsive img-hover img-related" src="img/properties/1.jpg" alt="image not available"></a>
 								<div class="caption">
 									<h4 class="pull-right">$300000</h4>
-									<h4><a href="propertyDetails.html" style="color: #008c99">Property #1</a></h4>
+									<h4><a href="propertyDetails.php" style="color: #008c99">Property #1</a></h4>
 									<p>
 										Property description...
 									</p>
@@ -158,10 +176,10 @@
 
 						<div class="col-sm-4 col-lg-4 col-md-4">
 							<div class="thumbnail">
-								<a href="propertyDetails.html"><img class="img-responsive img-hover img-related" src="img/properties/7.jpg" alt="image not available"></a>
+								<a href="propertyDetails.php"><img class="img-responsive img-hover img-related" src="img/properties/7.jpg" alt="image not available"></a>
 								<div class="caption">
 									<h4 class="pull-right">$400</h4>
-									<h4><a href="propertyDetails.html" style="color: #008c99">Property #2</a></h4>
+									<h4><a href="propertyDetails.php" style="color: #008c99">Property #2</a></h4>
 									<p>
 										Property description...
 									</p>
@@ -183,10 +201,10 @@
 
 						<div class="col-sm-4 col-lg-4 col-md-4">
 							<div class="thumbnail">
-								<a href="propertyDetails.html"><img class="img-responsive img-hover img-related" src="img/properties/8.jpg" alt="image not available"></a>
+								<a href="propertyDetails.php"><img class="img-responsive img-hover img-related" src="img/properties/8.jpg" alt="image not available"></a>
 								<div class="caption">
 									<h4 class="pull-right">$600</h4>
-									<h4><a href="propertyDetails.html" style="color: #008c99">Property #3</a></h4>
+									<h4><a href="propertyDetails.php" style="color: #008c99">Property #3</a></h4>
 									<p>
 										Property description...
 									</p>
@@ -208,10 +226,10 @@
 
 						<div class="col-sm-4 col-lg-4 col-md-4">
 							<div class="thumbnail">
-								<a href="propertyDetails.html"><img class="img-responsive img-hover img-related" src="img/properties/2.jpg" alt="image not available"></a>
+								<a href="propertyDetails.php"><img class="img-responsive img-hover img-related" src="img/properties/2.jpg" alt="image not available"></a>
 								<div class="caption">
 									<h4 class="pull-right">$200000</h4>
-									<h4><a href="propertyDetails.html" style="color: #008c99">Property #4</a></h4>
+									<h4><a href="propertyDetails.php" style="color: #008c99">Property #4</a></h4>
 									<p>
 										Property description...
 									</p>
@@ -233,10 +251,10 @@
 
 						<div class="col-sm-4 col-lg-4 col-md-4">
 							<div class="thumbnail">
-								<a href="propertyDetails.html"><img class="img-responsive img-hover img-related" src="img/properties/9.jpg" alt="image not available"></a>
+								<a href="propertyDetails.php"><img class="img-responsive img-hover img-related" src="img/properties/9.jpg" alt="image not available"></a>
 								<div class="caption">
 									<h4 class="pull-right">$500</h4>
-									<h4><a href="propertyDetails.html" style="color: #008c99">Property #5</a></h4>
+									<h4><a href="propertyDetails.php" style="color: #008c99">Property #5</a></h4>
 									<p>
 										Property description...
 									</p>
@@ -258,10 +276,10 @@
 
 						<div class="col-sm-4 col-lg-4 col-md-4">
 							<div class="thumbnail">
-								<a href="propertyDetails.html"><img class="img-responsive img-hover img-related" src="img/properties/6.jpg" alt="image not available"></a>
+								<a href="propertyDetails.php"><img class="img-responsive img-hover img-related" src="img/properties/6.jpg" alt="image not available"></a>
 								<div class="caption">
 									<h4 class="pull-right">$400</h4>
-									<h4><a href="propertyDetails.html" style="color: #008c99">Property #6</a></h4>
+									<h4><a href="propertyDetails.php" style="color: #008c99">Property #6</a></h4>
 									<p>
 										Property description...
 									</p>
@@ -283,10 +301,10 @@
 
 						<div class="col-sm-4 col-lg-4 col-md-4">
 							<div class="thumbnail">
-								<a href="propertyDetails.html"><img class="img-responsive img-hover img-related" src="img/properties/6.jpg" alt="image not available"></a>
+								<a href="propertyDetails.php"><img class="img-responsive img-hover img-related" src="img/properties/6.jpg" alt="image not available"></a>
 								<div class="caption">
 									<h4 class="pull-right">$400</h4>
-									<h4><a href="propertyDetails.html" style="color: #008c99">Property #7</a></h4>
+									<h4><a href="propertyDetails.php" style="color: #008c99">Property #7</a></h4>
 									<p>
 										Property description...
 									</p>
@@ -308,10 +326,10 @@
 
 						<div class="col-sm-4 col-lg-4 col-md-4">
 							<div class="thumbnail">
-								<a href="propertyDetails.html"><img class="img-responsive img-hover img-related" src="img/properties/7.jpg" alt="image not available"></a>
+								<a href="propertyDetails.php"><img class="img-responsive img-hover img-related" src="img/properties/7.jpg" alt="image not available"></a>
 								<div class="caption">
 									<h4 class="pull-right">$450</h4>
-									<h4><a href="propertyDetails.html"  style="color: #008c99">Property #8</a></h4>
+									<h4><a href="propertyDetails.php"  style="color: #008c99">Property #8</a></h4>
 									<p>
 										Property description...
 									</p>
@@ -333,10 +351,10 @@
 
 						<div class="col-sm-4 col-lg-4 col-md-4">
 							<div class="thumbnail">
-								<a href="propertyDetails.html"><img class="img-responsive img-hover img-related" src="img/properties/1.jpg" alt="image not available"></a>
+								<a href="propertyDetails.php"><img class="img-responsive img-hover img-related" src="img/properties/1.jpg" alt="image not available"></a>
 								<div class="caption">
 									<h4 class="pull-right">$190000</h4>
-									<h4><a href="propertyDetails.html" style="color: #008c99">Property #9</a></h4>
+									<h4><a href="propertyDetails.php" style="color: #008c99">Property #9</a></h4>
 									<p>
 										Property description...
 									</p>
@@ -357,10 +375,10 @@
 						</div>
 						<div class="col-sm-4 col-lg-4 col-md-4">
 							<div class="thumbnail">
-								<a href="propertyDetails.html"><img class="img-responsive img-hover img-related" src="img/properties/8.jpg" alt="image not available"></a>
+								<a href="propertyDetails.php"><img class="img-responsive img-hover img-related" src="img/properties/8.jpg" alt="image not available"></a>
 								<div class="caption">
 									<h4 class="pull-right">$400</h4>
-									<h4><a href="propertyDetails.html"  style="color: #008c99">Property #10</a></h4>
+									<h4><a href="propertyDetails.php"  style="color: #008c99">Property #10</a></h4>
 									<p>
 										Property description...
 									</p>
@@ -382,10 +400,10 @@
 
 						<div class="col-sm-4 col-lg-4 col-md-4">
 							<div class="thumbnail">
-								<a href="propertyDetails.html"><img class="img-responsive img-hover img-related" src="img/properties/2.jpg" alt="image not available"></a>
+								<a href="propertyDetails.php"><img class="img-responsive img-hover img-related" src="img/properties/2.jpg" alt="image not available"></a>
 								<div class="caption">
 									<h4 class="pull-right">$300000</h4>
-									<h4><a href="propertyDetails.html"  style="color: #008c99">Property #11</a></h4>
+									<h4><a href="propertyDetails.php"  style="color: #008c99">Property #11</a></h4>
 									<p>
 										Property description...
 									</p>
@@ -407,10 +425,10 @@
 
 						<div class="col-sm-4 col-lg-4 col-md-4">
 							<div class="thumbnail">
-							<a href="propertyDetails.html"><img class="img-responsive img-hover img-related" src="img/properties/9.jpg" alt="image not available"></a>
+							<a href="propertyDetails.php"><img class="img-responsive img-hover img-related" src="img/properties/9.jpg" alt="image not available"></a>
 								<div class="caption">
 									<h4 class="pull-right">$300</h4>
-									<h4><a href="propertyDetails.html"  style="color: #008c99">Property #12</a></h4>
+									<h4><a href="propertyDetails.php"  style="color: #008c99">Property #12</a></h4>
 									<p>
 										Property description...
 									</p>
