@@ -837,6 +837,35 @@ INSERT INTO `Frames` (`FramesNo`, `Description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Office`
+--
+
+CREATE TABLE IF NOT EXISTS `Office` (
+  `RealEstateNo` int(11) NOT NULL,
+  `OfficeType` enum('Άλλο','Επαγγελματικός χώρος','Αποθήκη','Αίθουσα','Κτήριο','Κατάστημα','Γραφεία','Ιατρεία','Βιομηχανικός χώρος','Γυμναστήριο','Φροντιστήριο','Εκθεσιακός χώρος') NOT NULL DEFAULT 'Επαγγελματικός χώρος',
+  `Investing` tinyint(1) NOT NULL DEFAULT '0',
+  `NumOfBasements` smallint(6) NOT NULL DEFAULT '0',
+  `NumOfBuildFloors` int(11) NOT NULL DEFAULT '0',
+  `SurfaceArea` double NOT NULL DEFAULT '0',
+  `NumOfSegments` int(11) NOT NULL DEFAULT '0',
+  `StoreFrontArea` double NOT NULL DEFAULT '0',
+  `GroundFloorArea` double NOT NULL DEFAULT '0',
+  `LoftArea` double NOT NULL DEFAULT '0',
+  `BasementArea` double NOT NULL DEFAULT '0',
+  `FamePrice` double NOT NULL DEFAULT '0',
+  `EquipmentIncluded` tinyint(1) NOT NULL DEFAULT '0',
+  `AnnualRent` double NOT NULL DEFAULT '0',
+  `AnnualGrossReturn` double NOT NULL DEFAULT '0',
+  `AnnualNetReturn` double NOT NULL DEFAULT '0',
+  `Teenant` varchar(50) NOT NULL,
+  `AnnualExpenses` double NOT NULL DEFAULT '0',
+  `AnnualProduction` double NOT NULL DEFAULT '0',
+  PRIMARY KEY (`RealEstateNo`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `RealEstate`
 --
 
