@@ -23,6 +23,120 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Building`
+--
+
+CREATE TABLE IF NOT EXISTS `Building` (
+  `RealEstateNo` int(10) unsigned NOT NULL,
+  `ConstructionYear` year(4) NOT NULL,
+  `Renovated` tinyint(1) NOT NULL DEFAULT '0',
+  `RenovationYear` year(4) NOT NULL,
+  `NumOfFloors` tinyint(4) NOT NULL DEFAULT '0',
+  `ParkingSpots` tinyint(4) NOT NULL DEFAULT '0',
+  `NumOfRooms` tinyint(4) NOT NULL DEFAULT '1',
+  `NumOfWC` tinyint(4) NOT NULL DEFAULT '1',
+  `FloorType` int(11) NOT NULL,
+  `Frames` int(11) NOT NULL,
+  `Drainage` tinyint(1) NOT NULL DEFAULT '0',
+  `EnergyCertificate` enum('Unknown','Class A','Class B','Class C','Class D') COLLATE utf8_bin NOT NULL DEFAULT 'Unknown',
+  `LocationDetails` int(11) NOT NULL,
+  `BuildingDetails` int(11) NOT NULL,
+  `Levels` enum('0','1','2','3','4','5') COLLATE utf8_bin NOT NULL DEFAULT '0',
+  `HeatingFuel` enum('Άλλο','Πετρέλαιο','Γκάζι','Ηλεκτρική','Τζάκι','Κλιματισμός') COLLATE utf8_bin NOT NULL DEFAULT 'Άλλο',
+  `HeatingType` enum('Άλλο','Κεντρική','Ανεξάρτητη','Κοινόχρηστη') COLLATE utf8_bin NOT NULL DEFAULT 'Άλλο',
+  `AvgSharedCosts` double NOT NULL DEFAULT '0',
+  `UnderConstruction` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`RealEstateNo`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `BuildingDetails`
+--
+
+CREATE TABLE IF NOT EXISTS `BuildingDetails` (
+  `BDΝο` int(11) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(35) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`BDΝο`),
+  UNIQUE KEY `Description` (`Description`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `BuildingDetails`
+--
+
+INSERT INTO `BuildingDetails` (`BDΝο`, `Description`) VALUES
+(1, 'Διατηρητέο'),
+(2, 'Φωτεινό'),
+(3, 'Μοντέρνα αρχιτεκτονική'),
+(4, 'Ευρύχωρο'),
+(5, 'Κλασσική αρχιτεκτονική'),
+(6, 'Αέρινο'),
+(7, 'Παλιό ανακαινισμένο'),
+(8, 'Πέτρινο'),
+(9, 'Πολυτελείας'),
+(10, 'Με πισίνα');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `BuildingFloorType`
+--
+
+CREATE TABLE IF NOT EXISTS `BuildingFloorType` (
+  `FloorTypeNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(20) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`FloorTypeNo`),
+  UNIQUE KEY `Description` (`Description`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `BuildingFloorType`
+--
+
+INSERT INTO `BuildingFloorType` (`FloorTypeNo`, `Description`) VALUES
+(1, 'Παρκέ'),
+(2, 'Συνθετικό παρκέ'),
+(3, 'Παραδοσιακό παρκέ'),
+(4, 'Πλακάκια'),
+(5, 'Μάρμαρα'),
+(6, 'Τσιμεντοκονίαμα');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `BuildingLocationDetails`
+--
+
+CREATE TABLE IF NOT EXISTS `BuildingLocationDetails` (
+  `DetailNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(35) NOT NULL,
+  PRIMARY KEY (`DetailNo`),
+  UNIQUE KEY `Description` (`Description`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+
+--
+-- Dumping data for table `BuildingLocationDetails`
+--
+
+INSERT INTO `BuildingLocationDetails` (`DetailNo`, `Description`) VALUES
+(1, 'Σε καλή τοποθεσία'),
+(2, 'Κεντρική τοποθεσία'),
+(3, 'Κέντρο'),
+(4, 'Κοντά σε σχολεία'),
+(5, 'Κοντά σε καταστήματα'),
+(6, 'Σε ήσυχη γειτονιά'),
+(7, 'Σε αδιέξοδο'),
+(8, 'Κοντά στο κέντρο'),
+(9, 'Μακριά από το κέντρο'),
+(10, 'Κοντά σε πανεπιστήμιο'),
+(11, 'Κοντά σε εστιατόρια'),
+(12, 'Κοντά σε mall');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `CityFamagusta`
 --
 
