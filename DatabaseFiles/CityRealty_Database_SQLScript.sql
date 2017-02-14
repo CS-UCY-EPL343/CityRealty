@@ -799,6 +799,44 @@ INSERT INTO `CommunicationMessage` (`MessageNo`, `FullName`, `Email`, `PhoneNumb
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Frames`
+--
+
+CREATE TABLE IF NOT EXISTS `Frames` (
+  `FramesNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(35) NOT NULL,
+  PRIMARY KEY (`FramesNo`),
+  UNIQUE KEY `Description` (`Description`),
+  UNIQUE KEY `Description_2` (`Description`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+
+--
+-- Dumping data for table `Frames`
+--
+
+INSERT INTO `Frames` (`FramesNo`, `Description`) VALUES
+(1, 'Αλουμινίου'),
+(2, 'Κάγκελο'),
+(3, 'Ξίλινα'),
+(4, 'Θερμομονοτικά'),
+(5, 'Μονά'),
+(6, 'Διπλά'),
+(7, 'Ασφαλείας'),
+(8, 'Σίτες'),
+(9, 'Ηλεκτρικά ρολά'),
+(10, 'Blinds'),
+(11, 'Τέντες'),
+(12, 'Κουρτίνες'),
+(13, 'Πόρτα ασφαλείας'),
+(14, 'Ανακλεινόμενα παράθυρα'),
+(15, 'Συρόμενες πόρτες'),
+(16, 'Ανοιγόμενα'),
+(17, 'Παράθυρα'),
+(18, 'Συρόμενα παράθυρα');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `RealEstate`
 --
 
