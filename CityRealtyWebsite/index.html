@@ -25,6 +25,9 @@
 
 		<!-- Our CSS Styles -->
 		<link href="css/home-style.css" rel="stylesheet">
+		
+
+
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -39,7 +42,7 @@
 				min-height: 50px;
 				margin-bottom: 1px;
 				border: 1px solid transparent;
-				background-color: #ffffff;
+				background-color: transparent;
 			}
 		</style>
 
@@ -76,6 +79,7 @@
 
 		<!-- Navigation -->
 		<nav class="navbar navbar-custom navbar-fixed-top " role="navigation">
+			
 
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -103,68 +107,15 @@
 					<li>
 						<a class="page-scroll" href="#contact">Contact Us</a>
 					</li>
-				
+					
 				<!-- /.navbar-collapse -->
 			</div>
 			<!-- /.container -->
-			</nav>
+			<!-- </nav>
 			
-			<!-- Services -->
-		<!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
-		<section id="services" class="services bg-primary">
-			<div class="container">
-				<div class="row text-left">
-					<div class="col-lg-10 col-lg-offset-1">
-						<hr class="small">
-						<div class="row">
-							<div class="col-md-3 col-sm-6">
-								<div class="service-item">
-									<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x"></i> <i class="fa fa-home fa-stack-1x text-primary"></i> </span>
-									<br> 
-									<a href="#" class="btn btn-light">Home</a></br>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6">
-								<div class="service-item">
-									<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x"></i> <i class="fa fa-compass fa-stack-1x text-primary"></i> </span>
-									<h4><strong>Service Name</strong></h4>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									</p>
-									<a href="#" class="btn btn-light">Learn More</a>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6">
-								<div class="service-item">
-									<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x"></i> <i class="fa fa-flask fa-stack-1x text-primary"></i> </span>
-									<h4><strong>Service Name</strong></h4>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									</p>
-									<a href="#" class="btn btn-light">Learn More</a>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6">
-								<div class="service-item">
-									<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x"></i> <i class="fa fa-shield fa-stack-1x text-primary"></i> </span>
-									<h4><strong>Service Name</strong></h4>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									</p>
-									<a href="#" class="btn btn-light">Learn More</a>
-								</div>
-							</div>
-						</div>
-						<!-- /.row (nested) -->
-					</div>
-					<!-- /.col-lg-10 -->
-				</div>
-				<!-- /.row -->
-			</div>
-			<!-- /.container -->
-		</section>
+
 				
-				<nav class="navbar navbar-custom navbar-fixed-top " role="navigation">
+				<nav class="navbar navbar-custom navbar-fixed-top " role="navigation"> -->
 					
 					<div class="col-md-3 col-md-push-9">
 					<ul class="nav navbar-nav ">
@@ -180,16 +131,143 @@
 
 					</li>
 					</ul>
-				</div>	
-				
-			
+				</div>				
 		</nav>
+		
+		<!-- Search Property ID -->
+		<div class="col-md-3">
+			<div class="form-group">
+				<label>ID Ακινήτου:</label>
+					<input type="text" class="form-control" placeholder="ID Ακινήτου" id="name">
+						<p class="help-block text-danger"></p>
+			</div>
+		</div>
+		
+		
 		<!-- Header -->
 		<header id="top" class="header">
 			<div class="page_title"> 
 				<p>Empire Estates Website</p>
 			</div>
 		</header>
+		
+		
+		
+		<!-- Search -->
+
+		<header class="w3-container w3-teal " style = "background: transparent;
+    padding: 3em">
+			<div class="row" >
+				<div class="col-lg-12 text-center">
+					<h3 class="section-subheading text-muted"></h3>
+				</div>
+			</div>
+		</header>
+
+		<section id="search" style =  "background: #fff;
+    background: rgba(255,255,255,0.7); padding: 5em">
+			<div class="container">
+			<h1 class="section_title">Αναζήτηση</h1>
+						<hr class="small">
+				<div class="row">
+					<div class="col-lg-12">
+						<form name="sentMessage" id="contactForm" novalidate>
+							<div class="row">
+								
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Περιοχή:</label>
+										<select class="form-control">
+											<option>Λευκωσία</option>
+											<option>Λεμεσός</option>
+											<option>Λάρνακα</option>
+											<option>Πάφος</option>
+											<option>Αμμόχωστος</option>
+										</select>
+									</div>
+
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Υπνοδωμάτια:</label>
+										<select class="form-control">
+											<option>Στούντιο</option>
+											<option>1ος υπνοδωματίου</option>
+											<option>2 υπνοδωματίων</option>
+											<option>3 υπνοδωματίων</option>
+											<option>4 υπνοδωματίων</option>
+										</select>
+									</div>
+								</div>
+								
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Choose Type:</label>
+										<select class="form-control">
+											<option>Flat</option>
+											<option>Land</option>
+											<option>Plot</option>
+											<option>Commercial</option>
+										</select>
+									</div>
+								
+								<div class="col-md-10">
+									<div class="form-group">
+										<label>Τιμή:</label>
+										<form action="action_page.php">
+											<br>
+											<input type="range" id="a" name="a" min ="100" max="1000" step="10" value="500">
+										</form>
+									</div>
+								</div>
+								<div class="col-md-10">
+									<div class="form-group">
+										<label>Τετραγωνικά μέτρα:</label>
+										<form action="action_page.php">
+											<br>
+											<input type="range" id="a" name="a" value="50">
+										</form>
+									</div>
+								</div>
+					
+								<div class="col-lg-10">
+									<div class="form-group">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" value="Sale">
+												Για αγορά</label>
+											<label>
+												<input type="checkbox" value="Rent">
+												Για ενοικίαση</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="clearfix"></div>
+								<div class="col-lg-12 text-center">
+									<div id="success"></div>
+									<button type="submit" class="btn btn-xl"style = "background-color:#D3D3D3  border: 2px solid black; font-weight: bold;">
+										Αναζήτηση
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer class="w3-container w3-teal " style = "background: transparent;
+     padding: 2em">
+			<div class="row" >
+
+			</div>
+		</footer>
+
+		<!-- /.Search -->
+		
+		
+		
 
 		<!-- Services -->
 		<!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
