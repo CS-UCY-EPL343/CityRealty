@@ -10,6 +10,8 @@
 		<meta name="author" content="">
 
 		<title>City Realty</title>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 		<!-- Bootstrap Core CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -25,8 +27,6 @@
 
 		<!-- Our CSS Styles -->
 		<link href="css/home-style.css" rel="stylesheet">
-		
-
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,6 +43,7 @@
 				margin-bottom: 1px;
 				border: 1px solid transparent;
 				background-color: transparent;
+				width: 100%
 			}
 		</style>
 
@@ -81,22 +82,21 @@
 		<nav class="navbar navbar-custom navbar-fixed-top " role="navigation">
 
 			<div class="container-fluid" >
-				<div class="navbar-header">
-					<a class="navbar-brand page-scroll" href="index.html"> <span class="light" style="color: #FFCC00">
-						<img width="50px" height="50px" src="img/menu/home2.png">Home</span> </a>
-				</div>
 
 				<ul class="nav navbar-nav ">
+					<li>
+						<a class="page-scroll" href="index.html" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/home2.png">Home</span> </a>
+					</li>
 
-					<li class="dropdown">
-						<a class="page-scroll " href="#services" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/sale22.png">Sale</span></a>
+					<li>
+						<a class="page-scroll" href="#services" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/sale22.png">Sale</span></a>
 
 					</li>
-					<li class="dropdown">
+					<li>
 						<a class="page-scroll " href="#services" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/rent22.png">Rent </span></a>
 
 					</li>
-					<li class="dropdown">
+					<li>
 						<a class="page-scroll " href="#services" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/sell22.png">Sell</span></a>
 
 					</li>
@@ -107,7 +107,6 @@
 					<li>
 						<a class="page-scroll" href="#contact" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/contactUs2.png">Contact Us</a>
 					</li>
-
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -120,43 +119,38 @@
 					</li>
 					<li>
 						<a href="#" style="color: #FFCC00"><img src="img/menu/Greece.png"> Ελληνικά</a>
-
 					</li>
 
 					<li>
 						<a href="#" style="color: #FFCC00"><img src="img/menu/United Kingdom(Great Britain).png"> English</a>
-
 					</li>
-
 				</ul>
 			</div>
 			<!-- /.container -->
 		</nav>
 
-		
 		<!-- Search Property ID -->
 		<div class="col-md-3">
 			<div class="form-group">
 				<label>ID Ακινήτου:</label>
-					<input type="text" class="form-control" placeholder="ID Ακινήτου" id="name">
-						<p class="help-block text-danger"></p>
+				<input type="text" class="form-control" placeholder="ID Ακινήτου" id="name">
+				<p class="help-block text-danger"></p>
 			</div>
 		</div>
-		
-		
+
 		<!-- Header -->
 		<header id="top" class="header">
-			<div class="page_title"> 
-				<p>Empire Estates Website</p>
+			<div class="page_title">
+				<p>
+					Empire Estates Website
+				</p>
 			</div>
 		</header>
-		
-		
-		
+
 		<!-- Search -->
 
-		<header class="w3-container w3-teal " style = "background: transparent;
-    padding: 3em">
+		<header class="w3-container w3-teal" style = "background: transparent;
+		padding: 3em">
 			<div class="row" >
 				<div class="col-lg-12 text-center">
 					<h3 class="section-subheading text-muted"></h3>
@@ -165,19 +159,31 @@
 		</header>
 
 		<section id="search" style =  "background: #fff;
-    background: rgba(255,255,255,0.7); padding: 5em">
+		background: rgba(255,255,255,0.7); padding: 5em">
 			<div class="container">
-			<h1 class="section_title">Αναζήτηση</h1>
-						<hr class="small">
+				<h1 class="section_title">Αναζήτηση</h1>
+				<hr class="small">
 				<div class="row">
 					<div class="col-lg-12">
 						<form name="sentMessage" id="contactForm" novalidate>
 							<div class="row">
-								
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Τύπος:</label>
+										<select class="form-control">
+											<option>Στούντιο</option>
+											<option>Διαμέρισμα</option>
+											<option>Κατοικία</option>
+											<option>Επαγγελματικός χώρος</option>
+										</select>
+									</div>
+
+								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Περιοχή:</label>
 										<select class="form-control">
+											<option>--</option>
 											<option>Λευκωσία</option>
 											<option>Λεμεσός</option>
 											<option>Λάρνακα</option>
@@ -185,9 +191,12 @@
 											<option>Αμμόχωστος</option>
 										</select>
 									</div>
-
 								</div>
-								<div class="col-md-6">
+							</div>
+							<!--/row-->
+
+							<div class="row">
+								<div class="col-md-3">
 									<div class="form-group">
 										<label>Υπνοδωμάτια:</label>
 										<select class="form-control">
@@ -195,79 +204,66 @@
 											<option>1ος υπνοδωματίου</option>
 											<option>2 υπνοδωματίων</option>
 											<option>3 υπνοδωματίων</option>
-											<option>4 υπνοδωματίων</option>
+											<option>4+ υπνοδωματίων</option>
 										</select>
 									</div>
-								</div>
-								
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>Choose Type:</label>
-										<select class="form-control">
-											<option>Flat</option>
-											<option>Land</option>
-											<option>Plot</option>
-											<option>Commercial</option>
-										</select>
-									</div>
-								
-								<div class="col-md-10">
-									<div class="form-group">
-										<label>Τιμή:</label>
-										<form action="action_page.php">
+							</div class="row">
+										<div class="col-md-6">
+										<div class="form-group">
+											<label>Τετραγωνικά μέτρα:</label>
+											<select class="form-control">
+												<option>--</option>
+												<option>0-30</option>
+												<option>30-100</option>
+												<option>100-200</option>
+												<option>200+</option>
+											</select>
 											<br>
-											<input type="range" id="a" name="a" min ="100" max="1000" step="10" value="500">
-										</form>
-									</div>
-								</div>
-								<div class="col-md-10">
-									<div class="form-group">
-										<label>Τετραγωνικά μέτρα:</label>
-										<form action="action_page.php">
-											<br>
-											<input type="range" id="a" name="a" value="50">
-										</form>
-									</div>
-								</div>
-					
-								<div class="col-lg-10">
-									<div class="form-group">
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" value="Sale">
-												Για αγορά</label>
-											<label>
-												<input type="checkbox" value="Rent">
-												Για ενοικίαση</label>
 										</div>
 									</div>
 								</div>
-
-								<div class="clearfix"></div>
-								<div class="col-lg-12 text-center">
-									<div id="success"></div>
-									<button type="submit" class="btn btn-xl"style = "background-color:#D3D3D3  border: 2px solid black; font-weight: bold;">
-										Αναζήτηση
-									</button>
+							</div><!--/row-->
+							<div class="col-md-10">
+								<div class="form-group">
+									<label>Τιμή:</label>
+									<form action="action_page.php">
+										<br>
+										<input type="range" multiple id="a" name="a" min ="100" max="1000" step="10" value="500">
+									</form>
 								</div>
 							</div>
+
+							<div class="col-lg-10">
+								<div class="form-group">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" value="Sale">
+											Για αγορά</label>
+										<label>
+											<input type="checkbox" value="Rent">
+											Για ενοικίαση</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="clearfix"></div>
+							<div class="col-lg-12 text-center">
+								<div id="success"></div>
+								<button type="submit" class="btn btn-xl"style = "background-color:#D3D3D3  border: 2px solid black; font-weight: bold;">
+									Αναζήτηση
+								</button>
+							</div>
+
 						</form>
+
 					</div>
 				</div>
-			</div>
 		</section>
 
 		<footer class="w3-container w3-teal " style = "background: transparent;
-     padding: 2em">
-			<div class="row" >
-
-			</div>
-		</footer>
+		padding: 2em">		</footer>
 
 		<!-- /.Search -->
-		
-		
-		
 
 		<!-- Services -->
 		<!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
@@ -327,22 +323,27 @@
 			</div>
 			<!-- /.container -->
 		</section>
-		
+
 		<!-- Map -->
 		<section id="contact" class="map">
 			<iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="100" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d417906.1679578008!2d32.79202249830512!3d35.08443270516032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de1767ca494d55%3A0xbfa61172e2b992ff!2zzpvOtc-FzrrPic-Dzq_OsSwgzprPjc-Az4HOv8-C!5e0!3m2!1sel!2sus!4v1479281118979"></iframe>
 			<br />
-			<small> <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d417906.1679578008!2d32.79202249830512!3d35.08443270516032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de1767ca494d55%3A0xbfa61172e2b992ff!2zzpvOtc-FzrrPic-Dzq_OsSwgzprPjc-Az4HOv8-C!5e0!3m2!1sel!2sus!4v1479281118979"></a> </small> 
+			<small> <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d417906.1679578008!2d32.79202249830512!3d35.08443270516032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de1767ca494d55%3A0xbfa61172e2b992ff!2zzpvOtc-FzrrPic-Dzq_OsSwgzprPjc-Az4HOv8-C!5e0!3m2!1sel!2sus!4v1479281118979"></a> </small>
 			</iframe>
 		</section>
-		<p><br><br><br></p>
+		<p>
+			<br>
+			<br>
+			<br>
+		</p>
 
 		<!-- Contact Section -->
-		<section id="contact">
+		<section id="contact" style =  "background: #fff;
+    background: rgba(148,147,138,0.7); padding: 3em;">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 text-center">
-						<h2 class="section-heading">Contact Us</h2>
+						<h2 style="color: #FFCC00">Contact Us</h2>
 						<h3 class="section-subheading text-muted"></h3>
 					</div>
 				</div>
@@ -384,44 +385,58 @@
 			</div>
 		</section>
 
-		
 		<!-- Footer -->
 		<footer>
+			<section id="contact" style =  "background: #fff;
+    background: rgba(255,255,255,0.7); padding: 3em;">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-10 col-lg-offset-1 text-center">
-						<h4><strong>Start Bootstrap</strong></h4>
 						<p>
-							3481 Melrose Place
+							Αγχιαλού 11
 							<br>
-							Beverly Hills, CA 90210
+							Λευκωσία,Αγίοι Ομολογητές,Κύπρος
 						</p>
 						<ul class="list-unstyled">
 							<li>
-								<i class="fa fa-phone fa-fw"></i> (123) 456-7890
+								<i class="fa fa-phone fa-fw"></i> 97-900809
 							</li>
 							<li>
-								<i class="fa fa-envelope-o fa-fw"></i><a href="mailto:name@example.com">name@example.com</a>
+								<i class="fa fa-envelope-o fa-fw" style="color: #000000"></i><a href="mailto:marygeorgiou85@gmail.com " style="color: #000000">marygeorgiou85@gmail.com</a>
 							</li>
 						</ul>
 						<br>
 						<ul class="list-inline">
 							<li>
-								<a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+								<a href="https://www.facebook.com/" title="Facebook"><i class="fa fa-facebook fa-fw fa-3x " style="color: #E4B006 " ></i></a>
 							</li>
 							<li>
-								<a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
+								<a href="https://twitter.com/" title="Twitter"><i class="fa fa-twitter fa-fw fa-3x" style="color: #E4B006"></i></a>
+							</li>
+							<li>
+								<a href="https://gr.pinterest.com/" title="Pinterest"><i class="fa fa-pinterest fa-fw fa-3x " style="color: #E4B006 " ></i></a>
+							</li>
+							<li>
+								<a href="https://plus.google.com/collections/featured" title="Google+"><i class="fa fa-google-plus fa-fw fa-3x " style="color: #E4B006 " ></i></a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/" title="Instagram"><i class="fa fa-instagram fa-fw fa-3x " style="color: #E4B006 " ></i></a>
+							</li>
+							<li>
+								<a href="https://www.tumblr.com/" title="Tumblr"><i class="fa fa-tumblr fa-fw fa-3x " style="color: #E4B006 " ></i></a>
 							</li>
 
 						</ul>
 						<hr class="small">
-						<p class="text-muted">
-							Copyright &copy; EPL361_2016_TEAM_XX
+						<p class="text-muted" style="color: #FFFFFF">
+							Copyright &copy; University of Cyprus
 						</p>
 					</div>
 				</div>
 			</div>
-			<a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
+
+			<a id="to-top" href="#top" class="btn btn-circle"><i class="fa fa-angle-double-up fa-fw fa-1x"></i></a>
+			</section>
 		</footer>
 
 	</body>
