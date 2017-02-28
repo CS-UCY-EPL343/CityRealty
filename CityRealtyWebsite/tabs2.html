@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Your description goes here" />
+	<meta name="keywords" content="your,keywords,goes,here" />
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
+	<link type="text/css" rel="stylesheet" href="css/style.css" media="screen" />
+	 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+	<title>City Realty</title>
+<style type="text/css">
+
+#mainwrap #content #extra .column.col3 #title2 h2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 26em;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+}
+#mainwrap #content #extra .column.col3 #title3 h2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 26em;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+}
+#mainwrap #content #extra .column.col3 #title4 h2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 26em;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+}
+#mainwrap #content #profile .column.col3 #title2 h2 {
+	font-size: large;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-decoration: underline;
+}
+
+#mainwrap #content #extra .column.col3 #title5 h1 {
+	font-size: large;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-decoration: underline;
+}
+</style></head>
+<link rel="shortcut icon" href="">
+<body>
+	<div id="mainwrap">
+
+		<header></a><img src="" alt="" width="324" height="90" align="right"/>
+			<h1><a href="index.html"></a></h1>
+			<h2></h2>
+			<ul id="menu">
+				<li><a class="profile" href="#profile" title="Profile">Basic Characteristics</a></li>
+				<li><a class="extra" href="#extra" title="Extra">Extras</a><span></li>
+			</ul>
+		</header>
+		<div style="clear:both"></div>
+		<div id="content">
+			<div id="profile" class="section">
+			    <div class="column col3">
+			      <h2>Key property details</h2>
+                    	         <ul id="menu2">
+				   <li><p>Property ID# </p></li>
+				   <li><p>Price</p></li>
+                    		   <li><p>Area</p></li>
+                    		   <li><p>Price</p></li>
+			          </ul>
+			</div>
+                             <div class="column col5 pl-50">
+                    	       <h2>Property Type</h2>
+
+                    	        <ul id="menu4">
+				  <li><p>For Sale/Rent</p></li>
+				  <li><p>Type</p></li>
+                    	 	  <li><p>Status</p></li>
+                    		  <li><p>Price</p></li>
+			        </ul>
+                             </div>
+                              <div class="column col4 pl-40">
+                    	        <h2>Location</h2>
+
+                    	        <ul id="menu5">
+				  <li><p>Country</p></li>
+				  <li><p>Region</p></li>
+                        	  <li><p>Subregion</p></li>
+                   		  <li><p>City</p></li>
+			        </ul>
+		             </div>
+				<div class="column col5 pl-50">
+
+				</div>
+			</div>
+			<div id="extra" class="section">
+				<div class="column col3">
+                		   <h1>Features<br/></h1>
+       	           	              <span>
+                                   <ul id="menu6">
+				     <li><p>Floor</p></li>
+				     <li><p>Bedrooms</p></li>
+                        	     <li><p>Kitchens</p></li>
+                    		     <li><p>Bathrooms</p></li>
+                        	     <li><p>WC</p></li>
+                        	     <li><p>Heat System</p></li>
+                        	     <li><p>Parking</p></li>
+                        	     <li><p>View</p></li>
+			          </ul>
+				</div>
+				<div class="column col4">
+				  <ul id="menu7">
+			            <li><p>Floors</p></li>
+				    <li><p>Frames</p></li>
+				  </ul>
+			       <div id = "facilities">
+                            	<ul id="menu8">
+                            	   <li><p>For Students</p></li>
+				   <li><p>Elevator</p></li>
+                        	   <li><p>Swimming Pool</p></li>
+                    		   <li><p>Solar System</p></li>
+                        	   <li><p>Double Glasses</p></li>
+                        	   <li><p>Storage Room</p></li>
+                        	   <li><p>Balcony</p></li>
+                        	   <li><p>View</p></li>
+            		      </div>
+
+                       </div>
+		  </div>
+                  <div id = "desc">
+                      <p>SHORT Description!!</p>
+                  </div>
+	   </div>
+   </div>
+
+		<p>
+			<br>
+			<br>
+			<br>
+		</p>
+
+		<div id="footer">
+			Copyright 2017 All Rights Reserved <br />Powered by <a href=</a><br />
+		</div>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+			    $(".section").not(":first").hide();
+			    $("ul#menu li:first").addClass("active").show();
+
+			    $("ul#menu li").click(function() {
+			        $("ul#menu li.active").removeClass("active");
+			        $(this).addClass("active");
+			        $(".section").slideUp();
+			        $($('a',this).attr("href")).slideDown('slow');
+
+			        return false;
+			    });
+
+			});
+		</script>
+	</div>
+</body>
+</html>
