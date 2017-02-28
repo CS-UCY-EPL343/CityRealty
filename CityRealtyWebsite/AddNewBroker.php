@@ -17,9 +17,9 @@ if(! get_magic_quotes_gpc() )
     $profession = addslashes($_POST['profession']);
     $birthday = addslashes($_POST['birthday']);
     $street = addslashes($_POST['street']);
-	$street_no = addslashes($_POST['street_no']);
-	$city = addslashes($_POST['city']);
-	$country = addslashes($_POST['country']);
+    $street_no = addslashes($_POST['street_no']);
+    $city = addslashes($_POST['city']);
+    $country = addslashes($_POST['country']);
     $email = addslashes($_POST['email']);
     $phone = addslashes($_POST['phone']);
 }
@@ -33,9 +33,9 @@ else
     $profession = addslashes($_POST['profession']);
     $birthday = addslashes($_POST['birthday']);
     $street = addslashes($_POST['street']);
-	$street_no = addslashes($_POST['street_no']);
-	$city = addslashes($_POST['city']);
-	$country = addslashes($_POST['country']);
+    $street_no = addslashes($_POST['street_no']);
+    $city = addslashes($_POST['city']);
+    $country = addslashes($_POST['country']);
     $email = addslashes($_POST['email']);
     $phone = addslashes($_POST['phone']);
 }
