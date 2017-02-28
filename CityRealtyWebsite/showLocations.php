@@ -3,7 +3,7 @@ if (isset($_POST['section'])) {
 	$example1 = $_POST['section'];
 
 
-	$conn = mysqli_connect("localhost", "CityRealty", "QKSH7XJws7MCpxWR", "CityRealty");
+	$conn = mysqli_connect("localhost", "USERNAME", "PASSWORD", "DATABASE");
 
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
@@ -25,8 +25,21 @@ if (isset($_POST['section'])) {
 		$sql =  "SELECT RegionName FROM CityFamagusta";
 	}
 	$result = mysqli_query($conn, $sql);
+	$i=0;
 	while($row=mysqli_fetch_assoc($result)) {
-		echo "<div class='col-lg-10'><div class='form-group'><div class='checkbox'><label><input type='checkbox' value=''>".$row['RegionName']."</label></div></div></div>";
+		if ($i<30)
+			echo "<div class='col-sm-2 form-group checkbox'><label><input type='checkbox' value=''>".$row['RegionName']."</label></div>";
+		elseif ($i<60)
+			echo "<div class='col-sm-2 form-group checkbox'><label><input type='checkbox' value=''>".$row['RegionName']."</label></div>";
+		elseif ($i<90)
+			echo "<div class='col-sm-2 form-group checkbox'><label><input type='checkbox' value=''>".$row['RegionName']."</label></div>";
+		elseif ($i<120)
+			echo "<div class='col-sm-2 form-group checkbox'><label><input type='checkbox' value=''>".$row['RegionName']."</label></div>";
+		elseif ($i<150)
+			echo "<div class='col-sm-2 form-group checkbox'><label><input type='checkbox' value=''>".$row['RegionName']."</label></div>";
+		elseif ($i<180)
+			echo "<div class='col-sm-2 form-group checkbox'><label><input type='checkbox' value=''>".$row['RegionName']."</label></div>";
+		$i++;
 	}
 }
 ?>
