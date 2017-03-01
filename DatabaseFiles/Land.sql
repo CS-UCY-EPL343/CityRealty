@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 14, 2017 at 04:03 PM
+-- Generation Time: Mar 01, 2017 at 10:24 AM
 -- Server version: 5.1.73
 -- PHP Version: 5.3.3
 
@@ -27,7 +27,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `Land` (
-  `LandType` text NOT NULL,
+  `RealEstateNo` int(11) NOT NULL,
+  `LandType` enum('Άλλο','Γη','Οικόπεδο') NOT NULL DEFAULT 'Γη',
   `BuildIn` tinytext NOT NULL,
   `TMLand` double NOT NULL,
   `TMBuilding` double NOT NULL,
@@ -35,14 +36,12 @@ CREATE TABLE IF NOT EXISTS `Land` (
   `SK` double NOT NULL,
   `Builded` double NOT NULL,
   `NotBuilded` double NOT NULL,
-  `Characteristics` set('epipedo','tetragonismeno','orthogonio','goniako','perifragmeno','amfitheatriko','epiklines','me vathos') NOT NULL,
   `LandUse` tinytext NOT NULL,
   `Front` double NOT NULL,
   `Depth` double NOT NULL,
   `CityPlan` tinytext NOT NULL,
   `AOT` tinytext NOT NULL,
   `InvestmentField` tinytext NOT NULL,
-  `RealEstateNo` int(11) NOT NULL,
   `NumOfPlots` double NOT NULL DEFAULT '0',
   PRIMARY KEY (`RealEstateNo`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
