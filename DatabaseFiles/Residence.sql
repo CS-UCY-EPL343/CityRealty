@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 14, 2017 at 04:03 PM
+-- Generation Time: Mar 01, 2017 at 10:28 AM
 -- Server version: 5.1.73
 -- PHP Version: 5.3.3
 
@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `Residence` (
+  `RealEstateNo` int(11) NOT NULL,
   `ResidenceType` enum('Άλλο','Ανεξάρτητη κατοικία','Μεζονέτα','Διαμέρισμα','Ρετιρέ') NOT NULL DEFAULT 'Ανεξάρτητη κατοικία',
   `TotalBedrooms` int(11) NOT NULL,
   `MasterBedroom` int(11) NOT NULL DEFAULT '0',
@@ -37,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `Residence` (
   `AreaOfBalcony` double NOT NULL,
   `RooftopArea` int(11) NOT NULL,
   `Furnished` tinytext NOT NULL,
-  `RealEstateNo` int(11) NOT NULL
+  PRIMARY KEY (`RealEstateNo`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
