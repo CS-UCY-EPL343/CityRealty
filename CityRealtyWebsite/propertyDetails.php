@@ -43,7 +43,140 @@ session_start();
 				border: 1px solid transparent;
 				background-color: #ffffff;
 			}
-		</style>
+  #content #mainwrap #extra .column.col3 #title2 h2 {
+	 font-family: Arial, Helvetica, sans-serif;
+   font-size: 26em;
+	 font-style: normal;
+	 line-height: normal;
+	 font-weight: bold;
+	 font-variant: normal;
+}
+  #content #mainwrap #extra .column.col3 #title3 h2 {
+	 font-family: Arial, Helvetica, sans-serif;
+	 font-size: 26em;
+	 font-style: normal;
+	 line-height: normal;
+	 font-weight: bold;
+	 font-variant: normal;
+}
+  #content #mainwrap #extra .column.col3 #title4 h2 {
+	 font-family: Arial, Helvetica, sans-serif;
+	 font-size: 26em;
+	 font-style: normal;
+	 line-height: normal;
+	 font-weight: bold;
+	 font-variant: normal;
+}
+  #content #mainwrap #profile .column.col3 #title2 h2 {
+	 font-size: large;
+	 font-style: normal;
+	 line-height: normal;
+     font-weight: bold;
+	 font-variant: normal;
+	 text-decoration: underline;
+}
+#content #mainwrap #profile{
+  border: 10px solid black;
+  border-style: solid;
+}
+#content #mainwrap #extra{
+  border: 10px solid black;
+  border-style: solid;
+}
+#content #mainwrap #menu{
+ padding: 20px;
+ overflow: hidden;
+
+}
+
+#mainwrap {
+  overflow:hidden;
+  position:relative;
+  margin:0 auto;
+}
+
+#content {
+  overflow:hidden;
+  position:relative;
+}
+
+#pagecontainer {
+  position:relative;
+  width:9999px;
+}
+
+.section {
+  float:left;
+  position:relative;
+  width:100%;
+  padding:30px;
+  overflow:hidden;
+}
+
+#profile {
+overflow-y:scroll;
+}
+#extra {
+	overflow-y:scroll;
+}
+
+#menu {
+  overflow:hidden;
+}
+
+#menu li {
+  display:block;
+  position: relative;
+  float:left;
+}
+
+#menu li:first-child {
+	margin-left:0px;
+}
+#menu li:last-child {
+	margin-left:100px;
+}
+
+
+#menu li a {
+  display:block;
+  color:#333;
+  font-size:18px;
+  text-align:center;
+  text-decoration:none;
+  text-transform:uppercase;
+}
+
+#menu li span {
+  display:none;
+}
+
+#menu li.active span {
+  display:block;
+  position:absolute;
+  width:100%;
+  text-align:center;
+}
+
+#menu li.active a {
+    background-color:#c03e62;
+  outline:#FFF;
+  outline-style:dashed;
+  color:#CCC;
+}
+
+#menu li a:hover {
+  text-decoration:none;
+  background-image:none;
+  background-color:#c03e62;
+  outline:#FFF;
+
+}
+
+#menu li.active a {
+  text-decoration:none;
+}
+	    </style>
 
 	</head>
 
@@ -171,42 +304,95 @@ session_start();
 					</div>
 				</div>
 
-				<div class="col-md-4">
+      <div class="col-md-4">
 					<h3 style="color: #c03e62;">Property Description</h3>
 					<p style="color: #008c99">
-						Description ...............
+						Description ...............  
 					</p>
-					<h3 style="color: #c03e62;">Property Details</h3>
-					<ul>
-						<li style="color: #008c99">
-							Type
-						</li>
-						<li style="color: #008c99">
-							State
-						</li>
-						<li style="color: #008c99">
-							Location
-						</li>
-						<li style="color: #008c99">
-							Area
-						</li>
-						<li style="color: #008c99">
-							Price
-						</li>
-						<li style="color: #008c99">
-							Date Built
-						</li>
-						<li style="color: #008c99">
-							Date Published
-						</li>			
-						
-						
-					</ul>
-					
-					<a><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i> Share</a>
-				</div>
-
+           <a><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i> Share</a>
+      </div>
+          
+		<div style="clear:both"></div>
+		<div id="content">
+    <div id="mainwrap">
+			   <ul id="menu">
+				      <li><a class="profile" href="#profile" title="Profile">Basic Characteristics</a></li>                     <div><li><a class="extra" href="#extra" title="Extra">Extras</a></li></div>
+                      
+			   </ul>
+         
+      <div style="clear:both"></div> 
+			<div id="profile" class="section">
+			    <div class="column col3">
+			     <h3 style="color: #c03e62;">Property Description</h3>
+            <ul id="menu2">
+				      <li style="color: #008c99"><p>Property #ID</p></li>
+              <li style="color: #008c99"><p>Area (square meters) </p></li>
+              <li style="color: #008c99"><p>Initial Price</p></li>
+              <li style="color: #008c99"><p>Estimated Price</p></li>
+              <li style="color: #008c99"><p>Final Price</p></li>              
+              <li style="color: #008c99"><p>Objective Value/p></li>
+			      </ul>
 			</div>
+      <div class="column col5 pl-50">
+          <h2 style="color: #c03e62;">Property Type</h2>
+          <ul id="menu4">
+				    <li style="color: #008c99"><p>For Sale/Rent</p></li>
+				    <li style="color: #008c99"><p>Type</p></li>
+            <li style="color: #008c99"><p>Status</p></li>
+			    </ul>
+      </div>
+      <div class="column col4 pl-40">
+          <h2 style="color: #c03e62;">Location</h2>
+          <ul id="menu5">
+				    <li style="color: #008c99"><p>Country</p></li>
+				    <li style="color: #008c99"><p>Region</p></li>
+            <li style="color: #008c99"><p>Subregion</p></li>
+            <li style="color: #008c99"><p>City</p></li>
+			    </ul>
+		  </div>
+				<div class="column col5 pl-50">
+        </div>
+			</div>
+			<div id="extra" class="section">
+				<div class="column col3">
+          <h1 style="color: #c03e62;">Features<br/></h1>
+       	  <span>
+          <ul id="menu6">
+				     <li style="color: #008c99"><p>Floor</p></li>
+				     <li style="color: #008c99"><p>Bedrooms</p></li>
+             <li style="color: #008c99"><p>Kitchens</p></li>
+             <li style="color: #008c99"><p>Bathrooms</p></li>
+             <li style="color: #008c99"><p>WC</p></li>
+             <li style="color: #008c99"><p>Heat System</p></li>
+             <li style="color: #008c99"><p>Parking</p></li>
+             <li style="color: #008c99"><p>View</p></li>
+			    </ul>
+			</div>
+			<div class="column col4">
+        <h1 style="color: #c03e62;">Building Information<br/></h1>
+        <span>
+				<ul id="menu7">
+			      <li style="color: #008c99"><p>Floors</p></li>
+				    <li style="color: #008c99"><p>Frames</p></li>
+				</ul>
+			<div id = "facilities">
+       <h1 style="color: #c03e62;">Facilities<br/></h1>
+       <span>
+        <ul id="menu8">
+           <li style="color: #008c99"><p>For Students</p></li>
+				   <li style="color: #008c99"><p>Elevator</p></li>
+           <li style="color: #008c99"><p>Swimming Pool</p></li>
+           <li style="color: #008c99"><p>Solar System</p></li>
+           <li style="color: #008c99"><p>Double Glasses</p></li>
+           <li style="color: #008c99"><p>Storage Room</p></li>
+           <li style="color: #008c99"><p>Balcony</p></li>
+           <li style="color: #008c99"><p>View</p></li>
+      </div>
+    </div>
+  </div>
+ </div> 
+</div>
+
 			<!-- /.row -->
 
 			<!-- Related Projects Row -->
@@ -246,6 +432,23 @@ session_start();
 
 		<!-- Bootstrap Core JavaScript -->
 		<script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+			$(document).ready(function() {
+			    $(".section").not(":first").hide();
+			    $("#menu #li:first").addClass("active").show();
+
+			    $("#menu li").click(function() {
+			        $("#menu li.active").removeClass("active");
+			        $(this).addClass("active");
+			        $(".section").slideUp();
+			        $($('a',this).attr("href")).slideDown('slow');
+
+			        return false;
+			    });
+
+			});
+		</script>
+
 
 	</body>
 
