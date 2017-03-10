@@ -33,6 +33,84 @@ session_start();
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		<script>
+	var myCity = new google.maps.Circle({
+				center: new google.maps.LatLng(35,33),
+				readius: 123000,				
+				strokeColor: "#0000FF",
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				fillColor: "#0000FF",
+				fillOpacity: 0.5
+			});
+			myCity.setMap(map);
+      
+      
+      var map;
+      var src = 'https://www.google.com/maps/d/u/0/edit?mid=1iDLlxWD53t-qG5TVm4M2mHsYczU&ll=35.49561757750095%2C32.81524549352264&z=8';
+      /**
+       * Initializes the map and calls the function that loads the KML layer.
+       */
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: new google.maps.LatLng(-19.257753, 146.823688),
+          zoom: 2,
+          mapTypeId: 'terrain'
+        });
+        loadKmlLayer(src, map);
+      }
+      /**
+       * Adds a KMLLayer based on the URL passed. Clicking on a marker
+       * results in the balloon content being loaded into the right-hand div.
+       * @param {string} src A URL for a KML file.
+       */
+      function loadKmlLayer(src, map) {
+        var kmlLayer = new google.maps.KmlLayer(src, {
+          suppressInfoWindows: true,
+          preserveViewport: false,
+          map: map
+        });
+        google.maps.event.addListener(kmlLayer, 'click', function(event) {
+          var content = event.featureData.infoWindowHtml;
+          var testimonial = document.getElementById('capture');
+          testimonial.innerHTML = content;
+        });
+      }
+      
+      
+		  // Disable Google Maps scrolling
+			// See http://stackoverflow.com/a/25904582/1607849
+			// Disable scroll zooming and bind back the click event
+			var onMapMouseleaveHandler = function(event) {
+				var that = $(this);
+				that.on('click', onMapClickHandler);
+				that.off('mouseleave', onMapMouseleaveHandler);
+				that.find('iframe').css("pointer-events", "none");
+			};
+			var onMapClickHandler = function(event) {
+				var that = $(this);
+				// Disable the click handler until the user leaves the map area
+				that.off('click', onMapClickHandler);
+				// Enable scrolling zoom
+				that.find('iframe').css("pointer-events", "auto");
+				// Handle the mouse leave event
+				that.on('mouseleave', onMapMouseleaveHandler);
+			};
+			// Enable map zooming with mouse scroll when the user clicks the map
+			$('.map').on('click', onMapClickHandler);
+			var marker = new google.maps.Marker({
+  				map: map,
+  				position: new google.maps.LatLng(35, -33),
+  				title: 'Nicosia'
+			});
+			// Add circle overlay and bind to marker
+			var circle = new google.maps.Circle({
+  				map: map,
+  				radius: 16093,    // 10 miles in metres
+  				fillColor: '#AA0000'
+			});
+			circle.bindTo('center', marker, 'position');
+	</script>
 
 		<!--Navbar style-->
 		<style type="text/css">
@@ -389,10 +467,18 @@ overflow-y:scroll;
            <li style="color: #008c99"><p>View</p></li>
       </div>
     </div>
+	<!-- Map -->  <!-- https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d417906.1679578008!2d32.79202249830512!3d35.08443270516032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de1767ca494d55%3A0xbfa61172e2b992ff!2zzpvOtc-FzrrPic-Dzq_OsSwgzprPjc-Az4HOv8-C!5e0!3m2!1sel!2sus!4v1479281118979" -->
+		<section id="map" class="map">
+	
+			<iframe width="50%" height="50%" frameborder="0" scrolling="no" marginheight="100" marginwidth="0" src="https://www.google.com/maps/d/u/0/embed?mid=1iDLlxWD53t-qG5TVm4M2mHsYczU"></iframe>
+			<br />  
+			<small> <a href="https://www.google.com/maps/d/u/0/embed?mid=1iDLlxWD53t-qG5TVm4M2mHsYczU"></a> </small>
+			</iframe>
+                 </section > 			
   </div>
+		
  </div> 
 </div>
-
 			<!-- /.row -->
 
 			<!-- Related Projects Row -->
@@ -425,6 +511,7 @@ overflow-y:scroll;
 
 
 		</div>
+				
 		<!-- /.container -->
 
 		<!-- jQuery -->
