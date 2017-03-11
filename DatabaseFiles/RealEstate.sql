@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 14, 2017 at 04:03 PM
+-- Generation Time: Mar 11, 2017 at 08:55 PM
 -- Server version: 5.1.73
 -- PHP Version: 5.3.3
 
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `RealEstate` (
   `RealEstateNo` int(11) unsigned NOT NULL COMMENT 'Primary Key',
-  `AStreetNo` text COLLATE utf8_bin COMMENT 'Basic Info',
-  `AStreet` text COLLATE utf8_bin COMMENT 'Basic Info',
-  `ACity` text COLLATE utf8_bin COMMENT 'Basic Info',
-  `Area` double DEFAULT NULL COMMENT 'Basic Info',
+  `AStreetNo` varchar(5) COLLATE utf8_bin DEFAULT NULL COMMENT 'Basic Info',
+  `AStreet` varchar(30) COLLATE utf8_bin DEFAULT NULL COMMENT 'Basic Info',
+  `ACity` varchar(30) COLLATE utf8_bin DEFAULT NULL COMMENT 'Basic Info',
+  `AArea` varchar(35) COLLATE utf8_bin NOT NULL COMMENT 'Address',
   `ACountry` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT 'Cyprus' COMMENT 'Basic Info',
   `APostalCode` int(10) DEFAULT NULL COMMENT 'Basic Info',
   `RegistrationTitleNo` int(11) NOT NULL DEFAULT '0' COMMENT 'Common Info',
@@ -39,51 +39,46 @@ CREATE TABLE IF NOT EXISTS `RealEstate` (
   `FolderNo` int(11) NOT NULL DEFAULT '0' COMMENT 'Common Info',
   `ArithmosFilSxed` int(11) NOT NULL DEFAULT '0' COMMENT 'Common Info',
   `ArithmosAdOik` int(11) NOT NULL DEFAULT '0' COMMENT 'Common Info',
-  `LegalControl` tinytext COLLATE utf8_bin COMMENT 'Common Info',
+  `LegalControl` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT 'Common Info',
   `InitialPrice` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT 'Common Info',
   `EstimatedPrice` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT 'Common Info',
-  `MortgageLoan` tinytext COLLATE utf8_bin COMMENT 'Common Info',
+  `MortgageLoan` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT 'Common Info',
   `ObjectiveValue` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT 'Common Info',
   `FinalPrice` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT 'Common Info',
-  `AView` tinytext COLLATE utf8_bin NOT NULL,
-  `Corner` tinytext COLLATE utf8_bin NOT NULL,
-  `SubArea` tinytext COLLATE utf8_bin NOT NULL,
-  `Zone` tinytext COLLATE utf8_bin NOT NULL,
-  `AvailabilityFrom` datetime NOT NULL,
-  `Status` text COLLATE utf8_bin NOT NULL,
-  `DateAdded` datetime NOT NULL,
-  `RegistrationPurpose` varchar(20) COLLATE utf8_bin NOT NULL,
-  `Price` double NOT NULL,
-  `Currency` tinytext COLLATE utf8_bin NOT NULL,
+  `Corner` tinyint(1) NOT NULL DEFAULT '0',
+  `Zone` varchar(150) COLLATE utf8_bin NOT NULL,
+  `AvailableFrom` date NOT NULL,
+  `Status` varchar(100) COLLATE utf8_bin NOT NULL,
+  `DateRegistered` date NOT NULL,
+  `RegistrationPurpose` varchar(35) COLLATE utf8_bin NOT NULL,
+  `Price` double NOT NULL DEFAULT '0',
+  `Currency` enum('EUR','GBP','RUS','USD','Other') COLLATE utf8_bin NOT NULL DEFAULT 'EUR',
   `PricePerTM` double NOT NULL,
+  `AreaTM` double NOT NULL DEFAULT '0',
   `TM` double NOT NULL,
   `VAT` double NOT NULL,
-  `ShortDescription` text COLLATE utf8_bin NOT NULL,
-  `Description` text COLLATE utf8_bin NOT NULL,
-  `ForRent` tinytext COLLATE utf8_bin NOT NULL,
-  `View` text COLLATE utf8_bin NOT NULL,
-  `ContactedVia` int(10) NOT NULL,
-  `Rating` tinytext COLLATE utf8_bin NOT NULL,
-  `RegistrationTitle` text COLLATE utf8_bin NOT NULL,
+  `ShortDescription` varchar(300) COLLATE utf8_bin NOT NULL,
+  `Description` varchar(500) COLLATE utf8_bin NOT NULL,
+  `AboutRenting` varchar(100) COLLATE utf8_bin NOT NULL,
+  `RecommendedBy` int(10) NOT NULL COMMENT 'ContactNo',
+  `Rating` varchar(300) COLLATE utf8_bin NOT NULL,
+  `RegistrationTitle` tinyint(1) NOT NULL DEFAULT '0',
   `OwnerID` int(10) NOT NULL,
-  `OwnerRating` tinytext COLLATE utf8_bin NOT NULL,
-  `AgentRating` tinytext COLLATE utf8_bin NOT NULL,
-  `OrderCode` tinytext COLLATE utf8_bin NOT NULL,
-  `TypeOrder` tinytext COLLATE utf8_bin NOT NULL,
-  `Exclusive` tinytext COLLATE utf8_bin NOT NULL,
-  `NoAgentReward` tinytext COLLATE utf8_bin NOT NULL,
-  `OrderStart` datetime NOT NULL,
-  `OrderStop` datetime NOT NULL,
-  `AArea` tinytext COLLATE utf8_bin NOT NULL,
+  `OwnerRating` varchar(300) COLLATE utf8_bin NOT NULL,
+  `AgentRating` varchar(300) COLLATE utf8_bin NOT NULL,
+  `OrderCode` varchar(100) COLLATE utf8_bin NOT NULL,
+  `TypeOrder` varchar(100) COLLATE utf8_bin NOT NULL,
+  `Exclusive` tinyint(1) NOT NULL DEFAULT '0',
+  `OrderStart` date NOT NULL,
+  `OrderStop` date NOT NULL,
   `Category` enum('Γη','Κατοικία','Επαγγελματικός χώρος','Ξενοδοχείο') COLLATE utf8_bin NOT NULL DEFAULT 'Κατοικία',
-  `Notes` text COLLATE utf8_bin NOT NULL,
-  `NotifyColleague` tinytext COLLATE utf8_bin NOT NULL,
+  `Notes` varchar(500) COLLATE utf8_bin NOT NULL,
+  `NotifyColleague` tinyint(1) NOT NULL DEFAULT '0',
   `AgentID` int(10) NOT NULL,
-  `RealEstateStatus` tinytext COLLATE utf8_bin NOT NULL,
-  `AgentRewardPercentage` double NOT NULL,
-  `AgentReward` double NOT NULL,
-  `ViewAddress` tinytext COLLATE utf8_bin NOT NULL,
-  `EstateNo` int(11) NOT NULL,
+  `RealEstateStatus` varchar(100) COLLATE utf8_bin NOT NULL,
+  `AgentRewardPercentage` double NOT NULL DEFAULT '0',
+  `AgentReward` double NOT NULL DEFAULT '0',
+  `ViewAddress` varchar(300) COLLATE utf8_bin NOT NULL,
   `TransferCost` double NOT NULL DEFAULT '0',
   `TransferVAT` double NOT NULL DEFAULT '0',
   `ConsiderationExchange` tinyint(1) NOT NULL DEFAULT '0',
@@ -91,6 +86,80 @@ CREATE TABLE IF NOT EXISTS `RealEstate` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
+
+--
+-- Table structure for table `REAppearance`
+--
+
+CREATE TABLE IF NOT EXISTS `REAppearance` (
+  `RealEstateNo` int(11) NOT NULL,
+  `AppearanceNo` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `REAppearanceChoices`
+--
+
+CREATE TABLE IF NOT EXISTS `REAppearanceChoices` (
+  `AppearanceNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(35) NOT NULL,
+  PRIMARY KEY (`AppearanceNo`),
+  UNIQUE KEY `Description` (`Description`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `REAppearanceChoices`
+--
+
+INSERT INTO `REAppearanceChoices` (`AppearanceNo`, `Description`) VALUES
+(1, 'Διατηρητέο'),
+(2, 'Φωτεινό'),
+(3, 'Μοντέρνα αρχιτεκτονική'),
+(4, 'Κλασσική αρχιτεκτονική'),
+(5, 'Ευρύχωρο'),
+(6, 'Αέρινο'),
+(7, 'Παλιό ανακαινισμένο'),
+(8, 'Πέτρινο'),
+(9, 'Πολυτελείας');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `REView`
+--
+
+CREATE TABLE IF NOT EXISTS `REView` (
+  `RealEstateNo` int(11) NOT NULL,
+  `ViewNo` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `REViewChoices`
+--
+
+CREATE TABLE IF NOT EXISTS `REViewChoices` (
+  `ViewNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(35) NOT NULL,
+  PRIMARY KEY (`ViewNo`),
+  UNIQUE KEY `Description` (`Description`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `REViewChoices`
+--
+
+INSERT INTO `REViewChoices` (`ViewNo`, `Description`) VALUES
+(1, 'Υπέροχη'),
+(2, 'Κεντρική'),
+(3, 'Βουνό'),
+(4, 'Θάλασσα'),
+(5, 'Πάρκο'),
+(6, 'Καλή');
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
