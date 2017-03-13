@@ -10,8 +10,13 @@
 		<meta name="author" content="">
 
 		<title>Empire Estate</title>
-		
+
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 		<!-- Bootstrap Core CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -73,6 +78,13 @@
 			.dropdown:hover .dropdown-content {
 				display: block;
 			}
+			.ui-page {
+				background-color: transparent;
+			}
+			.ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+				text-shadow: none;
+			}
+
 		</style>
 	</head>
 
@@ -108,7 +120,7 @@
 						<a class="page-scroll" href="#contact" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/contactUs2.png">Contact Us</a>
 					</li>
 					<li>
-						<a class="page-scroll" href="#contact" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/group-chat.png">  About Us</a>
+						<a class="page-scroll" href="#contact" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/group-chat.png"> About Us</a>
 					</li>
 				</ul>
 
@@ -210,8 +222,8 @@
 											<option>4+ υπνοδωματίων</option>
 										</select>
 									</div>
-							</div class="row">
-										<div class="col-md-6">
+									</div class="row">
+									<div class="col-md-6">
 										<div class="form-group">
 											<label>Τετραγωνικά μέτρα:</label>
 											<select class="form-control">
@@ -226,36 +238,51 @@
 									</div>
 								</div>
 							</div><!--/row-->
-							<div class="col-md-10">
-								<div class="form-group">
-									<label>Τιμή:</label>
-									<form action="action_page.php">
-										<br>
-										<input type="range" multiple id="a" name="a" min ="100" max="1000" step="10" value="500">
+
+							<div class="row">
+								<div class="col-md-3">
+									<div class="form-group">
+										<label>
+											<input type="checkbox" name="checkbox-0" value="Rent">
+											Για ενοικίαση</label>
+									</div>
+								</div>
+								<div class="col-md-9">
+									<form method="post" action="/action_page_post.php">
+										<div data-role="rangeslider">
+											
+											<input type="range" name="price-min" id="price-min" value="100" min="0" max="1000">
+											
+											<input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
+										</div>
+									</form>
+								</div>
+							</div>
+								<div class="row">
+								<div class="col-md-3">
+									<div class="form-group">
+										<label>
+											<input type="checkbox" name="checkbox-0" value="Rent">
+											Για αγορά</label>
+									</div>
+								</div>
+								<div class="col-md-9">
+									<form method="post" action="/action_page_post.php">
+										<div data-role="rangeslider">
+											<input type="range" name="price-min" id="price-min" value="100000" step="1000" min="10000" max="999999">
+											<input type="range" name="price-max" id="price-max" value="800000" step="1000" min="10000" max="999999">
+										</div>
 									</form>
 								</div>
 							</div>
 
-							<div class="col-lg-10">
-								<div class="form-group">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" value="Sale">
-											Για αγορά</label>
-										<label>
-											<input type="checkbox" value="Rent">
-											Για ενοικίαση</label>
-									</div>
+								<div class="clearfix"></div>
+								<div class="col-lg-12 text-center">
+									<div id="success"></div>
+									<button type="submit" class="btn btn-xl"style = "background-color:#D3D3D3  border: 2px solid black; font-weight: bold;">
+										Αναζήτηση
+									</button>
 								</div>
-							</div>
-
-							<div class="clearfix"></div>
-							<div class="col-lg-12 text-center">
-								<div id="success"></div>
-								<button type="submit" class="btn btn-xl"style = "background-color:#D3D3D3  border: 2px solid black; font-weight: bold;">
-									Αναζήτηση
-								</button>
-							</div>
 
 						</form>
 
@@ -264,11 +291,9 @@
 		</section>
 
 		<footer class="w3-container w3-teal " style = "background: transparent;
-		padding: 2em">		</footer>
+		padding: 2em"></footer>
 
 		<!-- /.Search -->
-
-		
 
 		<!-- Map -->
 		<section id="contact" class="map">
@@ -285,7 +310,7 @@
 
 		<!-- Contact Section -->
 		<section id="contact" style =  "background: #fff;
-    background: rgba(148,147,138,0.7); padding: 3em;">
+		background: rgba(148,147,138,0.7); padding: 3em;">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 text-center">
@@ -334,54 +359,54 @@
 		<!-- Footer -->
 		<footer>
 			<section id="contact" style =  "background: #fff;
-    background: rgba(255,255,255,0.7); padding: 3em;">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-10 col-lg-offset-1 text-center">
-						<p>
-							Αγχιαλού 11
+			background: rgba(255,255,255,0.7); padding: 3em;">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-10 col-lg-offset-1 text-center">
+							<p>
+								Αγχιαλού 11
+								<br>
+								Λευκωσία,Αγίοι Ομολογητές,Κύπρος
+							</p>
+							<ul class="list-unstyled">
+								<li>
+									<i class="fa fa-phone fa-fw"></i> 97-900809
+								</li>
+								<li>
+									<i class="fa fa-envelope-o fa-fw" style="color: #000000"></i><a href="mailto:marygeorgiou85@gmail.com " style="color: #000000">marygeorgiou85@gmail.com</a>
+								</li>
+							</ul>
 							<br>
-							Λευκωσία,Αγίοι Ομολογητές,Κύπρος
-						</p>
-						<ul class="list-unstyled">
-							<li>
-								<i class="fa fa-phone fa-fw"></i> 97-900809
-							</li>
-							<li>
-								<i class="fa fa-envelope-o fa-fw" style="color: #000000"></i><a href="mailto:marygeorgiou85@gmail.com " style="color: #000000">marygeorgiou85@gmail.com</a>
-							</li>
-						</ul>
-						<br>
-						<ul class="list-inline">
-							<li>
-								<a href="https://www.facebook.com/" title="Facebook"><i class="fa fa-facebook fa-fw fa-3x " style="color: #E4B006 " ></i></a>
-							</li>
-							<li>
-								<a href="https://twitter.com/" title="Twitter"><i class="fa fa-twitter fa-fw fa-3x" style="color: #E4B006"></i></a>
-							</li>
-							<li>
-								<a href="https://gr.pinterest.com/" title="Pinterest"><i class="fa fa-pinterest fa-fw fa-3x " style="color: #E4B006 " ></i></a>
-							</li>
-							<li>
-								<a href="https://plus.google.com/collections/featured" title="Google+"><i class="fa fa-google-plus fa-fw fa-3x " style="color: #E4B006 " ></i></a>
-							</li>
-							<li>
-								<a href="https://www.instagram.com/" title="Instagram"><i class="fa fa-instagram fa-fw fa-3x " style="color: #E4B006 " ></i></a>
-							</li>
-							<li>
-								<a href="https://www.tumblr.com/" title="Tumblr"><i class="fa fa-tumblr fa-fw fa-3x " style="color: #E4B006 " ></i></a>
-							</li>
+							<ul class="list-inline">
+								<li>
+									<a href="https://www.facebook.com/" title="Facebook"><i class="fa fa-facebook fa-fw fa-3x " style="color: #E4B006 " ></i></a>
+								</li>
+								<li>
+									<a href="https://twitter.com/" title="Twitter"><i class="fa fa-twitter fa-fw fa-3x" style="color: #E4B006"></i></a>
+								</li>
+								<li>
+									<a href="https://gr.pinterest.com/" title="Pinterest"><i class="fa fa-pinterest fa-fw fa-3x " style="color: #E4B006 " ></i></a>
+								</li>
+								<li>
+									<a href="https://plus.google.com/collections/featured" title="Google+"><i class="fa fa-google-plus fa-fw fa-3x " style="color: #E4B006 " ></i></a>
+								</li>
+								<li>
+									<a href="https://www.instagram.com/" title="Instagram"><i class="fa fa-instagram fa-fw fa-3x " style="color: #E4B006 " ></i></a>
+								</li>
+								<li>
+									<a href="https://www.tumblr.com/" title="Tumblr"><i class="fa fa-tumblr fa-fw fa-3x " style="color: #E4B006 " ></i></a>
+								</li>
 
-						</ul>
-						<hr class="small">
-						<p class="text-muted" style="color: #FFFFFF">
-							Copyright &copy; University of Cyprus
-						</p>
+							</ul>
+							<hr class="small">
+							<p class="text-muted" style="color: #FFFFFF">
+								Copyright &copy; University of Cyprus
+							</p>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<a id="to-top" href="#top" class="btn btn-circle"><i class="fa fa-angle-double-up fa-fw fa-1x"></i></a>
+				<a id="to-top" href="#top" class="btn btn-circle"><i class="fa fa-angle-double-up fa-fw fa-1x"></i></a>
 			</section>
 		</footer>
 
