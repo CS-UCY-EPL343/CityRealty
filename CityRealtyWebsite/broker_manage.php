@@ -32,6 +32,6 @@ if(! $retval )
 }else{
 echo "Entered data successfully\n";
 }
-header("Location: AddNewBroker.php");
+header("Location: broker_manage.php");
 mysqli_close($conn);
 ?>
