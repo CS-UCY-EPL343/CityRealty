@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
  $conn->close();
-header("Location: propertyDetails.php");
+header("Location: tabs.php");
 mysqli_close($conn);
 ?>
 <?php
