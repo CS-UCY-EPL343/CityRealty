@@ -21,20 +21,6 @@ if(! get_magic_quotes_gpc() )
     $renovated_date = addslashes($_POST['renovated_date']);
     $notes = addslashes($_POST['notes']);
 }
-else
-{
-    $display_name = addslashes($_POST['display_name']);
-    $password = addslashes($_POST['password']);
-    $type = addslashes($_POST['type']);
-    $state = addslashes($_POST['state']); 
-    $location = addslashes($_POST['location']);
-    $area = addslashes($_POST['area']);
-    $price = addslashes($_POST['price']);
-    $owners_name = addslashes($_POST['owners_name']);
-    $built_date = addslashes($_POST['built_date']);
-    $renovated_date = addslashes($_POST['renovated_date']);
-    $notes = addslashes($_POST['notes']);
-}
 
 $sql = "INSERT INTO REALESTATE ".
        "(CORNER,ZONE,ACITY,AAREA,FINALPRICE,RENOVATEDDATE,BUILTDATE) ".
