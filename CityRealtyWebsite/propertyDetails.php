@@ -34,7 +34,7 @@ session_start();
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script>
-      var myCity = new google.maps.Circle({
+         /**  var myCity = new google.maps.Circle({
         center : new google.maps.LatLng(35, 33),
         readius : 123000,
         strokeColor : "#0000FF",
@@ -45,26 +45,26 @@ session_start();
       });
       myCity.setMap(map);
 
-      var map;
-      var src = 'https://www.google.com/maps/d/u/0/edit?mid=1iDLlxWD53t-qG5TVm4M2mHsYczU&ll=35.49561757750095%2C32.81524549352264&z=8';
+      var map;*/
+   /*   var src = 'https://www.google.com/maps/d/u/0/edit?mid=1iDLlxWD53t-qG5TVm4M2mHsYczU&ll=35.49561757750095%2C32.81524549352264&z=8';*/
       /**
        * Initializes the map and calls the function that loads the KML layer.
        */
-      function initMap() {
+  /*    function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center : new google.maps.LatLng(-19.257753, 146.823688),
           zoom : 2,
           mapTypeId : 'terrain'
         });
         loadKmlLayer(src, map);
-      }
+      }*/
 
       /**
        * Adds a KMLLayer based on the URL passed. Clicking on a marker
        * results in the balloon content being loaded into the right-hand div.
        * @param {string} src A URL for a KML file.
        */
-      function loadKmlLayer(src, map) {
+  /*    function loadKmlLayer(src, map) {
         var kmlLayer = new google.maps.KmlLayer(src, {
           suppressInfoWindows : true,
           preserveViewport : false,
@@ -75,18 +75,18 @@ session_start();
           var testimonial = document.getElementById('capture');
           testimonial.innerHTML = content;
         });
-      }
+      }*/
 
       // Disable Google Maps scrolling
       // See http://stackoverflow.com/a/25904582/1607849
       // Disable scroll zooming and bind back the click event
-      var onMapMouseleaveHandler = function(event) {
+ /*     var onMapMouseleaveHandler = function(event) {
         var that = $(this);
         that.on('click', onMapClickHandler);
         that.off('mouseleave', onMapMouseleaveHandler);
         that.find('iframe').css("pointer-events", "none");
-      };
-      var onMapClickHandler = function(event) {
+      };*/
+   /*   var onMapClickHandler = function(event) {
         var that = $(this);
         // Disable the click handler until the user leaves the map area
         that.off('click', onMapClickHandler);
@@ -94,21 +94,21 @@ session_start();
         that.find('iframe').css("pointer-events", "auto");
         // Handle the mouse leave event
         that.on('mouseleave', onMapMouseleaveHandler);
-      };
+      };*/
       // Enable map zooming with mouse scroll when the user clicks the map
-      $('.map').on('click', onMapClickHandler);
+  /*    $('.map').on('click', onMapClickHandler);
       var marker = new google.maps.Marker({
         map : map,
         position : new google.maps.LatLng(35, -33),
         title : 'Nicosia'
-      });
+      });*/
       // Add circle overlay and bind to marker
-      var circle = new google.maps.Circle({
+   /*   var circle = new google.maps.Circle({
         map : map,
         radius : 16093, // 10 miles in metres
         fillColor : '#AA0000'
       });
-      circle.bindTo('center', marker, 'position');
+      circle.bindTo('center', marker, 'position');*/
     </script>
 
     <!--Navbar style-->
@@ -611,15 +611,100 @@ session_start();
                         </li>
                   </div>
               </div>
-              <!-- Map -->
-              <!-- https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d417906.1679578008!2d32.79202249830512!3d35.08443270516032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de1767ca494d55%3A0xbfa61172e2b992ff!2zzpvOtc-FzrrPic-Dzq_OsSwgzprPjc-Az4HOv8-C!5e0!3m2!1sel!2sus!4v1479281118979" -->
-              <section id="map" class="map">
-
-                <iframe width="50%" height="50%" frameborder="0" scrolling="no" marginheight="100" marginwidth="0" src="https://www.google.com/maps/d/u/0/embed?mid=1iDLlxWD53t-qG5TVm4M2mHsYczU"></iframe>
-                <br />
-                <small> <a href="https://www.google.com/maps/d/u/0/embed?mid=1iDLlxWD53t-qG5TVm4M2mHsYczU"></a> </small>
-                </iframe>
-              </section >
+ <div class="row">
+				<div class="small-12 columns" >
+					<section id="map">
+						<h3><i class="fa fa-map-marker"></i> Χάρτης Τοποθεσίας <small class="hide" itemscope itemtype="http://schema.org/GeoCoordinates"><span class="latitude" itemprop="latitude">37.5177279637819</span>, <span class="longitude" itemprop="longitude">22.3811034455078</span></small></h3>
+							<script>
+								function initialize() {
+									var image = new google.maps.MarkerImage(
+										'/wp-content/themes/omega/img/marker.png',
+										new google.maps.Size(48, 32),
+										new google.maps.Point(0,0),
+										new google.maps.Point(24, 32)
+									);
+									var styles = [
+										  {
+											"stylers": [
+											  { "lightness": -5 },
+											  { "saturation": -39 },
+											  { "hue": "#ff8800" }
+											]
+										  },{
+											"featureType": "road",
+											"elementType": "geometry",
+											"stylers": [
+											  { "lightness": 100 },
+											  { "visibility": "simplified" }
+											]
+										  },{
+											"featureType": "road",
+											"stylers": [
+											  { "visibility": "on" }
+											]
+										  },{
+											"featureType": "water",
+											"stylers": [
+											  { "hue": "#0077ff" },
+											  { "saturation": -70 },
+											  { "visibility": "simplified" },
+											  { "lightness": -51 }
+											]
+										  },{
+											"featureType": "poi",
+											"stylers": [
+											  { "visibility": "simplified" }
+											]
+										  },{
+											"featureType": "road.highway",
+											"elementType": "labels.icon",
+											"stylers": [
+											  { "visibility": "off" }
+											]
+										  }
+										];
+									var myLatlng = new google.maps.LatLng(37.5177279637819,22.3811034455078);
+									var mapOptions = {
+										zoom: 12,
+										center: myLatlng,
+										scrollwheel: false,
+										mapTypeControl: true,
+										mapTypeControlOptions: {
+											style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+										},
+										zoomControl: true,
+										zoomControlOptions: {
+											style: google.maps.ZoomControlStyle.SMALL
+										},
+										styles: styles
+									}
+									var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+			
+									var marker = new google.maps.Marker({
+										position: myLatlng,
+										map: map,
+										title: 'Ακίνητο #477537',
+										options: {
+											draggable: false,
+											icon: image
+										},
+									});
+									
+									google.maps.event.addDomListener(window, 'resize', initialize);
+								}
+			
+								function loadScript() {
+									var script = document.createElement('script');
+									script.type = 'text/javascript';
+									script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=en&' + 'callback=initialize';
+									document.body.appendChild(script);
+								}
+								window.onclick= loadScript;
+							</script>
+							<div id="map_canvas" style="width:100%;height:293px;background:#DDDDDD;"></div>
+					</section>
+				</div>
+			  </div>
             </div>
 
           </div>
