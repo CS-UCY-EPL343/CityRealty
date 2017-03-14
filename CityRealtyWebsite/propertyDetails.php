@@ -140,11 +140,35 @@ session_start();
       #content #mainwrap #divtab1 {
         border: 5px solid black;
         border-style: solid;
+        background: #FFFFFF;
       }
       #content #mainwrap #tabs {
         border: 5px solid black;
         border-style: solid;
+        background: #FFFFFF;
       }
+      .fieldGroup {
+        color: #c03e62;
+      }
+      .field {
+        color: #000000;
+      }
+      .value {
+        color: #333333;
+        text-decoration: none;
+      }
+      table {
+        border: 0px solid black;
+        padding: 5px;
+        text-align: left;
+        width: 30%;
+      }
+      th, td {
+        border: 0px solid black;
+        padding: 3px;
+        text-align: left;
+      }
+
       #content #mainwrap #menu {
         padding: 20px;
         overflow: hidden;
@@ -365,7 +389,7 @@ session_start();
           <div id="mainwrap">
             <ul id="menu">
               <li>
-                <a class="tab1" href="#divtab1" title="Tab1">Basic Characteristics</a>
+                <a class="tab1" href="#divtab1" title="Tab1">General</a>
               </li>
               <div>
                 <li>
@@ -387,17 +411,28 @@ session_start();
             <div style="clear:both"></div>
             <div id="divtab1" class="section">
               <div class="column col3">
-                <h3 style="color: #c03e62;">Property Description</h3>
+                <h3 class="fieldGroup">Property Description</h3>
                 <ul id="menu2">
                   <li style="color: #008c99">
-                    <p>
+                    <p class="field">
                       Property #ID
                     </p>
+                    <label class="value">VALUE</label>
                   </li>
                   <li style="color: #008c99">
                     <p>
                       Area (square meters)
                     </p>
+                    <table>
+                      <tr>
+                        <th class="field">field</th>
+                        <th class="value">value</th>
+                      </tr>
+                      <tr>
+                        <th class="field">field2</th>
+                        <th><label class="value">Value label</label></th>
+                      </tr>
+                    </table>
                   </li>
                   <li style="color: #008c99">
                     <p>
@@ -421,7 +456,7 @@ session_start();
                 </ul>
               </div>
               <div class="column col5 pl-50">
-                <h2 style="color: #c03e62;">Property Type</h2>
+                <h3 class="fieldGroup">Property Type</h3>
                 <ul id="menu4">
                   <li style="color: #008c99">
                     <p>
@@ -441,7 +476,7 @@ session_start();
                 </ul>
               </div>
               <div class="column col4 pl-40">
-                <h2 style="color: #c03e62;">Location</h2>
+                <h3 class="fieldGroup">Location</h3>
                 <ul id="menu5">
                   <li style="color: #008c99">
                     <p>
@@ -469,9 +504,7 @@ session_start();
             </div>
             <div id="tabs" class="section">
               <div class="column col3">
-                <h1 style="color: #c03e62;">Features
-                <br/>
-                </h1>
+                <h3 class="fieldGroup">Features</h3>
                 <span>
                   <ul id="menu6">
                     <li style="color: #008c99">
@@ -517,9 +550,7 @@ session_start();
                   </ul>
               </div>
               <div class="column col4">
-                <h1 style="color: #c03e62;">Building Information
-                <br/>
-                </h1>
+                <h3 class="fieldGroup">Building Information</h3>
                 <span>
                   <ul id="menu7">
                     <li style="color: #008c99">
@@ -534,8 +565,7 @@ session_start();
                     </li>
                   </ul>
                   <div id = "facilities">
-                    <h1 style="color: #c03e62;">Facilities
-                    <br/>
+                    <h3 class="fieldGroup">Facilities</h3>
                     </h1>
                     <span>
                       <ul id="menu8">
