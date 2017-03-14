@@ -74,6 +74,7 @@ CREATE TABLE IF NOT EXISTS `Contact` (
 
 CREATE TABLE IF NOT EXISTS `File` (
   `FileNo` int(11) NOT NULL AUTO_INCREMENT,
+  `RealEstateNo` int(11) NOT NULL,
   `HyperLink` varchar(350) COLLATE utf8_bin NOT NULL,
   `Name` tinyint(30) NOT NULL,
   `Description` varchar(300) COLLATE utf8_bin NOT NULL,
