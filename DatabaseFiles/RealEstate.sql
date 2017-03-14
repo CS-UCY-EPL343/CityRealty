@@ -82,6 +82,7 @@ CREATE TABLE IF NOT EXISTS `RealEstate` (
   `TransferCost` double NOT NULL DEFAULT '0',
   `TransferVAT` double NOT NULL DEFAULT '0',
   `ConsiderationExchange` tinyint(1) NOT NULL DEFAULT '0',
+  `REState` enum('Published','Unpublished','To be published') COLLATE utf8_bin NOT NULL DEFAULT 'To be published',
   PRIMARY KEY (`RealEstateNo`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
