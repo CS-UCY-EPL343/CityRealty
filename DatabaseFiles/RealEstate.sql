@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 11, 2017 at 08:55 PM
+-- Generation Time: Mar 14, 2017 at 01:48 PM
 -- Server version: 5.1.73
 -- PHP Version: 5.3.3
 
@@ -30,8 +30,8 @@ CREATE TABLE IF NOT EXISTS `RealEstate` (
   `RealEstateNo` int(11) unsigned NOT NULL COMMENT 'Primary Key',
   `AStreetNo` varchar(5) COLLATE utf8_bin DEFAULT NULL COMMENT 'Basic Info',
   `AStreet` varchar(30) COLLATE utf8_bin DEFAULT NULL COMMENT 'Basic Info',
-  `ACity` varchar(30) COLLATE utf8_bin DEFAULT NULL COMMENT 'Basic Info',
-  `AArea` varchar(35) COLLATE utf8_bin NOT NULL COMMENT 'Address',
+  `ACity` enum('Λευκωσία','Λάρνακα','Λεμεσός','Πάφος','Αμμόχωστος') COLLATE utf8_bin DEFAULT 'Λευκωσία' COMMENT 'Basic Info',
+  `ARegionCode` int(11) NOT NULL COMMENT 'Address',
   `ACountry` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT 'Cyprus' COMMENT 'Basic Info',
   `APostalCode` int(10) DEFAULT NULL COMMENT 'Basic Info',
   `RegistrationTitleNo` int(11) NOT NULL DEFAULT '0' COMMENT 'Common Info',
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `RealEstate` (
   `RecommendedBy` int(10) NOT NULL COMMENT 'ContactNo',
   `Rating` varchar(300) COLLATE utf8_bin NOT NULL,
   `RegistrationTitle` tinyint(1) NOT NULL DEFAULT '0',
-  `OwnerID` int(10) NOT NULL,
+  `OwnerID` int(11) NOT NULL,
   `OwnerRating` varchar(300) COLLATE utf8_bin NOT NULL,
   `AgentRating` varchar(300) COLLATE utf8_bin NOT NULL,
   `OrderCode` varchar(100) COLLATE utf8_bin NOT NULL,
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `RealEstate` (
   `Category` enum('Γη','Κατοικία','Επαγγελματικός χώρος','Ξενοδοχείο') COLLATE utf8_bin NOT NULL DEFAULT 'Κατοικία',
   `Notes` varchar(500) COLLATE utf8_bin NOT NULL,
   `NotifyColleague` tinyint(1) NOT NULL DEFAULT '0',
-  `AgentID` int(10) NOT NULL,
+  `AgentUsername` varchar(50) COLLATE utf8_bin NOT NULL,
   `RealEstateStatus` varchar(100) COLLATE utf8_bin NOT NULL,
   `AgentRewardPercentage` double NOT NULL DEFAULT '0',
   `AgentReward` double NOT NULL DEFAULT '0',
@@ -84,6 +84,27 @@ CREATE TABLE IF NOT EXISTS `RealEstate` (
   `ConsiderationExchange` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`RealEstateNo`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `RealEstate`
+--
+
+INSERT INTO `RealEstate` (`RealEstateNo`, `AStreetNo`, `AStreet`, `ACity`, `ARegionCode`, `ACountry`, `APostalCode`, `RegistrationTitleNo`, `PieceNo`, `FolderNo`, `ArithmosFilSxed`, `ArithmosAdOik`, `LegalControl`, `InitialPrice`, `EstimatedPrice`, `MortgageLoan`, `ObjectiveValue`, `FinalPrice`, `Corner`, `Zone`, `AvailableFrom`, `Status`, `DateRegistered`, `RegistrationPurpose`, `Price`, `Currency`, `PricePerTM`, `AreaTM`, `TM`, `VAT`, `ShortDescription`, `Description`, `AboutRenting`, `RecommendedBy`, `Rating`, `RegistrationTitle`, `OwnerID`, `OwnerRating`, `AgentRating`, `OrderCode`, `TypeOrder`, `Exclusive`, `OrderStart`, `OrderStop`, `Category`, `Notes`, `NotifyColleague`, `AgentUsername`, `RealEstateStatus`, `AgentRewardPercentage`, `AgentReward`, `ViewAddress`, `TransferCost`, `TransferVAT`, `ConsiderationExchange`) VALUES
+(1, '', NULL, 'Λάρνακα', 21, 'Cyprus', NULL, 0, 0, 0, 0, 0, NULL, 0.00, 0.00, NULL, 0.00, 0.00, 0, '', '0000-00-00', '', '0000-00-00', '', 550, 'EUR', 0, 0, 100, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, '0', '', 0, 0, '', 0, 0, 0),
+(2, '', NULL, 'Λάρνακα', 21, 'Cyprus', NULL, 0, 0, 0, 0, 0, NULL, 0.00, 0.00, NULL, 0.00, 0.00, 0, '', '0000-00-00', '', '0000-00-00', '', 550, 'EUR', 0, 0, 100, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, '0', '', 0, 0, '', 0, 0, 0),
+(3, '', NULL, 'Λάρνακα', 21, 'Cyprus', NULL, 0, 0, 0, 0, 0, NULL, 0.00, 0.00, NULL, 0.00, 0.00, 0, '', '0000-00-00', '', '0000-00-00', '', 550, 'EUR', 0, 0, 100, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, '0', '', 0, 0, '', 0, 0, 0),
+(4, '', NULL, 'Λάρνακα', 21, 'Cyprus', NULL, 0, 0, 0, 0, 0, NULL, 0.00, 0.00, NULL, 0.00, 0.00, 0, '', '0000-00-00', '', '0000-00-00', '', 550, 'EUR', 0, 0, 100, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, '0', '', 0, 0, '', 0, 0, 0),
+(5, '', NULL, 'Λάρνακα', 21, 'Cyprus', NULL, 0, 0, 0, 0, 0, NULL, 0.00, 0.00, NULL, 0.00, 0.00, 0, '', '0000-00-00', '', '0000-00-00', '', 550, 'EUR', 0, 0, 100, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, '0', '', 0, 0, '', 0, 0, 0),
+(6, '', NULL, 'Λάρνακα', 21, 'Cyprus', NULL, 0, 0, 0, 0, 0, NULL, 0.00, 0.00, NULL, 0.00, 0.00, 0, '', '0000-00-00', '', '0000-00-00', '', 550, 'EUR', 0, 0, 100, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, '0', '', 0, 0, '', 0, 0, 0),
+(7, '', NULL, 'Λάρνακα', 21, 'Cyprus', NULL, 0, 0, 0, 0, 0, NULL, 0.00, 0.00, NULL, 0.00, 0.00, 0, '', '0000-00-00', '', '0000-00-00', '', 550, 'EUR', 0, 0, 100, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, '0', '', 0, 0, '', 0, 0, 0),
+(8, '', NULL, 'Λάρνακα', 21, 'Cyprus', NULL, 0, 0, 0, 0, 0, NULL, 0.00, 0.00, NULL, 0.00, 0.00, 0, '', '0000-00-00', '', '0000-00-00', '', 550, 'EUR', 0, 0, 100, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, '0', '', 0, 0, '', 0, 0, 0),
+(9, '', NULL, 'Λάρνακα', 21, 'Cyprus', NULL, 0, 0, 0, 0, 0, NULL, 0.00, 0.00, NULL, 0.00, 0.00, 0, '', '0000-00-00', '', '0000-00-00', '', 550, 'EUR', 0, 0, 100, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, '0', '', 0, 0, '', 0, 0, 0),
+(10, '', NULL, 'Λάρνακα', 21, 'Cyprus', NULL, 0, 0, 0, 0, 0, NULL, 0.00, 0.00, NULL, 0.00, 0.00, 0, '', '0000-00-00', '', '0000-00-00', '', 550, 'EUR', 0, 0, 100, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, '0', '', 0, 0, '', 0, 0, 0),
+(11, '', NULL, 'Λάρνακα', 21, 'Cyprus', NULL, 0, 0, 0, 0, 0, NULL, 0.00, 0.00, NULL, 0.00, 0.00, 0, '', '0000-00-00', '', '0000-00-00', '', 550, 'EUR', 0, 0, 100, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, '0', '', 0, 0, '', 0, 0, 0);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 -- --------------------------------------------------------
 
