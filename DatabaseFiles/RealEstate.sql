@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `RealEstate` (
   `AvailableFrom` date NOT NULL,
   `Status` varchar(100) COLLATE utf8_bin NOT NULL,
   `DateRegistered` date NOT NULL,
-  `RegistrationPurpose` varchar(35) COLLATE utf8_bin NOT NULL,
+  `RegistrationPurpose` enum('Πώληση','Ενοικίαση','Αντιπαροχή','Επένδυση') COLLATE utf8_bin NOT NULL DEFAULT 'Πώληση',
   `Price` double NOT NULL DEFAULT '0',
   `Currency` enum('EUR','GBP','RUS','USD','Other') COLLATE utf8_bin NOT NULL DEFAULT 'EUR',
   `PricePerTM` double NOT NULL,
