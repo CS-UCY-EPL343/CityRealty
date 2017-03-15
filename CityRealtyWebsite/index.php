@@ -1,5 +1,6 @@
 <?php
 session_start();
+unset($_SESSION['sql']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,6 +74,13 @@ session_start();
 		.dropdown:hover .dropdown-content {
 			display: block;
 		}
+		.ui-page {
+			background-color: transparent;
+		}
+		.ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+			text-shadow: none;
+		}
+		
 	</style>
 
 	<script>
@@ -111,7 +119,7 @@ session_start();
 
 			<ul class="nav navbar-nav ">
 				<li>
-					<a class="page-scroll" href="index.html" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/home2.png">Home</span> </a>
+					<a class="page-scroll" href="index.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/home2.png">Home</span> </a>
 				</li>
 
 				<li>
@@ -123,15 +131,19 @@ session_start();
 
 				</li>
 				<li>
-					<a class="page-scroll " href="#services" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/sell22.png">Sell</span></a>
+					<a class="page-scroll " href="AddProperty.html" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/sell22.png">Sell</span></a>
 
 				</li>
 				<li>
-					<a class="page-scroll " href="#services" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/search2.png">Search</a>
+					<a class="page-scroll " href="index.php#searchREForm" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/search2.png">Search</a>
 				</li>
 
 				<li>
-					<a class="page-scroll" href="#contact" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/contactUs2.png">Contact Us</a>
+					<a class="page-scroll" href="index.php#contactForm" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/contactUs2.png">Contact Us</a>
+				</li>
+
+				<li>
+					<a class="page-scroll" href="about.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/group-chat.png"> About Us</a>
 				</li>
 
 				<?php
@@ -186,11 +198,14 @@ session_start();
 
 	<!-- Search Property ID -->
 	<div class="col-md-3">
-		<div class="form-group">
-			<label>ID Ακινήτου:</label>
-			<input type="text" class="form-control" placeholder="ID Ακινήτου" id="name">
-			<p class="help-block text-danger"></p>
-		</div>
+		<form action="propertyList.php" method="POST">
+			<div class="form-group">
+				<label>ID Ακινήτου:</label>
+				<input type="text" name="REid" class="form-control" placeholder="ID Ακινήτου" id="REid">
+				<input type="submit" style="position: absolute; left: -9999px"/>
+				<p class="help-block text-danger"></p>
+			</div>
+		</form>
 	</div>
 
 	<!-- Header -->
@@ -262,7 +277,7 @@ session_start();
 									<select name="Bedrooms" class="form-control">
 										<option value="--">--</option>	
 										<option value="Studio">Στούντιο</option>
-										<option value="1">1 υπνοδωμάτια</option>
+										<option value="1">1 υπνοδωμάτιo</option>
 										<option value="2">2 υπνοδωμάτια</option>
 										<option value="3">3 υπνοδωμάτια</option>
 										<option value="4+">4+ υπνοδωμάτια</option>
@@ -283,29 +298,45 @@ session_start();
 								</div>
 							</div>
 						</div><!--/row-->
-						<div class="col-md-10">
-							<div class="form-group">
-								<label>Τιμή:</label>
-								<br>
-								<input name="Price" type="range" multiple id="a" name="a" min ="100" max="1000" step="10">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+									<label>
+										<input type="checkbox" name="To_rent" value="Ενοικίαση">
+										Για ενοικίαση</label>
+									</div>
+								</div>
+								<div class="col-md-9">
+									<div class="form-group">
+										<div data-role="rangeslider">
+											<input type="range" name="rentpricemin" id="price-min" min="0" max="1000">
+											<input type="range" name="rentpricemax" id="price-max" min="0" max="1000">
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
-
-						<div class="col-lg-10">
-							<div class="form-group">
-								<div class="checkbox">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
 									<label>
-										<input name="To_buy" type="checkbox" value="Sale">Για αγορά
-									</label>
-									<label>
-										<input name="To_rent" type="checkbox" value="Rent">Για ενοικίαση
-									</label>
+										<input type="checkbox" name="To_buy" value="Πώληση">
+										Για αγορά</label>
+									</div>
+								</div>
+								<div class="col-md-9">
+									<div class="form-group">
+										<div data-role="rangeslider">
+											<input type="range" name="buypricemin" id="price-min" step="1000" min="10000" max="999999">
+											<input type="range" name="buypricemax" id="price-max" step="1000" min="10000" max="999999">
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 
 						<div class="clearfix"></div>
-						<div class="col-lg-12 text-center">
+						<div class="col-lg-12 text-center form-group">
 							<div id="success"></div>
 							<button type="submit" class="btn btn-xl" style="background-color:#D3D3D3  border: 2px solid black; font-weight: bold;">
 								Αναζήτηση
@@ -322,65 +353,6 @@ session_start();
 	</footer>
 
 	<!-- /.Search -->
-
-	<!-- Services -->
-	<!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
-	<section id="services" class="services bg-primary">
-		<div class="container">
-			<div class="row text-center">
-				<div class="col-lg-10 col-lg-offset-1">
-					<h2>Our Services</h2>
-					<hr class="small">
-					<div class="row">
-						<div class="col-md-3 col-sm-6">
-							<div class="service-item">
-								<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x"></i> <i class="fa fa-cloud fa-stack-1x text-primary"></i> </span>
-								<h4><strong>Service Name</strong></h4>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								</p>
-								<a href="#" class="btn btn-light">Learn More</a>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6">
-							<div class="service-item">
-								<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x"></i> <i class="fa fa-compass fa-stack-1x text-primary"></i> </span>
-								<h4><strong>Service Name</strong></h4>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								</p>
-								<a href="#" class="btn btn-light">Learn More</a>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6">
-							<div class="service-item">
-								<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x"></i> <i class="fa fa-flask fa-stack-1x text-primary"></i> </span>
-								<h4><strong>Service Name</strong></h4>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								</p>
-								<a href="#" class="btn btn-light">Learn More</a>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6">
-							<div class="service-item">
-								<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x"></i> <i class="fa fa-shield fa-stack-1x text-primary"></i> </span>
-								<h4><strong>Service Name</strong></h4>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								</p>
-								<a href="#" class="btn btn-light">Learn More</a>
-							</div>
-						</div>
-					</div>
-					<!-- /.row (nested) -->
-				</div>
-				<!-- /.col-lg-10 -->
-			</div>
-			<!-- /.row -->
-		</div>
-		<!-- /.container -->
-	</section>
 
 	<!-- Map -->
 	<section id="contact" class="map">
@@ -405,7 +377,7 @@ session_start();
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
-					<form name="sentMessage" id="contactForm" novalidate>
+					<form name="contactForm" id="contactForm">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
