@@ -13,11 +13,6 @@
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
 		<!-- Bootstrap Core CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -238,56 +233,120 @@
 									</div>
 								</div>
 							</div><!--/row-->
+							
+							<div class="row">
+								<div class="col-md-6">
+									<label><input type="checkbox" name="checkbox-0" value="Rent">
+									Για ενοικίαση:</label>
+								</div>
+								<div class="col-md-6">
+									<label><input type="checkbox" name="checkbox-0" value="Buy">
+									Για αγορά:</label>
+								</div>
+							</div><!--/row-->
 
 							<div class="row">
-								<div class="col-md-3">
-									<div class="form-group">
-										<label>
-											<input type="checkbox" name="checkbox-0" value="Rent">
-											Για ενοικίαση</label>
+								<div class="col-md-6">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label> Min:</label>
+											<select class="form-control">
+												<option>--</option>
+												<option>50</option>
+												<option>100</option>
+												<option>200</option>
+												<option>300</option>
+												<option>400</option>
+												<option>500</option>
+												<option>600</option>
+												<option>700+</option>
+											</select>
+											<br>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label> Max:</label>
+											<select class="form-control">
+												<option>--</option>
+												<option>100</option>
+												<option>200</option>
+												<option>300</option>
+												<option>400</option>
+												<option>500</option>
+												<option>600</option>
+												<option>700</option>
+												<option>800</option>
+												<option>900</option>
+												<option>1000</option>
+											</select>
+											<br>
+										</div>
 									</div>
 								</div>
-								<div class="col-md-9">
-									<form method="post" action="/action_page_post.php">
-										<div data-role="rangeslider">
-											
-											<input type="range" name="price-min" id="price-min" value="100" min="0" max="1000">
-											
-											<input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
+								
+								<div class="col-md-6">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label> Min:</label>
+											<select class="form-control">
+												<option>--</option>
+												<option>10000</option>
+												<option>20000</option>
+												<option>30000</option>
+												<option>40000</option>
+												<option>50000</option>
+												<option>60000</option>
+												<option>70000</option>
+												<option>80000</option>
+												<option>90000</option>
+												<option>100000+</option>
+											</select>
+											<br>
 										</div>
-									</form>
-								</div>
-							</div>
-								<div class="row">
-								<div class="col-md-3">
-									<div class="form-group">
-										<label>
-											<input type="checkbox" name="checkbox-0" value="Rent">
-											Για αγορά</label>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label> Max:</label>
+											<select class="form-control">
+												<option>--</option>
+												<option>30000</option>
+												<option>40000</option>
+												<option>50000</option>
+												<option>60000</option>
+												<option>70000</option>
+												<option>80000</option>
+												<option>90000</option>
+												<option>100000</option>
+												<option>200000</option>
+												<option>300000</option>
+												<option>400000</option>
+												<option>500000</option>
+												<option>600000</option>
+												<option>700000</option>
+												<option>800000</option>
+												<option>900000</option>
+												<option>1000000+</option>
+											</select>
+											<br>
+										</div>
 									</div>
 								</div>
-								<div class="col-md-9">
-									<form method="post" action="/action_page_post.php">
-										<div data-role="rangeslider">
-											<input type="range" name="price-min" id="price-min" value="100000" step="1000" min="10000" max="999999">
-											<input type="range" name="price-max" id="price-max" value="800000" step="1000" min="10000" max="999999">
-										</div>
-									</form>
-								</div>
-							</div>
-
-								<div class="clearfix"></div>
-								<div class="col-lg-12 text-center">
-									<div id="success"></div>
-									<button type="submit" class="btn btn-xl"style = "background-color:#D3D3D3  border: 2px solid black; font-weight: bold;">
-										Αναζήτηση
-									</button>
-								</div>
-
-						</form>
-
+							</div> <!--/row-->
 					</div>
+
+					<div class="clearfix"></div>
+					<div class="col-lg-12 text-center">
+						<div id="success"></div>
+						<button type="submit" class="btn btn-xl"style = "background-color:#D3D3D3  border: 2px solid black; font-weight: bold;">
+							Αναζήτηση
+						</button>
+					</div>
+
+					</form>
+
 				</div>
+			</div>
 		</section>
 
 		<footer class="w3-container w3-teal " style = "background: transparent;
