@@ -33,83 +33,6 @@ session_start();
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script>
-         /**  var myCity = new google.maps.Circle({
-        center : new google.maps.LatLng(35, 33),
-        readius : 123000,
-        strokeColor : "#0000FF",
-        strokeOpacity : 0.8,
-        strokeWeight : 2,
-        fillColor : "#0000FF",
-        fillOpacity : 0.5
-      });
-      myCity.setMap(map);
-
-      var map;*/
-   /*   var src = 'https://www.google.com/maps/d/u/0/edit?mid=1iDLlxWD53t-qG5TVm4M2mHsYczU&ll=35.49561757750095%2C32.81524549352264&z=8';*/
-      /**
-       * Initializes the map and calls the function that loads the KML layer.
-       */
-  /*    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center : new google.maps.LatLng(-19.257753, 146.823688),
-          zoom : 2,
-          mapTypeId : 'terrain'
-        });
-        loadKmlLayer(src, map);
-      }*/
-
-      /**
-       * Adds a KMLLayer based on the URL passed. Clicking on a marker
-       * results in the balloon content being loaded into the right-hand div.
-       * @param {string} src A URL for a KML file.
-       */
-  /*    function loadKmlLayer(src, map) {
-        var kmlLayer = new google.maps.KmlLayer(src, {
-          suppressInfoWindows : true,
-          preserveViewport : false,
-          map : map
-        });
-        google.maps.event.addListener(kmlLayer, 'click', function(event) {
-          var content = event.featureData.infoWindowHtml;
-          var testimonial = document.getElementById('capture');
-          testimonial.innerHTML = content;
-        });
-      }*/
-
-      // Disable Google Maps scrolling
-      // See http://stackoverflow.com/a/25904582/1607849
-      // Disable scroll zooming and bind back the click event
- /*     var onMapMouseleaveHandler = function(event) {
-        var that = $(this);
-        that.on('click', onMapClickHandler);
-        that.off('mouseleave', onMapMouseleaveHandler);
-        that.find('iframe').css("pointer-events", "none");
-      };*/
-   /*   var onMapClickHandler = function(event) {
-        var that = $(this);
-        // Disable the click handler until the user leaves the map area
-        that.off('click', onMapClickHandler);
-        // Enable scrolling zoom
-        that.find('iframe').css("pointer-events", "auto");
-        // Handle the mouse leave event
-        that.on('mouseleave', onMapMouseleaveHandler);
-      };*/
-      // Enable map zooming with mouse scroll when the user clicks the map
-  /*    $('.map').on('click', onMapClickHandler);
-      var marker = new google.maps.Marker({
-        map : map,
-        position : new google.maps.LatLng(35, -33),
-        title : 'Nicosia'
-      });*/
-      // Add circle overlay and bind to marker
-   /*   var circle = new google.maps.Circle({
-        map : map,
-        radius : 16093, // 10 miles in metres
-        fillColor : '#AA0000'
-      });
-      circle.bindTo('center', marker, 'position');*/
-    </script>
 
     <!--Navbar style-->
     <style type="text/css">
@@ -388,22 +311,23 @@ session_start();
         <div id="content">
           <div id="mainwrap">
             <ul id="menu">
-              <li>
-                <a class="tab1" href="#divtab1" title="Tab1">General</a>
-              </li>
               <div>
                 <li>
-                  <a class="tabs" href="#tabs" title="Tab2">Extras1</a>
+                  <a class="tabs" href="#divtab1" title="Tab1">Γενικες
+                  <br>
+                  Πληροφοριες</a>
                 </li>
               </div>
               <div>
                 <li>
-                  <a class="tabs" href="#tabs" title="Tab3">Extras2</a>
+                  <a class="tabs" href="#tabs" title="Tab2">Κοινα
+                  <br>
+                  Χαρακτηριστικα</a>
                 </li>
               </div>
               <div>
                 <li>
-                  <a class="tabs" href="#tabs" title="Tab4">Extras3</a>
+                  <a class="tabs" href="#tabs" title="Tab3"></a>
                 </li>
               </div>
             </ul>
@@ -411,300 +335,236 @@ session_start();
             <div style="clear:both"></div>
             <div id="divtab1" class="section">
               <div class="column col3">
-                <h3 class="fieldGroup">Property Description</h3>
+                <h3 class="fieldGroup">Βασικές πληροφορίες</h3>
                 <ul id="menu2">
                   <li style="color: #008c99">
-                    <p class="field">
-                      Property #ID
-                    </p>
-                    <label class="value">VALUE</label>
-                  </li>
-                  <li style="color: #008c99">
-                    <p>
-                      Area (square meters)
-                    </p>
+                    Βασικές πληροφορίες ακινήτου
                     <table>
                       <tr>
-                        <th class="field">field</th>
-                        <th class="value">value</th>
+                        <th class="field">Κωδικός ακινήτου</th>
+                        <th><label class="value" id="RealEstateNo">12345678</label></th>
                       </tr>
                       <tr>
-                        <th class="field">field2</th>
-                        <th><label class="value">Value label</label></th>
+                        <th class="field" id="Category">Κατηγορία</th>
+                        <th><label class="value">Γη</label></th>
+                      </tr>
+                      <tr>
+                        <th class="field">Σκοπός εγγραφής ακινήτου</th>
+                        <th><label class="value" id="RegistrationPurpose">Πώληση</label></th>
                       </tr>
                     </table>
                   </li>
+
                   <li style="color: #008c99">
-                    <p>
-                      Initial Price
-                    </p>
-                  </li>
-                  <li style="color: #008c99">
-                    <p>
-                      Estimated Price
-                    </p>
-                  </li>
-                  <li style="color: #008c99">
-                    <p>
-                      Final Price
-                    </p>
-                  </li>
-                  <li style="color: #008c99">
-                    <p>
-                      Objective Value/p>
-                  </li>
-                </ul>
-              </div>
-              <div class="column col5 pl-50">
-                <h3 class="fieldGroup">Property Type</h3>
-                <ul id="menu4">
-                  <li style="color: #008c99">
-                    <p>
-                      For Sale/Rent
-                    </p>
-                  </li>
-                  <li style="color: #008c99">
-                    <p>
-                      Type
-                    </p>
-                  </li>
-                  <li style="color: #008c99">
-                    <p>
-                      Status
-                    </p>
+                    Αριθμητικές Πληροφορίες
+                    <table>
+                      <tr>
+                        <th class="field">Τιμή</th>
+                        <th><label class="value" id="Price">450,000</label><label class="value" id="Currency">EUR</label></th>
+                      </tr>
+                      <tr>
+                        <th class="field">Εμβαδόν (τ.μ.)</th>
+                        <th><label class="value" id="AreaTM">300</label></th>
+                      </tr>
+                      <tr>
+                        <th class="field">ΦΠΑ (%)</th>
+                        <th><label class="value" id="VAT">0.19</label></th>
+                      </tr>
+                    </table>
                   </li>
                 </ul>
-              </div>
-              <div class="column col4 pl-40">
-                <h3 class="fieldGroup">Location</h3>
-                <ul id="menu5">
+
+                <h3 class="fieldGroup">Γενικές Λεπτομέρειες</h3>
+                <ul id="menu2">
                   <li style="color: #008c99">
-                    <p>
-                      Country
-                    </p>
-                  </li>
-                  <li style="color: #008c99">
-                    <p>
-                      Region
-                    </p>
-                  </li>
-                  <li style="color: #008c99">
-                    <p>
-                      Subregion
-                    </p>
-                  </li>
-                  <li style="color: #008c99">
-                    <p>
-                      City
-                    </p>
+                    Γενικές πληροφορίες σχετικά με το συγκεκριμένο ακίνητο
+                    <table>
+                      <tr>
+                        <th class="field">Ημερομηνία Καταχώρισης</th>
+                        <th><label class="value" id="DateRegistered">07/07/2007</label></th>
+                      </tr>
+                      <tr>
+                        <th class="field">Διαθεσιμότητα από</th>
+                        <th><label class="value" id="AvailableFrom">07/08/2007</label></th>
+                      </tr>
+                    </table>
                   </li>
                 </ul>
+
+                <h3 class="fieldGroup">Τοποθεσία</h3>
+                <ul id="menu2">
+                  <li style="color: #008c99">
+                    Τοποθεσία ακινήτου
+                    <table>
+                      <tr>
+                        <th class="field">Πόλη</th>
+                        <th><label class="value" id="ACity">Λευκωσία</label></th>
+                      </tr>
+                      <tr>
+                        <th class="field">Περιοχή</th>
+                        <th><label class="value" id="ARegion">Άγιος Δομέτιος</label></th>
+                      </tr>
+                    </table>
+                  </li>
+                </ul>
+                <br>
+
+                <!-- New Map Code -->
+                <div class="row">
+                  <div class="small-12 columns" >
+                    <section id="map">
+                      <h3><i class="fa fa-map-marker"></i> Χάρτης Τοποθεσίας <small class="hide" itemscope itemtype="http://schema.org/GeoCoordinates"><span class="latitude" itemprop="latitude">37.5177279637819</span>, <span class="longitude" itemprop="longitude">22.3811034455078</span></small></h3>
+                      <script>
+                        function initialize() {
+                          var image = new google.maps.MarkerImage('/wp-content/themes/omega/img/marker.png', new google.maps.Size(48, 32), new google.maps.Point(0, 0), new google.maps.Point(24, 32));
+                          var styles = [{
+                            "stylers" : [{
+                              "lightness" : -5
+                            }, {
+                              "saturation" : -39
+                            }, {
+                              "hue" : "#ff8800"
+                            }]
+                          }, {
+                            "featureType" : "road",
+                            "elementType" : "geometry",
+                            "stylers" : [{
+                              "lightness" : 100
+                            }, {
+                              "visibility" : "simplified"
+                            }]
+                          }, {
+                            "featureType" : "road",
+                            "stylers" : [{
+                              "visibility" : "on"
+                            }]
+                          }, {
+                            "featureType" : "water",
+                            "stylers" : [{
+                              "hue" : "#0077ff"
+                            }, {
+                              "saturation" : -70
+                            }, {
+                              "visibility" : "simplified"
+                            }, {
+                              "lightness" : -51
+                            }]
+                          }, {
+                            "featureType" : "poi",
+                            "stylers" : [{
+                              "visibility" : "simplified"
+                            }]
+                          }, {
+                            "featureType" : "road.highway",
+                            "elementType" : "labels.icon",
+                            "stylers" : [{
+                              "visibility" : "off"
+                            }]
+                          }];
+                          var myLatlng = new google.maps.LatLng(37.5177279637819, 22.3811034455078);
+                          var mapOptions = {
+                            zoom : 12,
+                            center : myLatlng,
+                            scrollwheel : false,
+                            mapTypeControl : true,
+                            mapTypeControlOptions : {
+                              style : google.maps.MapTypeControlStyle.DROPDOWN_MENU
+                            },
+                            zoomControl : true,
+                            zoomControlOptions : {
+                              style : google.maps.ZoomControlStyle.SMALL
+                            },
+                            styles : styles
+                          }
+                          var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+                          var marker = new google.maps.Marker({
+                            position : myLatlng,
+                            map : map,
+                            title : 'Ακίνητο #477537',
+                            options : {
+                              draggable : false,
+                              icon : image
+                            },
+                          });
+
+                          google.maps.event.addDomListener(window, 'resize', initialize);
+                        }
+
+                        function loadScript() {
+                          var script = document.createElement('script');
+                          script.type = 'text/javascript';
+                          script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=en&' + 'callback=initialize';
+                          document.body.appendChild(script);
+                        }
+
+
+                        window.onclick = loadScript;
+                      </script>
+                      <div id="map_canvas" style="width:100%;height:293px;background:#DDDDDD;"></div>
+                    </section>
+                  </div>
+                </div>
+                <!-- End of Map Section -->
+
               </div>
-              <div class="column col5 pl-50"></div>
+
             </div>
+
+            <div style="clear:both"></div>
             <div id="tabs" class="section">
               <div class="column col3">
-                <h3 class="fieldGroup">Features</h3>
-                <span>
-                  <ul id="menu6">
-                    <li style="color: #008c99">
-                      <p>
-                        Floor
-                      </p>
-                    </li>
-                    <li style="color: #008c99">
-                      <p>
-                        Bedrooms
-                      </p>
-                    </li>
-                    <li style="color: #008c99">
-                      <p>
-                        Kitchens
-                      </p>
-                    </li>
-                    <li style="color: #008c99">
-                      <p>
-                        Bathrooms
-                      </p>
-                    </li>
-                    <li style="color: #008c99">
-                      <p>
-                        WC
-                      </p>
-                    </li>
-                    <li style="color: #008c99">
-                      <p>
-                        Heat System
-                      </p>
-                    </li>
-                    <li style="color: #008c99">
-                      <p>
-                        Parking
-                      </p>
-                    </li>
-                    <li style="color: #008c99">
-                      <p>
-                        View
-                      </p>
-                    </li>
-                  </ul>
+
+                <h3 class="fieldGroup">Γενική περιγραφή</h3>
+                <ul id="menu6">
+                  <li style="color: #008c99">
+                    Στοιχεία σχετικά με τη γενική περιγραφή ακινήτου
+                    <table>
+                      <tr>
+                        <th class="field">Κατάσταση ακινήτου</th>
+                        <th><label class="value" id="RealEstateStatus">Άριστη</label></th>
+                      </tr>
+                      <tr>
+                        <th class="field">Θέα</th>
+                        <th><label class="value" id="View">Υπέροχη, Κεντρική, Πάρκο</label></th>
+                      </tr>
+                      <tr>
+                        <th class="field">Γωνιακό</th>
+                        <th><label class="value" id="RealEstateStatus">Ναι</label></th>
+                      </tr>
+                    </table>
+                </ul>
+
+                <h3 class="fieldGroup">Λεπτομέρειες</h3>
+                <ul id="menu6">
+                  <li style="color: #008c99">
+                    Λεπτομέρειες σχετικά με το ακίνητο
+                    <table>
+                      <tr>
+                        <th class="field">Υποθήκη/Δάνειο</th>
+                        <th><label class="value" id="MortgageLoan">Όχι</label></th>
+                      </tr>
+                      <tr>
+                        <th class="field">Τίτλος</th>
+                        <th><label class="value" id="RegistartionTitle">Ναι</label></th>
+                      </tr>
+                      <tr>
+                        <th class="field">Αντιπαροχή - ανταλλαγή</th>
+                        <th><label class="value" id="ConsiderationExchange">Ναι</label></th>
+                      </tr>
+                    </table>
+                </ul>
+
               </div>
+
               <div class="column col4">
-                <h3 class="fieldGroup">Building Information</h3>
-                <span>
-                  <ul id="menu7">
-                    <li style="color: #008c99">
-                      <p>
-                        Floors
-                      </p>
-                    </li>
-                    <li style="color: #008c99">
-                      <p>
-                        Frames
-                      </p>
-                    </li>
-                  </ul>
-                  <div id = "facilities">
-                    <h3 class="fieldGroup">Facilities</h3>
-                    </h1>
-                    <span>
-                      <ul id="menu8">
-                        <li style="color: #008c99">
-                          <p>
-                            For Students
-                          </p>
-                        </li>
-                        <li style="color: #008c99">
-                          <p>
-                            Elevator
-                          </p>
-                        </li>
-                        <li style="color: #008c99">
-                          <p>
-                            Swimming Pool
-                          </p>
-                        </li>
-                        <li style="color: #008c99">
-                          <p>
-                            Solar System
-                          </p>
-                        </li>
-                        <li style="color: #008c99">
-                          <p>
-                            Double Glasses
-                          </p>
-                        </li>
-                        <li style="color: #008c99">
-                          <p>
-                            Storage Room
-                          </p>
-                        </li>
-                        <li style="color: #008c99">
-                          <p>
-                            Balcony
-                          </p>
-                        </li>
-                        <li style="color: #008c99">
-                          <p>
-                            View
-                          </p>
-                        </li>
-                  </div>
+                <h3 class="fieldGroup"></h3>
+                <ul id="menu7"></ul>
               </div>
- <div class="row">
-				<div class="small-12 columns" >
-					<section id="map">
-						<h3><i class="fa fa-map-marker"></i> Χάρτης Τοποθεσίας <small class="hide" itemscope itemtype="http://schema.org/GeoCoordinates"><span class="latitude" itemprop="latitude">37.5177279637819</span>, <span class="longitude" itemprop="longitude">22.3811034455078</span></small></h3>
-							<script>
-								function initialize() {
-									var image = new google.maps.MarkerImage(
-										'/wp-content/themes/omega/img/marker.png',
-										new google.maps.Size(48, 32),
-										new google.maps.Point(0,0),
-										new google.maps.Point(24, 32)
-									);
-									var styles = [
-										  {
-											"stylers": [
-											  { "lightness": -5 },
-											  { "saturation": -39 },
-											  { "hue": "#ff8800" }
-											]
-										  },{
-											"featureType": "road",
-											"elementType": "geometry",
-											"stylers": [
-											  { "lightness": 100 },
-											  { "visibility": "simplified" }
-											]
-										  },{
-											"featureType": "road",
-											"stylers": [
-											  { "visibility": "on" }
-											]
-										  },{
-											"featureType": "water",
-											"stylers": [
-											  { "hue": "#0077ff" },
-											  { "saturation": -70 },
-											  { "visibility": "simplified" },
-											  { "lightness": -51 }
-											]
-										  },{
-											"featureType": "poi",
-											"stylers": [
-											  { "visibility": "simplified" }
-											]
-										  },{
-											"featureType": "road.highway",
-											"elementType": "labels.icon",
-											"stylers": [
-											  { "visibility": "off" }
-											]
-										  }
-										];
-									var myLatlng = new google.maps.LatLng(37.5177279637819,22.3811034455078);
-									var mapOptions = {
-										zoom: 12,
-										center: myLatlng,
-										scrollwheel: false,
-										mapTypeControl: true,
-										mapTypeControlOptions: {
-											style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-										},
-										zoomControl: true,
-										zoomControlOptions: {
-											style: google.maps.ZoomControlStyle.SMALL
-										},
-										styles: styles
-									}
-									var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-			
-									var marker = new google.maps.Marker({
-										position: myLatlng,
-										map: map,
-										title: 'Ακίνητο #477537',
-										options: {
-											draggable: false,
-											icon: image
-										},
-									});
-									
-									google.maps.event.addDomListener(window, 'resize', initialize);
-								}
-			
-								function loadScript() {
-									var script = document.createElement('script');
-									script.type = 'text/javascript';
-									script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=en&' + 'callback=initialize';
-									document.body.appendChild(script);
-								}
-								window.onclick= loadScript;
-							</script>
-							<div id="map_canvas" style="width:100%;height:293px;background:#DDDDDD;"></div>
-					</section>
-				</div>
-			  </div>
+              <!-- </div> -->
+
+              <!-- Insert new section -->
+
             </div>
 
           </div>
