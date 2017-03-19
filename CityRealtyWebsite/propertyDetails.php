@@ -360,7 +360,8 @@ session_start();
                     <table>
                       <tr>
                         <th class="field">Τιμή</th>
-                        <th><label class="value" id="Price">450,000</label><label class="value" id="Currency">EUR</label></th>
+                        <th><label class="value" id="Price">450,000</label></th>
+                        <th><label class="value" id="Currency">EUR</label></th>
                       </tr>
                       <tr>
                         <th class="field">Εμβαδόν (τ.μ.)</th>
