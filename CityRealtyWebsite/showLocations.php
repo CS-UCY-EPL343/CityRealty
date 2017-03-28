@@ -3,7 +3,7 @@ if (isset($_POST['section'])) {
 	$example1 = $_POST['section'];
 
 
-	$conn = mysqli_connect("localhost", "CityRealty", "QKSH7XJws7MCpxWR", "CityRealty");
+	$conn = mysqli_connect("localhost", "USERNAME", "PASSWORD", "DATABASE");
 
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
