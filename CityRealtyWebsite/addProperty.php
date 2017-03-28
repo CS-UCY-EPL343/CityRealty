@@ -4,6 +4,7 @@ ini_set('display_errors', 1);
 session_start();
 
 $conn = mysqli_connect("localhost", "CityRealty", "QKSH7XJws7MCpxWR", "CityRealty");
+mysqli_query($conn,"SET NAMES utf8");
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -16,7 +17,7 @@ if(isset($_POST['send']))
     $area_tm = $_POST['area_tm'];
     $acountry = $_POST['acountry'];
     $apostal_code = $_POST['apostal_code'];
-	$aregion_code = $_POST['aregion_code'];
+	  $aregion_code = $_POST['aregion_code'];
     $registration_title_no = $_POST['registration_title_no'];
     $piece_no = $_POST['piece_no'];
     $folder_no = $_POST['folder_no'];
@@ -31,7 +32,6 @@ if(isset($_POST['send']))
     $corner = $_POST['corner'];
     $zone = $_POST['zone'];
     $available_from = $_POST['available_from'];
-    $status = $_POST['status'];
     $date_added = $_POST['date_added'];
     $registration_purpose = $_POST['registration_purpose'];
     $price = $_POST['price'];
@@ -64,18 +64,18 @@ if(isset($_POST['send']))
     $transfer_cost= $_POST['transfer_cost'];
     $transfer_vat= $_POST['transfer_vat'];
     $consideration_exchange= $_POST['consideration_exchange'];
+                        
 
-
-$sql = "INSERT INTO RealEstate(AStreetNo, AStreet, Acity, AreaTM, Country, APostalCode, ARegionCode,RegistrationTitleNo, PieceNo, FolderNo, ArithmosFilSxed, ArithmosAdOik, LegalControl,
-InitialPrice, EstimatedPrice, MortgageLoan, ObjectiveValue, FinalPrice,Corner, AvailableFrom, Status, DateRegistered, RegistrationPurpose, Price, Currency, PricePerTM, TM, VAT,
-ShortDescription, Description, AboutRenting, RecommendedBy, Rating, RegistartionTitle, OwnerID, OwnerRating, AgentRating, OrderCode, TypeCode, Exclusive, OrderStart,
+$sql = "INSERT INTO RealEstate (AStreetNo, AStreet, Acity, AreaTM, ACountry, APostalCode, ARegionCode,RegistrationTitleNo, PieceNo, FolderNo, ArithmosFilSxed, ArithmosAdOik, LegalControl,
+InitialPrice, EstimatedPrice, MortgageLoan, ObjectiveValue, FinalPrice,Corner,Zone, AvailableFrom, DateRegistered, RegistrationPurpose, Price, Currency, PricePerTM, TM, VAT,
+ShortDescription, Description, AboutRenting, RecommendedBy, Rating, RegistrationTitle, OwnerID, OwnerRating, AgentRating, OrderCode, TypeOrder, Exclusive, OrderStart,
 OrderStop, Category, Notes, NotifyColleague, AgentUsername, RealEstateStatus, AgentRewardPercentage, AgentReward, ViewAddress,TransferCost, TransferVAT, ConsiderationExchange)
-VALUES ('$astreet_no', '$astreet', '$acity', '$area_tm', '$acountry', '$apostal_code', '$aregion_code','$registration_title_no', '$piece_no', '$folder_no', '$blueprint_no', '$arithmos_ad_oik', '$legal_control', '$initial_price', '$estimated_price', '$mortage_loan', '$objective_value', '$final_price','$corner', $zone', '$available_from', '$status','$date_added', 
+VALUES ('$astreet_no', '$astreet', '$acity', '$area_tm', '$acountry', '$apostal_code', '$aregion_code','$registration_title_no', '$piece_no', '$folder_no', '$blueprint_no', '$arithmos_ad_oik', '$legal_control', '$initial_price', '$estimated_price', '$mortage_loan', '$objective_value', '$final_price','$corner', '$zone', '$available_from','$date_added', 
 '$registration_purpose', '$price', '$currency', '$price_per_tm', '$tm', '$vat', '$short_desc', '$desc', '$about_renting', '$recommended_by', '$rating', '$registration_title', '$owner_id', 
 '$owner_rating', '$agent_rating', '$order_code', '$type_order', '$exclusive','$order_start', '$order_stop','$category', '$notes', '$notify_colleague', '$username', '$realestate_status', '$agent_reward_percentage', '$agent_reward', '$view_address','$transfer_cost', '$transfer_vat', '$consideration_exchange')";
 
 $result = mysqli_query($conn,$sql)
-  or die("Error: ".mysqli_error($conn));
+  or die("Error: !".mysqli_error($conn));
 
 mysqli_close($conn);
 }
