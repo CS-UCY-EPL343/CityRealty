@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -37,19 +40,19 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.html">Broker Page</a>
+					<a class="navbar-brand">Ημερολόγιο</a>
 				</div>
 				<!-- Top Menu Items -->
 				<ul class="nav navbar-right top-nav">
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Broker's Name <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['id']; ?> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="profile.html"><i class="fa fa-fw fa-user"></i>Προφίλ</a>
+								<a href="profile_broker.php"><i class="fa fa-fw fa-user"></i>Προφίλ</a>
 							</li>
 							<li class="divider"></li>
 							<li>
-								<a href="index.html"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+								<a href="logout_inc.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
 							</li>
 						</ul>
 					</li>
@@ -58,14 +61,14 @@
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav side-nav">
 						<li>
-							<a href="broker_manage.html"><i class="fa fa-fw fa-edit"></i>Διαχείριση Ακινήτων</a>
+							<a href="broker_manage.php"><i class="fa fa-fw fa-edit"></i>Διαχείριση Ακινήτων</a>
 							
 						</li>
 						<li>
-							<a href="AddProperty.html"><i class="fa fa-fw fa-home"></i>Προσθήκη νέου ακινήτου</a>
+							<a href="AddPropertyForm.php"><i class="fa fa-fw fa-home"></i>Προσθήκη νέου ακινήτου</a>
 						</li>
 						<li>
-							<a href="calendar_broker.html"><i class="fa fa-fw fa-calendar"></i>Ημερολόγιο</a>
+							<a href="calendar_broker.php"><i class="fa fa-fw fa-calendar"></i>Ημερολόγιο</a>
 						</li>
 
 					</ul>
