@@ -4,26 +4,30 @@ session_start();
 $reid = $_GET['reid'];
 $conn = mysqli_connect("localhost", "CityRealty", "QKSH7XJws7MCpxWR", "CityRealty");
 if (!$conn) {
-	die("Connection failed: " . mysqli_connect_error());
+die("Connection failed: " . mysqli_connect_error());
 }
 mysqli_query($conn, "SET NAMES utf8");
 $sql = "SELECT * FROM RealEstate WHERE RealEstateNo=$reid";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
-if ($row['ACity'] == "Λευκωσία") {
-	$sql2 = "SELECT RegionName FROM CityNicosia WHERE RegionCode=" . $row['ARegionCode'];
-} elseif ($row['ACity'] == "Πάφος") {
-	$sql2 = "SELECT RegionName FROM CityPafos WHERE RegionCode=" . $row['ARegionCode'];
-} elseif ($row['ACity'] == "Λάρνακα") {
-	$sql2 = "SELECT RegionName FROM CityLarnaca WHERE RegionCode=" . $row['ARegionCode'];
-} elseif ($row['ACity'] == "Λεμεσός") {
-	$sql2 = "SELECT RegionName FROM CityLimassol WHERE RegionCode=" . $row['ARegionCode'];
-} elseif ($row['ACity'] == "Αμμόχωστος") {
-	$sql2 = "SELECT RegionName FROM CityFamagusta WHERE RegionCode=" . $row['ARegionCode'];
+if ($row['ACity']=="Λευκωσία") {
+$sql2 =  "SELECT RegionName FROM CityNicosia WHERE RegionCode=".$row['ARegionCode'];
+}
+elseif ($row['ACity']=="Πάφος") {
+$sql2 =  "SELECT RegionName FROM CityPafos WHERE RegionCode=".$row['ARegionCode'];
+}
+elseif ($row['ACity']=="Λάρνακα") {
+$sql2 =  "SELECT RegionName FROM CityLarnaca WHERE RegionCode=".$row['ARegionCode'];
+}
+elseif ($row['ACity']=="Λεμεσός") {
+$sql2 =  "SELECT RegionName FROM CityLimassol WHERE RegionCode=".$row['ARegionCode'];
+}
+elseif ($row['ACity']=="Αμμόχωστος") {
+$sql2 =  "SELECT RegionName FROM CityFamagusta WHERE RegionCode=".$row['ARegionCode'];
 }
 $result2 = mysqli_query($conn, $sql2);
 $row2 = mysqli_fetch_assoc($result2);
-$sql3 = "SELECT ViewNo FROM REView WHERE RealEstateNo=$reid";
+$sql3 =  "SELECT ViewNo FROM REView WHERE RealEstateNo=$reid";
 $result3 = mysqli_query($conn, $sql3);
 ?>
 
@@ -281,25 +285,25 @@ $result3 = mysqli_query($conn, $sql3);
 
 					<?php
 					if (isset($_SESSION['errormessage'])) {
-						echo "
+					echo "
 					<script type='text/javascript'>
 myFunction();
 					</script>";
-						unset($_SESSION['errormessage']);
+					unset($_SESSION['errormessage']);
 					}
 					if (isset($_SESSION['errorlogin'])) {
-						echo "
+					echo "
 					<script type='text/javascript'>
 myFunction2();
 					</script>";
-						unset($_SESSION['errorlogin']);
+					unset($_SESSION['errorlogin']);
 					}
 					if (isset($_SESSION['signedup'])) {
-						echo "
+					echo "
 					<script type='text/javascript'>
 myFunction3();
 					</script>";
-						unset($_SESSION['signedup']);
+					unset($_SESSION['signedup']);
 					}
 					?>
 				</ul>
@@ -308,7 +312,7 @@ myFunction3();
 
 					<?php
 					if (!isset($_SESSION['id'])) {
-						echo "
+					echo "
 					<li class='dropdown'>
 						<a href='javascript:void(0)' class='dropbtn' onclick='DropDownFunction()' style='color: #FFCC00'><span class='glyphicon glyphicon-user' aria-hidden='true'></span> SignUp</a>
 						<div class='dropdown-content' id='myDropdown'>
@@ -319,7 +323,7 @@ myFunction3();
 					<li>
 
 						<a href='#LogIn-modal' data-toggle='modal' data-target='#my-logInmodal-sm' style='color: #FFCC00'>Log in</a>";
-					} else {
+						} else {
 						echo "
 					<li>
 						<a href='#' style='color: #FFCC00'>" . $_SESSION['id'] . "</a>
@@ -406,6 +410,645 @@ myFunction3();
 				<div style="clear:both"></div>
 				<div id="content">
 					<div id="mainwrap">
+						<ul id="menu">
+							<!-- Real Estate details -->
+							<div>
+								<li>
+									<a class="tabs" href="#RealEstateTab" title="Tab1">Πληροφορίες Ακινήτου</a>
+								</li>
+							</div>
+							<!-- Extra details -->
+							<div>
+								<li>
+									<a class="tabs" href="#tabs" title="Tab2">Λεπτομέρειες και Χαρακτηριστικά</a>
+								</li>
+							</div>
+						</ul>
+
+						<!-- Start of first tab : RealEstate -->
+						<div style="clear:both"></div>
+						<div id="RealEstateTab" class="section">
+							<div class="column col3">
+
+								<h3 class="fieldGroup">Βασικές Πληροφορίες</h3>
+								<ul id="menu2">
+									<li style="color: #008c99">
+										Βασικές Πληροφορίες Ακινήτου
+										<table>
+											<tr>
+												<th class="field">Κωδικός ακινήτου</th>
+												<th class="value"><label class="value" id="RealEstateNo">12345678</label></th>
+											</tr>
+											<tr>
+												<th class="field" id="Category">Κατηγορία</th>
+												<th class="value"><label class="value">Γη</label></th>
+											</tr>
+											<tr>
+												<th class="field">Σκοπός εγγραφής ακινήτου</th>
+												<th class="value"><label class="value" id="RegistrationPurpose">Πώληση</label></th>
+											</tr>
+										</table>
+									</li>
+
+									<li style="color: #008c99">
+										Μετρικές ακινήτου
+										<table>
+											<tr>
+												<th class="field">Τιμή</th>
+												<th class="value"><label class="value" id="Price">450,000</label><label class="value" id="Currency">EUR</label></th>
+											</tr>
+											<tr>
+												<th class="field">Εμβαδόν (τ.μ.)</th>
+												<th class="value"><label class="value" id="AreaTM">300</label></th>
+											</tr>
+											<tr>
+												<th class="field">ΦΠΑ (%)</th>
+												<th class="value"><label class="value" id="VAT">0.19</label></th>
+											</tr>
+										</table>
+									</li>
+								</ul>
+
+								<h3 class="fieldGroup">Γενικά Στοιχεία</h3>
+								<ul id="menu2">
+									<li style="color: #008c99">
+										Γενικές πληροφορίες σχετικά με το συγκεκριμένο ακίνητο
+										<table>
+											<tr>
+												<th class="field">Ημερομηνία Καταχώρισης</th>
+												<th class="value"><label class="value" id="DateRegistered">07/07/2007</label></th>
+											</tr>
+											<tr>
+												<th class="field">Διαθεσιμότητα από</th>
+												<th class="value"><label class="value" id="AvailableFrom">07/08/2007</label></th>
+											</tr>
+										</table>
+									</li>
+									<li style="color: #008c99">
+										Τεχνικές πληροφορίες
+										<table>
+											<tr>
+												<th class="field">Νομικός Έλεγχος</th>
+												<th class="value"><label class="value" id="LegalControl">Ναι</label></th>
+											</tr>
+											<tr>
+												<th class="field">Τίτλος Εγγραφής</th>
+												<th class="value"><label class="value" id="RegistrationTitle">Ναι</label></th>
+											</tr>
+										</table>
+									</li>
+									<li style="color: #008c99">
+										Άλλα στοιχεία
+										<table>
+											<tr>
+												<th class="field">Αντιπαροχή/Ανταλλαγή</th>
+												<th class="value"><label class="value" id="ConsiderationExchange">Ναι</label></th>
+											</tr>
+											<tr>
+												<th class="field">Υποθήκη/Δάνειο</th>
+												<th class="value"><label class="value" id="MortgageLoan">Όχι</label></th>
+											</tr>
+										</table>
+									</li>
+								</ul>
+
+								<h3 class="fieldGroup">Γενική περιγραφή</h3>
+								<ul id="menu2">
+									<li style="color: #008c99">
+										Στοιχεία σχετικά με τη γενική περιγραφή ακινήτου
+										<table>
+											<tr>
+												<th class="field">Κατάσταση ακινήτου</th>
+												<th class="value"><label class="value" id="RealEstateStatus">Μεγάλη περιγραφή που θα δωθεί από τον μεσίτη</label></th>
+											</tr>
+											<tr>
+												<th class="field">Θέα</th>
+												<th class="value"><label class="value" id="View">Υπέροχη, Κεντρική, Πάρκο</label></th>
+											</tr>
+											<tr>
+												<th class="field">Γωνιακό</th>
+												<th class="value"><label class="value" id="Corner">Ναι</label></th>
+											</tr>
+											<tr>
+												<th class="field">Αναλυτική Περιγραφή</th>
+												<th class="value"><label class="value" id="Description">Αναλυτική μεγάλη περιγραφή</label></th>
+											</tr>
+										</table>
+									</li>
+								</ul>
+
+								<h3 class="fieldGroup">Τοποθεσία</h3>
+								<ul id="menu2">
+									<li style="color: #008c99">
+										Τοποθεσία ακινήτου
+										<table>
+											<tr>
+												<th class="field">Πόλη</th>
+												<th class="value"><label class="value" id="ACity">Λευκωσία</label></th>
+											</tr>
+											<tr>
+												<th class="field">Περιοχή</th>
+												<th class="value"><label class="value" id="ARegion">Άγιος Δομέτιος</label></th>
+											</tr>
+											<tr>
+												<th class="field">Διεύθυνση</th>
+												<th class="value"><label class="value" id="ViewAddress">Διεύθυνση σε περιγραφή (αν την συμπληρώσει ο μεσίτης)</label></th>
+											</tr>
+										</table>
+									</li>
+								</ul>
+
+								<!-- New Map Code -->
+								<div class="row">
+									<div class="small-12 columns" >
+										<section id="map">
+											<h3 class="fieldGroup"><i class="fa fa-map-marker fieldGroup"></i> Χάρτης Τοποθεσίας <small class="hide" itemscope itemtype="http://schema.org/GeoCoordinates"><span class="latitude" itemprop="latitude">37.5177279637819</span>, <span class="longitude" itemprop="longitude">22.3811034455078</span></small></h3>
+											<script>
+												function initialize() {
+													var image = new google.maps.MarkerImage('/wp-content/themes/omega/img/marker.png', new google.maps.Size(48, 32), new google.maps.Point(0, 0), new google.maps.Point(24, 32));
+													var styles = [{
+														"stylers" : [{
+															"lightness" : -5
+														}, {
+															"saturation" : -39
+														}, {
+															"hue" : "#ff8800"
+														}]
+													}, {
+														"featureType" : "road",
+														"elementType" : "geometry",
+														"stylers" : [{
+															"lightness" : 100
+														}, {
+															"visibility" : "simplified"
+														}]
+													}, {
+														"featureType" : "road",
+														"stylers" : [{
+															"visibility" : "on"
+														}]
+													}, {
+														"featureType" : "water",
+														"stylers" : [{
+															"hue" : "#0077ff"
+														}, {
+															"saturation" : -70
+														}, {
+															"visibility" : "simplified"
+														}, {
+															"lightness" : -51
+														}]
+													}, {
+														"featureType" : "poi",
+														"stylers" : [{
+															"visibility" : "simplified"
+														}]
+													}, {
+														"featureType" : "road.highway",
+														"elementType" : "labels.icon",
+														"stylers" : [{
+															"visibility" : "off"
+														}]
+													}];
+													var myLatlng = new google.maps.LatLng(37.5177279637819, 22.3811034455078);
+													var mapOptions = {
+														zoom : 12,
+														center : myLatlng,
+														scrollwheel : false,
+														mapTypeControl : true,
+														mapTypeControlOptions : {
+															style : google.maps.MapTypeControlStyle.DROPDOWN_MENU
+														},
+														zoomControl : true,
+														zoomControlOptions : {
+															style : google.maps.ZoomControlStyle.SMALL
+														},
+														styles : styles
+													}
+													var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+													var marker = new google.maps.Marker({
+														position : myLatlng,
+														map : map,
+														title : 'Ακίνητο #477537',
+														options : {
+															draggable : false,
+															icon : image
+														},
+													});
+
+													google.maps.event.addDomListener(window, 'resize', initialize);
+												}
+
+												function loadScript() {
+													var script = document.createElement('script');
+													script.type = 'text/javascript';
+													script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=en&' + 'callback=initialize';
+													document.body.appendChild(script);
+												}
+
+												loadScript();
+											</script>
+											<div id="map_canvas" style="width:100%;height:293px;background:#DDDDDD;"></div>
+										</section>
+									</div>
+								</div>
+								<!-- End of Map Section -->
+
+							</div>
+						</div>
+						<!-- End of first tab -->
+
+						<!-- Start of second tab -->
+						<div style="clear:both"></div>
+						<div id="tabs" class="section">
+							<!-- Start of section : Land -->
+							<div id="LandTab">
+								<div class="column col4">
+									<h3 class="fieldGroup">Βασικές Πληροφορίες Γης</h3>
+									<ul id="menu7">
+										<li style="color: #008c99">
+											Βασικές πληροφορίες που αφορούν το ακίνητο σε μορφή γης
+											<table>
+												<tr>
+													<th class="field">Τύπος Γης</th>
+													<th class="value"><label class="value" id="LandType">Οικιστικό οικόπεδο</label></th>
+												</tr>
+												<tr>
+													<th class="field">Επενδυτική έκταση</th>
+													<th class="value"><label class="value" id="InvestmentField">nai</label></th>
+												</tr>
+												<tr>
+													<th class="field">Σχέδιο πόλεως</th>
+													<th class="value"><label class="value" id="CityPlan">Εντός σχεδίου</label></th>
+												</tr>
+												<tr>
+													<th class="field">Αριθμός Οικοπέδων</th>
+													<th class="value"><label class="value" id="NumOfPlots">2</label></th>
+												</tr>
+											</table>
+										</li>
+									</ul>
+
+									<h3 class="fieldGroup">Μετρικές Γης</h3>
+									<ul id="menu7">
+										<li style="color: #008c99">
+											Διαστάσεις
+											<table>
+												<tr>
+													<th class="field">Πρόσοψη (m)</th>
+													<th class="value"><label class="value" id="Front">15</label></th>
+												</tr>
+												<tr>
+													<th class="field">Βάθος (m)</th>
+													<th class="value"><label class="value" id="Depth">13</label></th>
+												</tr>
+											</table>
+										</li>
+										<li style="color: #008c99">
+											Μετρικές στοιχείων της γης
+											<table>
+												<tr>
+													<th class="field">Τ.Μ. Γης</th>
+													<th class="value"><label class="value" id="TMLand">1000.70</label></th>
+												</tr>
+												<tr>
+													<th class="field">Με κτίσμα</th>
+													<th class="value"><label class="value" id="BuildIn">Ναι</label></th>
+												</tr>
+												<tr>
+													<th class="field">Τ.Μ. Κτίσματος</th>
+													<th class="value"><label class="value" id="TMBuilding">20.3</label></th>
+												</tr>
+												<tr>
+													<th class="field">Δόμηση (τ.μ.)</th>
+													<th class="value"><label class="value" id="Built">10.5</label></th>
+												</tr>
+												<tr>
+													<th class="field">Υπόλοιπο Δόμησης</th>
+													<th class="value"><label class="value" id="NotBuilt">320590.23</label></th>
+												</tr>
+												<tr>
+													<th class="field">ΣΔ (%)</th>
+													<th class="value"><label class="value" id="SD">10.3</label></th>
+												</tr>
+												<tr>
+													<th class="field">ΣΚ (%)</th>
+													<th class="value"><label class="value" id="SK">2.4</label></th>
+												</tr>
+												<tr>
+													<th class="field">Α.Ο.Τ.</th>
+													<th class="value"><label class="value" id="AOT">Perigrafi...</label></th>
+												</tr>
+											</table>
+										</li>
+									</ul>
+
+									<h3 class="fieldGroup">Χαρακτηριστικά Γης</h3>
+									<ul id="menu7">
+										<li style="color: #008c99">
+											Πληροφορίες σχετικά με διάφορα χαρακτηριστικά της γης
+											<table>
+												<tr>
+													<th class="field">Χρήση Γης</th>
+													<th class="value"><label class="value" id="LUse">Οικοδομήσιμο, Τουριστική εκμετάλλευση</label></th>
+												</tr>
+												<tr>
+													<th class="field">Επιπλέον χαρακτηριστικά</th>
+													<th class="value"><label class="value" id="LDetails">Ορθογώνιο, Επίπεδο, Περιφραγμένο</label></th>
+												</tr>
+											</table>
+										</li>
+									</ul>
+
+								</div>
+							</div>
+							<!-- End : Land -->
+
+							<!-- Start : Building -->
+							<div id="BuildingTab">
+								<div class="column col4">
+									<h3 class="fieldGroup">Βασικές Πληροφορίες Κτιρίου</h3>
+									<ul id="menu7">
+										<li style="color: #008c99">
+											Βασικές πληροφορίες που αφορούν το ακίνητο σε μορφή κτιρίου
+											<table>
+												<tr>
+													<th class="field">Τύπος Κτιρίου</th><!-- From RealEstate -->
+													<th class="value"><label class="value" id="Category">απο ριαλ εστειτ</label></th>
+												</tr>
+												<tr>
+													<th class="field">Υπό Κατασκευή</th>
+													<th class="value"><label class="value" id="UnderConstruction">Ναι</label></th>
+												</tr>
+												<tr>
+													<th class="field">Έτος Κατασκευής</th>
+													<th class="value"><label class="value" id="ConstructionYear">2017</label></th>
+												</tr>
+												<tr>
+													<th class="field">Ανακαινισμένο</th>
+													<th class="value"><label class="value" id="Renovated">2017</label></th>
+												</tr>
+												<tr>
+													<th class="field">Έτος Ανακαίνισης</th>
+													<th class="value"><label class="value" id="RenovationYear">2017</label></th>
+												</tr>
+												<tr>
+													<th class="field">Αριθμός Επιπέδων</th>
+													<th class="value"><label class="value" id="Levels">2</label></th>
+												</tr>
+												<tr>
+													<th class="field">Αριθμός Ορόφων</th>
+													<th class="value"><label class="value" id="NumOfFloors">3</label></th>
+												</tr>
+											</table>
+										</li>
+									</ul>
+
+									<h3 class="fieldGroup">Λεπτομέρειες Κτιρίου</h3>
+									<ul id="menu7">
+										<li style="color: #008c99">
+											Λεπτομέρειες εγκαταστάσεων για το παρόν κτίριο
+											<table>
+												<tr>
+													<th class="field">Αριθμός από Παρκινγκ</th>
+													<th class="value"><label class="value" id="ParkingSpots">3</label></th>
+												</tr>
+												<tr>
+													<th class="field">Αριθμός Χώρων</th>
+													<th class="value"><label class="value" id="NumOfRooms">3</label></th>
+												</tr>
+												<tr>
+													<th class="field">Αριθμός WC</th>
+													<th class="value"><label class="value" id="NumOfWC">3</label></th>
+												</tr>
+											</table>
+										</li>
+										<li style="color: #008c99">
+											Λεπτομέρειες σχετικά με ενέργεια, θέρμανση και άλλα στοιχεία
+											<table>
+												<tr>
+													<th class="field">Ενεργειακό Πιστοποιητικό</th>
+													<th class="value"><label class="value" id="EnergyCertificate">ναι</label></th>
+												</tr>
+												<tr>
+													<th class="field">Τύπος Θέρμανσης</th>
+													<th class="value"><label class="value" id="HeatingFuel">ν</label></th>
+												</tr>
+												<tr>
+													<th class="field">Μέσο Θέρμανσης</th>
+													<th class="value"><label class="value" id="HeatingType">ι</label></th>
+												</tr>
+												<tr>
+													<th class="field">Αποχέτευση</th>
+													<th class="value"><label class="value" id="Drainage">ναι</label></th>
+												</tr>
+												<tr>
+													<th class="field">Μέσα μηνιαία κοινόχρηστα</th>
+													<th class="value"><label class="value" id="AvgSharedCosts">1</label></th>
+												</tr>
+											</table>
+										</li>
+									</ul>
+
+									<h3 class="fieldGroup">Χαρακτηριστικά Κτιρίου</h3>
+									<ul id="menu7">
+										<li style="color: #008c99">
+											Πληροφορίες σχετικά με διάφορα χαρακτηριστικά του κτιρίου
+											<table>
+												<tr>
+													<th class="field">Τύπος Δαπέδων</th>
+													<th class="value"><label class="value" id="FloorType"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Τύπος Κουφωμάτων</th>
+													<th class="value"><label class="value" id="Frames"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Πληροφορίες Τοποθεσίας</th>
+													<th class="value"><label class="value" id="LocationDetails"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Άλλα Χαρακτηριστικά</th>
+													<th class="value"><label class="value" id="BuildingDetails"></label></th>
+												</tr>
+											</table>
+										</li>
+									</ul>
+
+								</div>
+							</div>
+							<!-- End : Building -->
+
+							<!-- Start : Recidence -->
+							<div id="RecidenceTab">
+								<div class="column col3">
+
+									<h3 class="fieldGroup">Πληροφορίες Κατοικίας</h3>
+									<ul id="menu6">
+										<li style="color: #008c99">
+											Γενικές πληροφορίες
+											<table>
+												<tr>
+													<th class="field">Τύπος Κατοικίας</th>
+													<th class="value"><label class="value" id="ResidenceType"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Επιπλωμένο</th>
+													<th class="value"><label class="value" id="Furnished">ναι</label></th>
+												</tr>
+											</table>
+										</li>
+										<li style="color: #008c99">
+											Λεπτομέρειες σχετικά με τους χώρους της κατοικίας
+											<table>
+												<tr>
+													<th class="field">Αριθμός Υπνοδωματίων</th>
+													<th class="value"><label class="value" id="TotalBedrooms"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Αριθμός Κυρίων Υπνοδωματίων</th>
+													<th class="value"><label class="value" id="MasterBedroom"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Αριθμός Σαλονιών</th>
+													<th class="value"><label class="value" id="LivingRooms"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Αριθμός Κουζίνων</th>
+													<th class="value"><label class="value" id="Kitchen"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Αριθμός Μπάνιων</th>
+													<th class="value"><label class="value" id="Bathrooms"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Εμβαδόν Μπαλκονιών</th>
+													<th class="value"><label class="value" id="BalconyArea"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Εμβαδόν Ταράτσας Ιδιοκτήτη (τ.μ.)</th>
+													<th class="value"><label class="value" id="RooftopArea"></label></th>
+												</tr>
+											</table>
+										</li>
+									</ul>
+
+								</div>
+							</div>
+							<!-- End : Recidence -->
+
+							<!-- Start : Office -->
+							<div style="clear:both"></div>
+							<div id="OfficeTab">
+								<div class="column col3">
+
+									<h3 class="fieldGroup">Πληροφορίες Επαγγελματικού Χώρου</h3>
+									<ul id="menu6">
+										<li style="color: #008c99">
+											Βασικές πληροφορίες που αφορούν τον συγκεκριμένο επαγγελματικό χώρο
+											<table>
+												<tr>
+													<th class="field">Τύπος Επαγγελματικού Χώρου</th>
+													<th class="value"><label class="value" id="OfficeType"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Επενδυτικό</th>
+													<th class="value"><label class="value" id="Investment">ναι</label></th>
+												</tr>
+												<tr>
+													<th class="field">Με εξοπλισμό</th>
+													<th class="value"><label class="value" id="EquipmentIncluded">ναι</label></th>
+												</tr>
+											</table>
+										</li>
+										<li style="color: #008c99">
+											Γενικές πληροφορίες σχετικά με το κτίριο του επαγγελματικού χώρου
+											<table>
+												<tr>
+													<th class="field">Αριθμός Ορόφων</th>
+													<th class="value"><label class="value" id="NumOfFloors"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Τ.Μ. Αναδομής</th>
+													<th class="value"><label class="value" id="SurfaceArea"></label></th>
+												</tr>
+											</table>
+										</li>
+									</ul>
+
+									<h3 class="fieldGroup">Περιγραφή Επαγγελματικού Χώρου</h3>
+									<ul id="menu6">
+										<li style="color: #008c99">
+											Χαρακτηριστικά και λεπτομέρειες περιγραφής και έκτασης του συγκεκριμένου επαγγελματικού χώρου
+											<table>
+												<tr>
+													<th class="field">Ισόγειο (τ.μ.)</th>
+													<th class="value"><label class="value" id="GroundFloorArea"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Αριθμός Εσωτερικών Χώρων</th>
+													<th class="value"><label class="value" id="NumOfSegments"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Βιτρίνα (τ.μ.)</th>
+													<th class="value"><label class="value" id="StoreFrontArea"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Αριθμός Υπογείων</th>
+													<th class="value"><label class="value" id="NumOfBasements"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Υπόγεια (τ.μ.)</th>
+													<th class="value"><label class="value" id="BasementArea"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Πατάρι (τ.μ.)</th>
+													<th class="value"><label class="value" id="LoftArea"></label></th>
+												</tr>
+											</table>
+										</li>
+									</ul>
+
+									<h3 class="fieldGroup">Πληροφορίες Κόστους</h3>
+									<ul id="menu6">
+										<li style="color: #008c99">
+											Πληροφορίες σχετικά με το κόστος χρήσης του συγκεκριμένου επαγγελματικού χώρου
+											<table>
+												<tr>
+													<th class="field">Ενοίκιο Ετησίως</th>
+													<th class="value"><label class="value" id="AnnualRent"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Μικτή Απόδοση Ετησίως</th>
+													<th class="value"><label class="value" id="AnnualGrossReturn"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Καθαρή Απόδοση Ετησίως</th>
+													<th class="value"><label class="value" id="AnnualNetReturn"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Ετήσια Έξοδα</th>
+													<th class="value"><label class="value" id="AnnualExpenses"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Αναπ/γη Έτους</th>
+													<th class="value"><label class="value" id="AnnualProduction"></label></th>
+												</tr>
+												<tr>
+													<th class="field">Τιμή Αέρα</th>
+													<th class="value"><label class="value" id="AirPrice"></label></th>
+												</tr>
+											</table>
+										</li>
+									</ul>
+
+								</div>
+							</div>
+							<!-- End : Office -->
+
+						</div>
+						<!-- End of second tab -->
 					</div>
 				</div>
 				<!-- /.row -->
