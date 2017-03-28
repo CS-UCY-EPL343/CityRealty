@@ -81,6 +81,76 @@ $result3 = mysqli_query($conn, $sql3);
 				width: 100%
 			}
 
+			#menu {
+				overflow: hidden;
+			}
+			#menu li {
+				display: block;
+				position: relative;
+				float: left;
+			}
+			#menu li:first-child {
+				margin-left: 0px;
+			}
+			#menu li:last-child {
+				margin-left: 100px;
+			}
+			#menu li a {
+				display: block;
+				color: #333;
+				font-size: 18px;
+				text-align: center;
+				text-decoration: none;
+				text-transform: uppercase;
+			}
+			#menu li span {
+				display: none;
+			}
+			#menu li.active span {
+				display: block;
+				position: absolute;
+				width: 100%;
+				text-align: center;
+			}
+			#menu li.active a {
+				background-color: #c03e62;
+				outline: #FFF;
+				outline-style: dashed;
+				color: #CCC;
+				text-decoration: none;
+			}
+			#menu li a:hover {
+				text-decoration: none;
+				background-image: none;
+				background-color: #c03e62;
+				outline: #FFF;
+			}
+		</style>
+
+		<!--Dropdown style-->
+		<style>
+			.dropdown-content {
+				list-style: none;
+				display: none;
+				position: absolute;
+				background-color: #f9f9f9;
+				min-width: 160px;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			}
+			.dropdown-content a {
+				color: #337ab7;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+				text-align: left;
+			}
+			.dropdown-content a:hover {
+				background-color: #f1f1f1
+			}
+			.dropdown:hover .dropdown-content {
+				display: block;
+			}
+
 			#content #mainwrap #tabs .column.col3 #title2 #title3 #title4 h2 {
 				font-family: Arial, Helvetica, sans-serif;
 				font-size: 26em;
@@ -159,76 +229,6 @@ $result3 = mysqli_query($conn, $sql3);
 
 			#RealEstateTab #tabs {
 				overflow-y: scroll;
-			}
-
-			#menu {
-				overflow: hidden;
-			}
-			#menu li {
-				display: block;
-				position: relative;
-				float: left;
-			}
-			#menu li:first-child {
-				margin-left: 0px;
-			}
-			#menu li:last-child {
-				margin-left: 100px;
-			}
-			#menu li a {
-				display: block;
-				color: #333;
-				font-size: 18px;
-				text-align: center;
-				text-decoration: none;
-				text-transform: uppercase;
-			}
-			#menu li span {
-				display: none;
-			}
-			#menu li.active span {
-				display: block;
-				position: absolute;
-				width: 100%;
-				text-align: center;
-			}
-			#menu li.active a {
-				background-color: #c03e62;
-				outline: #FFF;
-				outline-style: dashed;
-				color: #CCC;
-				text-decoration: none;
-			}
-			#menu li a:hover {
-				text-decoration: none;
-				background-image: none;
-				background-color: #c03e62;
-				outline: #FFF;
-			}
-		</style>
-
-		<!--Dropdown style-->
-		<style>
-			.dropdown-content {
-				list-style: none;
-				display: none;
-				position: absolute;
-				background-color: #f9f9f9;
-				min-width: 160px;
-				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-			}
-			.dropdown-content a {
-				color: #337ab7;
-				padding: 12px 16px;
-				text-decoration: none;
-				display: block;
-				text-align: left;
-			}
-			.dropdown-content a:hover {
-				background-color: #f1f1f1
-			}
-			.dropdown:hover .dropdown-content {
-				display: block;
 			}
 		</style>
 		<script>
@@ -351,7 +351,7 @@ myFunction3();
 			<!-- Page Heading/Breadcrumbs -->
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header" style="color: #c03e62;text-shadow: 1px 1px 1px #000000;">Ακίνητο<small style="color: #c03e62;text-shadow: 1px 1px 1px #000000;"> #<?php echo $_GET['reid']; ?></small></h1>
+					<h1 class="page-header" style="color: #c03e62;text-shadow: 1px 1px 1px #000000;">Πληροφορίες Ακινήτου<small style="color: #c03e62;text-shadow: 1px 1px 1px #000000;"> #<?php echo $_GET['reid']; ?></small></h1>
 					<ol class="breadcrumb">
 						<li>
 							<a href="index.php" style="color: #008c99">Home</a>
@@ -370,6 +370,7 @@ myFunction3();
 			<!-- Portfolio Item Row -->
 			<div class="row">
 
+				<!-- Photo carousel -->
 				<div class="col-md-8">
 					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 						<!-- Indicators -->
@@ -402,7 +403,7 @@ myFunction3();
 				<div class="col-md-4">
 					<h3 style="color: #c03e62;">Property Description</h3>
 					<p style="color: #008c99">
-						Description ...............
+						Short description / Very basics (or fill with photos?)
 					</p>
 				</div>
 
@@ -437,15 +438,15 @@ myFunction3();
 										<table>
 											<tr>
 												<th class="field">Κωδικός ακινήτου</th>
-												<th class="value"><label class="value" id="RealEstateNo">12345678</label></th>
+												<th class="value"><label class="value" id="RealEstateNo"><?php echo $row['RealEstateNo']; ?></label></th>
 											</tr>
 											<tr>
 												<th class="field" id="Category">Κατηγορία</th>
-												<th class="value"><label class="value">Γη</label></th>
+												<th class="value"><label class="value"><?php echo $row['Category']; ?></label></th>
 											</tr>
 											<tr>
-												<th class="field">Σκοπός εγγραφής ακινήτου</th>
-												<th class="value"><label class="value" id="RegistrationPurpose">Πώληση</label></th>
+												<th class="field">Σκοπός Εγγραφής Ακινήτου</th>
+												<th class="value"><label class="value" id="RegistrationPurpose"><?php echo $row['RegistrationPurpose']; ?></label></th>
 											</tr>
 										</table>
 									</li>
@@ -455,15 +456,15 @@ myFunction3();
 										<table>
 											<tr>
 												<th class="field">Τιμή</th>
-												<th class="value"><label class="value" id="Price">450,000</label><label class="value" id="Currency">EUR</label></th>
+												<th class="value"><label class="value" id="Price"><?php echo $row['Price']; ?></label><label class="value" id="Currency"><?php echo " ".$row['Currency']; ?></label></th>
 											</tr>
 											<tr>
 												<th class="field">Εμβαδόν (τ.μ.)</th>
-												<th class="value"><label class="value" id="AreaTM">300</label></th>
+												<th class="value"><label class="value" id="AreaTM"><?php echo $row['AreaTM']; ?></label></th>
 											</tr>
 											<tr>
 												<th class="field">ΦΠΑ (%)</th>
-												<th class="value"><label class="value" id="VAT">0.19</label></th>
+												<th class="value"><label class="value" id="VAT"><?php echo $row['VAT']; ?></label></th>
 											</tr>
 										</table>
 									</li>
@@ -476,11 +477,11 @@ myFunction3();
 										<table>
 											<tr>
 												<th class="field">Ημερομηνία Καταχώρισης</th>
-												<th class="value"><label class="value" id="DateRegistered">07/07/2007</label></th>
+												<th class="value"><label class="value" id="DateRegistered"><?php echo $row['DateRegistered']; ?></label></th>
 											</tr>
 											<tr>
 												<th class="field">Διαθεσιμότητα από</th>
-												<th class="value"><label class="value" id="AvailableFrom">07/08/2007</label></th>
+												<th class="value"><label class="value" id="AvailableFrom"><?php echo $row['AvailableFrom']; ?></label></th>
 											</tr>
 										</table>
 									</li>
@@ -489,11 +490,11 @@ myFunction3();
 										<table>
 											<tr>
 												<th class="field">Νομικός Έλεγχος</th>
-												<th class="value"><label class="value" id="LegalControl">Ναι</label></th>
+												<th class="value"><label class="value" id="LegalControl"><?php if ($row['LegalControl']==1) echo "Ναι"; else echo "Όχι"; ?></label></th>
 											</tr>
 											<tr>
 												<th class="field">Τίτλος Εγγραφής</th>
-												<th class="value"><label class="value" id="RegistrationTitle">Ναι</label></th>
+												<th class="value"><label class="value" id="RegistrationTitle"><?php if ($row['RegistrationTitle']==1) echo "Ναι"; else echo "Όχι"; ?></label></th>
 											</tr>
 										</table>
 									</li>
@@ -502,11 +503,11 @@ myFunction3();
 										<table>
 											<tr>
 												<th class="field">Αντιπαροχή/Ανταλλαγή</th>
-												<th class="value"><label class="value" id="ConsiderationExchange">Ναι</label></th>
+												<th class="value"><label class="value" id="ConsiderationExchange"><?php if ($row['ConsiderationExchange']==1) echo "Ναι"; else echo "Όχι"; ?></label></th>
 											</tr>
 											<tr>
 												<th class="field">Υποθήκη/Δάνειο</th>
-												<th class="value"><label class="value" id="MortgageLoan">Όχι</label></th>
+												<th class="value"><label class="value" id="MortgageLoan"><?php if ($row['MortgageLoan']==1) echo "Ναι"; else echo "Όχι"; ?></label></th>
 											</tr>
 										</table>
 									</li>
@@ -519,19 +520,23 @@ myFunction3();
 										<table>
 											<tr>
 												<th class="field">Κατάσταση ακινήτου</th>
-												<th class="value"><label class="value" id="RealEstateStatus">Μεγάλη περιγραφή που θα δωθεί από τον μεσίτη</label></th>
+												<th class="value"><label class="value" id="RealEstateStatus"><?php echo $row['RealEstateStatus']; ?></label></th>
 											</tr>
 											<tr>
 												<th class="field">Θέα</th>
-												<th class="value"><label class="value" id="View">Υπέροχη, Κεντρική, Πάρκο</label></th>
+												<th class="value"><label class="value" id="View"> <?php while($row3=mysqli_fetch_assoc($result3)) {
+													$sql4 = "SELECT Description FROM REViewChoices WHERE ViewNo=".$row3['ViewNo'];
+													$result4 = mysqli_query($conn, $sql4);
+													echo $row['Description']." ";
+													} ?> </label></th>
 											</tr>
 											<tr>
 												<th class="field">Γωνιακό</th>
-												<th class="value"><label class="value" id="Corner">Ναι</label></th>
+												<th class="value"><label class="value" id="Corner"><?php if ($row['Corner']==1) echo "Ναι"; else echo "Όχι"; ?></label></th>
 											</tr>
 											<tr>
 												<th class="field">Αναλυτική Περιγραφή</th>
-												<th class="value"><label class="value" id="Description">Αναλυτική μεγάλη περιγραφή</label></th>
+												<th class="value"><label class="value" id="Description"><?php echo $row['Description']; ?></label></th>
 											</tr>
 										</table>
 									</li>
@@ -544,15 +549,15 @@ myFunction3();
 										<table>
 											<tr>
 												<th class="field">Πόλη</th>
-												<th class="value"><label class="value" id="ACity">Λευκωσία</label></th>
+												<th class="value"><label class="value" id="ACity"><?php echo $row['ACity']; ?></label></th>
 											</tr>
 											<tr>
 												<th class="field">Περιοχή</th>
-												<th class="value"><label class="value" id="ARegion">Άγιος Δομέτιος</label></th>
+												<th class="value"><label class="value" id="ARegion"><?php echo $row2['RegionName']; ?></label></th>
 											</tr>
 											<tr>
 												<th class="field">Διεύθυνση</th>
-												<th class="value"><label class="value" id="ViewAddress">Διεύθυνση σε περιγραφή (αν την συμπληρώσει ο μεσίτης)</label></th>
+												<th class="value"><label class="value" id="ViewAddress"><?php echo $row['ViewAddress']; ?></label></th>
 											</tr>
 										</table>
 									</li>
@@ -672,19 +677,19 @@ myFunction3();
 											<table>
 												<tr>
 													<th class="field">Τύπος Γης</th>
-													<th class="value"><label class="value" id="LandType">Οικιστικό οικόπεδο</label></th>
+													<th class="value"><label class="value" id="LandType"><?php echo $row['LandType']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Επενδυτική έκταση</th>
-													<th class="value"><label class="value" id="InvestmentField">nai</label></th>
+													<th class="value"><label class="value" id="InvestmentField"><?php if ($row['InvestmentField']==1) echo "Ναι"; else echo "Όχι"; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Σχέδιο πόλεως</th>
-													<th class="value"><label class="value" id="CityPlan">Εντός σχεδίου</label></th>
+													<th class="value"><label class="value" id="CityPlan"><?php echo $row['CityPlan']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Αριθμός Οικοπέδων</th>
-													<th class="value"><label class="value" id="NumOfPlots">2</label></th>
+													<th class="value"><label class="value" id="NumOfPlots"><?php echo $row['NumOfPlots']; ?></label></th>
 												</tr>
 											</table>
 										</li>
@@ -697,11 +702,11 @@ myFunction3();
 											<table>
 												<tr>
 													<th class="field">Πρόσοψη (m)</th>
-													<th class="value"><label class="value" id="Front">15</label></th>
+													<th class="value"><label class="value" id="Front"><?php echo $row['Front']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Βάθος (m)</th>
-													<th class="value"><label class="value" id="Depth">13</label></th>
+													<th class="value"><label class="value" id="Depth"><?php echo $row['Depth']; ?></label></th>
 												</tr>
 											</table>
 										</li>
@@ -710,35 +715,35 @@ myFunction3();
 											<table>
 												<tr>
 													<th class="field">Τ.Μ. Γης</th>
-													<th class="value"><label class="value" id="TMLand">1000.70</label></th>
+													<th class="value"><label class="value" id="TMLand"><?php echo $row['TMLand']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Με κτίσμα</th>
-													<th class="value"><label class="value" id="BuildIn">Ναι</label></th>
+													<th class="value"><label class="value" id="BuildIn"><?php if ($row['BuildIn']==1) echo "Ναι"; else echo "Όχι"; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Τ.Μ. Κτίσματος</th>
-													<th class="value"><label class="value" id="TMBuilding">20.3</label></th>
+													<th class="value"><label class="value" id="TMBuilding"><?php echo $row['TMBuilding']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Δόμηση (τ.μ.)</th>
-													<th class="value"><label class="value" id="Built">10.5</label></th>
+													<th class="value"><label class="value" id="Built"><?php echo $row['Built']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Υπόλοιπο Δόμησης</th>
-													<th class="value"><label class="value" id="NotBuilt">320590.23</label></th>
+													<th class="value"><label class="value" id="NotBuilt"><?php echo $row['NotBuilt']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">ΣΔ (%)</th>
-													<th class="value"><label class="value" id="SD">10.3</label></th>
+													<th class="value"><label class="value" id="SD"><?php echo $row['SD']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">ΣΚ (%)</th>
-													<th class="value"><label class="value" id="SK">2.4</label></th>
+													<th class="value"><label class="value" id="SK"><?php echo $row['SK']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Α.Ο.Τ.</th>
-													<th class="value"><label class="value" id="AOT">Perigrafi...</label></th>
+													<th class="value"><label class="value" id="AOT"><?php echo $row['AOT']; ?></label></th>
 												</tr>
 											</table>
 										</li>
@@ -751,11 +756,19 @@ myFunction3();
 											<table>
 												<tr>
 													<th class="field">Χρήση Γης</th>
-													<th class="value"><label class="value" id="LUse">Οικοδομήσιμο, Τουριστική εκμετάλλευση</label></th>
+													<th class="value"><label class="value" id="LUse"> <?php while($row3=mysqli_fetch_assoc($result3)) {
+														$sql4 = "SELECT Description FROM LUseChoices WHERE UseNo=".$row3['UseNo'];
+														$result4 = mysqli_query($conn, $sql4);
+														echo $row['Description']." ";
+														} ?> </label></th>
 												</tr>
 												<tr>
 													<th class="field">Επιπλέον χαρακτηριστικά</th>
-													<th class="value"><label class="value" id="LDetails">Ορθογώνιο, Επίπεδο, Περιφραγμένο</label></th>
+													<th class="value"><label class="value" id="LDetails"> <?php while($row3=mysqli_fetch_assoc($result3)) {
+														$sql4 = "SELECT Description FROM LDetailsChoices WHERE DetailNo=".$row3['DetailNo'];
+														$result4 = mysqli_query($conn, $sql4);
+														echo $row['Description']." ";
+														} ?> </label></th>
 												</tr>
 											</table>
 										</li>
@@ -775,31 +788,31 @@ myFunction3();
 											<table>
 												<tr>
 													<th class="field">Τύπος Κτιρίου</th><!-- From RealEstate -->
-													<th class="value"><label class="value" id="Category">απο ριαλ εστειτ</label></th>
+													<th class="value"><label class="value" id="Category"><?php echo $row['Category']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Υπό Κατασκευή</th>
-													<th class="value"><label class="value" id="UnderConstruction">Ναι</label></th>
+													<th class="value"><label class="value" id="UnderConstruction"><?php if ($row['UnderConstruction']==1) echo "Ναι"; else echo "Όχι"; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Έτος Κατασκευής</th>
-													<th class="value"><label class="value" id="ConstructionYear">2017</label></th>
+													<th class="value"><label class="value" id="ConstructionYear"><?php echo $row['ConstructionYear']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Ανακαινισμένο</th>
-													<th class="value"><label class="value" id="Renovated">2017</label></th>
+													<th class="value"><label class="value" id="Renovated"><?php echo $row['Renovated']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Έτος Ανακαίνισης</th>
-													<th class="value"><label class="value" id="RenovationYear">2017</label></th>
+													<th class="value"><label class="value" id="RenovationYear"><?php echo $row['RenovationYear']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Αριθμός Επιπέδων</th>
-													<th class="value"><label class="value" id="Levels">2</label></th>
+													<th class="value"><label class="value" id="Levels"><?php echo $row['Levels']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Αριθμός Ορόφων</th>
-													<th class="value"><label class="value" id="NumOfFloors">3</label></th>
+													<th class="value"><label class="value" id="NumOfFloors"><?php echo $row['NumOfFloors']; ?></label></th>
 												</tr>
 											</table>
 										</li>
@@ -812,15 +825,15 @@ myFunction3();
 											<table>
 												<tr>
 													<th class="field">Αριθμός από Παρκινγκ</th>
-													<th class="value"><label class="value" id="ParkingSpots">3</label></th>
+													<th class="value"><label class="value" id="ParkingSpots"><?php echo $row['ParkingSpots']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Αριθμός Χώρων</th>
-													<th class="value"><label class="value" id="NumOfRooms">3</label></th>
+													<th class="value"><label class="value" id="NumOfRooms"><?php echo $row['NumOfRooms']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Αριθμός WC</th>
-													<th class="value"><label class="value" id="NumOfWC">3</label></th>
+													<th class="value"><label class="value" id="NumOfWC"><?php echo $row['NumOfWC']; ?></label></th>
 												</tr>
 											</table>
 										</li>
@@ -829,23 +842,23 @@ myFunction3();
 											<table>
 												<tr>
 													<th class="field">Ενεργειακό Πιστοποιητικό</th>
-													<th class="value"><label class="value" id="EnergyCertificate">ναι</label></th>
+													<th class="value"><label class="value" id="EnergyCertificate"><?php if ($row['EnergyCertificate']==1) echo "Ναι"; else echo "Όχι"; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Τύπος Θέρμανσης</th>
-													<th class="value"><label class="value" id="HeatingFuel">ν</label></th>
+													<th class="value"><label class="value" id="HeatingFuel"><?php echo $row['HeatingFuel']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Μέσο Θέρμανσης</th>
-													<th class="value"><label class="value" id="HeatingType">ι</label></th>
+													<th class="value"><label class="value" id="HeatingType"><?php echo $row['HeatingType']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Αποχέτευση</th>
-													<th class="value"><label class="value" id="Drainage">ναι</label></th>
+													<th class="value"><label class="value" id="Drainage"><?php if ($row['Drainage']==1) echo "Ναι"; else echo "Όχι"; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Μέσα μηνιαία κοινόχρηστα</th>
-													<th class="value"><label class="value" id="AvgSharedCosts">1</label></th>
+													<th class="value"><label class="value" id="AvgSharedCosts"><?php echo $row['AvgSharedCosts']; ?></label></th>
 												</tr>
 											</table>
 										</li>
@@ -858,19 +871,35 @@ myFunction3();
 											<table>
 												<tr>
 													<th class="field">Τύπος Δαπέδων</th>
-													<th class="value"><label class="value" id="FloorType"></label></th>
+													<th class="value"><label class="value" id="FloorType"> <?php while($row3=mysqli_fetch_assoc($result3)) {
+														$sql4 = "SELECT Description FROM BFloorTypeChoices WHERE FloorTypeNo=".$row3['FloorTypeNo'];
+														$result4 = mysqli_query($conn, $sql4);
+														echo $row['Description']." ";
+														} ?> </label></th>
 												</tr>
 												<tr>
 													<th class="field">Τύπος Κουφωμάτων</th>
-													<th class="value"><label class="value" id="Frames"></label></th>
+													<th class="value"><label class="value" id="Frames"> <?php while($row3=mysqli_fetch_assoc($result3)) {
+														$sql4 = "SELECT Description FROM BFramesChoices WHERE FrameNo=".$row3['FrameNo'];
+														$result4 = mysqli_query($conn, $sql4);
+														echo $row['Description']." ";
+														} ?> </label></th>
 												</tr>
 												<tr>
 													<th class="field">Πληροφορίες Τοποθεσίας</th>
-													<th class="value"><label class="value" id="LocationDetails"></label></th>
+													<th class="value"><label class="value" id="LocationDetails"> <?php while($row3=mysqli_fetch_assoc($result3)) {
+														$sql4 = "SELECT Description FROM BLocationDetailsChoices WHERE DetailNo=".$row3['DetailNo'];
+														$result4 = mysqli_query($conn, $sql4);
+														echo $row['Description']." ";
+														} ?> </label></th>
 												</tr>
 												<tr>
 													<th class="field">Άλλα Χαρακτηριστικά</th>
-													<th class="value"><label class="value" id="BuildingDetails"></label></th>
+													<th class="value"><label class="value" id="BuildingDetails"> <?php while($row3=mysqli_fetch_assoc($result3)) {
+														$sql4 = "SELECT Description FROM BDetailsChoices WHERE DetailNo=".$row3['DetailNo'];
+														$result4 = mysqli_query($conn, $sql4);
+														echo $row['Description']." ";
+														} ?> </label></th>
 												</tr>
 											</table>
 										</li>
@@ -891,11 +920,11 @@ myFunction3();
 											<table>
 												<tr>
 													<th class="field">Τύπος Κατοικίας</th>
-													<th class="value"><label class="value" id="ResidenceType"></label></th>
+													<th class="value"><label class="value" id="ResidenceType"><?php echo $row['ResidenceType']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Επιπλωμένο</th>
-													<th class="value"><label class="value" id="Furnished">ναι</label></th>
+													<th class="value"><label class="value" id="Furnished"><?php if ($row['Furnished']==1) echo "Ναι"; else echo "Όχι"; ?></label></th>
 												</tr>
 											</table>
 										</li>
@@ -904,31 +933,31 @@ myFunction3();
 											<table>
 												<tr>
 													<th class="field">Αριθμός Υπνοδωματίων</th>
-													<th class="value"><label class="value" id="TotalBedrooms"></label></th>
+													<th class="value"><label class="value" id="TotalBedrooms"><?php echo $row['TotalBedrooms']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Αριθμός Κυρίων Υπνοδωματίων</th>
-													<th class="value"><label class="value" id="MasterBedroom"></label></th>
+													<th class="value"><label class="value" id="MasterBedroom"><?php echo $row['MasterBedroom']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Αριθμός Σαλονιών</th>
-													<th class="value"><label class="value" id="LivingRooms"></label></th>
+													<th class="value"><label class="value" id="LivingRooms"><?php echo $row['LivingRooms']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Αριθμός Κουζίνων</th>
-													<th class="value"><label class="value" id="Kitchen"></label></th>
+													<th class="value"><label class="value" id="Kitchen"><?php echo $row['Kitchen']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Αριθμός Μπάνιων</th>
-													<th class="value"><label class="value" id="Bathrooms"></label></th>
+													<th class="value"><label class="value" id="Bathrooms"><?php echo $row['Bathrooms']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Εμβαδόν Μπαλκονιών</th>
-													<th class="value"><label class="value" id="BalconyArea"></label></th>
+													<th class="value"><label class="value" id="BalconyArea"><?php echo $row['BalconyArea']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Εμβαδόν Ταράτσας Ιδιοκτήτη (τ.μ.)</th>
-													<th class="value"><label class="value" id="RooftopArea"></label></th>
+													<th class="value"><label class="value" id="RooftopArea"><?php echo $row['RooftopArea']; ?></label></th>
 												</tr>
 											</table>
 										</li>
@@ -950,15 +979,15 @@ myFunction3();
 											<table>
 												<tr>
 													<th class="field">Τύπος Επαγγελματικού Χώρου</th>
-													<th class="value"><label class="value" id="OfficeType"></label></th>
+													<th class="value"><label class="value" id="OfficeType"><?php echo $row['OfficeType']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Επενδυτικό</th>
-													<th class="value"><label class="value" id="Investment">ναι</label></th>
+													<th class="value"><label class="value" id="Investment"><?php if ($row['Investment']==1) echo "Ναι"; else echo "Όχι"; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Με εξοπλισμό</th>
-													<th class="value"><label class="value" id="EquipmentIncluded">ναι</label></th>
+													<th class="value"><label class="value" id="EquipmentIncluded"><?php if ($row['EquipmentIncluded']==1) echo "Ναι"; else echo "Όχι"; ?></label></th>
 												</tr>
 											</table>
 										</li>
@@ -967,11 +996,11 @@ myFunction3();
 											<table>
 												<tr>
 													<th class="field">Αριθμός Ορόφων</th>
-													<th class="value"><label class="value" id="NumOfFloors"></label></th>
+													<th class="value"><label class="value" id="NumOfFloors"><?php echo $row['NumOfFloors']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Τ.Μ. Αναδομής</th>
-													<th class="value"><label class="value" id="SurfaceArea"></label></th>
+													<th class="value"><label class="value" id="SurfaceArea"><?php echo $row['SurfaceArea']; ?></label></th>
 												</tr>
 											</table>
 										</li>
@@ -984,27 +1013,27 @@ myFunction3();
 											<table>
 												<tr>
 													<th class="field">Ισόγειο (τ.μ.)</th>
-													<th class="value"><label class="value" id="GroundFloorArea"></label></th>
+													<th class="value"><label class="value" id="GroundFloorArea"><?php echo $row['GroundFloorArea']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Αριθμός Εσωτερικών Χώρων</th>
-													<th class="value"><label class="value" id="NumOfSegments"></label></th>
+													<th class="value"><label class="value" id="NumOfSegments"><?php echo $row['NumOfSegments']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Βιτρίνα (τ.μ.)</th>
-													<th class="value"><label class="value" id="StoreFrontArea"></label></th>
+													<th class="value"><label class="value" id="StoreFrontArea"><?php echo $row['StoreFrontArea']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Αριθμός Υπογείων</th>
-													<th class="value"><label class="value" id="NumOfBasements"></label></th>
+													<th class="value"><label class="value" id="NumOfBasements"><?php echo $row['NumOfBasements']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Υπόγεια (τ.μ.)</th>
-													<th class="value"><label class="value" id="BasementArea"></label></th>
+													<th class="value"><label class="value" id="BasementArea"><?php echo $row['BasementArea']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Πατάρι (τ.μ.)</th>
-													<th class="value"><label class="value" id="LoftArea"></label></th>
+													<th class="value"><label class="value" id="LoftArea"><?php echo $row['LoftArea']; ?></label></th>
 												</tr>
 											</table>
 										</li>
@@ -1017,27 +1046,27 @@ myFunction3();
 											<table>
 												<tr>
 													<th class="field">Ενοίκιο Ετησίως</th>
-													<th class="value"><label class="value" id="AnnualRent"></label></th>
+													<th class="value"><label class="value" id="AnnualRent"><?php echo $row['AnnualRent']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Μικτή Απόδοση Ετησίως</th>
-													<th class="value"><label class="value" id="AnnualGrossReturn"></label></th>
+													<th class="value"><label class="value" id="AnnualGrossReturn"><?php echo $row['AnnualGrossReturn']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Καθαρή Απόδοση Ετησίως</th>
-													<th class="value"><label class="value" id="AnnualNetReturn"></label></th>
+													<th class="value"><label class="value" id="AnnualNetReturn"><?php echo $row['AnnualNetReturn']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Ετήσια Έξοδα</th>
-													<th class="value"><label class="value" id="AnnualExpenses"></label></th>
+													<th class="value"><label class="value" id="AnnualExpenses"><?php echo $row['AnnualExpenses']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Αναπ/γη Έτους</th>
-													<th class="value"><label class="value" id="AnnualProduction"></label></th>
+													<th class="value"><label class="value" id="AnnualProduction"><?php echo $row['AnnualProduction']; ?></label></th>
 												</tr>
 												<tr>
 													<th class="field">Τιμή Αέρα</th>
-													<th class="value"><label class="value" id="AirPrice"></label></th>
+													<th class="value"><label class="value" id="AirPrice"><?php echo $row['AirPrice']; ?></label></th>
 												</tr>
 											</table>
 										</li>
@@ -1049,12 +1078,13 @@ myFunction3();
 
 						</div>
 						<!-- End of second tab -->
-					</div>
-				</div>
-				<!-- /.row -->
 
+					</div>
+					<!-- /.main wrap -->
+				</div>
+				<!-- /. Content - Tabs -->
 			</div>
-			<!-- /.row -->
+			<!-- /. portfolio item row -->
 
 			<!-- /.container -->
 
