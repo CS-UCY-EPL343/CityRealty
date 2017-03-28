@@ -385,17 +385,17 @@ unset($_SESSION['sql']);
 									<p class="help-block text-danger"></p>
 								</div>
 								<div class="form-group">
-									<input type="email" class="form-control" placeholder="Enter your Email *" id="email" required data-validation-required-message="Please enter your email address.">
+									<input type="email" class="form-control" placeholder="Enter your Email *" id="email" name="mail" required data-validation-required-message="Please enter your email address.">
 									<p class="help-block text-danger"></p>
 								</div>
 								<div class="form-group">
-									<input type="tel" class="form-control" placeholder="Enter your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
+									<input type="tel" class="form-control" placeholder="Enter your Phone *" id="phone" name="phone" required data-validation-required-message="Please enter your phone number.">
 									<p class="help-block text-danger"></p>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<textarea class="form-control" placeholder="Enter your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
+									<textarea class="form-control" placeholder="Enter your Message *" id="message" name="message" required data-validation-required-message="Please enter a message."></textarea>
 									<p class="help-block text-danger"></p>
 								</div>
 							</div>
