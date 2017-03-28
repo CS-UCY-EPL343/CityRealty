@@ -1,10 +1,13 @@
 <?php
 session_start();
+
 $conn = mysqli_connect("localhost", "USERNAME", "PASSWORD", "DATABASE");
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+
+mysqli_query($conn,"SET NAMES utf8");
 
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
@@ -15,18 +18,22 @@ $day = $_POST['day'];
 $year = $_POST['year'];
 $date = $year."-".$month."-".$day;
 $email = $_POST['email'];
-$phone = $_POST['phone'];
-$password2 = $_POST['password2'];
+$password = $_POST['password'];
 $rdate = date("Y-m-d", time());
+$street = $_POST['Street'];
+$street_num = $_POST['Street_num'];
+$City = $_POST['City'];
+$country_name = $_POST['country_name'];
+$phone = $_POST['phone'];
 
-$sql =  "SELECT * FROM User WHERE Username ='$display_name' OR Email='$email'";
+$sql =  "SELECT * FROM UserSimple WHERE Username ='$display_name' OR Email='$email'";
 $result = mysqli_query($conn, $sql); 
 
 if(!$row=mysqli_fetch_assoc($result)) {
-	$sql2 =  "INSERT INTO User (Username, Password, Name, Surname, Email, UserType, Status, RegistrationDate, LastLoggedin, PhoneNumber)
-	VALUES ('$display_name', '$password2', '$first_name', '$last_name', '$email', 'External Broker', 'Active User', '$rdate', '$rdate', '$phone')";
+	$sql2 =  "INSERT INTO UserSimple (Username, Password, Name, Surname, Email, UserType, UserStatus, RegistrationDate, LastLoggedin)
+	VALUES ('$display_name', '$password', '$first_name', '$last_name', '$email', 'External Agent', 'Active User', '$rdate', '$rdate')";
 	$result2 = mysqli_query($conn, $sql2);
-	$sql3 = "INSERT INTO SimpleEmployee (Username, Birthday, Gender) VALUES ('$display_name', '$date', '$gender')";
+	$sql3 = "INSERT INTO UserExtended (Username, PrivatePhone, ANumber, AStreet, ACity, ACountry) VALUES ('$display_name', '$phone', '$street_num', '$street', '$City', '$country_name')";
 	$result3 = mysqli_query($conn, $sql3); 
 	$_SESSION['signedup'] = "You have successfully signed up!";
 	header("Location: index.php");
