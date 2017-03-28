@@ -263,7 +263,7 @@ session_start();
 					if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
 					$start_from = ($page-1) * $num_rec_per_page; 
 
-					$conn = mysqli_connect("localhost", "USERNAME", "PASSWORD", "DATABASE");
+					$conn = mysqli_connect("localhost", "CityRealty", "QKSH7XJws7MCpxWR", "CityRealty");
 
 					if (!$conn) {
 						die("Connection failed: " . mysqli_connect_error());
@@ -327,13 +327,13 @@ session_start();
 							}
 
 							if ($TM=="0-30") {
-								$sql2 = $sql2 . " AND TM>=0 AND TM<=30";
+								$sql2 = $sql2 . " AND AreaTM>=0 AND AreaTM<=30";
 							} elseif ($TM=="30-100") {
-								$sql2 = $sql2 . " AND TM>=30 AND TM<=100";
+								$sql2 = $sql2 . " AND AreaTM>=30 AND AreaTM<=100";
 							} elseif ($TM=="100-200") {
-								$sql2 = $sql2 . " AND TM>=100 AND TM<=200";
+								$sql2 = $sql2 . " AND AreaTM>=100 AND AreaTM<=200";
 							} elseif ($TM=="200+") {
-								$sql2 = $sql2 . " AND TM>=200";
+								$sql2 = $sql2 . " AND AreaTM>=200";
 							}
 
 							$i=0;
@@ -356,16 +356,28 @@ session_start();
 
 							if (isset($_POST['To_buy'])) {
 								$To_buy = $_POST['To_buy'];
-								$sql2 = $sql2 . " AND ((RegistrationPurpose = '$To_buy' AND Price >= $buypricemin AND Price <= $buypricemax)";
+								if ($buypricemax=="1000000+") {
+									$sql2 = $sql2 . " AND ((RegistrationPurpose = '$To_buy' AND Price >= $buypricemin)";
+								} else {
+									$sql2 = $sql2 . " AND ((RegistrationPurpose = '$To_buy' AND Price >= $buypricemin AND Price <= $buypricemax)";
+								}
 								if (isset($_POST['To_rent'])) {
 									$To_rent = $_POST['To_rent'];
-									$sql2 = $sql2 . " OR (RegistrationPurpose = '$To_rent' AND Price >= $rentpricemin AND Price <= $rentpricemax))";
+									if ($rentpricemax=="1000+") {
+										$sql2 = $sql2 . " AND ((RegistrationPurpose = '$To_rent' AND Price >= $rentpricemin)";
+									} else {
+										$sql2 = $sql2 . " OR (RegistrationPurpose = '$To_rent' AND Price >= $rentpricemin AND Price <= $rentpricemax))";
+									}
 								} else {
 									$sql2 = $sql2 . ")";
 								}
 							} elseif (isset($_POST['To_rent'])) {
 								$To_rent = $_POST['To_rent'];
-								$sql2 = $sql2 . " AND RegistrationPurpose = '$To_rent' AND Price >= $rentpricemin AND Price <= $rentpricemax";
+								if ($rentpricemax=="1000+") {
+									$sql2 = $sql2 . " AND ((RegistrationPurpose = '$To_rent' AND Price >= $rentpricemin)";
+								} else {
+									$sql2 = $sql2 . " AND RegistrationPurpose = '$To_rent' AND Price >= $rentpricemin AND Price <= $rentpricemax";
+								}
 							}
 							$result2 = mysqli_query($conn, $sql2); 
 							$_SESSION['sql'] = $sql2;
@@ -374,7 +386,6 @@ session_start();
 						$sql2 = $_SESSION['sql'];
 						$result2 = mysqli_query($conn, $sql2); 
 					}
-
 					$total_records = mysqli_num_rows($result2);
 					$sql2 = $sql2 . " LIMIT $start_from, $num_rec_per_page"; 
 
@@ -404,13 +415,14 @@ session_start();
 						}
 						$result3 = mysqli_query($conn, $sql3); 
 						$row3=mysqli_fetch_assoc($result3);
+						$reid = $row['RealEstateNo'];
 						echo "<div class='col-md-12'>
 						<div class='thumbnail'>
-							<a href='propertyDetails.html'><img class='img-hover img-related'
+							<a href='propertyDetails.php'><img class='img-hover img-related'
 								align='left' src='img/properties/7.jpg' width='380px' height='200px' alt='image not available' style='margin-right:30px'></a>
 								<div class='caption'>
 									<h3 class='pull-right'>€".$row['Price']."</h3>
-									<h3><a href='propertyDetails.html' style='color: #171820'>Κωδικός: ".$row['RealEstateNo']."</a></h3>
+									<h3><a href='propertyDetails.php?reid=".$reid."' style='color: #171820'>Κωδικός: ".$row['RealEstateNo']."</a></h3>
 									<p>
 										".$row3['RegionName'].", ".$row['ACity']."
 									</p>
