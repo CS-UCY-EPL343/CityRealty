@@ -410,7 +410,7 @@ session_start();
 						$reid = $row['RealEstateNo'];
 						echo "<div class='col-md-6'>
 						<div class='thumbnail'>
-							<a href='propertyDetails.php'><img class='img-responsive img-hover img-related' src='img/properties/3.jpg' alt='image not available'></a>
+							<a href='propertyDetails.php?reid=".$reid."'><img class='img-responsive img-hover img-related' src='img/properties/3.jpg' alt='image not available'></a>
 							<div class='caption'>
 								<h3 class='pull-right'>€".$row['Price']."</h3>
 								<h3><a href='propertyDetails.php?reid=".$reid."' style='color: #171820'>Κωδικός: ".$row['RealEstateNo']."</a></h3>
@@ -423,7 +423,7 @@ session_start();
 								<div class='ratings'>
 									<p class='pull-right' style='font-size:24px' style='color: #008c99'>".$row['RegistrationPurpose']."<h3 style='color: #c03e62'> ";
 										if (($Type=="Κατοικία") || ($Type=="Επαγγελματικός χώρος") || ($Type=="Ξενοδοχείο")) {
-											echo $row4['NumOfRooms']; echo " <i class='fa fa-bed' style='font-size:24px'></i> "; echo $row4['NumOfWC']; echo " <i class='fa fa-bath' style='font-size:24px'></i>"; } 
+											echo $row['NumOfRooms']; echo " <i class='fa fa-bed' style='font-size:24px'></i> "; echo $row['NumOfWC']; echo " <i class='fa fa-bath' style='font-size:24px'></i>"; } 
 											else {
 												echo "0 <i class='fa fa-bed' style='font-size:24px'></i> 0 <i class='fa fa-bath' style='font-size:24px'></i>";
 											} echo "</h3>
