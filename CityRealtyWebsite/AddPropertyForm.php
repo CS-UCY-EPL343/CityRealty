@@ -92,12 +92,12 @@ session_start();
 						<form role="form" action="addProperty.php" method="post">
 							<div class="form-group">
 								<label>Category</label>
-								<input class="form-control" name="category">
+								<input class="form-control" name="category" required data-validation-required-message="Please enter a category.">
 
 							</div>
 							<div class="form-group">
 								<label>Street Name</label>
-								<input class="form-control" name="astreet">
+								<input class="form-control" name="astreet" required data-validation-required-message="Please enter a street.">
 
 							</div>
 							<div class="form-group">
@@ -117,7 +117,7 @@ session_start();
 							</div>
 							<div class="form-group">
 								<label>City</label>
-								<input class="form-control" name="acity">
+								<input class="form-control" name="acity" required data-validation-required-message="Please enter a city.">
 
 							</div>
 							<div class="form-group">
@@ -141,7 +141,7 @@ session_start();
 							</div>
 							<div class="form-group">
 								<label>Area (square meters)</label>
-								<input class="form-control" name="area_tm">									
+								<input class="form-control" name="area_tm" required data-validation-required-message="Please enter area.">									
 							</div>
 							<div class="form-group">
 								<label>Square Meters</label>
@@ -212,7 +212,7 @@ session_start();
 							</div>
 							<div class="form-group input-group">
 								<span class="input-group-addon"><i class="fa fa-eur"></i></span>
-								<input type="text" class="form-control" name="price">
+								<input type="text" class="form-control" name="price" required data-validation-required-message="Please enter a price.">
 							</div>
 							<div class="form-group">
 								<label>Estimated Price</label>
@@ -305,17 +305,17 @@ session_start();
 							</div>
 							<div class="form-group">
 								<label>Notes</label>
-								<textarea class="form-control" name="notes" rows="7"placeholder="Enter notes.." id="message" required data-validation-required-message="Please enter a message."></textarea>
+								<textarea class="form-control" name="notes" rows="7"placeholder="Enter notes.." id="message"></textarea>
 
 							</div>
 							<div class="form-group">
 								<label>Description</label>
-								<textarea class="form-control" name="desc" rows="7"placeholder="Enter notes.." id="message" required data-validation-required-message="Please enter a message."></textarea>
+								<textarea class="form-control" name="desc" rows="7"placeholder="Enter notes.." id="message"></textarea>
 
 							</div>
 							<div class="form-group">
 								<label>Short Description</label>
-								<textarea class="form-control" name="short_desc" rows="3"placeholder="Enter notes.." id="message" required data-validation-required-message="Please enter a message."></textarea>
+								<textarea class="form-control" name="short_desc" rows="3"placeholder="Enter notes.." id="message"></textarea>
 
 							</div>
 							<div class="form-group">
@@ -324,7 +324,7 @@ session_start();
 							</div>
 							<div class="form-group">
 								<label>For Rent</label>
-								<input class="form-control" name="about_renting">
+								<input class="form-control" name="about_renting" required>
 
 							</div>
 							<div class="form-group">
