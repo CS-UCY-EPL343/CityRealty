@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $reid = $_GET['reid'];
 $conn = mysqli_connect("localhost", "USERNAME", "PASSWORD", "DATABASE");
 if (!$conn) {
@@ -71,7 +70,6 @@ $result3 = mysqli_query($conn, $sql3);
 			height: 100px;
 			overflow-y: scroll;
 		}
-
 		.navbar {
 			position: relative;
 			min-height: 50px;
@@ -80,7 +78,6 @@ $result3 = mysqli_query($conn, $sql3);
 			background-color: transparent;
 			width: 100%
 		}
-
 		#menu {
 			overflow: hidden;
 		}
@@ -150,7 +147,6 @@ $result3 = mysqli_query($conn, $sql3);
 		.dropdown:hover .dropdown-content {
 			display: block;
 		}
-
 		#content #mainwrap #tabs .column.col3 #title2 #title3 #title4 h2 {
 			font-family: Arial, Helvetica, sans-serif;
 			font-size: 26em;
@@ -199,7 +195,6 @@ $result3 = mysqli_query($conn, $sql3);
 			padding: 3px;
 			text-align: left;
 		}
-
 		#content #mainwrap #menu {
 			padding: 20px;
 			overflow: hidden;
@@ -213,12 +208,10 @@ $result3 = mysqli_query($conn, $sql3);
 			overflow: hidden;
 			position: relative;
 		}
-
 		#pagecontainer {
 			position: relative;
 			width: 9999px;
 		}
-
 		.section {
 			float: left;
 			position: relative;
@@ -226,7 +219,6 @@ $result3 = mysqli_query($conn, $sql3);
 			padding: 30px;
 			overflow: hidden;
 		}
-
 		#RealEstateTab #tabs {
 			overflow-y: scroll;
 		}
@@ -235,11 +227,9 @@ $result3 = mysqli_query($conn, $sql3);
 		function myFunction() {
 			alert("Username or email already used!");
 		}
-
 		function myFunction2() {
 			alert("Your username or password is incorrect!");
 		}
-
 		function myFunction3() {
 			alert("You have successfully signed up!");
 		}
@@ -562,9 +552,9 @@ $result3 = mysqli_query($conn, $sql3);
 										<h3 class="fieldGroup"><i class="fa fa-map-marker fieldGroup"></i> Χάρτης Τοποθεσίας <small class="hide" itemscope itemtype="http://schema.org/GeoCoordinates"><span class="latitude" itemprop="latitude">37.5177279637819</span>, <span class="longitude" itemprop="longitude">22.3811034455078</span></small></h3>
 										<script>
 											function initialize() {
-												var myLatlng = new google.maps.LatLng(37.5177279637819, 22.3811034455078);
+												var myLatlng = new google.maps.LatLng(35.146394,33.407982);
 												var mapOptions = {
-													zoom : 12,
+													zoom : 16,
 													center : myLatlng,
 													scrollwheel : false,
 													mapTypeControl : true,
@@ -577,27 +567,32 @@ $result3 = mysqli_query($conn, $sql3);
 													}
 												}
 												var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-
 												var marker = new google.maps.Marker({
 													position : myLatlng,
 													map : map,
 													title : 'Ακίνητο #477537',
 													options : {
-														draggable : false,
-														icon : image
+														draggable : false
 													},
 												});
-
+												var circle = new google.maps.Circle({
+													 map: map,
+                                                     radius: 400,
+													 fillColor: '#AA0000',   
+													 strokeColor: '#AA0000',
+													 strokeOpacity: 0
+                                                 });
+												 marker.setVisible(false);
+												 // Add a marker at the center of the map.
+                                                 circle.bindTo('center', marker, 'position');
 												google.maps.event.addDomListener(window, 'resize', initialize);
 											}
-
 											function loadScript() {
 												var script = document.createElement('script');
 												script.type = 'text/javascript';
 												script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=en&' + 'callback=initialize';
 												document.body.appendChild(script);
 											}
-
 											loadScript();
 										</script>
 										<div id="map_canvas" style="width:100%;height:293px;background:#DDDDDD;"></div>
@@ -619,7 +614,6 @@ $result3 = mysqli_query($conn, $sql3);
 							$sql_land = "SELECT * FROM Land WHERE RealEstateNo = $reid";
 							$result_land = mysqli_query($conn, $sql_land); 
 							$row_land=mysqli_fetch_assoc($result_land);
-
 							echo "<!-- Start of section : Land -->
 							<div id='LandTab'>
 								<div class='column col4'>
@@ -648,7 +642,6 @@ $result3 = mysqli_query($conn, $sql3);
 												</table>
 											</li>
 										</ul>
-
 										<h3 class='fieldGroup'>Μετρικές Γης</h3>
 										<ul id='menu7'>
 											<li style='color: #008c99'>
@@ -734,7 +727,6 @@ $result3 = mysqli_query($conn, $sql3);
 														</table>
 													</li>
 												</ul>
-
 											</div>
 										</div>
 										<!-- End : Land -->";
@@ -875,6 +867,7 @@ $result3 = mysqli_query($conn, $sql3);
 																				while($row_building8=mysqli_fetch_assoc($result_building8)) {
 																					$sql_building9 = 'SELECT Description FROM BDetailsChoices WHERE DetailNo='.$row_building8['DetailNo'];
 																					$result_building9 = mysqli_query($conn, $sql_building9);
+
 																					$row_building9=mysqli_fetch_assoc($result_building8);
 																					echo $row_building9['Description'].' ';
 																				} echo "</label></th>
@@ -882,7 +875,6 @@ $result3 = mysqli_query($conn, $sql3);
 																		</table>
 																	</li>
 																</ul>
-
 															</div>
 														</div>
 														<!-- End : Building -->";
@@ -894,7 +886,6 @@ $result3 = mysqli_query($conn, $sql3);
 														echo "<!-- Start : Recidence -->
 														<div id='RecidenceTab'>
 															<div class='column col3'>
-
 																<h3 class='fieldGroup'>Πληροφορίες Κατοικίας</h3>
 																<ul id='menu6'>
 																	<li style='color: #008c99'>
@@ -944,12 +935,10 @@ $result3 = mysqli_query($conn, $sql3);
 																		</table>
 																	</li>
 																</ul>
-
 															</div>
 														</div>
 														<!-- End : Recidence -->";
 													} 
-
 													else if ($row['Category']=="Επαγγελματικός Χώρος") {
 														$sql_office = "SELECT * FROM Office WHERE RealEstateNo = $reid";
 							$result_office = mysqli_query($conn, $sql_office); 
@@ -958,7 +947,6 @@ $result3 = mysqli_query($conn, $sql3);
 														<div style='clear:both'></div>
 														<div id='OfficeTab'>
 															<div class='column col3'>
-
 																<h3 class='fieldGroup'>Πληροφορίες Επαγγελματικού Χώρου</h3>
 																<ul id='menu6'>
 																	<li style='color: #008c99'>
@@ -992,7 +980,6 @@ $result3 = mysqli_query($conn, $sql3);
 																		</table>
 																	</li>
 																</ul>
-
 																<h3 class='fieldGroup'>Περιγραφή Επαγγελματικού Χώρου</h3>
 																<ul id='menu6'>
 																	<li style='color: #008c99'>
@@ -1025,7 +1012,6 @@ $result3 = mysqli_query($conn, $sql3);
 																		</table>
 																	</li>
 																</ul>
-
 																<h3 class='fieldGroup'>Πληροφορίες Κόστους</h3>
 																<ul id='menu6'>
 																	<li style='color: #008c99'>
@@ -1058,7 +1044,6 @@ $result3 = mysqli_query($conn, $sql3);
 																		</table>
 																	</li>
 																</ul>
-
 															</div>
 														</div>
 														<!-- End : Office -->";
@@ -1467,7 +1452,7 @@ $result3 = mysqli_query($conn, $sql3);
 																}
 															}
 														});
-													});
+	            									});
 													<-- #to-top button appears after scrolling -->
 													var fixed = false;
 													$(document).scroll(function() {
@@ -1521,8 +1506,6 @@ $result3 = mysqli_query($conn, $sql3);
 															confirm_passwordSu.setCustomValidity('');
 														}
 													}
-
-
 													passwordSu.onchange = validatePassword;
 													confirm_passwordSu.onkeyup = validatePassword;
 													var passwordSb = document.getElementById("password2"),
@@ -1534,8 +1517,6 @@ $result3 = mysqli_query($conn, $sql3);
 															confirm_passwordSb.setCustomValidity('');
 														}
 													}
-
-
 													passwordSb.onchange = validatePasswordSb;
 													confirm_passwordSb.onkeyup = validatePasswordSb;
 												</script>
