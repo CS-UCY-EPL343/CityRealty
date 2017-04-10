@@ -562,51 +562,6 @@ $result3 = mysqli_query($conn, $sql3);
 										<h3 class="fieldGroup"><i class="fa fa-map-marker fieldGroup"></i> Χάρτης Τοποθεσίας <small class="hide" itemscope itemtype="http://schema.org/GeoCoordinates"><span class="latitude" itemprop="latitude">37.5177279637819</span>, <span class="longitude" itemprop="longitude">22.3811034455078</span></small></h3>
 										<script>
 											function initialize() {
-												var image = new google.maps.MarkerImage('/wp-content/themes/omega/img/marker.png', new google.maps.Size(48, 32), new google.maps.Point(0, 0), new google.maps.Point(24, 32));
-												var styles = [{
-													"stylers" : [{
-														"lightness" : -5
-													}, {
-														"saturation" : -39
-													}, {
-														"hue" : "#ff8800"
-													}]
-												}, {
-													"featureType" : "road",
-													"elementType" : "geometry",
-													"stylers" : [{
-														"lightness" : 100
-													}, {
-														"visibility" : "simplified"
-													}]
-												}, {
-													"featureType" : "road",
-													"stylers" : [{
-														"visibility" : "on"
-													}]
-												}, {
-													"featureType" : "water",
-													"stylers" : [{
-														"hue" : "#0077ff"
-													}, {
-														"saturation" : -70
-													}, {
-														"visibility" : "simplified"
-													}, {
-														"lightness" : -51
-													}]
-												}, {
-													"featureType" : "poi",
-													"stylers" : [{
-														"visibility" : "simplified"
-													}]
-												}, {
-													"featureType" : "road.highway",
-													"elementType" : "labels.icon",
-													"stylers" : [{
-														"visibility" : "off"
-													}]
-												}];
 												var myLatlng = new google.maps.LatLng(37.5177279637819, 22.3811034455078);
 												var mapOptions = {
 													zoom : 12,
@@ -619,8 +574,7 @@ $result3 = mysqli_query($conn, $sql3);
 													zoomControl : true,
 													zoomControlOptions : {
 														style : google.maps.ZoomControlStyle.SMALL
-													},
-													styles : styles
+													}
 												}
 												var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
