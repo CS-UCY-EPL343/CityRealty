@@ -17,6 +17,8 @@ if(isset($_POST['send']))
 	$area_tm = $_POST['area_tm'];
 	$acountry = $_POST['acountry'];
 	$apostal_code = $_POST['apostal_code'];
+        $lat = $_POST['lat'];
+	$long = $_POST['long'];
 	$aregion_code = $_POST['aregion_code'];
 	$registration_title_no = $_POST['registration_title_no'];
 	$piece_no = $_POST['piece_no'];
@@ -66,11 +68,11 @@ if(isset($_POST['send']))
 	$consideration_exchange= $_POST['consideration_exchange'];
 
 
-	$sql = "INSERT INTO RealEstate (AStreetNo, AStreet, Acity, AreaTM, ACountry, APostalCode, ARegionCode,RegistrationTitleNo, PieceNo, FolderNo, ArithmosFilSxed, ArithmosAdOik, LegalControl,
+	$sql = "INSERT INTO RealEstate (AStreetNo, AStreet, Acity, AreaTM, ACountry, APostalCode,ALatitude, ALongitude, ARegionCode,RegistrationTitleNo, PieceNo, FolderNo, ArithmosFilSxed, ArithmosAdOik, LegalControl,
 	InitialPrice, EstimatedPrice, MortgageLoan, ObjectiveValue, FinalPrice,Corner,Zone, AvailableFrom, DateRegistered, RegistrationPurpose, Price, Currency, PricePerTM, TM, VAT,
 	ShortDescription, Description, AboutRenting, RecommendedBy, Rating, RegistrationTitle, OwnerID, OwnerRating, AgentRating, OrderCode, TypeOrder, Exclusive, OrderStart,
 	OrderStop, Category, Notes, NotifyColleague, AgentUsername, RealEstateStatus, AgentRewardPercentage, AgentReward, ViewAddress,TransferCost, TransferVAT, ConsiderationExchange)
-	VALUES ('$astreet_no', '$astreet', '$acity', '$area_tm', '$acountry', '$apostal_code', '$aregion_code','$registration_title_no', '$piece_no', '$folder_no', '$blueprint_no', '$arithmos_ad_oik', '$legal_control', '$initial_price', '$estimated_price', '$mortage_loan', '$objective_value', '$final_price','$corner', '$zone', '$available_from','$date_added', 
+	VALUES ('$astreet_no', '$astreet', '$acity', '$area_tm', '$acountry', '$apostal_code', '$lat', '$long', '$aregion_code','$registration_title_no', '$piece_no', '$folder_no', '$blueprint_no', '$arithmos_ad_oik', '$legal_control', '$initial_price', '$estimated_price', '$mortage_loan', '$objective_value', '$final_price','$corner', '$zone', '$available_from','$date_added', 
 	'$registration_purpose', '$price', '$currency', '$price_per_tm', '$tm', '$vat', '$short_desc', '$desc', '$about_renting', '$recommended_by', '$rating', '$registration_title', '$owner_id', 
 	'$owner_rating', '$agent_rating', '$order_code', '$type_order', '$exclusive','$order_start', '$order_stop','$category', '$notes', '$notify_colleague', '$username', '$realestate_status', '$agent_reward_percentage', '$agent_reward', '$view_address','$transfer_cost', '$transfer_vat', '$consideration_exchange')";
 
