@@ -111,6 +111,16 @@ session_start();
 
 							</div>
 							<div class="form-group">
+								<label>Latitude</label>
+								<input class="form-control" name="lat">
+
+							</div>
+							<div class="form-group">
+								<label>Longitude</label>
+								<input class="form-control" name="long">
+
+							</div>
+							<div class="form-group">
 								<label>Region Code</label>
 								<input class="form-control" name="aregion_code">
 
