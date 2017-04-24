@@ -12,7 +12,7 @@ session_start();
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>About Empire Estate</title>
+	<title>Empire Estate</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -108,6 +108,9 @@ session_start();
 
 			<ul class="nav navbar-nav ">
 				<li>
+					<a class="page-scroll" href="index.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/logo.png"></span> </a>	
+				</li>
+				<li>
 					<a class="page-scroll" href="index.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/home2.png">Home</span> </a>
 				</li>
 
@@ -177,7 +180,19 @@ session_start();
 		<!-- /.container -->
 	</nav>
 	
+		<!-- Search Property ID -->
+	<div class="col-md-2">
+		<form action="propertyList.php" method="POST">
+			<div class="form-group">
+				<label>ID Ακινήτου:</label>
+				<input type="text" name="REid" class="form-control" placeholder="ID Ακινήτου" id="REid">
+				<input type="submit" style="position: absolute; left: -9999px"/>
+				<p class="help-block text-danger"></p>
+			</div>
+		</form>
+	</div>
 	
+	<div style="padding-top:80px">
 	<section id="sell" class="services bg-primary" style =  "background: #fff; background: rgba(148,147,138,0.7); padding: 3em;">
 		<div class="container">
 
@@ -387,6 +402,7 @@ session_start();
 										</div>
 
 									</div>
+									<p>Με την εγγραφή σας αποδέχεστε τους όρους και προϋποθέσεις.<br><a style="color:#000000" href="termsconditions.php">Terms & Conditions</a></p>
 									<hr class="colorgraph">
 									<div class="row">
 										<div class="col-xs-12 col-md-6">
@@ -411,6 +427,7 @@ session_start();
 		</div>
 		<!-- /.container -->
 	</section>
+	</div>
 
 
 
@@ -456,6 +473,10 @@ session_start();
 
 						</ul>
 						<hr class="small">
+						<p class="text-muted" style="color: #FFFFFF">
+							<a style="color: #FFFFFF" href="termsconditions.php">Terms & Conditions</a> | 
+							<a style="color: #FFFFFF" href="about.php">About Us</a>
+						</p>
 						<p class="text-muted" style="color: #FFFFFF">
 							Copyright &copy; University of Cyprus
 						</p>
@@ -580,16 +601,6 @@ session_start();
 								<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" required>
 							</div>
 						</div>
-						<div class="form-group">
-							<div class="col-sm-offset-0 col-sm-9">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox"/>
-										Remember me 
-									</label>
-								</div>
-							</div>
-						</div>
 					</div>
 
 					<div class="modal-footer">
@@ -599,8 +610,6 @@ session_start();
 						<div class="col-xs-12 col-md-6">
 							<input type="reset" value="Reset" class="btn btn-primary btn-block btn-lg" tabindex="7">
 						</div>
-						<a href="https://el-gr.facebook.com/"><img src="img/facebookSI.png"></a>
-						<a href="https://accounts.google.com/ServiceLogin?hl=EN#identifier"><img src="img/loginGoogle.png"></a>
 					</div>
 				</form>
 				<div class="panel-footer">
@@ -945,3 +954,4 @@ session_start();
 
 
 </body>
+</html>
