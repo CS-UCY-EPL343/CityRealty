@@ -1,5 +1,6 @@
 <?php
 session_start();
+$choice = $_GET['choice'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,8 +89,10 @@ session_start();
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav side-nav">
 					<li>
-						<a href="#"><i class="fa fa-fw fa-edit"></i>Διαχείριση ακινήτων</a>
-
+						<a href="admin.php?choice=0"><i class="fa fa-fw fa-edit"></i>Διαχείριση ακινήτων</a>
+						<a href="admin.php?choice=1"><i class="fa fa-fw fa-edit"></i>Published</a>
+						<a href="admin.php?choice=2"><i class="fa fa-fw fa-edit"></i>Unpublished</a>
+						<a href="admin.php?choice=3"><i class="fa fa-fw fa-edit"></i>To be published</a>
 					</li>
 					<li>
 						<a href="calendar_admin.php"><i class="fa fa-fw fa-calendar"></i>Ημερολόγιο</a>
@@ -126,14 +129,15 @@ session_start();
 				}
 				mysqli_query($conn,"SET NAMES utf8");
 
-				if(!isset($_SESSION['sql1'])) {
-					$sql2 = "SELECT RealEstateNo, ARegionCode, ACity, AvailableFrom, Price, Category, RegistrationPurpose, REState FROM RealEstate";
-					$result2 = mysqli_query($conn, $sql2); 
-					$_SESSION['sql1'] = $sql2;
-				} else {
-					$sql2 = $_SESSION['sql1'];
-					$result2 = mysqli_query($conn, $sql2); 
-				}
+
+				$sql2 = "SELECT RealEstateNo, ARegionCode, ACity, AvailableFrom, Price, Category, RegistrationPurpose, REState FROM RealEstate";
+				if ($choice==1)
+					$sql2 = $sql2 . " WHERE REState='Published'";
+				else if ($choice==2)
+					$sql2 = $sql2 . " WHERE REState='Unpublished'";
+				else if ($choice==3)
+					$sql2 = $sql2 . " WHERE REState='To be published'";
+				$result2 = mysqli_query($conn, $sql2); 
 				$total_records = mysqli_num_rows($result2);
 				$sql2 = $sql2 . " LIMIT $start_from, $num_rec_per_page"; 
 
@@ -166,7 +170,7 @@ session_start();
 					$reid = $row['RealEstateNo'];
 					echo "<div class='col-sm-4 col-lg-4 col-md-4'>
 					<div class='thumbnail'>
-						<a href='propertyDetails.php'><img class='img-responsive img-hover img-related' src='img/properties/3.jpg' alt='image not available'></a>
+						<a href='propertyDetails.php?reid=".$reid."'><img class='img-responsive img-hover img-related' src='img/properties/3.jpg' alt='image not available'></a>
 						<div class='caption'>
 							<h3 class='pull-right'>€".$row['Price']."</h3>
 							<h3><a href='propertyDetails.php?reid=".$reid."' style='color: #171820'>Κωδικός: ".$row['RealEstateNo']."</a></h3>
@@ -208,16 +212,16 @@ session_start();
 				}
 
 				echo "<div class='row text-center'><div class='col-lg-12'><ul class='pagination'>
-				<li> <a style='color: #008c99' href='admin.php?page=1'>&laquo;</a></li>";  
+				<li> <a style='color: #008c99' href='admin.php?page=1&choice=".$choice."'>&laquo;</a></li>";  
 
 				for ($i=1; $i<=$total_pages; $i++) { 
 					if ($page==$i) {
-						echo "<li class='active'><a style='color: #008c99' href='admin.php?page=".$i."'>".$i."</a></li>";
+						echo "<li class='active'><a style='color: #008c99' href='admin.php?page=".$i."&choice=".$choice."'>".$i."</a></li>";
 					} else {
-						echo "<li><a style='color: #008c99' href='admin.php?page=".$i."'>".$i."</a></li>"; 
+						echo "<li><a style='color: #008c99' href='admin.php?page=".$i."&choice=".$choice."'>".$i."</a></li>"; 
 					}
 				} 
-				echo "<li><a style='color: #008c99' href='admin.php?page=$total_pages'>&raquo;</a></li></ul></div></div>"; 
+				echo "<li><a style='color: #008c99' href='admin.php?page=$total_pages&choice=".$choice."'>&raquo;</a></li></ul></div></div>"; 
 
 				mysqli_close($conn);
 				?>
