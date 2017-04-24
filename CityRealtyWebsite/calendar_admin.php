@@ -75,7 +75,7 @@ session_start();
 
 				<div class="container-fluid">
 					<div align="center">
-						<iframe src="https://calendar.google.com/calendar/embed?src=dp5p1it52j661g8pk6h0nv2c0s%40group.calendar.google.com&ctz=Asia/Nicosia" 
+						<iframe src="http://accounts.google.com/AccountChooser?continue=https%3A%2F%2Fcalendar.google.com%2Fcalendar%2Frender%3Fpli%3D1&hl=en&service=cl&scc=1" 
 						style="border: 0" width="900" height="600" frameborder="0" scrolling="no"></iframe>
 					</div>
 
