@@ -177,63 +177,72 @@ session_start();
 								Διαθέσιμο από: ".$row['AvailableFrom']."</p>
 							</div>
 							<div class='ratings'>
-								<p class='pull-right' style='font-size:24px' style='color: #008c99'>".$row['RegistrationPurpose']."<h3 style='color: #c03e62'> "; 
-									if (($row['Category']=="Κατοικία") || ($row['Category']=="Επαγγελματικός χώρος") || ($row['Category']=="Ξενοδοχείο")) {
-										$sql4 =  "SELECT B.NumOfRooms, B.NumOfWC FROM RealEstate RE, Building B WHERE RE.RealEstateNo=B.RealEstateNo";
-										$result4 = mysqli_query($conn, $sql4); 
-										$row4=mysqli_fetch_assoc($result4);
-										echo $row4['NumOfRooms']; echo " <i class='fa fa-bed' style='font-size:24px'></i> "; echo $row4['NumOfWC']; echo " <i class='fa fa-bath' style='font-size:24px'></i>"; }
-										else {
-											echo "0 <i class='fa fa-bed' style='font-size:24px'></i> 0 <i class='fa fa-bath' style='font-size:24px'></i>";
-										} 
-										echo "</h3>
-									</p>
-									<a href='updateREForm_admin.php?reid=".$reid."' class='btn btn-primary'>Edit</a>
-									<a href='publish.php?reid=".$reid."' class='btn btn-danger'>"; 
-										if ($row['REState']=="To be published" || $row['REState']=="Unpublished") 
-											echo "Publish"; else if ($row['REState']=="Published") 
-										echo "Unpublish"; echo "</a>
-									</div>
-								</div>
-							</div>";
-						}
+								<p style='font-size:24px' style='color: #008c99'>".$row['RegistrationPurpose']."</p><h3> "; 
+								if (($row['Category']=="Κατοικία") || ($row['Category']=="Επαγγελματικός χώρος") || ($row['Category']=="Ξενοδοχείο")) {
+									$sql4 =  "SELECT B.NumOfRooms, B.NumOfWC FROM RealEstate RE, Building B WHERE RE.RealEstateNo=$reid AND RE.RealEstateNo=B.RealEstateNo";
+									$result4 = mysqli_query($conn, $sql4); 
+									$row4=mysqli_fetch_assoc($result4);
+									$sql5 = "SELECT * FROM BDetails WHERE RealEstateNo=$reid AND DetailNo=11";
+									$result5 = mysqli_query($conn, $sql5);
+									echo $row['Category']." με ".$row4['NumOfRooms']." <i class='fa fa-bed' style='color: #c03e62; font-size:24px'></i> ".$row4['NumOfWC']." <i class='fa fa-bath' style='color: #c03e62; font-size:24px'></i>"; 
+									if (mysqli_num_rows($result5)==0)
+										echo " Όχι ";
+									else
+										echo " Ναι ";
+									echo "<i class='fa fa-paw' style='color: #c03e62; font-size:22px'></i> ";
+								} 
+								else {
+									echo $row['Category'];
+								} 
+								echo "</h3>
+							</p>
+							<a href='updateREForm_admin.php?reid=".$reid."' class='btn btn-primary'>Edit</a>
+							<a href='publish.php?reid=".$reid."' class='btn btn-success'>"; 
+								if ($row['REState']=="To be published" || $row['REState']=="Unpublished") 
+									echo "Publish"; else if ($row['REState']=="Published") 
+								echo "Unpublish"; echo "</a>
+								<a href='delete.php?reid=".$reid."' class='btn btn-danger'>Delete</a>
+							</div>
+						</div>
+					</div>";
+				}
 
-						echo "<div class='row text-center'><div class='col-lg-12'><ul class='pagination'>
-						<li> <a style='color: #008c99' href='admin.php?page=1'>&laquo;</a></li>";  
+				echo "<div class='row text-center'><div class='col-lg-12'><ul class='pagination'>
+				<li> <a style='color: #008c99' href='admin.php?page=1'>&laquo;</a></li>";  
 
-						for ($i=1; $i<=$total_pages; $i++) { 
-							if ($page==$i) {
-								echo "<li class='active'><a style='color: #008c99' href='admin.php?page=".$i."'>".$i."</a></li>";
-							} else {
-								echo "<li><a style='color: #008c99' href='admin.php?page=".$i."'>".$i."</a></li>"; 
-							}
-						} 
-						echo "<li><a style='color: #008c99' href='admin.php?page=$total_pages'>&raquo;</a></li></ul></div></div>"; 
+				for ($i=1; $i<=$total_pages; $i++) { 
+					if ($page==$i) {
+						echo "<li class='active'><a style='color: #008c99' href='admin.php?page=".$i."'>".$i."</a></li>";
+					} else {
+						echo "<li><a style='color: #008c99' href='admin.php?page=".$i."'>".$i."</a></li>"; 
+					}
+				} 
+				echo "<li><a style='color: #008c99' href='admin.php?page=$total_pages'>&raquo;</a></li></ul></div></div>"; 
 
-						mysqli_close($conn);
-						?>
-
-
+				mysqli_close($conn);
+				?>
 
 
 
-					</div>
-					<!-- /.container-fluid -->
 
-				</div>
-				<!-- /#page-wrapper -->
 
 			</div>
-			<!-- /#wrapper -->
+			<!-- /.container-fluid -->
 
-			<!-- jQuery -->
-			<script src="js/jquery.js"></script>
+		</div>
+		<!-- /#page-wrapper -->
 
-			<!-- Bootstrap Core JavaScript -->
-			<script src="js/bootstrap.min.js"></script>
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- jQuery -->
+	<script src="js/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
 
 
 
-		</body>
+</body>
 
-		</html>
+</html>
