@@ -37,7 +37,7 @@ unset($_SESSION['sql']);
 
 	<!--Navbar style-->
 	<style type="text/css">
-		.containerwithcheckboxes { border:2px solid #ccc; width:1150px; height: 100px; overflow-y: scroll; }	
+		.containerwithcheckboxes { border:2px solid #ccc; max-width:1150px; max-height: 100px; overflow-y: scroll; }	
 		.navbar {
 			position: relative;
 			min-height: 50px;
@@ -123,15 +123,15 @@ unset($_SESSION['sql']);
 				</li>
 
 				<li>
-					<a class="page-scroll" href="#services" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/sale22.png">Sale</span></a>
+					<a class="page-scroll" href="sale.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/sale22.png">Sale</span></a>
 
 				</li>
 				<li>
-					<a class="page-scroll " href="#services" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/rent22.png">Rent </span></a>
+					<a class="page-scroll " href="rent.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/rent22.png">Rent </span></a>
 
 				</li>
 				<li>
-					<a class="page-scroll " href="AddProperty.html" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/sell22.png">Sell</span></a>
+					<a class="page-scroll " href="sell.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/sell22.png">Sell</span></a>
 
 				</li>
 				<li>
@@ -167,16 +167,8 @@ unset($_SESSION['sql']);
 				<?php
 				if(!isset($_SESSION['id'])) {
 					echo"
-					<li class='dropdown'>
-						<a href='javascript:void(0)' class='dropbtn' onclick='DropDownFunction()' style='color: #FFCC00'><span class='glyphicon glyphicon-user' aria-hidden='true'></span> SignUp</a>
-						<div class='dropdown-content' id='myDropdown'>
-							<a href='#SignUp-modal' data-toggle='modal' data-target='#my-modal-lg' style='color: #FFCC00'>As A Client</a>
-							<a class='page-scroll' href='#ExBroker-modal' data-toggle='modal' data-target='#ExBromodal-lg' style='color: #FFCC00'>As An Agent </span></a>
-						</div>
-					</li>
-					<li>
-
-						<a href='#LogIn-modal' data-toggle='modal' data-target='#my-logInmodal-sm' style='color: #FFCC00'>Log in</a>";
+					<li><a href='#SignUp-modal' data-toggle='modal' data-target='#my-modal-lg' style='color: #FFCC00'>SignUp</a></li>
+					<li><a href='#LogIn-modal' data-toggle='modal' data-target='#my-logInmodal-sm' style='color: #FFCC00'>Log in</a></li>";
 					}
 					else {
 						echo "<li><a href='#' style='color: #FFCC00'>" . $_SESSION['id'] . "</a></li><li>
@@ -197,7 +189,7 @@ unset($_SESSION['sql']);
 	</nav>
 
 	<!-- Search Property ID -->
-	<div class="col-md-3">
+	<div class="col-md-2">
 		<form action="propertyList.php" method="POST">
 			<div class="form-group">
 				<label>ID Ακινήτου:</label>
@@ -218,7 +210,7 @@ unset($_SESSION['sql']);
 	</header>
 
 	<!-- Search -->
-
+<!-- <hr style="height:80px"> -->
 	<header class="w3-container w3-teal" style = "background: transparent; padding: 3em">
 		<div class="row" >
 			<div class="col-lg-12 text-center">
@@ -292,48 +284,120 @@ unset($_SESSION['sql']);
 										<option value="0-30">0-30</option>
 										<option value="30-100">30-100</option>
 										<option value="100-200">100-200</option>
-										<option value="200+">200+</option>
+										<option value="200-300">200-300</option>
+										<option value="300-400">300-400</option>
+										<option value="500+">500+</option>
 									</select>
 									<br>
 								</div>
 							</div>
 						</div><!--/row-->
-						<div class="row">
-							<div class="col-md-3">
-								<div class="form-group">
-									<label>
-										<input type="checkbox" name="To_rent" value="Ενοικίαση">
-										Για ενοικίαση</label>
-									</div>
-								</div>
-								<div class="col-md-9">
-									<div class="form-group">
-										<div data-role="rangeslider">
-											<input type="range" name="rentpricemin" id="price-min" min="0" max="1000">
-											<input type="range" name="rentpricemax" id="price-max" min="0" max="1000">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-3">
-								<div class="form-group">
-									<label>
-										<input type="checkbox" name="To_buy" value="Πώληση">
-										Για αγορά</label>
-									</div>
-								</div>
-								<div class="col-md-9">
-									<div class="form-group">
-										<div data-role="rangeslider">
-											<input type="range" name="buypricemin" id="price-min" step="1000" min="10000" max="999999">
-											<input type="range" name="buypricemax" id="price-max" step="1000" min="10000" max="999999">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+					
+            <div class="row"> 
+				  		<div class="col-md-6"> 
+ 							  <label><input type="checkbox" name="To_rent" value="Ενοικίαση"> 
+ 									Για ενοικίαση:</label> 
+ 							</div> 
+ 							<div class="col-md-6"> 
+ 								<label><input type="checkbox" name="To_buy" value="Πώληση"> 
+ 									Για αγορά:</label> 
+ 							</div> 
+ 						</div><!--/row--> 
+
+ 
+						<div class="row"> 
+							<div class="col-md-6"> 
+ 								<div class="col-md-6"> 
+									<div class="form-group"> 
+ 										<label> Min (€):</label> 
+ 										<select class="form-control" name="rentpricemin"> 
+ 											<option value="0">0</option> 
+ 											<option value="50">50</option> 
+ 											<option value="100">100</option> 
+ 											<option value="200">200</option> 
+											<option value="300">300</option> 
+ 											<option value="400">400</option> 
+											<option value="500">500</option> 
+ 											<option value="600">600</option> 
+											<option value="700+">700+</option> 
+ 										</select> 
+ 										<br> 
+									</div> 
+ 								</div> 
+ 								<div class="col-md-6"> 
+ 									<div class="form-group"> 
+ 										<label> Max (€):</label> 
+ 										<select class="form-control" name="rentpricemax"> 
+ 											<option value="100">100</option> 
+ 											<option value="200">200</option> 
+ 											<option value="300">300</option> 
+ 											<option value="400">400</option> 
+ 											<option value="500">500</option> 
+ 											<option value="600">600</option> 
+											<option value="700">700</option> 
+ 											<option value="800">800</option> 
+ 											<option value="900">900</option> 
+  											<option value="900">1000</option> 
+ 											<option value="900">2500</option> 
+ 											<option value="900">5000</option> 
+ 											<option value="900">7500</option> 
+ 											<option selected value="1000+">10000+</option> 
+ 										</select> 
+ 										<br> 
+ 									</div> 
+ 								</div> 
+ 							</div> 
+ 								 
+ 							<div class="col-md-6"> 
+ 								<div class="col-md-6"> 
+ 									<div class="form-group"> 
+ 										<label> Min: (€)</label> 
+ 										<select class="form-control" name="buypricemin"> 
+ 											<option value="0">0</option> 
+ 											<option value="10000">10000</option> 
+ 											<option value="20000">20000</option> 
+ 											<option value="30000">30000</option> 
+ 											<option value="40000">40000</option> 
+											<option value="50000">50000</option> 
+ 											<option value="60000">60000</option> 
+ 											<option value="70000">70000</option> 
+ 											<option value="80000">80000</option> 
+ 											<option value="90000">90000</option> 
+											<option value="100000+">100000+</option> 
+ 										</select> 
+ 										<br> 
+ 									</div> 
+ 								</div> 
+ 								<div class="col-md-6"> 
+ 									<div class="form-group"> 
+ 										<label> Max: (€)</label> 
+ 										<select class="form-control" name="buypricemax"> 
+ 											<option value="30000">30000</option> 
+ 											<option value="40000">40000</option> 
+ 											<option value="50000">50000</option> 
+ 											<option value="60000">60000</option> 
+											<option value="70000">70000</option> 
+ 											<option value="80000">80000</option> 
+ 											<option value="90000">90000</option> 
+ 											<option value="100000">100000</option> 
+ 											<option value="200000">200000</option> 
+ 											<option value="300000">300000</option> 
+											<option value="400000">400000</option> 
+ 											<option value="500000">500000</option> 
+ 											<option value="600000">600000</option> 
+ 											<option value="700000">700000</option> 
+ 											<option value="800000">800000</option> 
+ 											<option value="900000">900000</option> 
+ 											<option value="1000000">1000000</option> 
+ 											<option value="25000000">25000000</option> 
+ 											<option selected value="50000000+">50000000+</option> 
+ 										</select> 
+ 										<br> 
+ 									</div> 
+ 								</div> 
+ 							</div> 
+ 						</div> <!--/row--> 
+
 
 						<div class="clearfix"></div>
 						<div class="col-lg-12 text-center form-group">
@@ -377,7 +441,7 @@ unset($_SESSION['sql']);
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
-					<form name="contactForm" id="contactForm" action="mail_handler.php" method="post">
+					<form name="contactForm" id="contactForm">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
@@ -385,24 +449,24 @@ unset($_SESSION['sql']);
 									<p class="help-block text-danger"></p>
 								</div>
 								<div class="form-group">
-									<input type="email" class="form-control" placeholder="Enter your Email *" id="email" name="mail" required data-validation-required-message="Please enter your email address.">
+									<input type="email" class="form-control" placeholder="Enter your Email *" id="email" required data-validation-required-message="Please enter your email address.">
 									<p class="help-block text-danger"></p>
 								</div>
 								<div class="form-group">
-									<input type="tel" class="form-control" placeholder="Enter your Phone *" id="phone" name="phone" required data-validation-required-message="Please enter your phone number.">
+									<input type="tel" class="form-control" placeholder="Enter your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
 									<p class="help-block text-danger"></p>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<textarea class="form-control" placeholder="Enter your Message *" id="message" name="message" required data-validation-required-message="Please enter a message."></textarea>
+									<textarea class="form-control" placeholder="Enter your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
 									<p class="help-block text-danger"></p>
 								</div>
 							</div>
 							<div class="clearfix"></div>
 							<div class="col-lg-12 text-center">
 								<div id="success"></div>
-								<button type="submit" class="btn btn-xl" name="submit">
+								<button type="submit" class="btn btn-xl">
 									Send Message
 								</button>
 							</div>
@@ -581,16 +645,6 @@ unset($_SESSION['sql']);
 								<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" required>
 							</div>
 						</div>
-						<div class="form-group">
-							<div class="col-sm-offset-0 col-sm-9">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox"/>
-										Remember me 
-									</label>
-								</div>
-							</div>
-						</div>
 					</div>
 
 					<div class="modal-footer">
@@ -599,11 +653,7 @@ unset($_SESSION['sql']);
 						</div>
 						<div class="col-xs-12 col-md-6">
 							<input type="reset" value="Reset" class="btn btn-primary btn-block btn-lg" tabindex="7">
-
-							<!--<input type="reset" value="Reset" class="btn btn-default btn-lg" tabindex="7">-->
 						</div>
-						<a href="https://el-gr.facebook.com/"><img src="img/facebookSI.png"></a>
-						<a href="https://accounts.google.com/ServiceLogin?hl=EN#identifier"><img src="img/loginGoogle.png"></a>
 					</div>
 				</form>
 				<div class="panel-footer">
