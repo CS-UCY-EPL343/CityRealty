@@ -166,90 +166,19 @@ session_start();
 		</div>
 		<!-- /.container -->
 	</nav>
-
-	<!--akinita-->
-	<!-- Most popular -->
-	<div class="container" style = "background: rgba(255,255,255,0.5); border:3px solid #666666; width: 85%">
-
-		<div class="row">
-
-			<div class="col-md-3" style = "background-color:#939393;">
-				<p class="lead">
-					<h1 style="color: #fdc029; text-align: center; 1px 1px 1px #000000;">Δημοφιλέστερα</h1>
-				</p>
-
-				<div class="list-group" style="color: #008c99">
-
-					<div class="thumbnailPopular">
-						<a href="propertyDetails.html"><img class="img-responsive img-hover img-related" src="img/properties/8.jpg" alt="image not available"></a>
-						<div class="caption">
-							<h4 class="pull-right">$600</h4>
-							<h4><a href="propertyDetails.php" style="color: #008c99">Property #3</a></h4>
-							<p>
-								Property description...
-							</p>
-						</div>
-						<div class="ratings">
-
-							<p class="pull-right" style="color: #008c99">
-								For Rent
-							</p>
-							<p>
-								<a style="color: #c03e62"><i class="fa fa-bath" aria-hidden="true" style="color: #c03e62"></i> 1</a>
-								<a style="color: #c03e62"><i class="fa fa-bed" aria-hidden="true" style="color: #c03e62"></i> 2</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="thumbnailPopular">
-						<a href="propertyDetails.html"><img class="img-responsive img-hover img-related" src="img/properties/4.jpg" alt="image not available"></a>
-						<div class="caption">
-							<h4 class="pull-right">$600</h4>
-							<h4><a href="propertyDetails.php" style="color: #008c99">Property #4</a></h4>
-							<p>
-								Property description...
-							</p>
-						</div>
-						<div class="ratings">
-
-							<p class="pull-right" style="color: #008c99">
-								For Rent
-							</p>
-							<p>
-								<a style="color: #c03e62"><i class="fa fa-bath" aria-hidden="true" style="color: #c03e62"></i> 1</a>
-								<a style="color: #c03e62"><i class="fa fa-bed" aria-hidden="true" style="color: #c03e62"></i> 2</a>
-							</p>
-						</div>
-					</div>
-
-					<div class="thumbnailPopular">
-						<a href="propertyDetails.html"><img class="img-responsive img-hover img-related" src="img/properties/3.jpg" alt="image not available"></a>
-						<div class="caption">
-							<h4 class="pull-right">$600</h4>
-							<h4><a href="propertyDetails.php" style="color: #008c99">Property #4</a></h4>
-							<p>
-								Property description...
-							</p>
-						</div>
-						<div class="ratings">
-
-							<p class="pull-right" style="color: #008c99">
-								For Rent
-							</p>
-							<p>
-								<a style="color: #c03e62"><i class="fa fa-bath" aria-hidden="true" style="color: #c03e62"></i> 1</a>
-								<a style="color: #c03e62"><i class="fa fa-bed" aria-hidden="true" style="color: #c03e62"></i> 2</a>
-							</p>
-						</div>
-					</div>
-
-				</div>
+	
+	<!-- Search Property ID -->
+	<div class="col-md-2">
+		<form action="propertyList.php" method="POST">
+			<div class="form-group">
+				<label>ID Ακινήτου:</label>
+				<input type="text" name="REid" class="form-control" placeholder="ID Ακινήτου" id="REid">
+				<input type="submit" style="position: absolute; left: -9999px"/>
+				<p class="help-block text-danger"></p>
 			</div>
+		</form>
+	</div>
 
-			<!-- Properties -->
-			<div class="col-md-8">
-
-				<div class="row" id="somewhere">
 					<?php
 					$num_rec_per_page=10;
 					if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
@@ -261,6 +190,86 @@ session_start();
 						die("Connection failed: " . mysqli_connect_error());
 					}
 					mysqli_query($conn,"SET NAMES utf8");
+          
+          echo "<div style='padding-top:80px'>
+	<div class='container' style = 'background: rgba(255,255,255,0.5); border:3px solid #666666; width: 85%'>
+
+		<div class='row'>
+
+			<div class='col-md-3' style = 'background-color:#939393;'>
+				<p class='lead'>
+					<h1 style='color: #fdc029; text-align: center; 1px 1px 1px #000000;'>Δημοφιλέστερα</h1>
+				</p>
+
+				<div class='list-group'>";                   
+          
+          $sqlpopular = "SELECT RealEstateNo, Category, ACity, ARegionCode, AvailableFrom, Price, RegistrationPurpose FROM RealEstate WHERE REState='Published' ORDER BY TimesViewed DESC LIMIT 5";
+          $resultpopular = mysqli_query($conn, $sqlpopular);
+          while($rowpopular = mysqli_fetch_assoc($resultpopular)) {
+          	$REid = $rowpopular['RealEstateNo'];
+            if (($rowpopular['Category']=="Κατοικία") || ($rowpopular['Category']=="Επαγγελματικός χώρος") || ($rowpopular['Category']=="Ξενοδοχείο")) {
+								  $sqlpopular2 =  "SELECT B.NumOfRooms, B.NumOfWC FROM RealEstate RE, Building B WHERE RE.RealEstateNo=$REid AND RE.RealEstateNo=B.RealEstateNo";
+								  $sqlpopular4 = "SELECT * FROM BDetails WHERE RealEstateNo=$REid AND DetailNo=11";
+						$resultpopular4 = mysqli_query($conn, $sqlpopular4); 
+							}
+						if ($rowpopular['ACity']=="Λευκωσία") {
+							$Region = $rowpopular['ARegionCode'];
+							$sqlpopular3 =  "SELECT RegionName FROM CityNicosia WHERE RegionCode=$Region";
+						}
+						elseif ($rowpopular['ACity']=="Πάφος") {
+							$Region = $rowpopular['ARegionCode'];
+							$sqlpopular3 =  "SELECT RegionName FROM CityPafos WHERE RegionCode=$Region";
+						}
+						elseif ($rowpopular['ACity']=="Λάρνακα") {
+							$Region = $rowpopular['ARegionCode'];
+							$sqlpopular3 =  "SELECT RegionName FROM CityLarnaca WHERE RegionCode=$Region";
+						}
+						elseif ($rowpopular['ACity']=="Λεμεσός") {
+							$Region = $rowpopular['ARegionCode'];
+							$sqlpopular3 =  "SELECT RegionName FROM CityLimassol WHERE RegionCode=$Region";
+						}
+						elseif ($rowpopular['ACity']=="Αμμόχωστος") {
+							$Region = $rowpopular['ARegionCode'];
+							$sqlpopular3 =  "SELECT RegionName FROM CityFamagusta WHERE RegionCode=$Region";
+						}
+						$resultpopular2 = mysqli_query($conn, $sqlpopular2); 
+						$rowpopular2=mysqli_fetch_assoc($resultpopular2);
+            $resultpopular3 = mysqli_query($conn, $sqlpopular3); 
+						$rowpopular3=mysqli_fetch_assoc($resultpopular3);
+            
+            echo "<div class='thumbnailPopular'>
+						<a href='propertyDetails.php?reid=".$REid."'><img class='img-responsive img-hover img-related' src='img/properties/8.jpg' alt='image not available'></a>
+						<div class='caption'>
+							<h4 class='pull-right'>€".$rowpopular['Price']."</h4>
+							<h4><a href='propertyDetails.php?reid=".$REid."'>Κωδικός: ".$rowpopular['RealEstateNo']."</a></h4>
+						<p>
+									".$rowpopular3['RegionName'].", ".$rowpopular['ACity']."
+								</p>
+								<p>
+									Διαθέσιμο από: ".$rowpopular['AvailableFrom']."</p>
+						</div>
+						<div class='ratings'>
+
+							<p>
+								".$rowpopular['RegistrationPurpose']."
+							</p>";
+              if (($rowpopular['Category']=="Κατοικία") || ($rowpopular['Category']=="Επαγγελματικός χώρος") || ($rowpopular['Category']=="Ξενοδοχείο")) {
+								echo "<p>".$rowpopular['Category']." με ".$rowpopular2['NumOfRooms']." <i class='fa fa-bed' style='color: #c03e62; font-size:24px'></i> ".$rowpopular2['NumOfWC']." <i class='fa fa-bath' style='color: #c03e62; font-size:24px'></i>";
+									if (mysqli_num_rows($resultpopular4)==0)
+									echo " Όχι ";
+								else
+									echo " Ναι ";
+								echo"<i class='fa fa-paw' style='color: #c03e62; font-size:22px'></i></p>";  
+              }
+              else {
+                echo "<p>".$rowpopular['Category']."</p>";
+              }
+							echo "
+						</div>
+					</div>";
+            }
+                   
+            echo "</div></div>	<div class='col-md-8'>";
 
 					if(!isset($_SESSION['sql2'])) {
 						$sql2 = "SELECT RealEstateNo, ARegionCode, ACity, AvailableFrom, Price, Category, RegistrationPurpose, REState FROM RealEstate WHERE RegistrationPurpose='Πώληση'";
@@ -313,14 +322,22 @@ session_start();
 									Διαθέσιμο από: ".$row['AvailableFrom']."</p>
 								</div>
 								<div class='ratings'>
-									<p class='pull-right' style='font-size:24px' style='color: #008c99'>".$row['RegistrationPurpose']."<h3 style='color: #c03e62'> "; 
+									<p style='font-size:24px' style='color: #008c99'>".$row['RegistrationPurpose']."</p><h3> "; 
 										if (($row['Category']=="Κατοικία") || ($row['Category']=="Επαγγελματικός χώρος") || ($row['Category']=="Ξενοδοχείο")) {
-											$sql4 =  "SELECT B.NumOfRooms, B.NumOfWC FROM RealEstate RE, Building B WHERE RE.RealEstateNo=B.RealEstateNo";
+											$sql4 =  "SELECT B.NumOfRooms, B.NumOfWC FROM RealEstate RE, Building B WHERE RE.RealEstateNo=$reid AND RE.RealEstateNo=B.RealEstateNo";
 											$result4 = mysqli_query($conn, $sql4); 
 											$row4=mysqli_fetch_assoc($result4);
-											echo $row4['NumOfRooms']; echo " <i class='fa fa-bed' style='font-size:24px'></i> "; echo $row4['NumOfWC']; echo " <i class='fa fa-bath' style='font-size:24px'></i>"; } 
+											$sql5 = "SELECT * FROM BDetails WHERE RealEstateNo=$reid AND DetailNo=11";
+									$result5 = mysqli_query($conn, $sql5);
+											echo $row['Category']." με ".$row4['NumOfRooms']." <i class='fa fa-bed' style='color: #c03e62; font-size:24px'></i> ".$row4['NumOfWC']." <i class='fa fa-bath' style='color: #c03e62; font-size:24px'></i>"; 
+											if (mysqli_num_rows($result5)==0)
+										echo " Όχι ";
+									else
+										echo " Ναι ";
+									echo "<i class='fa fa-paw' style='color: #c03e62; font-size:22px'></i> ";
+                      } 
 											else {
-												echo "0 <i class='fa fa-bed' style='font-size:24px'></i> 0 <i class='fa fa-bath' style='font-size:24px'></i>";
+												echo $row['Category'];
 											} 
 											echo "</h3>
 										</p>
@@ -347,7 +364,7 @@ session_start();
 				</div>
 			</div>
 		</div>
-
+</div>
 
 		<!-- jQuery -->
 		<script src="js/jquery.js"></script>
@@ -471,16 +488,6 @@ session_start();
 									<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" required>
 								</div>
 							</div>
-							<div class="form-group">
-								<div class="col-sm-offset-0 col-sm-9">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox"/>
-											Remember me 
-										</label>
-									</div>
-								</div>
-							</div>
 						</div>
 
 						<div class="modal-footer">
@@ -492,8 +499,6 @@ session_start();
 
 								<!--<input type="reset" value="Reset" class="btn btn-default btn-lg" tabindex="7">-->
 							</div>
-							<a href="https://el-gr.facebook.com/"><img src="img/facebookSI.png"></a>
-							<a href="https://accounts.google.com/ServiceLogin?hl=EN#identifier"><img src="img/loginGoogle.png"></a>
 						</div>
 					</form>
 					<div class="panel-footer">
