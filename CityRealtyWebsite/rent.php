@@ -256,9 +256,9 @@ session_start();
               if (($rowpopular['Category']=="Κατοικία") || ($rowpopular['Category']=="Επαγγελματικός χώρος") || ($rowpopular['Category']=="Ξενοδοχείο")) {
 								echo "<p>".$rowpopular['Category']." με ".$rowpopular2['NumOfRooms']." <i class='fa fa-bed' style='color: #c03e62; font-size:24px'></i> ".$rowpopular2['NumOfWC']." <i class='fa fa-bath' style='color: #c03e62; font-size:24px'></i>";
 									if (mysqli_num_rows($resultpopular4)==0)
-									echo " Όχι ";
+									echo " Χ ";
 								else
-									echo " Ναι ";
+									echo " ✓ ";
 								echo"<i class='fa fa-paw' style='color: #c03e62; font-size:22px'></i></p>";  
               }
               else {
@@ -331,9 +331,9 @@ session_start();
 									$result5 = mysqli_query($conn, $sql5);
 											echo $row['Category']." με ".$row4['NumOfRooms']." <i class='fa fa-bed' style='color: #c03e62; font-size:24px'></i> ".$row4['NumOfWC']." <i class='fa fa-bath' style='color: #c03e62; font-size:24px'></i>"; 
 											if (mysqli_num_rows($result5)==0)
-										echo " Όχι ";
-									else
-										echo " Ναι ";
+										echo " Χ ";
+								else
+									echo " ✓ ";
 									echo "<i class='fa fa-paw' style='color: #c03e62; font-size:22px'></i> ";
                       } 
 											else {
