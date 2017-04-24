@@ -256,9 +256,9 @@ echo "<div style='padding-top:80px'>
 							if (($rowpopular['Category']=="Κατοικία") || ($rowpopular['Category']=="Επαγγελματικός χώρος") || ($rowpopular['Category']=="Ξενοδοχείο")) {
 								echo "<p>".$rowpopular['Category']." με ".$rowpopular2['NumOfRooms']." <i class='fa fa-bed' style='color: #c03e62; font-size:22px'></i> ".$rowpopular2['NumOfWC']." <i class='fa fa-bath' style='color: #c03e62; font-size:22px'></i>";
 								if (mysqli_num_rows($resultpopular4)==0)
-									echo " Όχι ";
+									echo " Χ ";
 								else
-									echo " Ναι ";
+									echo " ✓ ";
 								echo"<i class='fa fa-paw' style='color: #c03e62; font-size:22px'></i></p>"; 
 							}
 							else {
@@ -449,9 +449,9 @@ echo "<div style='padding-top:80px'>
 									$result4 = mysqli_query($conn, $sql4); 
 									echo $rowc['Category']." με ".$row['NumOfRooms']." <i class='fa fa-bed' style='color: #c03e62; font-size:22px'></i> ".$row['NumOfWC']." <i class='fa fa-bath' style='color: #c03e62; font-size:22px'></i>";
 									if (mysqli_num_rows($result4)==0)
-										echo " Όχι ";
+										echo " Χ ";
 									else
-										echo " Ναι ";
+										echo " ✓ ";
 									echo "<i class='fa fa-paw' style='color: #c03e62; font-size:22px'></i> ";
 								} 
 								else {
