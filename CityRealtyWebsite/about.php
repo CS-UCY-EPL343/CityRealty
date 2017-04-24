@@ -105,6 +105,9 @@ session_start();
 
 			<ul class="nav navbar-nav ">
 				<li>
+					<a class="page-scroll" href="index.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/logo.png"></span> </a>	
+				</li>
+				<li>
 					<a class="page-scroll" href="index.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/home2.png">Home</span> </a>
 				</li>
 
@@ -179,7 +182,7 @@ session_start();
 			<div class="row text-center">
 
 				<div class="col-lg-10 col-lg-offset-1">
-					<h1 style="color: #c03e62;text-shadow: 1px 1px 1px #000000;">About City Realty Cyprus</h1>
+					<h1 style="color: #c03e62;text-shadow: 1px 1px 1px #000000;">About Empire Estates</h1>
 
 					<hr class="small">
 
@@ -244,6 +247,10 @@ session_start();
 
 						</ul>
 						<hr class="small">
+						<p class="text-muted" style="color: #FFFFFF">
+							<a style="color: #FFFFFF" href="termsconditions.php">Terms & Conditions</a> | 
+							<a style="color: #FFFFFF" href="about.php">About Us</a>
+						</p>
 						<p class="text-muted" style="color: #FFFFFF">
 							Copyright &copy; University of Cyprus
 						</p>
@@ -358,8 +365,6 @@ session_start();
 
 				<div class="modal-body">
 					<form id="MyForm" class="form-horizontal" role="form" action="login_inc.php" method="POST">
-
-
 						<div class="form-group">
 							<div class="col-sm-9">
 								<input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Username" tabindex="3" required>
@@ -370,29 +375,13 @@ session_start();
 								<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" required>
 							</div>
 						</div>
-						<div class="form-group">
-							<div class="col-sm-offset-0 col-sm-9">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox"/>
-										Remember me 
-									</label>
-								</div>
-							</div>
-						</div>
-					</div>
-
 					<div class="modal-footer">
 						<div class="col-xs-12 col-md-6">
 							<input type="submit" value="Sign In" class="btn btn-primary btn-block btn-lg" tabindex="7">
 						</div>
 						<div class="col-xs-12 col-md-6">
 							<input type="reset" value="Reset" class="btn btn-primary btn-block btn-lg" tabindex="7">
-
-							<!--<input type="reset" value="Reset" class="btn btn-default btn-lg" tabindex="7">-->
 						</div>
-						<a href="https://el-gr.facebook.com/"><img src="img/facebookSI.png"></a>
-						<a href="https://accounts.google.com/ServiceLogin?hl=EN#identifier"><img src="img/loginGoogle.png"></a>
 					</div>
 				</form>
 				<div class="panel-footer">
