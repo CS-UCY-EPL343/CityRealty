@@ -38,6 +38,17 @@ $sql = "DELETE FROM BFrames WHERE RealEstateNo=$reid";
 $result = mysqli_query($conn, $sql); 
 $sql = "DELETE FROM BLocationDetails WHERE RealEstateNo=$reid";
 $result = mysqli_query($conn, $sql); 
-header("Location: admin.php");
+
+$id = $_SESSION['id'];
+$sql2 = "SELECT UserType FROM UserSimple WHERE Username=$id";
+$result2 = mysqli_query($conn,$sql2);
+$row2=mysqli_fetch_assoc($result2);
+if ($row2['UserType']=="Admin") {
+	mysqli_close($conn);
+	header("Location: admin.php");
+} else {
+	mysqli_close($conn);
+	header("Location: broker_manage.php");
+}
 
 ?>
