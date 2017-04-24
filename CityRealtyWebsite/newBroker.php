@@ -116,8 +116,8 @@ session_start();
 									<br>
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="όνομα" tabindex="1" autocomplete="on" required>
-											<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="επίθετο" tabindex="2" autocomplete="on" required>
+											<input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="όνομα" tabindex="1" autocomplete="on" required data-validation-required-message="Please enter a Name.">
+											<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="επίθετο" tabindex="2" autocomplete="on" required data-validation-required-message="Please enter a Surname">
 										</div>
 									</div>
 								</div>
@@ -125,7 +125,7 @@ session_start();
 								<small> Username</small>
 								<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
 								<div class="form-group">
-									<input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Username" tabindex="3" required>
+									<input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Username" tabindex="3">
 								</div>
 
 								<div class="form-group">
@@ -276,14 +276,14 @@ session_start();
 										<small>Διεύθυνση</small>
 										<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
 										<div class="form-group">
-											<input type="text" name="Street" id="Street" class="form-control input-lg" placeholder="Οδός" tabindex="3" required>
-											<input type="text" name="Street_num" id="Street_num" class="form-control input-lg" placeholder="Αριθμός" tabindex="3" required>
+											<input type="text" name="Street" id="Street" class="form-control input-lg" placeholder="Οδός" tabindex="3">
+											<input type="text" name="Street_num" id="Street_num" class="form-control input-lg" placeholder="Αριθμός" tabindex="3">
 										</div>
 										<div>
-											<input type="text" name="City" id="City" class="form-control input-lg" placeholder="Πόλη" tabindex="3" required>
+											<input type="text" name="City" id="City" class="form-control input-lg" placeholder="Πόλη" tabindex="3">
 										</div>
 										<div class="form-group">
-											<input type="text" name="country_name" id="country_name" class="form-control input-lg" placeholder="Χώρα" tabindex="3" required>
+											<input type="text" name="country_name" id="country_name" class="form-control input-lg" placeholder="Χώρα" tabindex="3">
 										</div>
 
 										<small>Email Address</small>
