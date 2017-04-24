@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 $reid = $_GET['reid'];
 $conn = mysqli_connect("localhost", "USERNAME", "PASSWORD", "DATABASE");
 if (!$conn) {
@@ -28,6 +29,11 @@ $result2 = mysqli_query($conn, $sql2);
 $row2 = mysqli_fetch_assoc($result2);
 $sql3 =  "SELECT ViewNo FROM REView WHERE RealEstateNo=$reid";
 $result3 = mysqli_query($conn, $sql3);
+
+$sql4 = "UPDATE RealEstate SET TimesViewed=TimesViewed+1 WHERE RealEstateNo=$reid";
+$result4 = mysqli_query($conn, $sql4);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +47,7 @@ $result3 = mysqli_query($conn, $sql3);
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Real Estate</title>
+	<title>Empire Estate</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -70,6 +76,7 @@ $result3 = mysqli_query($conn, $sql3);
 			height: 100px;
 			overflow-y: scroll;
 		}
+
 		.navbar {
 			position: relative;
 			min-height: 50px;
@@ -78,6 +85,7 @@ $result3 = mysqli_query($conn, $sql3);
 			background-color: transparent;
 			width: 100%
 		}
+
 		#menu {
 			overflow: hidden;
 		}
@@ -147,6 +155,7 @@ $result3 = mysqli_query($conn, $sql3);
 		.dropdown:hover .dropdown-content {
 			display: block;
 		}
+
 		#content #mainwrap #tabs .column.col3 #title2 #title3 #title4 h2 {
 			font-family: Arial, Helvetica, sans-serif;
 			font-size: 26em;
@@ -195,6 +204,7 @@ $result3 = mysqli_query($conn, $sql3);
 			padding: 3px;
 			text-align: left;
 		}
+
 		#content #mainwrap #menu {
 			padding: 20px;
 			overflow: hidden;
@@ -208,10 +218,12 @@ $result3 = mysqli_query($conn, $sql3);
 			overflow: hidden;
 			position: relative;
 		}
+
 		#pagecontainer {
 			position: relative;
 			width: 9999px;
 		}
+
 		.section {
 			float: left;
 			position: relative;
@@ -219,6 +231,7 @@ $result3 = mysqli_query($conn, $sql3);
 			padding: 30px;
 			overflow: hidden;
 		}
+
 		#RealEstateTab #tabs {
 			overflow-y: scroll;
 		}
@@ -227,9 +240,11 @@ $result3 = mysqli_query($conn, $sql3);
 		function myFunction() {
 			alert("Username or email already used!");
 		}
+
 		function myFunction2() {
 			alert("Your username or password is incorrect!");
 		}
+
 		function myFunction3() {
 			alert("You have successfully signed up!");
 		}
@@ -326,8 +341,21 @@ $result3 = mysqli_query($conn, $sql3);
 		</div>
 		<!-- /.container -->
 	</nav>
+	
+	<!-- Search Property ID -->
+	<div class="col-md-2">
+		<form action="propertyList.php" method="POST">
+			<div class="form-group">
+				<label>ID Ακινήτου:</label>
+				<input type="text" name="REid" class="form-control" placeholder="ID Ακινήτου" id="REid">
+				<input type="submit" style="position: absolute; left: -9999px"/>
+				<p class="help-block text-danger"></p>
+			</div>
+		</form>
+	</div>
 
 	<!-- Page Content -->
+	<div style="padding-top:80px">
 	<div class="container" style = "background-color:#ABABAB; border:3px solid #666666;">
 
 		<!-- Page Heading/Breadcrumbs -->
@@ -384,9 +412,10 @@ $result3 = mysqli_query($conn, $sql3);
 			<!-- Short description -->
 			<div class="col-md-4">
 				<h3 style="color: #c03e62;">Περιγραφή Ακινήτου</h3>
-				<p style="color: #008c99">
-					<?php echo $_row['Description']; ?>
+				<p>
+					<?php echo $row['ShortDescription']; ?>
 				</p>
+				<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=small&mobile_iframe=true&width=86&height=20&appId" width="86" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 			</div>
 
 			<!-- Start of section : TABS -->
@@ -552,9 +581,54 @@ $result3 = mysqli_query($conn, $sql3);
 										<h3 class="fieldGroup"><i class="fa fa-map-marker fieldGroup"></i> Χάρτης Τοποθεσίας <small class="hide" itemscope itemtype="http://schema.org/GeoCoordinates"><span class="latitude" itemprop="latitude">37.5177279637819</span>, <span class="longitude" itemprop="longitude">22.3811034455078</span></small></h3>
 										<script>
 											function initialize() {
-												var myLatlng = new google.maps.LatLng(35.146394,33.407982);
+												var image = new google.maps.MarkerImage('/wp-content/themes/omega/img/marker.png', new google.maps.Size(48, 32), new google.maps.Point(0, 0), new google.maps.Point(24, 32));
+												var styles = [{
+													"stylers" : [{
+														"lightness" : -5
+													}, {
+														"saturation" : -39
+													}, {
+														"hue" : "#ff8800"
+													}]
+												}, {
+													"featureType" : "road",
+													"elementType" : "geometry",
+													"stylers" : [{
+														"lightness" : 100
+													}, {
+														"visibility" : "simplified"
+													}]
+												}, {
+													"featureType" : "road",
+													"stylers" : [{
+														"visibility" : "on"
+													}]
+												}, {
+													"featureType" : "water",
+													"stylers" : [{
+														"hue" : "#0077ff"
+													}, {
+														"saturation" : -70
+													}, {
+														"visibility" : "simplified"
+													}, {
+														"lightness" : -51
+													}]
+												}, {
+													"featureType" : "poi",
+													"stylers" : [{
+														"visibility" : "simplified"
+													}]
+												}, {
+													"featureType" : "road.highway",
+													"elementType" : "labels.icon",
+													"stylers" : [{
+														"visibility" : "off"
+													}]
+												}];
+												var myLatlng = new google.maps.LatLng(37.5177279637819, 22.3811034455078);
 												var mapOptions = {
-													zoom : 16,
+													zoom : 12,
 													center : myLatlng,
 													scrollwheel : false,
 													mapTypeControl : true,
@@ -564,35 +638,31 @@ $result3 = mysqli_query($conn, $sql3);
 													zoomControl : true,
 													zoomControlOptions : {
 														style : google.maps.ZoomControlStyle.SMALL
-													}
+													},
+													styles : styles
 												}
 												var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
 												var marker = new google.maps.Marker({
 													position : myLatlng,
 													map : map,
 													title : 'Ακίνητο #477537',
 													options : {
-														draggable : false
+														draggable : false,
+														icon : image
 													},
 												});
-												var circle = new google.maps.Circle({
-													 map: map,
-                                                     radius: 400,
-													 fillColor: '#AA0000',   
-													 strokeColor: '#AA0000',
-													 strokeOpacity: 0
-                                                 });
-												 marker.setVisible(false);
-												 // Add a marker at the center of the map.
-                                                 circle.bindTo('center', marker, 'position');
+
 												google.maps.event.addDomListener(window, 'resize', initialize);
 											}
+
 											function loadScript() {
 												var script = document.createElement('script');
 												script.type = 'text/javascript';
 												script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=en&' + 'callback=initialize';
 												document.body.appendChild(script);
 											}
+
 											loadScript();
 										</script>
 										<div id="map_canvas" style="width:100%;height:293px;background:#DDDDDD;"></div>
@@ -614,6 +684,7 @@ $result3 = mysqli_query($conn, $sql3);
 							$sql_land = "SELECT * FROM Land WHERE RealEstateNo = $reid";
 							$result_land = mysqli_query($conn, $sql_land); 
 							$row_land=mysqli_fetch_assoc($result_land);
+
 							echo "<!-- Start of section : Land -->
 							<div id='LandTab'>
 								<div class='column col4'>
@@ -642,6 +713,7 @@ $result3 = mysqli_query($conn, $sql3);
 												</table>
 											</li>
 										</ul>
+
 										<h3 class='fieldGroup'>Μετρικές Γης</h3>
 										<ul id='menu7'>
 											<li style='color: #008c99'>
@@ -727,6 +799,7 @@ $result3 = mysqli_query($conn, $sql3);
 														</table>
 													</li>
 												</ul>
+
 											</div>
 										</div>
 										<!-- End : Land -->";
@@ -867,7 +940,6 @@ $result3 = mysqli_query($conn, $sql3);
 																				while($row_building8=mysqli_fetch_assoc($result_building8)) {
 																					$sql_building9 = 'SELECT Description FROM BDetailsChoices WHERE DetailNo='.$row_building8['DetailNo'];
 																					$result_building9 = mysqli_query($conn, $sql_building9);
-
 																					$row_building9=mysqli_fetch_assoc($result_building8);
 																					echo $row_building9['Description'].' ';
 																				} echo "</label></th>
@@ -875,17 +947,17 @@ $result3 = mysqli_query($conn, $sql3);
 																		</table>
 																	</li>
 																</ul>
+
 															</div>
 														</div>
 														<!-- End : Building -->";
-													}
-													else if ($row['Category']=="Ξενοδοχείο") {
 														$sql_residence = "SELECT * FROM Residence WHERE RealEstateNo = $reid";
 							$result_residence = mysqli_query($conn, $sql_residence); 
 							$row_residence=mysqli_fetch_assoc($result_residence);
 														echo "<!-- Start : Recidence -->
 														<div id='RecidenceTab'>
 															<div class='column col3'>
+
 																<h3 class='fieldGroup'>Πληροφορίες Κατοικίας</h3>
 																<ul id='menu6'>
 																	<li style='color: #008c99'>
@@ -935,11 +1007,308 @@ $result3 = mysqli_query($conn, $sql3);
 																		</table>
 																	</li>
 																</ul>
+
 															</div>
 														</div>
 														<!-- End : Recidence -->";
+													}
+													else if ($row['Category']=="Ξενοδοχείο") {
+														$sql_building = "SELECT * FROM Building WHERE RealEstateNo = $reid";
+										$result_building = mysqli_query($conn, $sql_building); 
+										$row_building=mysqli_fetch_assoc($result_building);
+										echo "<!-- Start : Building -->
+										<div id='BuildingTab'>
+											<div class='column col4'>
+												<h3 class='fieldGroup'>Βασικές Πληροφορίες Κτιρίου</h3>
+												<ul id='menu7'>
+													<li style='color: #008c99'>
+														Βασικές πληροφορίες που αφορούν το ακίνητο σε μορφή κτιρίου
+														<table>
+															<tr>
+																<th class='field'>Τύπος Κτιρίου</th><!-- From RealEstate -->
+																<th class='value'><label class='value' id='Category'>".$row_building['BuildingType']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Υπό Κατασκευή</th>
+																<th class='value'><label class='value' id='UnderConstruction'>"; if ($row_building['UnderConstruction']==1) echo 'Ναι'; else echo 'Όχι'; echo "</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Έτος Κατασκευής</th>
+																<th class='value'><label class='value' id='ConstructionYear'>".$row_building['ConstructionYear']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Ανακαινισμένο</th>
+																<th class='value'><label class='value' id='Renovated'>"; if ($row_building['Renovated']==1) echo 'Ναι'; else echo 'Όχι'; echo "</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Έτος Ανακαίνισης</th>
+																<th class='value'><label class='value' id='RenovationYear'>".$row_building['RenovationYear']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Αριθμός Επιπέδων</th>
+																<th class='value'><label class='value' id='Levels'>".$row_building['Levels']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Αριθμός Ορόφων</th>
+																<th class='value'><label class='value' id='NumOfFloors'>".$row_building['NumOfFloors']."</label></th>
+															</tr>
+														</table>
+													</li>
+												</ul><h3 class='fieldGroup'>Λεπτομέρειες Κτιρίου</h3>
+												<ul id='menu7'>
+													<li style='color: #008c99'>
+														Λεπτομέρειες εγκαταστάσεων για το παρόν κτίριο
+														<table>
+															<tr>
+																<th class='field'>Αριθμός από Παρκινγκ</th>
+																<th class='value'><label class='value' id='ParkingSpots'>".$row_building['ParkingSpots']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Αριθμός Χώρων</th>
+																<th class='value'><label class='value' id='NumOfRooms'>".$row_building['NumOfRooms']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Αριθμός WC</th>
+																<th class='value'><label class='value' id='NumOfWC'>".$row_building['NumOfWC']."</label></th>
+															</tr>
+														</table>
+													</li>
+													<li style='color: #008c99'>
+														Λεπτομέρειες σχετικά με ενέργεια, θέρμανση και άλλα στοιχεία
+														<table>
+															<tr>
+																<th class='field'>Ενεργειακό Πιστοποιητικό</th>
+																<th class='value'><label class='value' id='EnergyCertificate'>".$row_building['EnergyCertificate']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Τύπος Θέρμανσης</th>
+																<th class='value'><label class='value' id='HeatingFuel'>".$row_building['HeatingFuel']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Μέσο Θέρμανσης</th>
+																<th class='value'><label class='value' id='HeatingType'>".$row_building['HeatingType']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Αποχέτευση</th>
+																<th class='value'><label class='value' id='Drainage'>"; if ($row_building['Drainage']==1) echo 'Ναι'; else echo 'Όχι'; echo "</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Μέσα μηνιαία κοινόχρηστα</th>
+																<th class='value'><label class='value' id='AvgSharedCosts'>".$row_building['AvgSharedCosts']."</label></th>
+															</tr>
+														</table>
+													</li>
+												</ul>";
+												$sql_building2 = "SELECT FloorTypeNo FROM BFloorType WHERE RealEstateNo = $reid";
+												$result_building2 = mysqli_query($conn, $sql_building2); 
+												echo "<h3 class='fieldGroup'>Χαρακτηριστικά Κτιρίου</h3>
+												<ul id='menu7'>
+													<li style='color: #008c99'>
+														Πληροφορίες σχετικά με διάφορα χαρακτηριστικά του κτιρίου
+														<table>
+															<tr>
+																<th class='field'>Τύπος Δαπέδων</th>
+																<th class='value'><label class='value' id='FloorType'>";
+																	while($row_building2=mysqli_fetch_assoc($result_building2)) {
+																		$sql_building3 = 'SELECT Description FROM BFloorTypeChoices WHERE FloorTypeNo='.$row_building2['FloorTypeNo'];
+																		$result_building3 = mysqli_query($conn, $sql_building3);
+																		$row_building3=mysqli_fetch_assoc($result_building3);
+																		echo $row_building3['Description'].' ';
+																	} echo "</label></th>
+																</tr>
+																<tr>
+																	<th class='field'>Τύπος Κουφωμάτων</th>
+																	<th class='value'><label class='value' id='Frames'>";
+																		$sql_building4 = "SELECT FrameNo FROM BFrames WHERE RealEstateNo = $reid";
+																		$result_building4 = mysqli_query($conn, $sql_building4); 
+																		while($row_building4=mysqli_fetch_assoc($result_building4)) {
+																			$sql_building5 = 'SELECT Description FROM BFramesChoices WHERE FrameNo='.$row_building4['FrameNo'];
+																			$result_building5 = mysqli_query($conn, $sql_building5);
+																			$row_building5=mysqli_fetch_assoc($result_building5);
+																			echo $row_building5['Description'].' ';
+																		} echo "</label></th>
+																	</tr>
+																	<tr>
+																		<th class='field'>Πληροφορίες Τοποθεσίας</th>
+																		<th class='value'><label class='value' id='LocationDetails'>";
+																			$sql_building6 = "SELECT DetailNo FROM BLocationDetails WHERE RealEstateNo = $reid";
+																			$result_building6 = mysqli_query($conn, $sql_building6); 
+																			while($row_building6=mysqli_fetch_assoc($result_building6)) {
+																				$sql_building7 = 'SELECT Description FROM BLocationDetailsChoices WHERE DetailNo='.$row_building6['DetailNo'];
+																				$result_building7 = mysqli_query($conn, $sql_building7);
+																				$row_building6=mysqli_fetch_assoc($result_building7);
+																				echo $row_building7['Description'].' ';
+																			} echo "</label></th>
+																		</tr>
+																		<tr>
+																			<th class='field'>Άλλα Χαρακτηριστικά</th>
+																			<th class='value'><label class='value' id='BuildingDetails'>";
+																				$sql_building8 = "SELECT DetailNo FROM BDetails WHERE RealEstateNo = $reid";
+																				$result_building8 = mysqli_query($conn, $sql_building8);
+																				while($row_building8=mysqli_fetch_assoc($result_building8)) {
+																					$sql_building9 = 'SELECT Description FROM BDetailsChoices WHERE DetailNo='.$row_building8['DetailNo'];
+																					$result_building9 = mysqli_query($conn, $sql_building9);
+																					$row_building9=mysqli_fetch_assoc($result_building8);
+																					echo $row_building9['Description'].' ';
+																				} echo "</label></th>
+																			</tr>
+																		</table>
+																	</li>
+																</ul>
+
+															</div>
+														</div>
+														<!-- End : Building -->";
+							
 													} 
+
 													else if ($row['Category']=="Επαγγελματικός Χώρος") {
+														$sql_building = "SELECT * FROM Building WHERE RealEstateNo = $reid";
+										$result_building = mysqli_query($conn, $sql_building); 
+										$row_building=mysqli_fetch_assoc($result_building);
+										echo "<!-- Start : Building -->
+										<div id='BuildingTab'>
+											<div class='column col4'>
+												<h3 class='fieldGroup'>Βασικές Πληροφορίες Κτιρίου</h3>
+												<ul id='menu7'>
+													<li style='color: #008c99'>
+														Βασικές πληροφορίες που αφορούν το ακίνητο σε μορφή κτιρίου
+														<table>
+															<tr>
+																<th class='field'>Τύπος Κτιρίου</th><!-- From RealEstate -->
+																<th class='value'><label class='value' id='Category'>".$row_building['BuildingType']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Υπό Κατασκευή</th>
+																<th class='value'><label class='value' id='UnderConstruction'>"; if ($row_building['UnderConstruction']==1) echo 'Ναι'; else echo 'Όχι'; echo "</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Έτος Κατασκευής</th>
+																<th class='value'><label class='value' id='ConstructionYear'>".$row_building['ConstructionYear']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Ανακαινισμένο</th>
+																<th class='value'><label class='value' id='Renovated'>"; if ($row_building['Renovated']==1) echo 'Ναι'; else echo 'Όχι'; echo "</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Έτος Ανακαίνισης</th>
+																<th class='value'><label class='value' id='RenovationYear'>".$row_building['RenovationYear']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Αριθμός Επιπέδων</th>
+																<th class='value'><label class='value' id='Levels'>".$row_building['Levels']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Αριθμός Ορόφων</th>
+																<th class='value'><label class='value' id='NumOfFloors'>".$row_building['NumOfFloors']."</label></th>
+															</tr>
+														</table>
+													</li>
+												</ul><h3 class='fieldGroup'>Λεπτομέρειες Κτιρίου</h3>
+												<ul id='menu7'>
+													<li style='color: #008c99'>
+														Λεπτομέρειες εγκαταστάσεων για το παρόν κτίριο
+														<table>
+															<tr>
+																<th class='field'>Αριθμός από Παρκινγκ</th>
+																<th class='value'><label class='value' id='ParkingSpots'>".$row_building['ParkingSpots']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Αριθμός Χώρων</th>
+																<th class='value'><label class='value' id='NumOfRooms'>".$row_building['NumOfRooms']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Αριθμός WC</th>
+																<th class='value'><label class='value' id='NumOfWC'>".$row_building['NumOfWC']."</label></th>
+															</tr>
+														</table>
+													</li>
+													<li style='color: #008c99'>
+														Λεπτομέρειες σχετικά με ενέργεια, θέρμανση και άλλα στοιχεία
+														<table>
+															<tr>
+																<th class='field'>Ενεργειακό Πιστοποιητικό</th>
+																<th class='value'><label class='value' id='EnergyCertificate'>".$row_building['EnergyCertificate']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Τύπος Θέρμανσης</th>
+																<th class='value'><label class='value' id='HeatingFuel'>".$row_building['HeatingFuel']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Μέσο Θέρμανσης</th>
+																<th class='value'><label class='value' id='HeatingType'>".$row_building['HeatingType']."</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Αποχέτευση</th>
+																<th class='value'><label class='value' id='Drainage'>"; if ($row_building['Drainage']==1) echo 'Ναι'; else echo 'Όχι'; echo "</label></th>
+															</tr>
+															<tr>
+																<th class='field'>Μέσα μηνιαία κοινόχρηστα</th>
+																<th class='value'><label class='value' id='AvgSharedCosts'>".$row_building['AvgSharedCosts']."</label></th>
+															</tr>
+														</table>
+													</li>
+												</ul>";
+												$sql_building2 = "SELECT FloorTypeNo FROM BFloorType WHERE RealEstateNo = $reid";
+												$result_building2 = mysqli_query($conn, $sql_building2); 
+												echo "<h3 class='fieldGroup'>Χαρακτηριστικά Κτιρίου</h3>
+												<ul id='menu7'>
+													<li style='color: #008c99'>
+														Πληροφορίες σχετικά με διάφορα χαρακτηριστικά του κτιρίου
+														<table>
+															<tr>
+																<th class='field'>Τύπος Δαπέδων</th>
+																<th class='value'><label class='value' id='FloorType'>";
+																	while($row_building2=mysqli_fetch_assoc($result_building2)) {
+																		$sql_building3 = 'SELECT Description FROM BFloorTypeChoices WHERE FloorTypeNo='.$row_building2['FloorTypeNo'];
+																		$result_building3 = mysqli_query($conn, $sql_building3);
+																		$row_building3=mysqli_fetch_assoc($result_building3);
+																		echo $row_building3['Description'].' ';
+																	} echo "</label></th>
+																</tr>
+																<tr>
+																	<th class='field'>Τύπος Κουφωμάτων</th>
+																	<th class='value'><label class='value' id='Frames'>";
+																		$sql_building4 = "SELECT FrameNo FROM BFrames WHERE RealEstateNo = $reid";
+																		$result_building4 = mysqli_query($conn, $sql_building4); 
+																		while($row_building4=mysqli_fetch_assoc($result_building4)) {
+																			$sql_building5 = 'SELECT Description FROM BFramesChoices WHERE FrameNo='.$row_building4['FrameNo'];
+																			$result_building5 = mysqli_query($conn, $sql_building5);
+																			$row_building5=mysqli_fetch_assoc($result_building5);
+																			echo $row_building5['Description'].' ';
+																		} echo "</label></th>
+																	</tr>
+																	<tr>
+																		<th class='field'>Πληροφορίες Τοποθεσίας</th>
+																		<th class='value'><label class='value' id='LocationDetails'>";
+																			$sql_building6 = "SELECT DetailNo FROM BLocationDetails WHERE RealEstateNo = $reid";
+																			$result_building6 = mysqli_query($conn, $sql_building6); 
+																			while($row_building6=mysqli_fetch_assoc($result_building6)) {
+																				$sql_building7 = 'SELECT Description FROM BLocationDetailsChoices WHERE DetailNo='.$row_building6['DetailNo'];
+																				$result_building7 = mysqli_query($conn, $sql_building7);
+																				$row_building6=mysqli_fetch_assoc($result_building7);
+																				echo $row_building7['Description'].' ';
+																			} echo "</label></th>
+																		</tr>
+																		<tr>
+																			<th class='field'>Άλλα Χαρακτηριστικά</th>
+																			<th class='value'><label class='value' id='BuildingDetails'>";
+																				$sql_building8 = "SELECT DetailNo FROM BDetails WHERE RealEstateNo = $reid";
+																				$result_building8 = mysqli_query($conn, $sql_building8);
+																				while($row_building8=mysqli_fetch_assoc($result_building8)) {
+																					$sql_building9 = 'SELECT Description FROM BDetailsChoices WHERE DetailNo='.$row_building8['DetailNo'];
+																					$result_building9 = mysqli_query($conn, $sql_building9);
+																					$row_building9=mysqli_fetch_assoc($result_building8);
+																					echo $row_building9['Description'].' ';
+																				} echo "</label></th>
+																			</tr>
+																		</table>
+																	</li>
+																</ul>
+
+															</div>
+														</div>
+														<!-- End : Building -->";
 														$sql_office = "SELECT * FROM Office WHERE RealEstateNo = $reid";
 							$result_office = mysqli_query($conn, $sql_office); 
 							$row_office=mysqli_fetch_assoc($result_office);
@@ -947,6 +1316,7 @@ $result3 = mysqli_query($conn, $sql3);
 														<div style='clear:both'></div>
 														<div id='OfficeTab'>
 															<div class='column col3'>
+
 																<h3 class='fieldGroup'>Πληροφορίες Επαγγελματικού Χώρου</h3>
 																<ul id='menu6'>
 																	<li style='color: #008c99'>
@@ -980,6 +1350,7 @@ $result3 = mysqli_query($conn, $sql3);
 																		</table>
 																	</li>
 																</ul>
+
 																<h3 class='fieldGroup'>Περιγραφή Επαγγελματικού Χώρου</h3>
 																<ul id='menu6'>
 																	<li style='color: #008c99'>
@@ -1012,6 +1383,7 @@ $result3 = mysqli_query($conn, $sql3);
 																		</table>
 																	</li>
 																</ul>
+
 																<h3 class='fieldGroup'>Πληροφορίες Κόστους</h3>
 																<ul id='menu6'>
 																	<li style='color: #008c99'>
@@ -1044,6 +1416,7 @@ $result3 = mysqli_query($conn, $sql3);
 																		</table>
 																	</li>
 																</ul>
+
 															</div>
 														</div>
 														<!-- End : Office -->";
@@ -1060,7 +1433,7 @@ $result3 = mysqli_query($conn, $sql3);
 									<!-- /. portfolio item row -->
 
 									<!-- /.container -->
-
+								</div>
 									<!-- jQuery -->
 									<script src="js/jquery.js"></script>
 
@@ -1186,15 +1559,6 @@ $result3 = mysqli_query($conn, $sql3);
 																<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" required>
 															</div>
 														</div>
-														<div class="form-group">
-															<div class="col-sm-offset-0 col-sm-9">
-																<div class="checkbox">
-																	<label>
-																		<input type="checkbox"/>
-																		Remember me </label>
-																	</div>
-																</div>
-															</div>
 														</div>
 														<div class="modal-footer">
 															<div class="col-xs-12 col-md-6">
@@ -1204,8 +1568,6 @@ $result3 = mysqli_query($conn, $sql3);
 																<input type="reset" value="Reset" class="btn btn-primary btn-block btn-lg" tabindex="7">
 																<!--<input type="reset" value="Reset" class="btn btn-default btn-lg" tabindex="7">-->
 															</div>
-															<a href="https://el-gr.facebook.com/"><img src="img/facebookSI.png"></a>
-															<a href="https://accounts.google.com/ServiceLogin?hl=EN#identifier"><img src="img/loginGoogle.png"></a>
 														</div>
 													</form>
 													<div class="panel-footer">
@@ -1452,7 +1814,7 @@ $result3 = mysqli_query($conn, $sql3);
 																}
 															}
 														});
-	            									});
+													});
 													<-- #to-top button appears after scrolling -->
 													var fixed = false;
 													$(document).scroll(function() {
@@ -1506,6 +1868,8 @@ $result3 = mysqli_query($conn, $sql3);
 															confirm_passwordSu.setCustomValidity('');
 														}
 													}
+
+
 													passwordSu.onchange = validatePassword;
 													confirm_passwordSu.onkeyup = validatePassword;
 													var passwordSb = document.getElementById("password2"),
@@ -1517,6 +1881,8 @@ $result3 = mysqli_query($conn, $sql3);
 															confirm_passwordSb.setCustomValidity('');
 														}
 													}
+
+
 													passwordSb.onchange = validatePasswordSb;
 													confirm_passwordSb.onkeyup = validatePasswordSb;
 												</script>
