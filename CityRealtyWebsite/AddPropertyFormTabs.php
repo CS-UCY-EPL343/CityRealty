@@ -362,10 +362,11 @@ $(document).ready(function(){
 						<form role="form" action="addProperty.php" method="post">
 							<div class="col-md-6">
 								<label>Διεύθυνση</label>
-								<input class="form-control" name="astreet">
+								<input class="form-control" required name="astreet">
 								<div class="form-group">
 									<br><label>Πόλη/Περιοχή:</label>
-									<select name="Location" id="Location" class="form-control" onchange="showtemplate(this.value)">
+									<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+									<select name="Location" id="Location" required class="form-control" onchange="showtemplate(this.value)">
 										<option value="--">--</option>
 										<option value="Λευκωσία">Λευκωσία</option>
 										<option value="Λεμεσός">Λεμεσός</option>
@@ -377,15 +378,28 @@ $(document).ready(function(){
 								<label>Ζώνη</label>
 								<input class="form-control" name="zone">
 								<br><label>Εμβαδόν (τ.μ.)</label>
-								<input class="form-control" name="area_tm">
+								<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+								<input class="form-control"required  name="area_tm">
 								<div class="col-md-6">
 								<br><label>Κατάσταση Ακινήτου</label>
-								<input class="form-control" placeholder="π.χ. άριστη, πολύ καλή, χρειάζεται βελτίωση" name="blueprint_no">	
+								<input class="form-control" placeholder="π.χ. άριστη, πολύ καλή, χρειάζεται βελτίωση" name="katastasi">	
 								</div>
 								<div class="col-md-6">	
-									<br><label>Building Permission Number</label>
-								<input class="form-control" name="arithmos_ad_oik">
+									<br><label>Νομικός έλεγχος</label>
+									<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+								<select name="nomElegxos" id="nomElegxos" required class="form-control">
+										<option value="yes">Yes</option>
+										<option value="no">No</option>
+								</select>
 								</div>
+								 <div class="col-md-6">
+								<br><label>Αριθμός τίτλου εγγρ.</label>
+								<input type="text" class="form-control"name="RegistrationTitleNo">
+							</div>
+							<div class="col-md-6">
+								<br><label>Αριθμός φυλ. σχεδ.</label>
+								<input type="text" class="form-control"name="ArithmosFilSxed">
+							</div>
 								<div class="col-md-6">
 								<div class="form-group">
 									<br><label>Νόμισμα:</label>
@@ -402,11 +416,57 @@ $(document).ready(function(){
 								<input type="text" class="form-control" placeholder="9.5" name="price">
 							</div>
 							
+							<div class="col-md-6">
+							<br><label>Τίτλος εγγραφής</label>
+								<input type="text" class="form-control"name="RegistartionTitle">
+							</div>
+							<br><label>Υπεύθυνος μεσίτης</label>
+							<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+								<input type="text" class="form-control"placeholder="Γράψτε το username σας" required name="AgentUsername">
+							<div class="col-md-6">
+								<br><label>Κωδικός Εντολής</label>
+								<input type="text" class="form-control"name="OrderCode">
+							</div>
+							<div class="col-md-6">
+								<br><label>Τύπος εντολής</label>
+								<input type="text" class="form-control" name="TypeCode">
 							</div>
 							
 							<div class="col-md-6">
+								<br><label>Έναρξη εντολής</label>
+								<input type="text" class="form-control"placeholder="2016-11-28" name="OrderStart">
+							</div>
+							<div class="col-md-6">
+								<br><label>Λήξη εντολής</label>
+								<input type="text" class="form-control" placeholder="2016-11-28" name="OrderStop">
+							</div>
+							
+							<div class="col-md-6">
+								<br><label>Αμοιβή (%)</label>
+								<input type="text" class="form-control"placeholder="15" name="AgentRewardPercentage">
+							</div>
+							<div class="col-md-6">
+								<br><label>Αμοιβή (Ποσό)</label>
+								<input type="text" class="form-control" placeholder="350" name="AgentReward">
+							<br></div>
+							<br><label>Διαθεσιμότητα από</label>
+								<input type="text" class="form-control" placeholder="2016-11-28" name="AvailableFrom">
+								
+							<div class="col-md-6">
+								<br><label>Κόστος μεταβίβασης</label>
+								<input type="text" class="form-control"placeholder="100" name="TransferCost">
+							</div>
+							<div class="col-md-6">
+								<br><label>Φόρος Κόστους Μεταβίβασης (VAT)</label>
+								<input type="text" class="form-control" placeholder="10" name="TransferVAT">
+							</div>	
+							</div>
+							
+				
+	
+							<div class="col-md-6">
 								<div class="col-md-6">
-									<label>Street No</label>
+									<label>Αριθμός οδού</label>
 									<input class="form-control" name="astreet_no"><br>
 								</div>
 								<div class="col-md-6">
@@ -416,11 +476,19 @@ $(document).ready(function(){
 								
 								<label>Xώρα</label>
 								<input class="form-control" name="acountry">
-								<br><label>Street Position</label>
-								<input class="form-control" name="corner">
+								
+								<div class="col-md-6">	
+								<br><label>Latitude</label>
+									<input class="form-control" placeholder="32.6547" name="Latitude">
+								<br></div>
+								<div class="col-md-6">	
+									<br><label>Longitude</label>
+									<input class="form-control" placeholder="12.36548" name="Longitude">
+								<br></div>
+								
 								<div class="form-group">
 									<br><label>Σκοπός εγγραφής ακινήτου:</label>
-									<select name="purpose" id="purpose" class="form-control" require>
+									<select name="purpose" id="purpose" class="form-control" required >
 										<option value="none">--</option>
 										<option value="pwlisi">Πώληση</option>
 										<option value="enoikiasi">Ενοικίαση</option>
@@ -429,24 +497,52 @@ $(document).ready(function(){
 									</select>
 								</div>							
 								<div class="col-md-6">	
-									<br><label>Αριθμός τεμαχίου:</label>
+									<label>Αριθμός τεμαχίου:</label>
 									<input class="form-control" name="piece_no">
-								</div>
+								<br></div>
 								<div class="col-md-6">	
-									<br><label>Αριθμός φακέλου:</label>
+									<label>Αριθμός φακέλου:</label>
 									<input class="form-control" name="folder_no">	
-								</div>	
+								<br></div>	
+								
+								<br><label>Αριθμός αδ. οικ.</label>
+								<input type="text" class="form-control"name="ArithmosAdOik">
+
 								<div class="col-md-6">
 								<br><label>Τιμή</label>
-								<input type="text" class="form-control" placeholder="300" name="price">
-								</div>
+								<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+								<input type="text" class="form-control" required placeholder="300" name="price">
+								<br></div>
 								<div class="col-md-6">
-								
-								</div>
+									<br><label>Υποθήκη/Δάνειο</label>
+									<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+										<select name="ipothiki" id="ipothiki" required class="form-control">
+										<option value="yes">Yes</option>
+										<option value="no">No</option>
+								</select>
+								<br></div>
+								<div class="form-group">
+								<br><label>Σύντομη Περιγραφή</label>
+								<textarea class="form-control" name="short_desc" rows="3"placeholder="Enter notes.." id="message" data-validation-required-message="Please enter a message."></textarea>
+							</div>
+							 <div class="form-group">
+								<label>Αναλυτική Περιγραφή</label>
+								<textarea class="form-control" name="desc" rows="6"placeholder="Enter notes.." id="message"  data-validation-required-message="Please enter a message."></textarea>
+
+							</div>
+							<div class="form-group">
+								<label>Notes</label>
+								<textarea class="form-control" name="notes" rows="5"placeholder="Enter notes.." id="message"  data-validation-required-message="Please enter a message."></textarea>
+							</div>
+							<label>Αντιπαροχή/Ανταλλαγή</label>
+									<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+										<select name="ConsiderationExchange" id="ConsiderationExchange" required class="form-control">
+										<option value="yes">Yes</option>
+										<option value="no">No</option>
+								</select>
 								
 							</div>
-
-							
+	
 						</form>
 					</div>
 					<!-- End of first tab -->
@@ -457,7 +553,128 @@ $(document).ready(function(){
 						<div id="gi">gi</div>
 	<div id="katoikia">katoikia</div> 
 	<div id="epxwros">epaggelmatikos xwros</div>
-	<div id="ksenodoxeio">ksenodoxeio</div>
+	<div id="ksenodoxeio">
+		<div class="col-md-6"><!--1i stili-->
+			<label>Τύπος Κτηρίου</label>
+			<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+			<select name="BuildingType" id="BuildingType" required class="form-control">
+				<option value="katoikia">Κατοικία</option>
+				<option value="epxwros">Επαγγελματικός χώρος</option>
+				<option value="ksenodoxeio">Ξενοδοχείο</option>
+				<option value="allo">Άλλο</option>
+			</select>
+			<div class="col-md-6">
+				<br><label>Έτος Κατασκευής</label>
+				<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+				<input type="text" class="form-control" required placeholder="2005" name="ConstructionYear">
+			</div>
+			<div class="col-md-6">
+				<br><label>Αριθμός Ορόφων</label>
+				<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+				<input type="text" class="form-control" required placeholder="4" name="NumOfFloors">
+			</div>
+			
+			<div class="col-md-6">
+				<br><label>Αριθμός από Παρκινγκ</label>
+				<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+				<input type="text" class="form-control" required placeholder="2" name="ParkingSpots">
+			</div>
+			<div class="col-md-6">
+				<br><label>Αριθμός Δωματίων</label>
+				<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+				<input type="text" class="form-control" required placeholder="4" name="NumOfRooms">
+			</div>	
+			
+			<div class="col-md-6">
+				<br><label>Ενεργειακό Πιστοποιητικό</label>
+				<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+				<select name="EnergyCertificate" id="EnergyCertificate" required class="form-control">
+					<option value="classa">Class A</option>
+					<option value="classb">Class B</option>
+					<option value="classc">Class C</option>
+					<option value="classd">Class D</option>
+					<option value="unknown">Unknown</option>
+				</select>
+			</div>
+			<div class="col-md-6">
+				<br><label>Αριθμός Επιπέδων</label>
+				<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+				<select name="Levels" id="Levels" required class="form-control">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+			</div>		
+		</div><!--end of 1i stili-->
+		
+		<div class="col-md-6"><!--2i stili-->
+			<div class="col-md-6">
+				<label>Ανακαινισμένο</label>
+				<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+				<select name="Renovated" id="Renovated" required class="form-control">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+			<br></div>
+			<div class="col-md-6">
+				<label>Έτος Ανακαίνισης</label>
+				<input type="text" class="form-control" placeholder="2010" name="RenovationYear">
+			<br></div>	
+			
+			<div class="col-md-6">
+				<label>Αριθμός WC</label>
+				<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+				<input type="text" class="form-control" required placeholder="2" name="NumOfWC">
+			<br></div>
+			<div class="col-md-6">
+				<label>Αποχέτευση</label>
+				<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+				<select name="Drainage" id="Drainage" required class="form-control">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+			<br></div>
+			
+			<div class="col-md-6">
+				<label>Τύπος Θέρμανσης</label>
+				<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+				<select name="HeatingFuel" id="HeatingFuel" required class="form-control">
+					<option value="petrelaio">Πετρέλαιο</option>
+					<option value="gkazi">Γκάζι</option>
+					<option value="ilektriki">Ηλεκτρική</option>
+					<option value="tzaki">Τζάκι</option>
+					<option value="klimatismos">Κλιματισμός</option>
+					<option value="allo">Άλλο</option>
+				</select>
+			<br></div>
+			<div class="col-md-6">
+				<label>Μέσο Θέρμανσης</label>
+				<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+				<select name="HeatingType" id="HeatingType" required class="form-control">
+					<option value="kentriki">Κεντρική</option>
+					<option value="aneksartiti">Ανεξάρτητη</option>
+					<option value="koinoxristi">Κοινόχρηστη</option>
+					<option value="allo">Άλλο</option>
+				</select>
+			<br></div>
+			<div class="col-md-6">
+				<label>Μηνιαία κοινόχρηστα</label>
+				<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+				<input type="text" class="form-control" required placeholder="35.50" name="AvgSharedCosts">
+			<br></div>
+			<div class="col-md-6">
+				<label>Υπό Κατασκευή</label>
+				<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
+				<select name="UnderConstruction" id="UnderConstruction" required class="form-control">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+			<br></div>
+		</div><!--end of 2i stili-->
+
+	</div><!--end of ksenodoxeio-->
 	<div id="nothing">Επιλέξτε μια κατηγορία για να μπορέσετε να συμπληρώσετε τις λεπτομέρειες και τα χαρακτηριστικά της κατηγορίας αυτής!</div>
 	
 					</div>
