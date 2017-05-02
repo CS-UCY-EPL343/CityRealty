@@ -12,7 +12,7 @@ $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
 $display_name = $_POST['display_name'];
 $email = $_POST['email'];
-$password = $_POST['password'];
+$password = sha1($_POST['password']);
 $rdate = date("Y-m-d", time());
 
 if ($sql = $conn->prepare("SELECT UserType FROM UserSimple WHERE Username =? OR Email=?")) {
