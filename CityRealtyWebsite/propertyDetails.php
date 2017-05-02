@@ -573,54 +573,9 @@ $result4 = mysqli_query($conn, $sql4);
 											<h3 class="fieldGroup"><i class="fa fa-map-marker fieldGroup"></i> Χάρτης Τοποθεσίας <small class="hide" itemscope itemtype="http://schema.org/GeoCoordinates"><span class="latitude" itemprop="latitude">35.146394</span>, <span class="longitude" itemprop="longitude">33.407982</span></small></h3>
 											<script>
 												function initialize() {
-													var image = new google.maps.MarkerImage('/wp-content/themes/omega/img/marker.png', new google.maps.Size(48, 32), new google.maps.Point(0, 0), new google.maps.Point(24, 32));
-													var styles = [{
-														"stylers" : [{
-															"lightness" : -5
-														}, {
-															"saturation" : -39
-														}, {
-															"hue" : "#ff8800"
-														}]
-													}, {
-														"featureType" : "road",
-														"elementType" : "geometry",
-														"stylers" : [{
-															"lightness" : 100
-														}, {
-															"visibility" : "simplified"
-														}]
-													}, {
-														"featureType" : "road",
-														"stylers" : [{
-															"visibility" : "on"
-														}]
-													}, {
-														"featureType" : "water",
-														"stylers" : [{
-															"hue" : "#0077ff"
-														}, {
-															"saturation" : -70
-														}, {
-															"visibility" : "simplified"
-														}, {
-															"lightness" : -51
-														}]
-													}, {
-														"featureType" : "poi",
-														"stylers" : [{
-															"visibility" : "simplified"
-														}]
-													}, {
-														"featureType" : "road.highway",
-														"elementType" : "labels.icon",
-														"stylers" : [{
-															"visibility" : "off"
-														}]
-													}];
 													var myLatlng = new google.maps.LatLng(<?php echo $row['Latitude'].', '.$row['Longitude']; ?>);
 													var mapOptions = {
-+														zoom : 16,
+														zoom : 16,
 														center : myLatlng,
 														scrollwheel : false,
 														mapTypeControl : true,
@@ -1842,23 +1797,6 @@ $result4 = mysqli_query($conn, $sql4);
 																						}
 																					}
 																				});
-																				var onMapMouseleaveHandler = function(event) {
-																					var that = $(this);
-																					that.on('click', onMapClickHandler);
-																					that.off('mouseleave', onMapMouseleaveHandler);
-																					that.find('iframe').css("pointer-events", "none");
-																				};
-																				var onMapClickHandler = function(event) {
-																					var that = $(this);
-																					<!-- Disable the click handler until the user leaves the map area -->
-																					that.off('click', onMapClickHandler);
-																					<!-- Enable scrolling zoom -->
-																					that.find('iframe').css("pointer-events", "auto");
-																					<!-- Handle the mouse leave event -->
-																					that.on('mouseleave', onMapMouseleaveHandler);
-																				};
-																				<!-- Enable map zooming with mouse scroll when the user clicks the map -->
-																				$('.map').on('click', onMapClickHandler);
 																			</script>
 																			<!--Password check-->
 																			<script>
