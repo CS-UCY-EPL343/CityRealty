@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 unset($_SESSION['sql']);
 ?>
@@ -453,24 +453,24 @@ unset($_SESSION['sql']);
 									<p class="help-block text-danger"></p>
 								</div>
 								<div class="form-group">
-									<input type="email" class="form-control" placeholder="Email *" id="email" required data-validation-required-message="Παρακαλούμε συμπληρώστε με το email σας.">
+									<input type="email" class="form-control" placeholder="Email *" name="mail" id="email" required data-validation-required-message="Παρακαλούμε συμπληρώστε με το email σας.">
 									<p class="help-block text-danger"></p>
 								</div>
 								<div class="form-group">
-									<input type="tel" class="form-control" placeholder="Τηλέφωνο *" id="phone" required data-validation-required-message="Παρακαλούμε συμπληρώστε με το τηλέφωνό σας.">
+									<input type="tel" class="form-control" placeholder="Τηλέφωνο *" name="phone" id="phone" required data-validation-required-message="Παρακαλούμε συμπληρώστε με το τηλέφωνό σας.">
 									<p class="help-block text-danger"></p>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<textarea class="form-control" placeholder="Μήνυμα *" id="message" required data-validation-required-message="Παρακαλούμε εισάγετε το μήνυμά σας."></textarea>
+									<textarea class="form-control" placeholder="Μήνυμα *" name="message" id="message" required data-validation-required-message="Παρακαλούμε εισάγετε το μήνυμά σας."></textarea>
 									<p class="help-block text-danger"></p>
 								</div>
 							</div>
 							<div class="clearfix"></div>
 							<div class="col-lg-12 text-center">
 								<div id="success"></div>
-								<button type="submit" class="btn btn-xl">
+								<button type="submit" class="btn btn-xl" name="submit">
 									Αποστολή
 								</button>
 							</div>
@@ -492,13 +492,13 @@ unset($_SESSION['sql']);
 				<h2 style="color: #FFCC00">Εγγραφείτε στο Newsletter μας</h2>
 				<h3 class="section-subheading text-muted"></h3>
 			</div>
-			<form name="newsletterForm" id="contactForm" padding-left="30%" padding-right="30%">
+			<form name="newsletterForm" id="contactForm" style="padding-left:28%; padding-right:28%">
 				<div class="row col-lg-12 text-center">
-					<div class="form-group" >
+					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Ονοματεπώνυμο *" id="name" required data-validation-required-message="αρακαλούμε συμπληρώστε με το ονοματεπώνυμό σας.">
 						<p class="help-block text-danger"></p>
 					</div>
-					<div class="form-group" >
+					<div class="form-group">
 						<input type="email" class="form-control" width="30%" placeholder="Email *" id="email" required data-validation-required-message="αρακαλούμε συμπληρώστε με το email σας.">
 						<p class="help-block text-danger"></p>
 					</div>
@@ -627,7 +627,7 @@ unset($_SESSION['sql']);
 
 						</div>
 						<div class="fb-login-button" data-max-rows="1" data-size="small" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
-						<div class="g-signin2" data-onsuccess="onSignIn"></div>
+ 						<div class="g-signin2" data-onsuccess="onSignIn"></div>
 						<div class="row">
 							<div class="col-xs-8 col-sm-9 col-md-9">
 								<p>
@@ -700,7 +700,7 @@ unset($_SESSION['sql']);
 					</div>
 				</form>
 				<div class="fb-login-button" data-max-rows="1" data-size="small" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
-				<div class="g-signin2" data-onsuccess="onSignIn"></div>
+ 				<div class="g-signin2" data-onsuccess="onSignIn"></div>
 				<div class="panel-footer">
 					No account? <a href="#SignUp-modal" data-toggle="modal" data-target="#my-modal-lg">Sign up now</a>
 				</div>
@@ -918,8 +918,6 @@ unset($_SESSION['sql']);
 								</p>
 							</div>
 						</div>
-						<div class="fb-login-button" data-max-rows="1" data-size="small" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
-						<div class="g-signin2" data-onsuccess="onSignIn"></div>
 
 						<div class="modal-footer">
 							<div class="col-xs-12 col-md-6">
