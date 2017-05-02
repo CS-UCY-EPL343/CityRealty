@@ -123,31 +123,31 @@ unset($_SESSION['sql']);
 					<a class="page-scroll" href="index.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/logo.png"></span> </a>	
 				</li>
 				<li>
-					<a class="page-scroll" href="index.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/home2.png">Home</span> </a>
+					<a class="page-scroll" href="index.php" style="color: #FFCC00"><img width="30px" height="30px" src="img/menu/home.png">  Home</span> </a>
 				</li>
 
 				<li>
-					<a class="page-scroll" href="sale.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/sale22.png">Sale</span></a>
+					<a class="page-scroll" href="sale.php" style="color: #FFCC00"><img width="30px" height="30px" src="img/menu/sale.png">  Sale</span></a>
 
 				</li>
 				<li>
-					<a class="page-scroll " href="rent.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/rent22.png">Rent </span></a>
+					<a class="page-scroll " href="rent.php" style="color: #FFCC00"><img width="30px" height="30px" src="img/menu/rent.png">  Rent </span></a>
 
 				</li>
 				<li>
-					<a class="page-scroll " href="sell.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/sell22.png">Sell</span></a>
+					<a class="page-scroll " href="sell.php" style="color: #FFCC00"><img width="30px" height="30px" src="img/menu/sell.png">  Sell</span></a>
 
 				</li>
 				<li>
-					<a class="page-scroll " href="index.php#searchREForm" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/search2.png">Search</a>
+					<a class="page-scroll " href="index.php#searchREForm" style="color: #FFCC00"><img width="30px" height="30px" src="img/menu/search.png"> Search</a>
 				</li>
 
 				<li>
-					<a class="page-scroll" href="index.php#contactForm" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/contactUs2.png">Contact Us</a>
+					<a class="page-scroll" href="index.php#contactForm" style="color: #FFCC00"><img width="30px" height="30px" src="img/menu/contactUs.png">   Contact Us</a>
 				</li>
 
 				<li>
-					<a class="page-scroll" href="about.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/group-chat.png"> About Us</a>
+					<a class="page-scroll" href="about.php" style="color: #FFCC00"><img width="30px" height="30px" src="img/menu/about.png">  	About Us</a>
 				</li>
 
 				<?php
@@ -171,8 +171,8 @@ unset($_SESSION['sql']);
 				<?php
 				if(!isset($_SESSION['id'])) {
 					echo"
-					<li><a href='#SignUp-modal' data-toggle='modal' data-target='#my-modal-lg' style='color: #FFCC00'>SignUp</a></li>
-					<li><a href='#LogIn-modal' data-toggle='modal' data-target='#my-logInmodal-sm' style='color: #FFCC00'>Log in</a></li>";
+					<li><a href='#SignUp-modal' data-toggle='modal' data-target='#my-modal-lg' style='color: #FFCC00'><img width='25px' height='25px' src='img/menu/signUp.png'>  Sign Up</a></li>
+					<li><a href='#LogIn-modal' data-toggle='modal' data-target='#my-logInmodal-sm' style='color: #FFCC00'><img width='25px' height='25px' src='img/menu/login.png'>  Login</a></li>";
 					}
 					else {
 						echo "<li><a href='#' style='color: #FFCC00'>" . $_SESSION['id'] . "</a></li><li>
@@ -181,11 +181,11 @@ unset($_SESSION['sql']);
 				}
 				?>
 				<li>
-					<a href="#" style="color: #FFCC00"><img src="img/menu/Greece.png"> Ελληνικά</a>
+					<a href="#" style="color: #FFCC00"><img height="20px" src="img/menu/gr.png">  Ελληνικά</a>
 				</li>
 
 				<li>
-					<a href="#" style="color: #FFCC00"><img src="img/menu/United Kingdom(Great Britain).png"> English</a>
+					<a href="#" style="color: #FFCC00"><img height="20px" src="img/menu/uk.png">  English</a>
 				</li>
 			</ul>
 		</div>
@@ -439,7 +439,7 @@ unset($_SESSION['sql']);
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 style="color: #FFCC00">Contact Us</h2>
+					<h2 style="color: #FFCC00">Επικοινωνήστε μαζί μας</h2>
 					<h3 class="section-subheading text-muted"></h3>
 				</div>
 			</div>
@@ -449,21 +449,21 @@ unset($_SESSION['sql']);
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Enter your Name *" id="name" required data-validation-required-message="Please enter your name.">
+									<input type="text" class="form-control" placeholder="Ονοματεπώνυμο *" id="name" required data-validation-required-message="Παρακαλούμε συμπληρώστε με το ονοματεπώνυμό σας.">
 									<p class="help-block text-danger"></p>
 								</div>
 								<div class="form-group">
-									<input type="email" class="form-control" placeholder="Enter your Email *" id="email" required data-validation-required-message="Please enter your email address.">
+									<input type="email" class="form-control" placeholder="Email *" id="email" required data-validation-required-message="Παρακαλούμε συμπληρώστε με το email σας.">
 									<p class="help-block text-danger"></p>
 								</div>
 								<div class="form-group">
-									<input type="tel" class="form-control" placeholder="Enter your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
+									<input type="tel" class="form-control" placeholder="Τηλέφωνο *" id="phone" required data-validation-required-message="Παρακαλούμε συμπληρώστε με το τηλέφωνό σας.">
 									<p class="help-block text-danger"></p>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<textarea class="form-control" placeholder="Enter your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
+									<textarea class="form-control" placeholder="Μήνυμα *" id="message" required data-validation-required-message="Παρακαλούμε εισάγετε το μήνυμά σας."></textarea>
 									<p class="help-block text-danger"></p>
 								</div>
 							</div>
@@ -471,13 +471,46 @@ unset($_SESSION['sql']);
 							<div class="col-lg-12 text-center">
 								<div id="success"></div>
 								<button type="submit" class="btn btn-xl">
-									Send Message
+									Αποστολή
 								</button>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
+		</div>
+	</section>
+	<p>
+		<br>
+		<br>
+		<br>
+	</p>
+	
+	<section id="newsletter" style =  "background: #fff; background: rgba(148,147,138,0.7); padding: 3em;">
+		<div class="container">
+			<div class="col-lg-12 text-center">
+				<h2 style="color: #FFCC00">Εγγραφείτε στο Newsletter μας</h2>
+				<h3 class="section-subheading text-muted"></h3>
+			</div>
+			<form name="newsletterForm" id="contactForm" padding-left="30%" padding-right="30%">
+				<div class="row col-lg-12 text-center">
+					<div class="form-group" >
+						<input type="text" class="form-control" placeholder="Ονοματεπώνυμο *" id="name" required data-validation-required-message="αρακαλούμε συμπληρώστε με το ονοματεπώνυμό σας.">
+						<p class="help-block text-danger"></p>
+					</div>
+					<div class="form-group" >
+						<input type="email" class="form-control" width="30%" placeholder="Email *" id="email" required data-validation-required-message="αρακαλούμε συμπληρώστε με το email σας.">
+						<p class="help-block text-danger"></p>
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-lg-12 text-center">
+						<div id="success"></div>
+						<button type="submit" class="btn btn-xl">
+							Εγγραφή
+						</button>
+					</div>
+				</div>
+			</form>
 		</div>
 	</section>
 
@@ -599,7 +632,7 @@ unset($_SESSION['sql']);
 									<span class="button-checkbox">
 										<input type="checkbox" name="t_and_c" id="t_and_c"  value="1" required>
 									</span>
-									<i> I agree to the <a href="http://www.omegarealestate.gr/en/" data-toggle="modal" data-target="#t_and_c_m"> Terms and Conditions</a> set out by this site, including the Cookie Use. </i>
+									<i> I agree to the <a href="termsconditions.php"> Terms and Conditions</a> set out by this site, including the Cookie Use. </i>
 								</p>
 							</div>
 						</div>
@@ -876,7 +909,7 @@ unset($_SESSION['sql']);
 									<span class="button-checkbox">
 										<input type="checkbox" name="t_and_c" id="t_and_c"  value="1" required>
 									</span>
-									<i> I agree to the <a href="http://www.omegarealestate.gr/en/" data-toggle="modal" data-target="#t_and_c_m"> Terms and Conditions</a> set out by this site, including the Cookie Use. 
+									<i> I agree to the <a href="termsconditions.php"> Terms and Conditions</a> set out by this site, including the Cookie Use. 
 									</i>
 								</p>
 							</div>
