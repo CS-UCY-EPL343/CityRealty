@@ -10,28 +10,33 @@ if (!$conn) {
 $display_name = $_POST['display_name'];
 $password = $_POST['password'];
 
-$sql =  "SELECT * FROM UserSimple WHERE Username='$display_name' AND Password='$password'";
-$result = mysqli_query($conn, $sql); 
+if ($sql = $conn->prepare("SELECT UserType FROM UserSimple WHERE Username=? AND Password=?")) {
+	$sql->bind_param("ss", $display_name, $password);
+	$sql->execute();
+	$sql->bind_result($row);
+	$sql->fetch();
 
-if(!$row=mysqli_fetch_assoc($result)) {
-	$_SESSION['errorlogin']= "Your username or password is incorrect!";
-	mysqli_close($conn);
-	header("Location: index.php");
-} else {
-	$_SESSION['id'] = $display_name;
-	$sql2 = "SELECT UserType FROM UserSimple WHERE Username='$display_name'";
-	$result2 = mysqli_query($conn, $sql2);
-	$row2=mysqli_fetch_assoc($result2);
-	if (($row2['UserType']=="External Agent") || ($row2['UserType']=="Internal Agent")) {
+	if(!$row) {
+		$_SESSION['errorlogin']= "Your username or password is incorrect!";
 		mysqli_close($conn);
-		header("Location: broker_manage.php");
-	}
-	else if ($row2['UserType']=="Admin") {
-		mysqli_close($conn);
-		header("Location: admin.php");
-	} else if ($row2['UserType']=="Simple User") {
-		mysqli_close($conn);
+		$sql->close();
 		header("Location: index.php");
+	} else {
+		$_SESSION['id'] = $display_name;
+		if (($row=="External Agent") || ($row=="Internal Agent")) {
+			mysqli_close($conn);
+			$sql->close();
+			header("Location: broker_manage.php");
+		}
+		else if ($row=="Admin") {
+			mysqli_close($conn);
+			$sql->close();
+			header("Location: admin.php");
+		} else if ($row=="Simple User") {
+			mysqli_close($conn);
+			$sql->close();
+			header("Location: index.php");
+		}
 	}
 }
 
