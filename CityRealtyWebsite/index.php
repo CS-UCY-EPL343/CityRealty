@@ -445,7 +445,7 @@ unset($_SESSION['sql']);
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
-					<form name="contactForm" id="contactForm">
+					<form name="contactForm" id="contactForm" action="mail_handler.php" method="post">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
