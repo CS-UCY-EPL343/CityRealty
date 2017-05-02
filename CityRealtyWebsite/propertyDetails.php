@@ -384,7 +384,7 @@ $result4 = mysqli_query($conn, $sql4);
 						<!-- Wrapper for slides -->
 						<div class="carousel-inner">
 							<div class="item active">
-								<img class="img-responsive" src="img/properties/3.jpg" alt="">
+								<img src="img/properties/3.jpg" alt="" border="1" border-color="gray" class="img-responsive" >
 							</div>
 							<div class="item">
 								<img class="img-responsive" src="img/properties/4.jpg" alt="">
