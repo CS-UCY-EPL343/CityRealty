@@ -626,6 +626,8 @@ unset($_SESSION['sql']);
 							</div>
 
 						</div>
+						<div class="fb-login-button" data-max-rows="1" data-size="small" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+						<div class="g-signin2" data-onsuccess="onSignIn"></div>
 						<div class="row">
 							<div class="col-xs-8 col-sm-9 col-md-9">
 								<p>
@@ -916,6 +918,8 @@ unset($_SESSION['sql']);
 								</p>
 							</div>
 						</div>
+						<div class="fb-login-button" data-max-rows="1" data-size="small" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+						<div class="g-signin2" data-onsuccess="onSignIn"></div>
 
 						<div class="modal-footer">
 							<div class="col-xs-12 col-md-6">
