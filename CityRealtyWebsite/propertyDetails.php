@@ -570,7 +570,7 @@ $result4 = mysqli_query($conn, $sql4);
 								<div class="row">
 									<div class="small-12 columns" >
 										<section id="map">
-											<h3 class="fieldGroup"><i class="fa fa-map-marker fieldGroup"></i> Χάρτης Τοποθεσίας <small class="hide" itemscope itemtype="http://schema.org/GeoCoordinates"><span class="latitude" itemprop="latitude">37.5177279637819</span>, <span class="longitude" itemprop="longitude">22.3811034455078</span></small></h3>
+											<h3 class="fieldGroup"><i class="fa fa-map-marker fieldGroup"></i> Χάρτης Τοποθεσίας <small class="hide" itemscope itemtype="http://schema.org/GeoCoordinates"><span class="latitude" itemprop="latitude">35.146394</span>, <span class="longitude" itemprop="longitude">33.407982</span></small></h3>
 											<script>
 												function initialize() {
 													var image = new google.maps.MarkerImage('/wp-content/themes/omega/img/marker.png', new google.maps.Size(48, 32), new google.maps.Point(0, 0), new google.maps.Point(24, 32));
@@ -618,7 +618,7 @@ $result4 = mysqli_query($conn, $sql4);
 															"visibility" : "off"
 														}]
 													}];
-													var myLatlng = new google.maps.LatLng(37.5177279637819, 22.3811034455078);
+													var myLatlng = new google.maps.LatLng(<?php echo $row['Latitude'].', '.$row['Longitude']; ?>);
 													var mapOptions = {
 														zoom : 12,
 														center : myLatlng,
