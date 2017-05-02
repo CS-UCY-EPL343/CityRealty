@@ -585,18 +585,14 @@ $result4 = mysqli_query($conn, $sql4);
 														zoomControl : true,
 														zoomControlOptions : {
 															style : google.maps.ZoomControlStyle.SMALL
-														},
-														styles : styles
 													}
 													var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
 													var marker = new google.maps.Marker({
 														position : myLatlng,
 														map : map,
-														title : 'Ακίνητο #477537',
 														options : {
-															draggable : false,
-															icon : image
+															draggable : false
 														},
 													});
 												
