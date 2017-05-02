@@ -620,7 +620,7 @@ $result4 = mysqli_query($conn, $sql4);
 													}];
 													var myLatlng = new google.maps.LatLng(<?php echo $row['Latitude'].', '.$row['Longitude']; ?>);
 													var mapOptions = {
-														zoom : 12,
++														zoom : 16,
 														center : myLatlng,
 														scrollwheel : false,
 														mapTypeControl : true,
@@ -644,6 +644,17 @@ $result4 = mysqli_query($conn, $sql4);
 															icon : image
 														},
 													});
+												
+													var circle = new google.maps.Circle({
+													 map: map,
+                                                     							 radius: 400,
+													 fillColor: '#AA0000',   
+													 strokeColor: '#AA0000',
+													 strokeOpacity: 0
+							                                                 });
+												 marker.setVisible(false);
+												 // Add a marker at the center of the map.
+                                               								circle.bindTo('center', marker, 'position');
 
 													google.maps.event.addDomListener(window, 'resize', initialize);
 												}
