@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 unset($_SESSION['sql']);
 ?>
@@ -697,6 +697,8 @@ unset($_SESSION['sql']);
 						</div>
 					</div>
 				</form>
+				<div class="fb-login-button" data-max-rows="1" data-size="small" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+				<div class="g-signin2" data-onsuccess="onSignIn"></div>
 				<div class="panel-footer">
 					No account? <a href="#SignUp-modal" data-toggle="modal" data-target="#my-modal-lg">Sign up now</a>
 				</div>
