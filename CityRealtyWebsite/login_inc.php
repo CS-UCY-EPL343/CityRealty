@@ -8,7 +8,7 @@ if (!$conn) {
 }
 
 $display_name = $_POST['display_name'];
-$password = $_POST['password'];
+$password = sha1($_POST['password']);
 
 if ($sql = $conn->prepare("SELECT UserType FROM UserSimple WHERE Username=? AND Password=?")) {
 	$sql->bind_param("ss", $display_name, $password);
