@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 $reid = $_GET['reid'];
 $conn = mysqli_connect("localhost", "USERNAME", "PASSWORD", "DATABASE");
@@ -550,10 +550,11 @@ $result3 = mysqli_query($conn, $sql3);
 							<div class="row">
 								<div class="small-12 columns" >
 									<section id="map">
-										<h3 class="fieldGroup"><i class="fa fa-map-marker fieldGroup"></i> Χάρτης Τοποθεσίας <small class="hide" itemscope itemtype="http://schema.org/GeoCoordinates"><span class="latitude" itemprop="latitude">37.5177279637819</span>, <span class="longitude" itemprop="longitude">22.3811034455078</span></small></h3>
+										<h3 class="fieldGroup"><i class="fa fa-map-marker fieldGroup"></i> Χάρτης Τοποθεσίας <small class="hide" itemscope itemtype="http://schema.org/GeoCoordinates"><span class="latitude" itemprop="latitude">35.146394</span>, <span class="longitude" itemprop="longitude">33.407982</span></small></h3>
 										<script>
+
 											function initialize() {
-												var myLatlng = new google.maps.LatLng(35.146394,33.407982);
+												var myLatlng = new google.maps.LatLng(<?php echo $row['Latitude'].', '.$row['Longitude']; ?>);
 												var mapOptions = {
 													zoom : 16,
 													center : myLatlng,
@@ -571,14 +572,13 @@ $result3 = mysqli_query($conn, $sql3);
 												var marker = new google.maps.Marker({
 													position : myLatlng,
 													map : map,
-													title : 'Ακίνητο #477537',
 													options : {
 														draggable : false
 													},
 												});
 												var circle = new google.maps.Circle({
 													 map: map,
-                                                     radius: 400,
+                                                    							 radius: 400,
 													 fillColor: '#AA0000',   
 													 strokeColor: '#AA0000',
 													 strokeOpacity: 0
