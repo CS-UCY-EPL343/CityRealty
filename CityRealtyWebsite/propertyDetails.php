@@ -570,7 +570,7 @@ $result4 = mysqli_query($conn, $sql4);
 								<div class="row">
 									<div class="small-12 columns" >
 										<section id="map">
-											<h3 class="fieldGroup"><i class="fa fa-map-marker fieldGroup"></i> Χάρτης Τοποθεσίας <small class="hide" itemscope itemtype="http://schema.org/GeoCoordinates"><span class="latitude" itemprop="latitude">35.146394</span>, <span class="longitude" itemprop="longitude">33.407982</span></small></h3>
+											<h3 class="fieldGroup"><i class="fa fa-map-marker fieldGroup"></i> Χάρτης Τοποθεσίας <small class="hide" itemscope itemtype="http://schema.org/GeoCoordinates"><span class="latitude" itemprop="latitude"><?php echo $row['Latitude'] ?></span>, <span class="longitude" itemprop="longitude"><?php echo $row['Longitude'] ?></span></small></h3>
 											<script>
 												function initialize() {
 													var myLatlng = new google.maps.LatLng(<?php echo $row['Latitude'].', '.$row['Longitude']; ?>);
