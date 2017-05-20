@@ -174,7 +174,7 @@ if (isset($_GET['unset']))
 
 <!-- Search Property ID -->
 <div class="col-md-2">
-	<form action="propertyList.php" method="POST">
+	<form action="propertyList.php?unset=true" method="POST">
 		<div class="form-group">
 			<label>ID Ακινήτου:</label>
 			<input type="text" name="REid" class="form-control" placeholder="ID Ακινήτου" id="REid">
@@ -189,7 +189,7 @@ $num_rec_per_page=10;
 if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
 $start_from = ($page-1) * $num_rec_per_page; 
 
-$conn = mysqli_connect("localhost", "USERNAME", "PASSWORD", "DATABASE");
+$conn = mysqli_connect("localhost", "CityRealty", "QKSH7XJws7MCpxWR", "CityRealty");
 
 if (!$conn) {
 	die("Connection failed: " . mysqli_connect_error());
@@ -858,6 +858,65 @@ echo "<div style='padding-top:80px'>
 	</div>
 </div>
 <!----------------------------end of Sign Up Broker---------------------------------->
+
+	<!-- Footer -->
+	<footer>
+		<section id="contact" style =  "background: #fff; background: rgba(255,255,255,0.7); padding: 3em;">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-10 col-lg-offset-1 text-center">
+						<p>
+							Αγχιαλού 11
+							<br>
+							Λευκωσία,Αγίοι Ομολογητές,Κύπρος
+						</p>
+						<ul class="list-unstyled">
+							<li>
+								<i class="fa fa-phone fa-fw"></i> 97-900809
+							</li>
+							<li>
+								<i class="fa fa-envelope-o fa-fw" style="color: #000000"></i><a href="mailto:marygeorgiou85@gmail.com " style="color: #000000">marygeorgiou85@gmail.com</a>
+							</li>
+						</ul>
+						<br>
+						<ul class="list-inline">
+							<li>
+								<a href="https://www.facebook.com/" title="Facebook"><i class="fa fa-facebook fa-fw fa-3x " style="color: #E4B006 " ></i></a>
+							</li>
+							<li>
+								<a href="https://twitter.com/" title="Twitter"><i class="fa fa-twitter fa-fw fa-3x" style="color: #E4B006"></i></a>
+							</li>
+							<li>
+								<a href="https://gr.pinterest.com/" title="Pinterest"><i class="fa fa-pinterest fa-fw fa-3x " style="color: #E4B006 " ></i></a>
+							</li>
+							<li>
+								<a href="https://plus.google.com/collections/featured" title="Google+"><i class="fa fa-google-plus fa-fw fa-3x " style="color: #E4B006 " ></i></a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/" title="Instagram"><i class="fa fa-instagram fa-fw fa-3x " style="color: #E4B006 " ></i></a>
+							</li>
+							<li>
+								<a href="https://www.tumblr.com/" title="Tumblr"><i class="fa fa-tumblr fa-fw fa-3x " style="color: #E4B006 " ></i></a>
+							</li>
+
+						</ul>
+						<hr class="small">
+						<p class="text-muted" style="color: #FFFFFF">
+							<a style="color: #FFFFFF" href="termsconditions.php">Terms & Conditions</a> | 
+							<a style="color: #FFFFFF" href="about.php">About Us</a>
+						</p>
+						<p class="text-muted" style="color: #FFFFFF">
+							Copyright &copy; University of Cyprus
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<a id="to-top" href="#top" class="btn btn-circle"><i class="fa fa-angle-double-up fa-fw fa-1x"></i></a>
+		</section>
+	</footer>
+
+
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
 
