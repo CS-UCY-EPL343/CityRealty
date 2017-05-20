@@ -500,7 +500,7 @@ unset($_SESSION['sql']);
 					<div class="clearfix"></div>
 					<div class="col-lg-12 text-center">
 						<div id="success"></div>
-						<button id="newsletter_button" type="submit" class="btn btn-xl">
+						<button id="newsletter_button" name="newsletter_button" type="submit" class="btn btn-xl">
 							Εγγραφή
 						</button>
 					</div>
