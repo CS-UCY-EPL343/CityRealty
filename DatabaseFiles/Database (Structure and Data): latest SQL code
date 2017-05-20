@@ -1,0 +1,1613 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.8.2
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: May 20, 2017 at 01:59 PM
+-- Server version: 5.1.73
+-- PHP Version: 5.3.3
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `CityRealty`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `BDetails`
+--
+
+CREATE TABLE IF NOT EXISTS `BDetails` (
+  `RealEstateNo` int(11) NOT NULL COMMENT 'Foreign Key of Building',
+  `DetailNo` int(11) NOT NULL COMMENT 'Foreign Key of BDetailsChoices'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `BDetails`:
+--   `DetailNo`
+--       `BDetailsChoices` -> `DetailΝο`
+--   `RealEstateNo`
+--       `Building` -> `RealEstateNo`
+--
+
+--
+-- Dumping data for table `BDetails`
+--
+
+INSERT INTO `BDetails` (`RealEstateNo`, `DetailNo`) VALUES
+(1, 11),
+(7, 9),
+(7, 10);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `BDetailsChoices`
+--
+
+CREATE TABLE IF NOT EXISTS `BDetailsChoices` (
+  `DetailΝο` int(11) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(35) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`DetailΝο`),
+  UNIQUE KEY `Description` (`Description`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `BDetailsChoices`
+--
+
+INSERT INTO `BDetailsChoices` (`DetailΝο`, `Description`) VALUES
+(1, 'Διατηρητέο'),
+(2, 'Φωτεινό'),
+(3, 'Μοντέρνα αρχιτεκτονική'),
+(4, 'Ευρύχωρο'),
+(5, 'Κλασσική αρχιτεκτονική'),
+(6, 'Αέρινο'),
+(7, 'Παλιό ανακαινισμένο'),
+(8, 'Πέτρινο'),
+(9, 'Πολυτελείας'),
+(10, 'Με πισίνα'),
+(11, 'Επιτρέπονται κατοικίδια');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `BFloorType`
+--
+
+CREATE TABLE IF NOT EXISTS `BFloorType` (
+  `RealEstateNo` int(11) NOT NULL COMMENT 'Foreign Key of Building',
+  `FloorTypeNo` int(11) NOT NULL COMMENT 'Foreign Key of BFloorTypeChoices'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `BFloorType`:
+--   `FloorTypeNo`
+--       `BFloorTypeChoices` -> `FloorTypeNo`
+--   `RealEstateNo`
+--       `Building` -> `RealEstateNo`
+--
+
+--
+-- Dumping data for table `BFloorType`
+--
+
+INSERT INTO `BFloorType` (`RealEstateNo`, `FloorTypeNo`) VALUES
+(7, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `BFloorTypeChoices`
+--
+
+CREATE TABLE IF NOT EXISTS `BFloorTypeChoices` (
+  `FloorTypeNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(20) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`FloorTypeNo`),
+  UNIQUE KEY `Description` (`Description`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `BFloorTypeChoices`
+--
+
+INSERT INTO `BFloorTypeChoices` (`FloorTypeNo`, `Description`) VALUES
+(1, 'Παρκέ'),
+(2, 'Συνθετικό παρκέ'),
+(3, 'Παραδοσιακό παρκέ'),
+(4, 'Πλακάκια'),
+(5, 'Μάρμαρα'),
+(6, 'Τσιμεντοκονίαμα');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `BFrames`
+--
+
+CREATE TABLE IF NOT EXISTS `BFrames` (
+  `RealEstateNo` int(11) NOT NULL COMMENT 'Foreign Key of Building',
+  `FrameNo` int(11) NOT NULL COMMENT 'Foreign Key of BFloorTypeChoices'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `BFrames`:
+--   `FrameNo`
+--       `BFramesChoices` -> `FrameNo`
+--   `RealEstateNo`
+--       `Building` -> `RealEstateNo`
+--
+
+--
+-- Dumping data for table `BFrames`
+--
+
+INSERT INTO `BFrames` (`RealEstateNo`, `FrameNo`) VALUES
+(7, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `BFramesChoices`
+--
+
+CREATE TABLE IF NOT EXISTS `BFramesChoices` (
+  `FrameNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(35) NOT NULL,
+  PRIMARY KEY (`FrameNo`),
+  UNIQUE KEY `Description` (`Description`),
+  UNIQUE KEY `Description_2` (`Description`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+
+--
+-- Dumping data for table `BFramesChoices`
+--
+
+INSERT INTO `BFramesChoices` (`FrameNo`, `Description`) VALUES
+(1, 'Αλουμινίου'),
+(2, 'Κάγκελο'),
+(3, 'Ξίλινα'),
+(4, 'Θερμομονοτικά'),
+(5, 'Μονά'),
+(6, 'Διπλά'),
+(7, 'Ασφαλείας'),
+(8, 'Σίτες'),
+(9, 'Ηλεκτρικά ρολά'),
+(10, 'Blinds'),
+(11, 'Τέντες'),
+(12, 'Κουρτίνες'),
+(13, 'Πόρτα ασφαλείας'),
+(14, 'Ανακλεινόμενα παράθυρα'),
+(15, 'Συρόμενες πόρτες'),
+(16, 'Ανοιγόμενα'),
+(17, 'Παράθυρα'),
+(18, 'Συρόμενα παράθυρα');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `BLocationDetails`
+--
+
+CREATE TABLE IF NOT EXISTS `BLocationDetails` (
+  `RealEstateNo` int(11) NOT NULL COMMENT 'Foreign Key of Building',
+  `DetailNo` int(11) NOT NULL COMMENT 'Foreign Key of BDetailsChoices'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `BLocationDetails`:
+--   `DetailNo`
+--       `BLocationDetailsChoices` -> `DetailNo`
+--   `RealEstateNo`
+--       `Building` -> `RealEstateNo`
+--
+
+--
+-- Dumping data for table `BLocationDetails`
+--
+
+INSERT INTO `BLocationDetails` (`RealEstateNo`, `DetailNo`) VALUES
+(7, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `BLocationDetailsChoices`
+--
+
+CREATE TABLE IF NOT EXISTS `BLocationDetailsChoices` (
+  `DetailNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(35) NOT NULL,
+  PRIMARY KEY (`DetailNo`),
+  UNIQUE KEY `Description` (`Description`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+
+--
+-- Dumping data for table `BLocationDetailsChoices`
+--
+
+INSERT INTO `BLocationDetailsChoices` (`DetailNo`, `Description`) VALUES
+(1, 'Σε καλή τοποθεσία'),
+(2, 'Κεντρική τοποθεσία'),
+(3, 'Κέντρο'),
+(4, 'Κοντά σε σχολεία'),
+(5, 'Κοντά σε καταστήματα'),
+(6, 'Σε ήσυχη γειτονιά'),
+(7, 'Σε αδιέξοδο'),
+(8, 'Κοντά στο κέντρο'),
+(9, 'Μακριά από το κέντρο'),
+(10, 'Κοντά σε πανεπιστήμιο'),
+(11, 'Κοντά σε εστιατόρια'),
+(12, 'Κοντά σε mall');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Building`
+--
+
+CREATE TABLE IF NOT EXISTS `Building` (
+  `RealEstateNo` int(10) unsigned NOT NULL,
+  `BuildingType` enum('Άλλο','Κατοικία','Επαγγελματικός χώρος','Ξενοδοχείο') COLLATE utf8_bin NOT NULL DEFAULT 'Κατοικία',
+  `ConstructionYear` year(4) NOT NULL,
+  `Renovated` tinyint(1) NOT NULL DEFAULT '0',
+  `RenovationYear` year(4) NOT NULL,
+  `NumOfFloors` tinyint(4) NOT NULL DEFAULT '0',
+  `ParkingSpots` tinyint(4) NOT NULL DEFAULT '0',
+  `NumOfRooms` tinyint(4) NOT NULL DEFAULT '1',
+  `NumOfWC` tinyint(4) NOT NULL DEFAULT '1',
+  `Drainage` tinyint(1) NOT NULL DEFAULT '0',
+  `EnergyCertificate` enum('Unknown','Class A','Class B','Class C','Class D') COLLATE utf8_bin NOT NULL DEFAULT 'Unknown',
+  `Levels` enum('0','1','2','3','4','5') COLLATE utf8_bin NOT NULL DEFAULT '0',
+  `HeatingFuel` enum('Άλλο','Πετρέλαιο','Γκάζι','Ηλεκτρική','Τζάκι','Κλιματισμός') COLLATE utf8_bin NOT NULL DEFAULT 'Άλλο',
+  `HeatingType` enum('Άλλο','Κεντρική','Ανεξάρτητη','Κοινόχρηστη') COLLATE utf8_bin NOT NULL DEFAULT 'Άλλο',
+  `AvgSharedCosts` double NOT NULL DEFAULT '0',
+  `UnderConstruction` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`RealEstateNo`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- RELATIONS FOR TABLE `Building`:
+--   `RealEstateNo`
+--       `RealEstate` -> `RealEstateNo`
+--
+
+--
+-- Dumping data for table `Building`
+--
+
+INSERT INTO `Building` (`RealEstateNo`, `BuildingType`, `ConstructionYear`, `Renovated`, `RenovationYear`, `NumOfFloors`, `ParkingSpots`, `NumOfRooms`, `NumOfWC`, `Drainage`, `EnergyCertificate`, `Levels`, `HeatingFuel`, `HeatingType`, `AvgSharedCosts`, `UnderConstruction`) VALUES
+(1, 'Κατοικία', 0000, 0, 0000, 0, 0, 5, 4, 0, 'Unknown', '0', 'Άλλο', 'Άλλο', 0, 0),
+(3, 'Κατοικία', 0000, 0, 0000, 0, 0, 3, 2, 0, 'Unknown', '0', 'Άλλο', 'Άλλο', 0, 0),
+(4, 'Κατοικία', 0000, 0, 0000, 0, 0, 5, 3, 0, 'Unknown', '0', 'Άλλο', 'Άλλο', 0, 0),
+(5, 'Κατοικία', 0000, 0, 0000, 0, 0, 5, 1, 0, 'Unknown', '0', 'Άλλο', 'Άλλο', 0, 0),
+(6, 'Κατοικία', 0000, 0, 0000, 0, 0, 9, 7, 0, 'Unknown', '0', 'Άλλο', 'Άλλο', 0, 0),
+(7, 'Κατοικία', 1990, 1, 2005, 2, 1, 1, 1, 1, 'Class A', '2', 'Πετρέλαιο', 'Κεντρική', 0, 0),
+(9, 'Κατοικία', 0000, 0, 0000, 0, 0, 4, 3, 0, 'Unknown', '0', 'Άλλο', 'Άλλο', 0, 0),
+(10, 'Κατοικία', 0000, 0, 0000, 0, 0, 2, 2, 0, 'Unknown', '0', 'Άλλο', 'Άλλο', 0, 0),
+(11, 'Κατοικία', 0000, 0, 0000, 0, 0, 5, 4, 0, 'Unknown', '0', 'Άλλο', 'Άλλο', 0, 0),
+(12, 'Κατοικία', 0000, 0, 0000, 0, 0, 7, 7, 0, 'Unknown', '0', 'Άλλο', 'Άλλο', 0, 0),
+(14, 'Κατοικία', 0000, 0, 0000, 0, 0, 4, 3, 0, 'Unknown', '0', 'Άλλο', 'Άλλο', 0, 0),
+(16, 'Ξενοδοχείο', 0000, 0, 0000, 0, 0, 1, 1, 0, 'Class A', '0', 'Πετρέλαιο', 'Κοινόχρηστη', 0, 0),
+(0, '', 0000, 0, 0000, 0, 0, 0, 0, 0, '', '', '', '', 0, 0),
+(404, '', 0000, 0, 0000, 0, 0, 0, 0, 0, '', '', '', '', 0, 0),
+(405, '', 0000, 0, 0000, 0, 0, 0, 0, 0, '', '', '', '', 0, 0),
+(406, '', 0000, 0, 0000, 0, 0, 0, 0, 0, '', '', '', '', 0, 0),
+(407, '', 0000, 0, 0000, 0, 0, 0, 0, 0, '', '', '', '', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `CityFamagusta`
+--
+
+CREATE TABLE IF NOT EXISTS `CityFamagusta` (
+  `CityName` varchar(15) NOT NULL DEFAULT 'Αμμόχωστος',
+  `RegionCode` int(11) NOT NULL AUTO_INCREMENT,
+  `RegionName` varchar(25) NOT NULL,
+  `NumOfListings` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`RegionCode`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=98 ;
+
+--
+-- Dumping data for table `CityFamagusta`
+--
+
+INSERT INTO `CityFamagusta` (`CityName`, `RegionCode`, `RegionName`, `NumOfListings`) VALUES
+('Αμμόχωστος', 1, '﻿Άγιος Ανδρόνικος', 0),
+('Αμμόχωστος', 2, 'Άγιος Ανδρόνικος', 0),
+('Αμμόχωστος', 3, 'Άγιος Γεώργιος', 0),
+('Αμμόχωστος', 4, 'Άγιος Ευστάθιος', 0),
+('Αμμόχωστος', 5, 'Άγιος Ηλίας', 0),
+('Αμμόχωστος', 6, 'Άγιος Θεόδωρος', 0),
+('Αμμόχωστος', 7, 'Άγιος Ιάκωβος', 0),
+('Αμμόχωστος', 8, 'Άγιος Νικόλαος', 0),
+('Αμμόχωστος', 9, 'Άγιος Σέργιος', 0),
+('Αμμόχωστος', 10, 'Άγιος Συμεών', 0),
+('Αμμόχωστος', 11, 'Άγιος Χαρίτων', 0),
+('Αμμόχωστος', 12, 'Άρδανα', 0),
+('Αμμόχωστος', 13, 'Άρτεμη', 0),
+('Αμμόχωστος', 14, 'Άσσια', 0),
+('Αμμόχωστος', 15, 'Άχνα', 0),
+('Αμμόχωστος', 16, 'Αγία Νάπα', 0),
+('Αμμόχωστος', 17, 'Αγκαστίνα', 0),
+('Αμμόχωστος', 18, 'Ακανθού', 0),
+('Αμμόχωστος', 19, 'Αλόα', 0),
+('Αμμόχωστος', 20, 'Αμμοχώστου', 0),
+('Αμμόχωστος', 21, 'Αμμόχωστος', 0),
+('Αμμόχωστος', 22, 'Αρναδί', 0),
+('Αμμόχωστος', 23, 'Αυγολίδα', 0),
+('Αμμόχωστος', 24, 'Αυγόρου', 0),
+('Αμμόχωστος', 25, 'Αχερίτου', 0),
+('Αμμόχωστος', 26, 'Βαθύλακας', 0),
+('Αμμόχωστος', 27, 'Βασίλι', 0),
+('Αμμόχωστος', 28, 'Βατυλή', 0),
+('Αμμόχωστος', 29, 'Βιτσάδα', 0),
+('Αμμόχωστος', 30, 'Βουκολίδα', 0),
+('Αμμόχωστος', 31, 'Γέναγρα', 0),
+('Αμμόχωστος', 32, 'Γαλάτεια', 0),
+('Αμμόχωστος', 33, 'Γαληνόπορνη', 0),
+('Αμμόχωστος', 34, 'Γαστριά', 0),
+('Αμμόχωστος', 35, 'Γαϊδουράς', 0),
+('Αμμόχωστος', 36, 'Γεράνι', 0),
+('Αμμόχωστος', 37, 'Γιαλούσα', 0),
+('Αμμόχωστος', 38, 'Γούφες', 0),
+('Αμμόχωστος', 39, 'Γύψου', 0),
+('Αμμόχωστος', 40, 'Δαυλός', 0),
+('Αμμόχωστος', 41, 'Δερύνεια', 0),
+('Αμμόχωστος', 42, 'Έγκωμη', 0),
+('Αμμόχωστος', 43, 'Εφτακώμη', 0),
+('Αμμόχωστος', 44, 'Καλοψίδα', 0),
+('Αμμόχωστος', 45, 'Κνώδαρα', 0),
+('Αμμόχωστος', 46, 'Κοιλάνεμος', 0),
+('Αμμόχωστος', 47, 'Κοντέα', 0),
+('Αμμόχωστος', 48, 'Κορνόκηπος', 0),
+('Αμμόχωστος', 49, 'Κορόβια', 0),
+('Αμμόχωστος', 50, 'Κούκλια', 0),
+('Αμμόχωστος', 51, 'Κρίδια', 0),
+('Αμμόχωστος', 52, 'Κώμα του Γιαλού', 0),
+('Αμμόχωστος', 53, 'Κώμη Κεπίρ', 0),
+('Αμμόχωστος', 54, 'Λάπαθος', 0),
+('Αμμόχωστος', 55, 'Λειβάδια', 0),
+('Αμμόχωστος', 56, 'Λεονάρισσο', 0),
+('Αμμόχωστος', 57, 'Λευκόνοικο', 0),
+('Αμμόχωστος', 58, 'Λιμνιά', 0),
+('Αμμόχωστος', 59, 'Λιοπέτρι', 0),
+('Αμμόχωστος', 60, 'Λυθράγκωμη', 0),
+('Αμμόχωστος', 61, 'Λύση', 0),
+('Αμμόχωστος', 62, 'Μάντρες', 0),
+('Αμμόχωστος', 63, 'Μακράσυκα', 0),
+('Αμμόχωστος', 64, 'Μαράθα', 0),
+('Αμμόχωστος', 65, 'Μαραθόβουνος', 0),
+('Αμμόχωστος', 66, 'Μελάναρκα', 0),
+('Αμμόχωστος', 67, 'Μελούντα', 0),
+('Αμμόχωστος', 68, 'Μηλιά', 0),
+('Αμμόχωστος', 69, 'Μοναρκά', 0),
+('Αμμόχωστος', 70, 'Μουσουλίτα', 0),
+('Αμμόχωστος', 71, 'Μπογάζι', 0),
+('Αμμόχωστος', 72, 'Νέτα', 0),
+('Αμμόχωστος', 73, 'Όβγορος', 0),
+('Αμμόχωστος', 74, 'Παραλίμνι', 0),
+('Αμμόχωστος', 75, 'Πατρίκι', 0),
+('Αμμόχωστος', 76, 'Περιβόλια', 0),
+('Αμμόχωστος', 77, 'Περιστερώνα', 0),
+('Αμμόχωστος', 78, 'Πηγή', 0),
+('Αμμόχωστος', 79, 'Πλατάνι', 0),
+('Αμμόχωστος', 80, 'Πλατανισσός', 0),
+('Αμμόχωστος', 81, 'Πραστειό', 0),
+('Αμμόχωστος', 82, 'Πυργά', 0),
+('Αμμόχωστος', 83, 'Ριζοκάρπασο', 0),
+('Αμμόχωστος', 84, 'Σίντα', 0),
+('Αμμόχωστος', 85, 'Σανταλάρης', 0),
+('Αμμόχωστος', 86, 'Σπαθαρικό', 0),
+('Αμμόχωστος', 87, 'Στρογγυλός', 0),
+('Αμμόχωστος', 88, 'Στύλλοι', 0),
+('Αμμόχωστος', 89, 'Σωτήρα', 0),
+('Αμμόχωστος', 90, 'Σύγκραση', 0),
+('Αμμόχωστος', 91, 'Ταύρου', 0),
+('Αμμόχωστος', 92, 'Τζιάος', 0),
+('Αμμόχωστος', 93, 'Τρίκωμο', 0),
+('Αμμόχωστος', 94, 'Τρυπημένη', 0),
+('Αμμόχωστος', 95, 'Φλαμούδι', 0),
+('Αμμόχωστος', 96, 'Φρέναρος', 0),
+('Αμμόχωστος', 97, 'Ψυλλάτος', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `CityLarnaca`
+--
+
+CREATE TABLE IF NOT EXISTS `CityLarnaca` (
+  `CityName` varchar(15) NOT NULL DEFAULT 'Λάρνακα',
+  `RegionCode` int(11) NOT NULL AUTO_INCREMENT,
+  `RegionName` varchar(25) NOT NULL,
+  `NumOfListings` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`RegionCode`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=60 ;
+
+--
+-- Dumping data for table `CityLarnaca`
+--
+
+INSERT INTO `CityLarnaca` (`CityName`, `RegionCode`, `RegionName`, `NumOfListings`) VALUES
+('Λάρνακα', 1, '﻿Άγιος Θεόδωρος', 0),
+('Λάρνακα', 2, 'Άρσος', 0),
+('Λάρνακα', 3, 'Αβδελλερό', 0),
+('Λάρνακα', 4, 'Αγίοι Βαβατσινιάς', 0),
+('Λάρνακα', 5, 'Αγγλισίδες', 0),
+('Λάρνακα', 6, 'Αθηένου', 0),
+('Λάρνακα', 7, 'Αλαμινός', 0),
+('Λάρνακα', 8, 'Αλεθρικό', 0),
+('Λάρνακα', 9, 'Αναφωτία', 0),
+('Λάρνακα', 10, 'Απλάντα', 0),
+('Λάρνακα', 11, 'Αραδίππου', 0),
+('Λάρνακα', 12, 'Βάβλα', 0),
+('Λάρνακα', 13, 'Βαβατσινιά', 0),
+('Λάρνακα', 14, 'Δελίκηπος', 0),
+('Λάρνακα', 15, 'Δρομολαξιά', 0),
+('Λάρνακα', 16, 'Ζύγι', 0),
+('Λάρνακα', 17, 'Κάτω Δρυς', 0),
+('Λάρνακα', 18, 'Κάτω Λεύκαρα', 0),
+('Λάρνακα', 19, 'Κίτι', 0),
+('Λάρνακα', 20, 'Καλαβασός', 0),
+('Λάρνακα', 21, 'Καλό Χωριό', 0),
+('Λάρνακα', 22, 'Κελλιά', 0),
+('Λάρνακα', 23, 'Κιβισίλι', 0),
+('Λάρνακα', 24, 'Κλαυδιά', 0),
+('Λάρνακα', 25, 'Κοφίνου', 0),
+('Λάρνακα', 26, 'Κόρνος', 0),
+('Λάρνακα', 27, 'Κόσιη', 0),
+('Λάρνακα', 28, 'Λάγια', 0),
+('Λάρνακα', 29, 'Λάρνακα', 0),
+('Λάρνακα', 30, 'Λειβάδια', 0),
+('Λάρνακα', 31, 'Μαζωτός', 0),
+('Λάρνακα', 32, 'Μαρί', 0),
+('Λάρνακα', 33, 'Μαρώνι', 0),
+('Λάρνακα', 34, 'Μελίνη', 0),
+('Λάρνακα', 35, 'Μελούσια', 0),
+('Λάρνακα', 36, 'Μενού', 0),
+('Λάρνακα', 37, 'Μενόγια', 0),
+('Λάρνακα', 38, 'Μοσφιλωτή', 0),
+('Λάρνακα', 39, 'Ξυλοτύμπου', 0),
+('Λάρνακα', 40, 'Ξυλοφάγου', 0),
+('Λάρνακα', 41, 'Οδού', 0),
+('Λάρνακα', 42, 'Όρα', 0),
+('Λάρνακα', 43, 'Ορμήδεια', 0),
+('Λάρνακα', 44, 'Ορόκλινη', 0),
+('Λάρνακα', 45, 'Πάνω Λεύκαρα', 0),
+('Λάρνακα', 46, 'Πέργαμος', 0),
+('Λάρνακα', 47, 'Περβόλια', 0),
+('Λάρνακα', 48, 'Πετροφάνι', 0),
+('Λάρνακα', 49, 'Πύλα', 0),
+('Λάρνακα', 50, 'Πύργα', 0),
+('Λάρνακα', 51, 'Σκαρίνου', 0),
+('Λάρνακα', 52, 'Σοφτάδες', 0),
+('Λάρνακα', 53, 'Τερσεφάνου', 0),
+('Λάρνακα', 54, 'Τρεμετουσιά', 0),
+('Λάρνακα', 55, 'Τρούλλοι', 0),
+('Λάρνακα', 56, 'Τόχνη', 0),
+('Λάρνακα', 57, 'Χοιροκοιτία', 0),
+('Λάρνακα', 58, 'Ψεματισμένος', 0),
+('Λάρνακα', 59, 'Ψευδάς', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `CityLimassol`
+--
+
+CREATE TABLE IF NOT EXISTS `CityLimassol` (
+  `CityName` varchar(15) COLLATE utf8_bin NOT NULL DEFAULT 'Limassol',
+  `RegionCode` int(11) NOT NULL AUTO_INCREMENT,
+  `RegionName` varchar(25) COLLATE utf8_bin NOT NULL,
+  `NumOfListings` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`RegionCode`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=113 ;
+
+--
+-- Dumping data for table `CityLimassol`
+--
+
+INSERT INTO `CityLimassol` (`CityName`, `RegionCode`, `RegionName`, `NumOfListings`) VALUES
+('Λεμεσός', 1, 'Άγιος Αθανάσιος', 0),
+('Λεμεσός', 2, 'Άγιος Αμβρόσιος', 0),
+('Λεμεσός', 3, 'Άγιος Γεώργιος', 0),
+('Λεμεσός', 4, 'Άγιος Δημήτριος', 0),
+('Λεμεσός', 5, 'Άγιος Θεόδωρος', 0),
+('Λεμεσός', 6, 'Άγιος Θεράπων', 0),
+('Λεμεσός', 7, 'Άγιος Θωμάς', 0),
+('Λεμεσός', 8, 'Άγιος Ιωάννης', 0),
+('Λεμεσός', 9, 'Άγιος Κωνσταντίνος', 0),
+('Λεμεσός', 10, 'Άγιος Μάμας', 0),
+('Λεμεσός', 11, 'Άγιος Παύλος', 0),
+('Λεμεσός', 12, 'Άγιος Τύχωνας', 0),
+('Λεμεσός', 13, 'Αγρίδια', 0),
+('Λεμεσός', 14, 'Αγρός', 0),
+('Λεμεσός', 15, 'Ακαπνού', 0),
+('Λεμεσός', 16, 'Ακρούντα', 0),
+('Λεμεσός', 17, 'Ακρωτήρι', 0),
+('Λεμεσός', 18, 'Άλασσα', 0),
+('Λεμεσός', 19, 'Αλέκτορα', 0),
+('Λεμεσός', 20, 'Αμίαντος', 0),
+('Λεμεσός', 21, 'Ανώγυρα', 0),
+('Λεμεσός', 22, 'Απαισιά', 0),
+('Λεμεσός', 23, 'Αρακαπάς', 0),
+('Λεμεσός', 24, 'Αρμενοχώρι', 0),
+('Λεμεσός', 25, 'Άρσος', 0),
+('Λεμεσός', 26, 'Ασγάτα', 0),
+('Λεμεσός', 27, 'Ασώματος', 0),
+('Λεμεσός', 28, 'Αυδήμου', 0),
+('Λεμεσός', 29, 'Αψιού', 0),
+('Λεμεσός', 30, 'Βάσα', 0),
+('Λεμεσός', 31, 'Βάσα', 0),
+('Λεμεσός', 32, 'Βίκλα', 0),
+('Λεμεσός', 33, 'Βουνί', 0),
+('Λεμεσός', 34, 'Γερμασόγεια', 0),
+('Λεμεσός', 35, 'Γεράσα', 0),
+('Λεμεσός', 36, 'Γεροβάσα', 0),
+('Λεμεσός', 37, 'Διερώνα', 0),
+('Λεμεσός', 38, 'Δορά', 0),
+('Λεμεσός', 39, 'Δύμες', 0),
+('Λεμεσός', 40, 'Δωρός', 0),
+('Λεμεσός', 41, 'Επισκοπή', 0),
+('Λεμεσός', 42, 'Ερήμη', 0),
+('Λεμεσός', 43, 'Εφταγώνια', 0),
+('Λεμεσός', 44, 'Ζωοπηγή', 0),
+('Λεμεσός', 45, 'Κάτω Πολεμίδια', 0),
+('Λεμεσός', 46, 'Καλό Χωριό', 0),
+('Λεμεσός', 47, 'Καμινάρια', 0),
+('Λεμεσός', 48, 'Καντού', 0),
+('Λεμεσός', 49, 'Καπηλειό', 0),
+('Λεμεσός', 50, 'Κάτω Κυβίδες', 0),
+('Λεμεσός', 51, 'Κάτω Μύλος', 0),
+('Λεμεσός', 52, 'Κάτω Πλάτρες', 0),
+('Λεμεσός', 53, 'Κελλάκι', 0),
+('Λεμεσός', 54, 'Κισσούσα', 0),
+('Λεμεσός', 55, 'Κλωνάρι', 0),
+('Λεμεσός', 56, 'Κοιλάνι', 0),
+('Λεμεσός', 57, 'Κολόσσι', 0),
+('Λεμεσός', 58, 'Κορφή', 0),
+('Λεμεσός', 59, 'Κουκά', 0),
+('Λεμεσός', 60, 'Κυπερούντα', 0),
+('Λεμεσός', 61, 'Λεμεσός', 0),
+('Λεμεσός', 62, 'Λάνια', 0),
+('Λεμεσός', 63, 'Λεμύθου', 0),
+('Λεμεσός', 64, 'Λιμνάτης', 0),
+('Λεμεσός', 65, 'Λουβαράς', 0),
+('Λεμεσός', 66, 'Λόφου', 0),
+('Λεμεσός', 67, 'Μέσα Γειτονιά', 0),
+('Λεμεσός', 68, 'Μαθηκολώνη', 0),
+('Λεμεσός', 69, 'Μαλλιά', 0),
+('Λεμεσός', 70, 'Μαντριά', 0),
+('Λεμεσός', 71, 'Μονάγρι', 0),
+('Λεμεσός', 72, 'Μοναγρούλλι', 0),
+('Λεμεσός', 73, 'Μονή', 0),
+('Λεμεσός', 74, 'Μονιάτης', 0),
+('Λεμεσός', 75, 'Μουτταγιάκα', 0),
+('Λεμεσός', 76, 'Όμοδος', 0),
+('Λεμεσός', 77, 'Παλαιόμυλος', 0),
+('Λεμεσός', 78, 'Παλώδια', 0),
+('Λεμεσός', 79, 'Πάνω Κυβίδες', 0),
+('Λεμεσός', 80, 'Πάνω Πλάτρες', 0),
+('Λεμεσός', 81, 'Πάνω Πολεμίδια', 0),
+('Λεμεσός', 82, 'Παραμάλι', 0),
+('Λεμεσός', 83, 'Παραμύθα', 0),
+('Λεμεσός', 84, 'Παρεκκλήσια', 0),
+('Λεμεσός', 85, 'Πάχνα', 0),
+('Λεμεσός', 86, 'Πελαθούσα', 0),
+('Λεμεσός', 87, 'Πελένδρι', 0),
+('Λεμεσός', 88, 'Πεντάκωμο', 0),
+('Λεμεσός', 89, 'Πέρα Πεδί', 0),
+('Λεμεσός', 90, 'Πισσούρι', 0),
+('Λεμεσός', 91, 'Πλατανίσκια', 0),
+('Λεμεσός', 92, 'Ποταμιού', 0),
+('Λεμεσός', 93, 'Ποταμίτισσα', 0),
+('Λεμεσός', 94, 'Πραστειό', 0),
+('Λεμεσός', 95, 'Πραστειό', 0),
+('Λεμεσός', 96, 'Πρόδρομος', 0),
+('Λεμεσός', 97, 'Πύργος', 0),
+('Λεμεσός', 98, 'Σανίδα', 0),
+('Λεμεσός', 99, 'Σούνι', 0),
+('Λεμεσός', 100, 'Σπιτάλι', 0),
+('Λεμεσός', 101, 'Συκόπετρα', 0),
+('Λεμεσός', 102, 'Συλίκου', 0),
+('Λεμεσός', 103, 'Σωτήρα', 0),
+('Λεμεσός', 104, 'Τραχώνι', 0),
+('Λεμεσός', 105, 'Τρεις Ελιές', 0),
+('Λεμεσός', 106, 'Τριμίκλινη', 0),
+('Λεμεσός', 107, 'Τσερκέζ Τσιφτλίκ', 0),
+('Λεμεσός', 108, 'Ύψωνας', 0),
+('Λεμεσός', 109, 'Φασούλα', 0),
+('Λεμεσός', 110, 'Φοινί', 0),
+('Λεμεσός', 111, 'Φοινικάρια', 0),
+('Λεμεσός', 112, 'Χανδριά', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `CityNicosia`
+--
+
+CREATE TABLE IF NOT EXISTS `CityNicosia` (
+  `CityName` varchar(15) NOT NULL DEFAULT 'Nicosia',
+  `RegionCode` int(11) NOT NULL AUTO_INCREMENT,
+  `RegionName` varchar(25) NOT NULL,
+  `NumOfListings` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`RegionCode`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=171 ;
+
+--
+-- Dumping data for table `CityNicosia`
+--
+
+INSERT INTO `CityNicosia` (`CityName`, `RegionCode`, `RegionName`, `NumOfListings`) VALUES
+('Λευκωσία', 1, '﻿Άγιος Βασίλειος', 0),
+('Λευκωσία', 2, 'Άγιος Γεώργιος', 0),
+('Λευκωσία', 3, 'Άγιος Δομέτιος', 0),
+('Λευκωσία', 4, 'Άγιος Επιφάνειος', 0),
+('Λευκωσία', 5, 'Άγιος Θεόδωρος', 0),
+('Λευκωσία', 6, 'Άγιος Ιωάννης', 0),
+('Λευκωσία', 7, 'Άγιος Νικόλαος', 0),
+('Λευκωσία', 8, 'Άγιος Σωζόμενος', 0),
+('Λευκωσία', 9, 'Άλωνα', 0),
+('Λευκωσία', 10, 'Έξω Μετόχι', 0),
+('Λευκωσία', 11, 'Αγία Άννα', 0),
+('Λευκωσία', 12, 'Αγία Βαρβάρα', 0),
+('Λευκωσία', 13, 'Αγία Ειρήνη', 0),
+('Λευκωσία', 14, 'Αγία Μαρίνα', 0),
+('Λευκωσία', 15, 'Αγία Μαρίνα', 0),
+('Λευκωσία', 16, 'Αγίοι Ηλιόφωτοι', 0),
+('Λευκωσία', 17, 'Αγίοι Τριμιθιάς', 0),
+('Λευκωσία', 18, 'Αγκολέμι', 0),
+('Λευκωσία', 19, 'Αγλαντζιά', 0),
+('Λευκωσία', 20, 'Αγροκηπιά', 0),
+('Λευκωσία', 21, 'Αγυιά Κεπίρ', 0),
+('Λευκωσία', 22, 'Ακάκι', 0),
+('Λευκωσία', 23, 'Αλάμπρα', 0),
+('Λευκωσία', 24, 'Αλεύκα', 0),
+('Λευκωσία', 25, 'Αληθινού', 0),
+('Λευκωσία', 26, 'Αμμαδιές', 0),
+('Λευκωσία', 27, 'Αμπελικού', 0),
+('Λευκωσία', 28, 'Ανάγυια', 0),
+('Λευκωσία', 29, 'Αναδιού', 0),
+('Λευκωσία', 30, 'Αναλυόντας', 0),
+('Λευκωσία', 31, 'Ανθούπολη', 0),
+('Λευκωσία', 32, 'Απλίκι', 0),
+('Λευκωσία', 33, 'Αργάκι', 0),
+('Λευκωσία', 34, 'Αρεδιού', 0),
+('Λευκωσία', 35, 'Ασκάς', 0),
+('Λευκωσία', 36, 'Αστρομερίτης', 0),
+('Λευκωσία', 37, 'Αυλώνα', 0),
+('Λευκωσία', 38, 'Βαρίσια', 0),
+('Λευκωσία', 39, 'Βροΐσια', 0),
+('Λευκωσία', 40, 'Βυζακιά', 0),
+('Λευκωσία', 41, 'Βώνη', 0),
+('Λευκωσία', 42, 'Γέρι', 0),
+('Λευκωσία', 43, 'Γαλατά', 0),
+('Λευκωσία', 44, 'Γαληνή', 0),
+('Λευκωσία', 45, 'Γερακιές', 0),
+('Λευκωσία', 46, 'Γερόλακκος', 0),
+('Λευκωσία', 47, 'Γούρρι', 0),
+('Λευκωσία', 48, 'Δάλι', 0),
+('Λευκωσία', 49, 'Δένεια', 0),
+('Λευκωσία', 50, 'Δυο Ποταμοί', 0),
+('Λευκωσία', 51, 'Εγκώμη', 0),
+('Λευκωσία', 52, 'Ελιά', 0),
+('Λευκωσία', 53, 'Επηχώ', 0),
+('Λευκωσία', 54, 'Επισκοπειό', 0),
+('Λευκωσία', 55, 'Εργάτες', 0),
+('Λευκωσία', 56, 'Ευρύχου', 0),
+('Λευκωσία', 57, 'Κάμπος', 0),
+('Λευκωσία', 58, 'Κάτω Δευτερά', 0),
+('Λευκωσία', 59, 'Κάτω Ζώδια', 0),
+('Λευκωσία', 60, 'Κάτω Κουτραφάς', 0),
+('Λευκωσία', 61, 'Κάτω Μονή', 0),
+('Λευκωσία', 62, 'Κάτω Πύργος', 0),
+('Λευκωσία', 63, 'Καζιβερά', 0),
+('Λευκωσία', 64, 'Κακοπετριά', 0),
+('Λευκωσία', 65, 'Καλλιάνα', 0),
+('Λευκωσία', 66, 'Καλοπαναγιώτης', 0),
+('Λευκωσία', 67, 'Καλυβάκια', 0),
+('Λευκωσία', 68, 'Καλό Χωριό', 0),
+('Λευκωσία', 69, 'Καλό Χωριό', 0),
+('Λευκωσία', 70, 'Καλό Χωριό', 0),
+('Λευκωσία', 71, 'Καμπί', 0),
+('Λευκωσία', 72, 'Καμπιά', 0),
+('Λευκωσία', 73, 'Κανλί', 0),
+('Λευκωσία', 74, 'Καννάβια', 0),
+('Λευκωσία', 75, 'Καπέδες', 0),
+('Λευκωσία', 76, 'Καραβοστάσι', 0),
+('Λευκωσία', 77, 'Καταλυόντας', 0),
+('Λευκωσία', 78, 'Κατωκοπιά', 0),
+('Λευκωσία', 79, 'Κατύδατα', 0),
+('Λευκωσία', 80, 'Κιόνελι', 0),
+('Λευκωσία', 81, 'Κλήρου', 0),
+('Λευκωσία', 82, 'Κοκκινοτριμιθιά', 0),
+('Λευκωσία', 83, 'Κοράκου', 0),
+('Λευκωσία', 84, 'Κοτσιάτης', 0),
+('Λευκωσία', 85, 'Κουρού Μοναστήρι', 0),
+('Λευκωσία', 86, 'Κυθρέα', 0),
+('Λευκωσία', 87, 'Κυρά', 0),
+('Λευκωσία', 88, 'Κόκκινα', 0),
+('Λευκωσία', 89, 'Λαγουδερά', 0),
+('Λευκωσία', 90, 'Λαζανιά', 0),
+('Λευκωσία', 91, 'Λακατάμια', 0),
+('Λευκωσία', 92, 'Λατσιά', 0),
+('Λευκωσία', 93, 'Λειβάδια', 0),
+('Λευκωσία', 94, 'Λευκωσία', 0),
+('Λευκωσία', 95, 'Λεύκα', 0),
+('Λευκωσία', 96, 'Λινού', 0),
+('Λευκωσία', 97, 'Λουρουτζίνα', 0),
+('Λευκωσία', 98, 'Λουτρός', 0),
+('Λευκωσία', 99, 'Λυθροδόντας', 0),
+('Λευκωσία', 100, 'Λύμπια', 0),
+('Λευκωσία', 101, 'Μάμμαρι', 0),
+('Λευκωσία', 102, 'Μάσαρι', 0),
+('Λευκωσία', 103, 'Μένοικο', 0),
+('Λευκωσία', 104, 'Μαθιάτης', 0),
+('Λευκωσία', 105, 'Μαλούντα', 0),
+('Λευκωσία', 106, 'Μαρκί', 0),
+('Λευκωσία', 107, 'Μαρκό', 0),
+('Λευκωσία', 108, 'Μηλικούρι', 0),
+('Λευκωσία', 109, 'Μια Μηλιά', 0),
+('Λευκωσία', 110, 'Μιτσερό', 0),
+('Λευκωσία', 111, 'Μουτουλλάς', 0),
+('Λευκωσία', 112, 'Μπέη Κιογιού', 0),
+('Λευκωσία', 113, 'Μόρα', 0),
+('Λευκωσία', 114, 'Μόρφου', 0),
+('Λευκωσία', 115, 'Νέο Χωριό', 0),
+('Λευκωσία', 116, 'Νήσου', 0),
+('Λευκωσία', 117, 'Νικήτας', 0),
+('Λευκωσία', 118, 'Νικητάρι', 0),
+('Λευκωσία', 119, 'Ξερόβουνος', 0),
+('Λευκωσία', 120, 'Ξυλιάτος', 0),
+('Λευκωσία', 121, 'Οίκος', 0),
+('Λευκωσία', 122, 'Ορούντα', 0),
+('Λευκωσία', 123, 'Ορτά Κιογιού', 0),
+('Λευκωσία', 124, 'Πάνω Δευτερά', 0),
+('Λευκωσία', 125, 'Πάνω Ζώδια', 0),
+('Λευκωσία', 126, 'Πάνω Κουτραφάς', 0),
+('Λευκωσία', 127, 'Πάνω Πύργος', 0),
+('Λευκωσία', 128, 'Πέρα Ορεινής', 0),
+('Λευκωσία', 129, 'Πέρα Χωριό', 0),
+('Λευκωσία', 130, 'Πέτρα', 0),
+('Λευκωσία', 131, 'Πέτρα του Διγενή', 0),
+('Λευκωσία', 132, 'Παλαίκυθρο', 0),
+('Λευκωσία', 133, 'Παλαιομέτοχο', 0),
+('Λευκωσία', 134, 'Παλαιοχώρι', 0),
+('Λευκωσία', 135, 'Παλαιχώρι', 0),
+('Λευκωσία', 136, 'Παχύαμμος', 0),
+('Λευκωσία', 137, 'Πεδουλάς', 0),
+('Λευκωσία', 138, 'Πεντάγυια', 0),
+('Λευκωσία', 139, 'Περιστερωνάρι', 0),
+('Λευκωσία', 140, 'Περιστερώνα', 0),
+('Λευκωσία', 141, 'Πηγαίνια', 0),
+('Λευκωσία', 142, 'Πλατανιστάσα', 0),
+('Λευκωσία', 143, 'Πολιτικό', 0),
+('Λευκωσία', 144, 'Πολύστυπος', 0),
+('Λευκωσία', 145, 'Ποτάμι', 0),
+('Λευκωσία', 146, 'Ποταμιά', 0),
+('Λευκωσία', 147, 'Πραστειό', 0),
+('Λευκωσία', 148, 'Πυρόι', 0),
+('Λευκωσία', 149, 'Σαράντι', 0),
+('Λευκωσία', 150, 'Σελλάιν τ'' Άππη', 0),
+('Λευκωσία', 151, 'Σιά', 0),
+('Λευκωσία', 152, 'Σινά Όρος', 0),
+('Λευκωσία', 153, 'Σκουριώτισσα', 0),
+('Λευκωσία', 154, 'Σκυλλούρα', 0),
+('Λευκωσία', 155, 'Σπήλια', 0),
+('Λευκωσία', 156, 'Στρόβολος', 0),
+('Λευκωσία', 157, 'Συριανοχώρι', 0),
+('Λευκωσία', 158, 'Τεμπριά', 0),
+('Λευκωσία', 159, 'Τράχωνας', 0),
+('Λευκωσία', 160, 'Τραχώνι', 0),
+('Λευκωσία', 161, 'Τσέρι', 0),
+('Λευκωσία', 162, 'Τσακκίστρα', 0),
+('Λευκωσία', 163, 'Τύμπου', 0),
+('Λευκωσία', 164, 'Φαρμακάς', 0),
+('Λευκωσία', 165, 'Φιλιά', 0),
+('Λευκωσία', 166, 'Φλάσου', 0),
+('Λευκωσία', 167, 'Φτερικούδι', 0),
+('Λευκωσία', 168, 'Φυκάρδου', 0),
+('Λευκωσία', 169, 'Χαμίτ Μάντρες', 0),
+('Λευκωσία', 170, 'Ψημολόφου', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `CityPafos`
+--
+
+CREATE TABLE IF NOT EXISTS `CityPafos` (
+  `CityName` varchar(15) COLLATE utf8_bin NOT NULL DEFAULT 'Pafos',
+  `RegionCode` int(4) NOT NULL,
+  `RegionName` varchar(25) COLLATE utf8_bin NOT NULL,
+  `NumOfListings` int(11) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `CityPafos`
+--
+
+INSERT INTO `CityPafos` (`CityName`, `RegionCode`, `RegionName`, `NumOfListings`) VALUES
+('Πάφος', 9, 'Αγία Βαρβάρα', 0),
+('Πάφος', 10, 'Αγία Μαρίνα', 0),
+('Πάφος', 11, 'Αγία Μαρινούδα', 0),
+('Πάφος', 1, 'Άγιος Γεώργιος', 0),
+('Πάφος', 2, 'Άγιος Δημητριανός', 0),
+('Πάφος', 3, 'Άγιος Ισίδωρος', 0),
+('Πάφος', 4, 'Άγιος Ιωάννης', 0),
+('Πάφος', 5, 'Άγιος Νικόλαος', 0),
+('Πάφος', 12, 'Ακουρσός', 0),
+('Πάφος', 13, 'Αμαργέτη', 0),
+('Πάφος', 14, 'Αναρίτα', 0),
+('Πάφος', 15, 'Ανδρολύκου', 0),
+('Πάφος', 16, 'Αξύλου', 0),
+('Πάφος', 17, 'Αργάκα', 0),
+('Πάφος', 18, 'Αρμίνου', 0),
+('Πάφος', 6, 'Άρμου', 0),
+('Πάφος', 19, 'Ασπρογιά', 0),
+('Πάφος', 20, 'Αχέλεια', 0),
+('Πάφος', 21, 'Βρέτσια', 0),
+('Πάφος', 23, 'Γεροσκήπου', 0),
+('Πάφος', 22, 'Γαλαταριά', 0),
+('Πάφος', 24, 'Γιαλιά', 0),
+('Πάφος', 25, 'Γιόλου', 0),
+('Πάφος', 26, 'Γουδί', 0),
+('Πάφος', 27, 'Δρούσια', 0),
+('Πάφος', 29, 'Δρύμου', 0),
+('Πάφος', 28, 'Δρυνιά', 0),
+('Πάφος', 30, 'Ελεδιώ', 0),
+('Πάφος', 7, 'Έμπα', 0),
+('Πάφος', 0, 'Επισκοπή', 0),
+('Πάφος', 0, 'Ευρέτου', 0),
+('Πάφος', 0, 'Ζαχαριά', 0),
+('Πάφος', 0, 'Θελέτρα', 0),
+('Πάφος', 8, 'Ίνια', 0),
+('Πάφος', 0, 'Ιστιντζιόν', 0),
+('Πάφος', 0, 'Κάθηκας', 0),
+('Πάφος', 0, 'Καλλέπια', 0),
+('Πάφος', 0, 'Κανναβιού', 0),
+('Πάφος', 0, 'Καραμούλληδες', 0),
+('Πάφος', 0, 'Κάτω Ακουρδάλια', 0),
+('Πάφος', 0, 'Κάτω Αρόδες', 0),
+('Πάφος', 0, 'Κέδαρες', 0),
+('Πάφος', 0, 'Κελοκέδαρα', 0),
+('Πάφος', 0, 'Κιδάσι', 0),
+('Πάφος', 0, 'Κινούσα', 0),
+('Πάφος', 0, 'Κισσόνεργα', 0),
+('Πάφος', 0, 'Κοίλη', 0),
+('Πάφος', 0, 'Κοιλίνια', 0),
+('Πάφος', 0, 'Κονιά', 0),
+('Πάφος', 0, 'Κούκλια', 0),
+('Πάφος', 0, 'Κούρτακα', 0),
+('Πάφος', 0, 'Κρήτου Μαρόττου', 0),
+('Πάφος', 0, 'Κρήτου', 0),
+('Πάφος', 0, 'Λαπηθιού', 0),
+('Πάφος', 0, 'Λάσα', 0),
+('Πάφος', 0, 'Λειβάδι', 0),
+('Πάφος', 0, 'Λέμπα', 0),
+('Πάφος', 0, 'Λεμώνα', 0),
+('Πάφος', 0, 'Λετύμπου', 0),
+('Πάφος', 0, 'Λουκρούνου', 0),
+('Πάφος', 0, 'Λυσός', 0),
+('Πάφος', 0, 'Μακούντα', 0),
+('Πάφος', 0, 'Μαμούνταλι', 0),
+('Πάφος', 0, 'Μαμώνια', 0),
+('Πάφος', 0, 'Μαντριά', 0),
+('Πάφος', 0, 'Μαραθούντα', 0),
+('Πάφος', 0, 'Μάρωνας', 0),
+('Πάφος', 0, 'Μελάδια', 0),
+('Πάφος', 0, 'Μελάνδρα', 0),
+('Πάφος', 0, 'Μέσα Χωριό', 0),
+('Πάφος', 0, 'Μέσανα', 0),
+('Πάφος', 0, 'Μεσόγη', 0),
+('Πάφος', 0, 'Μηλιά', 0),
+('Πάφος', 0, 'Μηλιού', 0),
+('Πάφος', 0, 'Μούσερε', 0),
+('Πάφος', 0, 'Νατά', 0),
+('Πάφος', 0, 'Νέα Δήμματα', 0),
+('Πάφος', 0, 'Νέο Χωριό', 0),
+('Πάφος', 0, 'Νικόκλεια', 0),
+('Πάφος', 0, 'Πάφος', 0),
+('Πάφος', 0, 'Πέγεια', 0),
+('Πάφος', 0, 'Πόλη Χρυσοχούς', 0),
+('Πάφος', 0, 'Πάνω Ακουρδάλια', 0),
+('Πάφος', 0, 'Πάνω Αρόδες', 0),
+('Πάφος', 0, 'Πάνω Αρχιμανδρίτα', 0),
+('Πάφος', 0, 'Πάνω Παναγιά', 0),
+('Πάφος', 0, 'Πενταλιά', 0),
+('Πάφος', 0, 'Περιστερώνα', 0),
+('Πάφος', 0, 'Πιταρκού', 0),
+('Πάφος', 0, 'Πολέμι', 0),
+('Πάφος', 0, 'Πραιτώρι', 0),
+('Πάφος', 0, 'Πραστειό', 0),
+('Πάφος', 0, 'Πωμός', 0),
+('Πάφος', 0, 'Σαλαμιού', 0),
+('Πάφος', 0, 'Σαραμά', 0),
+('Πάφος', 0, 'Σίμου', 0),
+('Πάφος', 0, 'Σκούλλι', 0),
+('Πάφος', 0, 'Σουσκιού', 0),
+('Πάφος', 0, 'Στάτος', 0),
+('Πάφος', 0, 'Σταυροκόννου', 0),
+('Πάφος', 0, 'Στενή', 0),
+('Πάφος', 0, 'Στρουμπί', 0),
+('Πάφος', 0, 'Τάλα', 0),
+('Πάφος', 0, 'Τέρρα', 0),
+('Πάφος', 0, 'Τίμη', 0),
+('Πάφος', 0, 'Τραχυπέδουλα', 0),
+('Πάφος', 0, 'Τρεμιθούσα', 0),
+('Πάφος', 0, 'Τσάδα', 0),
+('Πάφος', 0, 'Φάλια', 0),
+('Πάφος', 0, 'Φασλί', 0),
+('Πάφος', 0, 'Φασούλα', 0),
+('Πάφος', 0, 'Φιλούσα', 0),
+('Πάφος', 0, 'Φοίνικας', 0),
+('Πάφος', 0, 'Φοίτη', 0),
+('Πάφος', 0, 'Χλώρακα', 0),
+('Πάφος', 0, 'Χολέτρια', 0),
+('Πάφος', 0, 'Χόλη', 0),
+('Πάφος', 0, 'Χούλου', 0),
+('Πάφος', 0, 'Χρυσοχού', 0),
+('Πάφος', 0, 'Ψάθι', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `CommunicationMessage`
+--
+
+CREATE TABLE IF NOT EXISTS `CommunicationMessage` (
+  `MessageNo` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `FullName` varchar(100) COLLATE utf8_bin NOT NULL,
+  `Email` varchar(255) COLLATE utf8_bin NOT NULL,
+  `PhoneNumber` bigint(20) NOT NULL,
+  `Message` varchar(1500) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`MessageNo`),
+  UNIQUE KEY `MessageNo` (`MessageNo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `CommunicationMessage`
+--
+
+INSERT INTO `CommunicationMessage` (`MessageNo`, `FullName`, `Email`, `PhoneNumber`, `Message`) VALUES
+(4, 'my name', 'my email', 35712345678, 'my message');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Contact`
+--
+
+CREATE TABLE IF NOT EXISTS `Contact` (
+  `ContactNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(30) NOT NULL,
+  `Surname` varchar(30) NOT NULL,
+  `MobilePhone` bigint(20) NOT NULL,
+  `Phone` bigint(20) NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  `Profession` varchar(35) NOT NULL,
+  `ANumber` varchar(10) NOT NULL COMMENT 'Address',
+  `AStreet` varchar(50) NOT NULL COMMENT 'Address',
+  `ACity` varchar(50) NOT NULL COMMENT 'Address',
+  `AArea` varchar(50) NOT NULL COMMENT 'Address',
+  `ACountry` varchar(50) NOT NULL COMMENT 'Address',
+  `APostalCode` varchar(10) NOT NULL COMMENT 'Address',
+  PRIMARY KEY (`ContactNo`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `File`
+--
+
+CREATE TABLE IF NOT EXISTS `File` (
+  `FileNo` int(11) NOT NULL AUTO_INCREMENT,
+  `RealEstateNo` int(11) NOT NULL,
+  `HyperLink` varchar(350) COLLATE utf8_bin NOT NULL,
+  `Name` tinyint(30) NOT NULL,
+  `Description` varchar(300) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`FileNo`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+--
+-- RELATIONS FOR TABLE `File`:
+--   `RealEstateNo`
+--       `RealEstate` -> `RealEstateNo`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Land`
+--
+
+CREATE TABLE IF NOT EXISTS `Land` (
+  `RealEstateNo` int(11) NOT NULL,
+  `LandType` enum('Άλλο','Έκταση','Κτήμα','Οικόπεδο','Οικιστικό οικόπεδο','Βιομηχανικό οικόπεδο','Επαγγελματικό οικόπεδο') NOT NULL DEFAULT 'Άλλο',
+  `BuildIn` tinyint(1) NOT NULL DEFAULT '0',
+  `TMLand` double NOT NULL,
+  `TMBuilding` double NOT NULL,
+  `SD` double NOT NULL,
+  `SK` double NOT NULL,
+  `Builded` double NOT NULL,
+  `NotBuilded` double NOT NULL,
+  `Front` double NOT NULL,
+  `Depth` double NOT NULL,
+  `CityPlan` enum('Άλλο','Εντός σχεδίου','Εκτός σχεδίου','Εντός οικισμού','Εκτός οικισμού') NOT NULL DEFAULT 'Άλλο',
+  `AOT` varchar(50) NOT NULL,
+  `InvestmentField` tinyint(1) NOT NULL DEFAULT '0',
+  `NumOfPlots` double NOT NULL DEFAULT '0',
+  PRIMARY KEY (`RealEstateNo`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `Land`:
+--   `RealEstateNo`
+--       `RealEstate` -> `RealEstateNo`
+--
+
+--
+-- Dumping data for table `Land`
+--
+
+INSERT INTO `Land` (`RealEstateNo`, `LandType`, `BuildIn`, `TMLand`, `TMBuilding`, `SD`, `SK`, `Builded`, `NotBuilded`, `Front`, `Depth`, `CityPlan`, `AOT`, `InvestmentField`, `NumOfPlots`) VALUES
+(17, 'Οικόπεδο', 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Εντός σχεδίου', '', 0, 0),
+(0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `LDetails`
+--
+
+CREATE TABLE IF NOT EXISTS `LDetails` (
+  `RealEstateNo` int(11) NOT NULL,
+  `DetailNo` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `LDetails`:
+--   `DetailNo`
+--       `LDetailsChoices` -> `DetailNo`
+--   `RealEstateNo`
+--       `Land` -> `RealEstateNo`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `LDetailsChoices`
+--
+
+CREATE TABLE IF NOT EXISTS `LDetailsChoices` (
+  `DetailNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(35) NOT NULL,
+  PRIMARY KEY (`DetailNo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `LDetailsChoices`
+--
+
+INSERT INTO `LDetailsChoices` (`DetailNo`, `Description`) VALUES
+(1, 'Με βάθος'),
+(2, 'Επικλινές'),
+(4, 'Αμφιθεατρικό'),
+(6, 'Γωνιακό'),
+(7, 'Περιφραγμένο'),
+(8, 'Ορθογώνιο'),
+(9, 'Τετραγωνισμένο'),
+(10, 'Επίπεδο');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `LUse`
+--
+
+CREATE TABLE IF NOT EXISTS `LUse` (
+  `RealEstateNo` int(11) NOT NULL,
+  `UseNo` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `LUse`:
+--   `RealEstateNo`
+--       `Land` -> `RealEstateNo`
+--   `UseNo`
+--       `LUseChoices` -> `UseNo`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `LUseChoices`
+--
+
+CREATE TABLE IF NOT EXISTS `LUseChoices` (
+  `UseNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(35) NOT NULL,
+  PRIMARY KEY (`UseNo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `LUseChoices`
+--
+
+INSERT INTO `LUseChoices` (`UseNo`, `Description`) VALUES
+(1, 'Οικοδομήσιμο'),
+(2, 'Αγροτικό τεμάχιο'),
+(3, 'Τουριστική εκμετάλλευση');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `NewsletterList`
+--
+
+CREATE TABLE IF NOT EXISTS `NewsletterList` (
+  `Email` varchar(150) NOT NULL,
+  `Name` varchar(70) NOT NULL,
+  PRIMARY KEY (`Email`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Office`
+--
+
+CREATE TABLE IF NOT EXISTS `Office` (
+  `RealEstateNo` int(11) NOT NULL,
+  `OfficeType` enum('Άλλο','Επαγγελματικός χώρος','Αποθήκη','Αίθουσα','Κτήριο','Κατάστημα','Γραφεία','Ιατρεία','Βιομηχανικός χώρος','Γυμναστήριο','Φροντιστήριο','Εκθεσιακός χώρος') NOT NULL DEFAULT 'Επαγγελματικός χώρος',
+  `Investment` tinyint(1) NOT NULL DEFAULT '0',
+  `NumOfBasements` smallint(6) NOT NULL DEFAULT '0',
+  `NumOfFloors` int(11) NOT NULL DEFAULT '0',
+  `SurfaceArea` double NOT NULL DEFAULT '0',
+  `NumOfSegments` int(11) NOT NULL DEFAULT '0',
+  `StoreFrontArea` double NOT NULL DEFAULT '0',
+  `GroundFloorArea` double NOT NULL DEFAULT '0',
+  `LoftArea` double NOT NULL DEFAULT '0',
+  `BasementArea` double NOT NULL DEFAULT '0',
+  `AirPrice` double NOT NULL DEFAULT '0',
+  `EquipmentIncluded` tinyint(1) NOT NULL DEFAULT '0',
+  `AnnualRent` double NOT NULL DEFAULT '0',
+  `AnnualGrossReturn` double NOT NULL DEFAULT '0',
+  `AnnualNetReturn` double NOT NULL DEFAULT '0',
+  `AnnualExpenses` double NOT NULL DEFAULT '0',
+  `AnnualProduction` double NOT NULL DEFAULT '0',
+  PRIMARY KEY (`RealEstateNo`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `Office`:
+--   `RealEstateNo`
+--       `Building` -> `RealEstateNo`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `OfficeTeenant`
+--
+
+CREATE TABLE IF NOT EXISTS `OfficeTeenant` (
+  `RealEstateNo` int(11) NOT NULL,
+  `ContactID` int(11) NOT NULL,
+  `StartDate` date NOT NULL,
+  `EndDate` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `OfficeTeenant`:
+--   `ContactID`
+--       `Contact` -> `ContactNo`
+--   `RealEstateNo`
+--       `Office` -> `RealEstateNo`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `RealEstate`
+--
+
+CREATE TABLE IF NOT EXISTS `RealEstate` (
+  `RealEstateNo` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+  `AStreetNo` varchar(5) COLLATE utf8_bin DEFAULT NULL COMMENT 'Basic Info',
+  `AStreet` varchar(30) COLLATE utf8_bin DEFAULT NULL COMMENT 'Basic Info',
+  `ACity` enum('Λευκωσία','Λάρνακα','Λεμεσός','Πάφος','Αμμόχωστος') COLLATE utf8_bin DEFAULT 'Λευκωσία' COMMENT 'Basic Info',
+  `ARegionCode` int(11) NOT NULL COMMENT 'Address',
+  `ACountry` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT 'Cyprus' COMMENT 'Basic Info',
+  `APostalCode` int(10) DEFAULT NULL COMMENT 'Basic Info',
+  `RegistrationTitleNo` int(11) NOT NULL DEFAULT '0' COMMENT 'Common Info',
+  `PieceNo` int(11) NOT NULL DEFAULT '0' COMMENT 'Common Info',
+  `FolderNo` int(11) NOT NULL DEFAULT '0' COMMENT 'Common Info',
+  `ArithmosFilSxed` int(11) NOT NULL DEFAULT '0' COMMENT 'Common Info',
+  `ArithmosAdOik` int(11) NOT NULL DEFAULT '0' COMMENT 'Common Info',
+  `LegalControl` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT 'Common Info',
+  `InitialPrice` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT 'Common Info',
+  `EstimatedPrice` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT 'Common Info',
+  `MortgageLoan` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Common Info',
+  `ObjectiveValue` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT 'Common Info',
+  `FinalPrice` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT 'Common Info',
+  `Corner` tinyint(1) NOT NULL DEFAULT '0',
+  `Zone` varchar(150) COLLATE utf8_bin NOT NULL,
+  `AvailableFrom` date NOT NULL,
+  `DateRegistered` date NOT NULL,
+  `RegistrationPurpose` enum('Πώληση','Ενοικίαση','Αντιπαροχή','Επένδυση') COLLATE utf8_bin NOT NULL DEFAULT 'Πώληση',
+  `Price` double NOT NULL DEFAULT '0',
+  `Currency` enum('EUR','GBP','RUS','USD','Other') COLLATE utf8_bin NOT NULL DEFAULT 'EUR',
+  `PricePerTM` double NOT NULL,
+  `AreaTM` double NOT NULL DEFAULT '0',
+  `TM` double NOT NULL,
+  `VAT` double NOT NULL,
+  `ShortDescription` varchar(300) COLLATE utf8_bin NOT NULL,
+  `Description` varchar(500) COLLATE utf8_bin NOT NULL,
+  `AboutRenting` varchar(100) COLLATE utf8_bin NOT NULL,
+  `RecommendedBy` int(10) NOT NULL COMMENT 'ContactNo',
+  `Rating` varchar(300) COLLATE utf8_bin NOT NULL,
+  `RegistrationTitle` tinyint(1) NOT NULL DEFAULT '0',
+  `OwnerID` int(11) NOT NULL,
+  `OwnerRating` varchar(300) COLLATE utf8_bin NOT NULL,
+  `AgentRating` varchar(300) COLLATE utf8_bin NOT NULL,
+  `OrderCode` varchar(100) COLLATE utf8_bin NOT NULL,
+  `TypeOrder` varchar(100) COLLATE utf8_bin NOT NULL,
+  `Exclusive` tinyint(1) NOT NULL DEFAULT '0',
+  `OrderStart` date NOT NULL,
+  `OrderStop` date NOT NULL,
+  `Category` enum('Γη','Κατοικία','Επαγγελματικός χώρος','Ξενοδοχείο') COLLATE utf8_bin NOT NULL DEFAULT 'Κατοικία',
+  `Notes` varchar(500) COLLATE utf8_bin NOT NULL,
+  `NotifyColleague` tinyint(1) NOT NULL DEFAULT '0',
+  `AgentUsername` varchar(50) COLLATE utf8_bin NOT NULL,
+  `RealEstateStatus` varchar(100) COLLATE utf8_bin NOT NULL,
+  `AgentRewardPercentage` double NOT NULL DEFAULT '0',
+  `AgentReward` double NOT NULL DEFAULT '0',
+  `ViewAddress` varchar(300) COLLATE utf8_bin NOT NULL,
+  `TransferCost` double NOT NULL DEFAULT '0',
+  `TransferVAT` double NOT NULL DEFAULT '0',
+  `ConsiderationExchange` tinyint(1) NOT NULL DEFAULT '0',
+  `REState` enum('Published','Unpublished','To be published') COLLATE utf8_bin DEFAULT 'To be published',
+  `TimesViewed` int(11) NOT NULL DEFAULT '0' COMMENT 'To determine the popular real estates',
+  `Latitude` double NOT NULL DEFAULT '0',
+  `Longitude` double NOT NULL DEFAULT '0',
+  PRIMARY KEY (`RealEstateNo`),
+  UNIQUE KEY `PieceNo` (`PieceNo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=408 ;
+
+--
+-- RELATIONS FOR TABLE `RealEstate`:
+--   `AgentUsername`
+--       `UserExtended` -> `Username`
+--   `OwnerID`
+--       `Contact` -> `ContactNo`
+--
+
+--
+-- Dumping data for table `RealEstate`
+--
+
+INSERT INTO `RealEstate` (`RealEstateNo`, `AStreetNo`, `AStreet`, `ACity`, `ARegionCode`, `ACountry`, `APostalCode`, `RegistrationTitleNo`, `PieceNo`, `FolderNo`, `ArithmosFilSxed`, `ArithmosAdOik`, `LegalControl`, `InitialPrice`, `EstimatedPrice`, `MortgageLoan`, `ObjectiveValue`, `FinalPrice`, `Corner`, `Zone`, `AvailableFrom`, `DateRegistered`, `RegistrationPurpose`, `Price`, `Currency`, `PricePerTM`, `AreaTM`, `TM`, `VAT`, `ShortDescription`, `Description`, `AboutRenting`, `RecommendedBy`, `Rating`, `RegistrationTitle`, `OwnerID`, `OwnerRating`, `AgentRating`, `OrderCode`, `TypeOrder`, `Exclusive`, `OrderStart`, `OrderStop`, `Category`, `Notes`, `NotifyColleague`, `AgentUsername`, `RealEstateStatus`, `AgentRewardPercentage`, `AgentReward`, `ViewAddress`, `TransferCost`, `TransferVAT`, `ConsiderationExchange`, `REState`, `TimesViewed`, `Latitude`, `Longitude`) VALUES
+(7, '7', 'kgrjlkrlgk', 'Λάρνακα', 21, 'Cyprus', 6767, 56546, 20, 546456, 5464, 546457, 'rdfhbgbgfnfgsn', 550.00, 560.00, 1, 0.00, 560.00, 1, 'bfbfgnftg', '2017-03-01', '2017-04-27', 'Πώληση', 560000, 'EUR', 0, 0, 100, 0, 'htrh', 'rthtr', 'dfbfbdfb', 0, 'dfgdfgbd', 1, 0, 'dfbdfb', 'dfbdfbdbf', 'dfbfdbdfb', 'dfbgfdbdfb', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'grgr', 0, 'sg', 'fgbfgngngn', 0, 0, 'gngnhgng', 0, 0, 0, 'Published', 24, 50, 33),
+(6, '', '', 'Λάρνακα', 21, 'Cyprus', 0, 0, 21, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '2017-03-01', '0000-00-00', 'Πώληση', 570000, '', 0, 0, 100, 0, 'fgnbfg', 'fbfgb', '', 0, '', 1, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'dfbdfb', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'Published', 6, 0, 0),
+(5, '', '', 'Λάρνακα', 21, 'Cyprus', 0, 0, 22, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '2017-03-01', '0000-00-00', 'Πώληση', 580000, '', 0, 0, 100, 0, 'gn', 'fgn', '', 0, '', 1, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'fgng', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'Published', 4, 0, 0),
+(4, '', '', 'Λάρνακα', 21, 'Cyprus', 0, 0, 23, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '2017-03-01', '0000-00-00', 'Πώληση', 550000, '', 0, 0, 100, 0, 'kjvgdhxj', 'jhvfv', '', 0, '', 1, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'db', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'Unpublished', 3, 0, 0),
+(3, '', '', 'Λάρνακα', 21, 'Cyprus', 0, 0, 24, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '2017-03-01', '0000-00-00', 'Πώληση', 550000, '', 0, 0, 100, 0, 'kjvgdhxj', 'jhvfv', '', 0, '', 1, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'db', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'Published', 6, 0, 0),
+(1, '', '', 'Λάρνακα', 21, 'Cyprus', 0, 0, 25, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '2017-03-01', '0000-00-00', 'Πώληση', 550000, 'EUR', 0, 0, 100, 0, 'kjvgdhxj', 'jhvfv', '', 0, '', 1, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'db', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'Published', 61, 20, 30),
+(9, '', '', 'Λάρνακα', 21, 'Cyprus', 0, 0, 26, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '2017-03-01', '0000-00-00', 'Πώληση', 550000, '', 0, 0, 100, 0, 'kjvgdhxj', 'jhvfv', '', 0, '', 1, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'db', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'Published', 2, 0, 0),
+(10, '', '', 'Λάρνακα', 21, 'Cyprus', 0, 0, 27, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '2017-03-01', '0000-00-00', 'Πώληση', 550000, '', 0, 0, 100, 0, 'kjvgdhxj', 'jhvfv', '', 0, '', 1, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'db', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'Published', 2, 0, 0),
+(11, '', '', 'Λάρνακα', 21, 'Cyprus', 0, 0, 28, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '2017-03-01', '0000-00-00', 'Πώληση', 550000, '', 0, 0, 100, 0, 'kjvgdhxj', 'jhvfv', '', 0, '', 1, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'db', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'Published', 4, 0, 0),
+(12, '', '', 'Λάρνακα', 21, 'Cyprus', 0, 0, 29, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '2017-03-01', '0000-00-00', 'Πώληση', 550000, '', 0, 0, 100, 0, 'kjvgdhxj', 'jhvfv', '', 0, '', 1, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'db', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'Published', 2, 0, 0),
+(13, '', '', 'Λάρνακα', 21, 'Cyprus', 0, 0, 30, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '2017-03-01', '0000-00-00', 'Πώληση', 550000, '', 0, 0, 100, 0, 'kjvgdhxj', 'jhvfv', '', 0, '', 1, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'db', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'Published', 1, 0, 0),
+(14, '', '', 'Λάρνακα', 21, 'Cyprus', 0, 0, 31, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '2017-03-01', '0000-00-00', 'Πώληση', 550000, '', 0, 0, 100, 0, 'kjvgdhxj', 'jhvfv', '', 0, '', 1, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'db', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'Published', 2, 0, 0),
+(16, '', '', 'Λάρνακα', 21, 'Cyprus', 0, 0, 32, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '2017-03-01', '0000-00-00', 'Πώληση', 550000, '', 0, 0, 100, 0, 'kjvgdhxj', 'jhvfv', '', 0, '', 1, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'db', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'Published', 2, 0, 0),
+(15, '', '', 'Λάρνακα', 21, 'Cyprus', 0, 0, 33, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '2017-03-01', '0000-00-00', 'Πώληση', 550000, '', 0, 0, 100, 0, 'kjvgdhxj', 'jhvfv', '', 0, '', 1, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'db', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'Published', 11, 0, 0),
+(17, '', '', 'Λάρνακα', 21, 'Cyprus', 0, 0, 34, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '2017-03-01', '0000-00-00', 'Πώληση', 550000, '', 0, 0, 100, 0, 'kjvgdhxj', 'jhvfv', '', 0, '', 1, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'db', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'Published', 1, 0, 0),
+(18, '', '', 'Λάρνακα', 21, 'Cyprus', 0, 0, 35, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '2017-03-01', '0000-00-00', 'Πώληση', 550000, '', 0, 0, 100, 0, 'kjvgdhxj', 'jhvfv', '', 0, '', 1, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'db', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'To be published', 1, 0, 0),
+(19, '', '', '', 0, '', 0, 0, 36, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', 'Ενοικίαση', 0, 'EUR', 0, 0, 0, 0, 'kjhbjk', 'jhjhgj', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', 'fd', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 7, 0, 0),
+(20, '', '', '', 0, '', 0, 0, 0, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(21, '', '', '', 0, '', 0, 0, 1, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(22, '', '', '', 0, '', 0, 0, 2, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(23, '', '', '', 0, '', 0, 0, 3, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(24, '', '', '', 0, '', 0, 0, 4, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(25, '', '', '', 0, '', 0, 0, 5, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(26, '', '', '', 0, '', 0, 0, 6, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(27, '', '', '', 0, '', 0, 0, 7, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(28, '', '', '', 0, '', 0, 0, 8, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(29, '', '', '', 0, '', 0, 0, 9, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(30, '', '', '', 0, '', 0, 0, 10, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(31, '', '', '', 0, '', 0, 0, 11, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(32, '', '', '', 0, '', 0, 0, 12, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(33, '', '', '', 0, '', 0, 0, 13, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(34, '', '', '', 0, '', 0, 0, 14, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(35, '', '', '', 0, '', 0, 0, 15, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(36, '', '', '', 0, '', 0, 0, 16, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(37, '', '', '', 0, '', 0, 0, 17, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(38, '', '', '', 0, '', 0, 0, 18, 0, 0, 0, '', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', '', 0, '', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(39, NULL, NULL, 'Λευκωσία', 0, 'Cyprus', NULL, 0, 37, 0, 0, 0, NULL, 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', 'Πώληση', 0, 'EUR', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(40, NULL, NULL, 'Λευκωσία', 0, 'Cyprus', NULL, 0, 38, 0, 0, 0, NULL, 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', 'Πώληση', 0, 'EUR', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(41, NULL, NULL, 'Λευκωσία', 0, 'Cyprus', NULL, 0, 39, 0, 0, 0, NULL, 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', 'Πώληση', 0, 'EUR', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 0, 0),
+(42, NULL, NULL, 'Λευκωσία', 0, 'Cyprus', NULL, 0, 40, 0, 0, 0, NULL, 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', 'Πώληση', 0, 'EUR', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, '', '', 0, 0, '', 0, 0, 0, 'To be published', 1, 0, 0),
+(400, '4', 'samou', 'Λευκωσία', 9, 'Cyprus', 2103, 3, 41, 32, 32, 298, '0', 0.00, 0.00, 0, 0.00, 60000.00, 0, '', '2017-05-31', '2017-05-09', 'Πώληση', 6000000, 'EUR', 40, 300, 150, 30000, '', '', '', 0, '7', 0, 91200, '7', '7', '3', 'sale', 0, '2017-05-09', '2017-07-31', 'Κατοικία', '', 0, 'dfvdfbdfbdf', 'available', 70, 500, 'no', 0, 0, 0, 'To be published', 0, 30, 33),
+(401, '39', 'Πολύκαρπου Γιωρκάτζιη', 'Λευκωσία', 0, 'Κύπρος', 2745, 0, 19, 0, 0, 0, '1', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', 'Πώληση', 200000, 'EUR', 0, 170, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 33.09344, 34.92),
+(402, '39', 'Πολύκαρπου Γιωρκάτζιη', 'Λευκωσία', 0, 'Κύπρος', 2745, 0, 42, 0, 0, 0, '1', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', 'Πώληση', 300000, 'EUR', 0, 100, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 33.09344, 34.92447),
+(403, '39', 'Πολύκαρπου Γιωρκάτζιη', 'Λευκωσία', 0, 'Κύπρος', 2745, 0, 43, 0, 0, 0, '1', 0.00, 0.00, 0, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', 'Πώληση', 300000, 'EUR', 0, 100, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, 'sg', '', 0, 0, '', 0, 0, 0, 'To be published', 0, 33.09344, 34.92447),
+(404, '39', 'Πολύκαρπου Γιωρκάτζιη ', 'Λευκωσία', 0, 'Κύπρος', 2745, 0, 2206, 0, 0, 0, '1', 0.00, 0.00, 0, 0.00, 0.00, 0, 'w', '0000-00-00', '0000-00-00', 'Πώληση', 240000, 'EUR', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, 'sg', '', 0, 0, '', 0, 0, 1, 'To be published', 0, 33.09344, 34.92447),
+(405, '39', 'Πολύκαρπου Γιωρκάτζιη ', 'Λευκωσία', 0, 'Κύπρος', 2745, 0, 2207, 0, 0, 0, '1', 0.00, 0.00, 0, 0.00, 0.00, 0, 'w', '0000-00-00', '0000-00-00', 'Πώληση', 240000, 'EUR', 0, 0, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Κατοικία', '', 0, 'sg', '', 0, 0, '', 0, 0, 1, 'To be published', 0, 33.09344, 34.92447),
+(406, '3', 'k', 'Λευκωσία', 0, 'Κύπρος', 3, 0, 8787, 0, 0, 0, '1', 0.00, 0.00, 1, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', 'Πώληση', 234567, 'EUR', 0, 333, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Ξενοδοχείο', '', 0, 'sg', '', 0, 0, '', 0, 0, 1, 'To be published', 0, 3, 3),
+(407, '3', 'k', 'Λευκωσία', 0, 'Κύπρος', 3, 0, 8786, 0, 0, 0, '1', 0.00, 0.00, 1, 0.00, 0.00, 0, '', '0000-00-00', '0000-00-00', 'Πώληση', 234567, 'EUR', 0, 333, 0, 0, '', '', '', 0, '', 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', 'Ξενοδοχείο', '', 0, 'sg', '', 0, 0, '', 0, 0, 1, 'To be published', 0, 3, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `REAppearance`
+--
+
+CREATE TABLE IF NOT EXISTS `REAppearance` (
+  `RealEstateNo` int(11) NOT NULL,
+  `AppearanceNo` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `REAppearance`:
+--   `AppearanceNo`
+--       `REAppearanceChoices` -> `AppearanceNo`
+--   `RealEstateNo`
+--       `RealEstate` -> `RealEstateNo`
+--
+
+--
+-- Dumping data for table `REAppearance`
+--
+
+INSERT INTO `REAppearance` (`RealEstateNo`, `AppearanceNo`) VALUES
+(7, 1),
+(7, 9);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `REAppearanceChoices`
+--
+
+CREATE TABLE IF NOT EXISTS `REAppearanceChoices` (
+  `AppearanceNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(35) NOT NULL,
+  PRIMARY KEY (`AppearanceNo`),
+  UNIQUE KEY `Description` (`Description`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `REAppearanceChoices`
+--
+
+INSERT INTO `REAppearanceChoices` (`AppearanceNo`, `Description`) VALUES
+(1, 'Διατηρητέο'),
+(2, 'Φωτεινό'),
+(3, 'Μοντέρνα αρχιτεκτονική'),
+(4, 'Κλασσική αρχιτεκτονική'),
+(5, 'Ευρύχωρο'),
+(6, 'Αέρινο'),
+(7, 'Παλιό ανακαινισμένο'),
+(8, 'Πέτρινο'),
+(9, 'Πολυτελείας');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Residence`
+--
+
+CREATE TABLE IF NOT EXISTS `Residence` (
+  `RealEstateNo` int(11) NOT NULL,
+  `ResidenceType` enum('Άλλο','Ανεξάρτητη κατοικία','Μεζονέτα','Διαμέρισμα','Ρετιρέ') NOT NULL DEFAULT 'Ανεξάρτητη κατοικία',
+  `TotalBedrooms` int(11) NOT NULL DEFAULT '0',
+  `MasterBedroom` int(11) NOT NULL DEFAULT '0',
+  `Kitchen` int(11) NOT NULL DEFAULT '0',
+  `Bathrooms` int(11) NOT NULL DEFAULT '0',
+  `LivingRooms` int(11) NOT NULL DEFAULT '0',
+  `BalconyArea` double NOT NULL DEFAULT '0',
+  `RooftopArea` int(11) NOT NULL DEFAULT '0',
+  `Furnished` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`RealEstateNo`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `Residence`:
+--   `RealEstateNo`
+--       `Building` -> `RealEstateNo`
+--
+
+--
+-- Dumping data for table `Residence`
+--
+
+INSERT INTO `Residence` (`RealEstateNo`, `ResidenceType`, `TotalBedrooms`, `MasterBedroom`, `Kitchen`, `Bathrooms`, `LivingRooms`, `BalconyArea`, `RooftopArea`, `Furnished`) VALUES
+(0, '', 0, 0, 0, 0, 0, 0, 0, 0),
+(404, '', 0, 0, 0, 0, 0, 0, 0, 0),
+(405, '', 0, 0, 0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `REView`
+--
+
+CREATE TABLE IF NOT EXISTS `REView` (
+  `RealEstateNo` int(11) NOT NULL,
+  `ViewNo` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `REView`:
+--   `RealEstateNo`
+--       `RealEstate` -> `RealEstateNo`
+--   `ViewNo`
+--       `REViewChoices` -> `ViewNo`
+--
+
+--
+-- Dumping data for table `REView`
+--
+
+INSERT INTO `REView` (`RealEstateNo`, `ViewNo`) VALUES
+(7, 1),
+(7, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `REViewChoices`
+--
+
+CREATE TABLE IF NOT EXISTS `REViewChoices` (
+  `ViewNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(35) NOT NULL,
+  PRIMARY KEY (`ViewNo`),
+  UNIQUE KEY `Description` (`Description`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `REViewChoices`
+--
+
+INSERT INTO `REViewChoices` (`ViewNo`, `Description`) VALUES
+(1, 'Υπέροχη'),
+(2, 'Κεντρική'),
+(3, 'Βουνό'),
+(4, 'Θάλασσα'),
+(5, 'Πάρκο'),
+(6, 'Καλή');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `UserExtended`
+--
+
+CREATE TABLE IF NOT EXISTS `UserExtended` (
+  `Username` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'Foreign Key -Inherits from SimpleEmployee',
+  `ID` varchar(25) COLLATE utf8_bin DEFAULT NULL,
+  `SSN` int(10) unsigned DEFAULT NULL COMMENT 'Social Secutiry Number',
+  `PrivatePhone` bigint(20) NOT NULL DEFAULT '0',
+  `WorkPhone` bigint(20) DEFAULT '0',
+  `Profession` varchar(35) COLLATE utf8_bin DEFAULT NULL,
+  `ANumber` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT 'Address info',
+  `AStreet` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'Address info',
+  `ACity` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'Address info',
+  `AArea` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'Address info',
+  `ACountry` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'Address info',
+  `APostalCode` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT 'Address info',
+  `Salary` decimal(10,2) DEFAULT NULL,
+  `Notes` varchar(500) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`Username`),
+  UNIQUE KEY `PrivatePhone` (`PrivatePhone`),
+  UNIQUE KEY `ID` (`ID`),
+  UNIQUE KEY `Username` (`Username`,`SSN`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- RELATIONS FOR TABLE `UserExtended`:
+--   `Username`
+--       `UserSimple` -> `Username`
+--
+
+--
+-- Dumping data for table `UserExtended`
+--
+
+INSERT INTO `UserExtended` (`Username`, `ID`, `SSN`, `PrivatePhone`, `WorkPhone`, `Profession`, `ANumber`, `AStreet`, `ACity`, `AArea`, `ACountry`, `APostalCode`, `Salary`, `Notes`) VALUES
+('dfvdfbdfbdf', '1234', 1234, 88888888, 0, NULL, '6', 'grdfr', 'Λευκωσία', NULL, 'Κύπρος', NULL, NULL, NULL),
+('dfvdv', '23456', 2344, 99999999, 0, NULL, '4', 'dsf', 'Λεμεσός', NULL, 'ÎšÏÏ€ÏÎ¿Ï‚', NULL, NULL, NULL),
+('sg', '2456', 3534, 87655678, NULL, NULL, '6', 'dvd', 'Λάρνακα', NULL, 'Κύπρος', NULL, NULL, NULL),
+('sgsgsgsgsgsgsgsgsg', '2354', 3456, 123456, 0, NULL, '12', 'rdklvjgfdk', 'Πάφος', NULL, 'lfkbmk', NULL, NULL, NULL),
+('sotiag', '12345', 3456, 22222222, 0, NULL, '7', 'sdlkfl', 'Λευκωσία', NULL, 'Κύπρος', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `UserSimple`
+--
+
+CREATE TABLE IF NOT EXISTS `UserSimple` (
+  `Username` varchar(50) COLLATE utf8_bin NOT NULL,
+  `Password` varchar(50) COLLATE utf8_bin NOT NULL,
+  `Name` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `Surname` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `Email` varchar(100) COLLATE utf8_bin NOT NULL,
+  `UserType` enum('Simple User','External Agent','Internal Agent','Admin') COLLATE utf8_bin NOT NULL DEFAULT 'Simple User',
+  `UserStatus` enum('Active User','Inactive User','Not Specified') COLLATE utf8_bin NOT NULL DEFAULT 'Not Specified',
+  `RegistrationDate` date NOT NULL,
+  `LastLoggedin` date NOT NULL,
+  `LoginCount` smallint(5) unsigned NOT NULL DEFAULT '1',
+  `Photo` varchar(150) COLLATE utf8_bin DEFAULT '',
+  PRIMARY KEY (`Username`),
+  KEY `Status` (`UserStatus`),
+  FULLTEXT KEY `Username` (`Username`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `UserSimple`
+--
+
+INSERT INTO `UserSimple` (`Username`, `Password`, `Name`, `Surname`, `Email`, `UserType`, `UserStatus`, `RegistrationDate`, `LastLoggedin`, `LoginCount`, `Photo`) VALUES
+('lala', 'lala', 'la', 'la', 'lalala@hjfri.com', 'Simple User', 'Not Specified', '2016-11-17', '0000-00-00', 1, ''),
+('sg', 'dea742e166979027ae70b28e0a9006fb1010e760', 'sotia', 'gregoriou', 'dn@hotmail.com', 'External Agent', 'Active User', '2016-11-17', '2016-11-17', 1, ''),
+('user1', 'pass1', NULL, NULL, 'user1@email.com', '', 'Active User', '2016-11-17', '2016-11-17', 1, ''),
+('ematsi', '123456', 'elena', 'matsi', 'em@gmail.com', 'Simple User', 'Active User', '2016-11-17', '2016-11-17', 1, ''),
+('deee', '123456', 'de', 'de', 'de@gmail.com', '', 'Active User', '2016-11-17', '2016-11-17', 1, ''),
+('kkk', '123456', 'Elena', 'Matsi', 'ematsi02@cs.ucy.ac.cy', '', 'Active User', '2016-11-18', '2016-11-18', 1, ''),
+('trhtrh', '123456', 'efe', 'thbtfrhb', 'trhrt@hbfgb', 'Simple User', 'Active User', '2016-11-19', '2016-11-19', 1, ''),
+('hjk', '123456', 'rg', 'tg', 'gfb@rtg', '', 'Active User', '2016-11-19', '2016-11-19', 1, ''),
+('pamp', '123456', 'pampos', 'pampou', 'pamp01@gmail.com', 'Simple User', 'Active User', '2016-11-19', '2016-11-19', 1, ''),
+('fdhfgh', '134354', 'sotia', 'gregoriou', 'dfgfd@fghbfh', 'Simple User', 'Active User', '2016-11-19', '2016-11-19', 1, ''),
+('mkyria', '123456', 'Michalis', 'Kyriacou', 'mkyria@ucy.ac.cy', 'Simple User', 'Active User', '2016-11-19', '2016-11-19', 1, ''),
+('sgrego02', '123456', 'sotia', 'gregoriou', 'erfes@rere', 'Simple User', 'Active User', '2016-11-19', '2016-11-19', 1, ''),
+('edfrt', '123456', '', '', 're@rg', '', 'Active User', '2016-11-19', '2016-11-19', 1, ''),
+('lala1', 'lalala', 'lala1', 'lala1', 'lala@lala.la', 'Simple User', 'Active User', '2016-11-22', '2016-11-22', 1, ''),
+('team2', '123456', '', '', 'gg@gmail.com', 'Simple User', 'Active User', '2016-11-22', '2016-11-22', 1, ''),
+('km', '123456', '', '', 'm@c.c', '', 'Active User', '2016-11-21', '2016-11-21', 1, ''),
+('popopop', '345678', '', '', 'dfbdf@dbfd', '', 'Active User', '2016-11-19', '2016-11-19', 1, ''),
+('abcdefg', '12345678', 'sotia', 'gregoriou', 'asfss@dfgvdf', 'Simple User', 'Active User', '2016-11-19', '2016-11-19', 1, ''),
+('lalala', '123456', '', '', 'gfdd@dh', '', 'Active User', '2016-11-19', '2016-11-19', 1, ''),
+('l', '123456', '', '', 'lo@jm.no', 'Simple User', 'Active User', '2016-11-25', '2016-11-25', 1, ''),
+('sss', '123456', 'sss', 'sss', 'sss@sss', 'Simple User', 'Active User', '2016-11-27', '2016-11-27', 1, ''),
+('ttt', '123456', 'ttt', 'ttt', 'ttt@ttt', '', 'Active User', '2016-11-27', '2016-11-27', 1, ''),
+('rrr', '345678', 'rrr', 'rrr', 'rrr@rrr', '', 'Active User', '2016-11-27', '2016-11-27', 1, ''),
+('fff@fff', '123456', 'fff', 'fff', 'fff@fff', '', 'Active User', '2016-11-27', '2016-11-27', 1, ''),
+('sotiag', '123456', 's', 'g', 'sotia.g@hotmail.com', 'Admin', 'Active User', '2017-03-01', '2017-03-02', 1, ''),
+('blah', '', 'esifdj', 'efsjidj', 'ggtf@fmf.com', 'External Agent', 'Active User', '2017-03-28', '2017-03-28', 1, ''),
+('blowpoek', '123456', 'blahblahblah', 'blahblah', 'sg@g.com', 'External Agent', 'Active User', '2017-03-28', '2017-03-28', 1, ''),
+('dfvdv', '123456', 'esdf', 'dsfvds', 'wef@rtfgb.com', 'External Agent', 'Active User', '2017-03-28', '2017-03-28', 1, ''),
+('rdgr', '123456', 'rhe', 'gd', 'rgbdf@fgb.com', 'External Agent', 'Active User', '2017-03-28', '2017-03-28', 1, ''),
+('dfvdfbdfbdf', '123456', 'dfdv', 'dfbdfv', 'gdfgdfg@rfgf.com', 'External Agent', 'Active User', '2017-03-28', '2017-03-28', 1, ''),
+('hihihi', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'sdefovijd', 'drigjrei', 'sdv@trgki.com', 'Simple User', 'Active User', '2017-03-28', '2017-03-28', 1, ''),
+('sssssssssssssssss', '123456', 'sssssssssssssssss', 'ssssssssssssssssssss', 'ssssss@ssssssss.com', 'Simple User', 'Active User', '2017-03-28', '2017-03-28', 1, ''),
+('ssssssssssssss', '123456', 'sssssssssssssssss', 'ssssssssssssssssss', 'sssssss@ssssss.com', 'Simple User', 'Active User', '2017-03-28', '2017-03-28', 1, ''),
+('sw', '123456', '', '', 'sw@sa', 'Simple User', 'Active User', '2017-03-28', '2017-03-28', 1, ''),
+('blahblaaaaaaaaaaaaaaaaaaaaaaah', '123456', 'origjoeifjgf', 'ikgjvfdkjgbj', 'oregk@lrkgj.com', 'Simple User', 'Active User', '2017-03-28', '2017-03-28', 1, ''),
+('δς', '123456', 'ες', 'ςεδ', 'f@d', 'Simple User', 'Active User', '2017-03-28', '2017-03-28', 1, ''),
+('uuuuuuuuuu', '123456', 'uuuuuuuu', 'uuuuuuuuuu', 'uuuuuuuuu@gikjg.com', 'Simple User', 'Active User', '2017-03-29', '2017-03-29', 1, ''),
+('fdgfdsgdf', '123456', 'sgfdsgfd', 'dsgfds', 'fdgf@fdhfgh', 'Simple User', 'Active User', '2017-04-21', '2017-04-21', 1, ''),
+('mhadji05', '123456', 'Marios', 'Hadjiaros', 'fdsf@fdgs', 'Simple User', 'Active User', '2017-04-27', '2017-04-27', 1, ''),
+('sgsgsgsg', '123456', 'sotia', 'gregoriou', 'sg@ssd', 'Simple User', 'Active User', '2017-05-02', '2017-05-02', 1, ''),
+('sgsgsgsgsgsgsgsgsg', '123456', 'sotia', 'gregoriou', 'lfkgbm@lkbmfk', 'Simple User', 'Active User', '2017-05-02', '2017-05-02', 1, ''),
+('gs', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'sotia', 'gregoriou', 'gs@gs', 'Simple User', 'Active User', '2017-05-02', '2017-05-02', 1, '');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
