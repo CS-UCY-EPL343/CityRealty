@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
     $message = $_POST['onoma'] . " wrote the following:" . "\n\n" . $_POST['message'] . "\n\n" . $_POST['phone'];
  
     $headers = "From:" . $from;
-    mail($to,$subject,$message,$headers);
+    mail($to,$subject,$message,$onoma,$headers);
     echo "Mail Sent. Thank you " . $onoma . ", we will contact you shortly.";
     }
 ?>
