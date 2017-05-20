@@ -174,7 +174,7 @@ if (isset($_GET['unset']))
 
 <!-- Search Property ID -->
 <div class="col-md-2">
-	<form action="propertyList.php?unset=true" method="POST">
+	<form action="propertyList.php" method="POST">
 		<div class="form-group">
 			<label>ID Ακινήτου:</label>
 			<input type="text" name="REid" class="form-control" placeholder="ID Ακινήτου" id="REid">
@@ -189,7 +189,7 @@ $num_rec_per_page=10;
 if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
 $start_from = ($page-1) * $num_rec_per_page; 
 
-$conn = mysqli_connect("localhost", "CityRealty", "QKSH7XJws7MCpxWR", "CityRealty");
+$conn = mysqli_connect("localhost", "USERNAME", "PASSWORD", "DATABASE");
 
 if (!$conn) {
 	die("Connection failed: " . mysqli_connect_error());
