@@ -1,5 +1,7 @@
 <?php
 session_start();
+if (isset($_GET['unset']))
+	unset($_SESSION['sql']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,31 +100,34 @@ session_start();
 
 			<ul class="nav navbar-nav ">
 				<li>
-					<a class="page-scroll" href="index.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/home2.png">Home</span> </a>
+					<a class="page-scroll" href="index.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/logo.png"></span> </a>	
+				</li>
+				<li>
+					<a class="page-scroll" href="index.php" style="color: #FFCC00"><img width="30px" height="30px" src="img/menu/home.png">  Home</span> </a>
 				</li>
 
 				<li>
-					<a class="page-scroll" href="sale.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/sale22.png">Sale</span></a>
+					<a class="page-scroll" href="sale.php" style="color: #FFCC00"><img width="30px" height="30px" src="img/menu/sale.png">  Sale</span></a>
 
 				</li>
 				<li>
-					<a class="page-scroll " href="rent.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/rent22.png">Rent </span></a>
+					<a class="page-scroll " href="rent.php" style="color: #FFCC00"><img width="30px" height="30px" src="img/menu/rent.png">  Rent </span></a>
 
 				</li>
 				<li>
-					<a class="page-scroll " href="sell.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/sell22.png">Sell</span></a>
+					<a class="page-scroll " href="sell.php" style="color: #FFCC00"><img width="30px" height="30px" src="img/menu/sell.png">  Sell</span></a>
 
 				</li>
 				<li>
-					<a class="page-scroll " href="index.php#search" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/search2.png">Search</a>
+					<a class="page-scroll " href="index.php#search" style="color: #FFCC00"><img width="30px" height="30px" src="img/menu/search.png"> Search</a>
 				</li>
 
 				<li>
-					<a class="page-scroll" href="index.php#contact" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/contactUs2.png">Contact Us</a>
+					<a class="page-scroll" href="index.php#contact" style="color: #FFCC00"><img width="30px" height="30px" src="img/menu/contactUs.png">   Contact Us</a>
 				</li>
 
 				<li>
-					<a class="page-scroll" href="about.php" style="color: #FFCC00"><img width="50px" height="50px" src="img/menu/group-chat.png"> About Us</a>
+					<a class="page-scroll" href="about.php" style="color: #FFCC00"><img width="30px" height="30px" src="img/menu/about.png">  	About Us</a>
 				</li>
 
 				<?php
@@ -156,11 +161,11 @@ session_start();
 			}
 			?>
 			<li>
-				<a href="#" style="color: #FFCC00"><img src="img/menu/Greece.png"> Ελληνικά</a>
+				<a href="#" style="color: #FFCC00"><img height="20px" src="img/menu/gr.png">  Ελληνικά</a>
 			</li>
 
 			<li>
-				<a href="#" style="color: #FFCC00"><img src="img/menu/United Kingdom(Great Britain).png"> English</a>
+				<a href="#" style="color: #FFCC00"><img height="20px" src="img/menu/uk.png">  English</a>
 			</li>
 		</ul>
 	</div>
@@ -169,7 +174,7 @@ session_start();
 
 <!-- Search Property ID -->
 <div class="col-md-2">
-	<form action="propertyList.php" method="POST">
+	<form action="propertyList.php?unset=true" method="POST">
 		<div class="form-group">
 			<label>ID Ακινήτου:</label>
 			<input type="text" name="REid" class="form-control" placeholder="ID Ακινήτου" id="REid">
@@ -184,7 +189,7 @@ $num_rec_per_page=10;
 if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
 $start_from = ($page-1) * $num_rec_per_page; 
 
-$conn = mysqli_connect("localhost", "USERNAME", "PASSWORD", "DATABASE");
+$conn = mysqli_connect("localhost", "CityRealty", "QKSH7XJws7MCpxWR", "CityRealty");
 
 if (!$conn) {
 	die("Connection failed: " . mysqli_connect_error());
