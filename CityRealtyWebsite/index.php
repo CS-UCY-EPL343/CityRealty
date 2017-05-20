@@ -93,6 +93,9 @@ unset($_SESSION['sql']);
 		function myFunction3() {
 			alert("You have successfully signed up!");
 		}
+		function functionAddedNewsletter() {
+			alert("You've successfully registered to our Newsletter!");
+		}
 	</script>
 
 	<script>	
@@ -143,7 +146,7 @@ unset($_SESSION['sql']);
 				</li>
 
 				<li>
-					<a class="page-scroll" href="index.php#contactForm" style="color: #FFCC00"><img width="30px" height="30px" src="img/menu/contactUs.png">   Contact Us</a>
+					<a class="page-scroll" href="index.php#contact" style="color: #FFCC00"><img width="30px" height="30px" src="img/menu/contactUs.png">   Contact Us</a>
 				</li>
 
 				<li>
@@ -162,6 +165,10 @@ unset($_SESSION['sql']);
 				if(isset($_SESSION['signedup'])) {
 					echo "<script type='text/javascript'>myFunction3();</script>";
 					unset($_SESSION['signedup']);
+				}	
+				if(isset($_SESSION['addedNewsletter'])) {
+					echo "<script type='text/javascript'>functionAddedNewsletter();</script>";
+					unset($_SESSION['addedNewsletter']);
 				}
 				?>
 			</ul>
@@ -422,18 +429,6 @@ unset($_SESSION['sql']);
 
 	<!-- /.Search -->
 
-	<!-- Map -->
-	<section id="contact" class="map">
-		<iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="100" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d417906.1679578008!2d32.79202249830512!3d35.08443270516032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de1767ca494d55%3A0xbfa61172e2b992ff!2zzpvOtc-FzrrPic-Dzq_OsSwgzprPjc-Az4HOv8-C!5e0!3m2!1sel!2sus!4v1479281118979"></iframe>
-		<br />
-		<small> <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d417906.1679578008!2d32.79202249830512!3d35.08443270516032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de1767ca494d55%3A0xbfa61172e2b992ff!2zzpvOtc-FzrrPic-Dzq_OsSwgzprPjc-Az4HOv8-C!5e0!3m2!1sel!2sus!4v1479281118979"></a> </small>
-	</section>
-	<p>
-		<br>
-		<br>
-		<br>
-	</p>
-
 	<!-- Contact Section -->
 	<section id="contact" style =  "background: #fff; background: rgba(148,147,138,0.7); padding: 3em;">
 		<div class="container">
@@ -449,7 +444,7 @@ unset($_SESSION['sql']);
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Ονοματεπώνυμο *" id="name" required data-validation-required-message="Παρακαλούμε συμπληρώστε με το ονοματεπώνυμό σας.">
+									<input type="text" class="form-control" placeholder="Ονοματεπώνυμο *" id="name" name="onoma" required data-validation-required-message="Παρακαλούμε συμπληρώστε με το ονοματεπώνυμό σας.">
 									<p class="help-block text-danger"></p>
 								</div>
 								<div class="form-group">
@@ -492,20 +487,20 @@ unset($_SESSION['sql']);
 				<h2 style="color: #FFCC00">Εγγραφείτε στο Newsletter μας</h2>
 				<h3 class="section-subheading text-muted"></h3>
 			</div>
-			<form name="newsletterForm" id="contactForm" style="padding-left:28%; padding-right:28%">
+			<form name="newsletterForm" id="newsletterForm" action="newsletter_insert.php" method="post" style="padding-left:28%; padding-right:28%">
 				<div class="row col-lg-12 text-center">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Ονοματεπώνυμο *" id="name" required data-validation-required-message="αρακαλούμε συμπληρώστε με το ονοματεπώνυμό σας.">
+						<input type="text" class="form-control" placeholder="Ονοματεπώνυμο *" id="nname" name="nname" required data-validation-required-message="Παρακαλούμε συμπληρώστε με το ονοματεπώνυμό σας.">
 						<p class="help-block text-danger"></p>
 					</div>
 					<div class="form-group">
-						<input type="email" class="form-control" width="30%" placeholder="Email *" id="email" required data-validation-required-message="αρακαλούμε συμπληρώστε με το email σας.">
+						<input type="email" class="form-control" width="30%" placeholder="Email *" id="nemail" name="nemail" required data-validation-required-message="Παρακαλούμε συμπληρώστε με το email σας.">
 						<p class="help-block text-danger"></p>
 					</div>
 					<div class="clearfix"></div>
 					<div class="col-lg-12 text-center">
 						<div id="success"></div>
-						<button type="submit" class="btn btn-xl">
+						<button id="newsletter_button" type="submit" class="btn btn-xl">
 							Εγγραφή
 						</button>
 					</div>
