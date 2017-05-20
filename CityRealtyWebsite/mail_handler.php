@@ -6,7 +6,7 @@ if(isset($_POST['submit'])){
     $phone = $_POST['phone'];
     $subject = "Form submission";
     $subject2 = "Copy of your form submission";
-    $message = $_POST['onoma'] . " wrote the following:" . "\n\n" . $_POST['message'] . "\n\n" . $_POST['phone'];
+    $message = "". $_POST['onoma'] . " wrote the following:" . "\n\n" . $_POST['message'] . "\n\n" . $_POST['phone'];
  
     $headers = "From:" . $from;
     mail($to,$subject,$message,$headers);
