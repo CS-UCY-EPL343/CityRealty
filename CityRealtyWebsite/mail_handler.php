@@ -10,6 +10,6 @@ if(isset($_POST['submit'])){
  
     $headers = "From:" . $from;
     mail($to,$subject,$message,$headers);
-    echo "Mail Sent. Thank you " . $_POST['onoma'] . ", we will contact you shortly.";
+    echo "Mail Sent. Thank you " . $onoma . ", we will contact you shortly.";
     }
 ?>
