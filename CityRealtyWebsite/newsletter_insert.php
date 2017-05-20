@@ -18,7 +18,7 @@
 
 		$result = mysqli_query($conn,$sql)
 		or die("Error: !".mysqli_error($conn));
-		$_SESSION['addedNewsletter'] = "You've successfully registered to our Newsletter!";
 		mysqli_close($conn);
+		echo "You've successfully registered to our Newsletter!";
 	}
 ?>
