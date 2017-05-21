@@ -95,10 +95,10 @@ $result4 = mysqli_query($conn, $sql4);
 			float: left;
 		}
 		#menu li:first-child {
-			margin-left: 0px;
+			margin-left: 120px;
 		}
 		#menu li:last-child {
-			margin-left: 100px;
+			margin-left: 200px;
 		}
 		#menu li a {
 			display: block;
@@ -107,6 +107,8 @@ $result4 = mysqli_query($conn, $sql4);
 			text-align: center;
 			text-decoration: none;
 			text-transform: uppercase;
+			padding-left:1%;
+			padding-right:1%;
 		}
 		#menu li span {
 			display: none;
@@ -120,7 +122,7 @@ $result4 = mysqli_query($conn, $sql4);
 		#menu li.active a {
 			background-color: #c03e62;
 			outline: #FFF;
-			outline-style: dashed;
+			outline-style: solid;
 			color: #CCC;
 			text-decoration: none;
 		}
