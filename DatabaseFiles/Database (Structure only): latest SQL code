@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 20, 2017 at 01:53 PM
+-- Generation Time: May 21, 2017 at 02:52 PM
 -- Server version: 5.1.73
 -- PHP Version: 5.3.3
 
@@ -158,9 +158,9 @@ CREATE TABLE IF NOT EXISTS `BLocationDetailsChoices` (
 CREATE TABLE IF NOT EXISTS `Building` (
   `RealEstateNo` int(10) unsigned NOT NULL,
   `BuildingType` enum('Άλλο','Κατοικία','Επαγγελματικός χώρος','Ξενοδοχείο') COLLATE utf8_bin NOT NULL DEFAULT 'Κατοικία',
-  `ConstructionYear` year(4) NOT NULL,
+  `ConstructionYear` int(4) NOT NULL,
   `Renovated` tinyint(1) NOT NULL DEFAULT '0',
-  `RenovationYear` year(4) NOT NULL,
+  `RenovationYear` int(4) NOT NULL,
   `NumOfFloors` tinyint(4) NOT NULL DEFAULT '0',
   `ParkingSpots` tinyint(4) NOT NULL DEFAULT '0',
   `NumOfRooms` tinyint(4) NOT NULL DEFAULT '1',
@@ -425,7 +425,7 @@ CREATE TABLE IF NOT EXISTS `Office` (
   `RealEstateNo` int(11) NOT NULL,
   `OfficeType` enum('Άλλο','Επαγγελματικός χώρος','Αποθήκη','Αίθουσα','Κτήριο','Κατάστημα','Γραφεία','Ιατρεία','Βιομηχανικός χώρος','Γυμναστήριο','Φροντιστήριο','Εκθεσιακός χώρος') NOT NULL DEFAULT 'Επαγγελματικός χώρος',
   `Investment` tinyint(1) NOT NULL DEFAULT '0',
-  `NumOfBasements` smallint(6) NOT NULL DEFAULT '0',
+  `NumOfBasements` int(6) NOT NULL DEFAULT '0',
   `NumOfFloors` int(11) NOT NULL DEFAULT '0',
   `SurfaceArea` double NOT NULL DEFAULT '0',
   `NumOfSegments` int(11) NOT NULL DEFAULT '0',
@@ -537,7 +537,7 @@ CREATE TABLE IF NOT EXISTS `RealEstate` (
   `Longitude` double NOT NULL DEFAULT '0',
   PRIMARY KEY (`RealEstateNo`),
   UNIQUE KEY `PieceNo` (`PieceNo`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=408 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=440 ;
 
 --
 -- RELATIONS FOR TABLE `RealEstate`:
