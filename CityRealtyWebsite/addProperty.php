@@ -9,80 +9,138 @@ mysqli_query($conn,"SET NAMES utf8");
 if (!$conn) {
 	die("Connection failed: " . mysqli_connect_error());
 }
-if(isset($_POST['send']))
+if(isset($_POST['next']))
 {
-	$astreet_no = $_POST['astreet_no'];
+	$category = $_POST['category'];
+
+	/*real estate*/
 	$astreet = $_POST['astreet'];
 	$acity = $_POST['acity']; 
+	$region = $_POST['region'];
+	$zone = $_POST['zone'];
 	$area_tm = $_POST['area_tm'];
+	$realestate_status = $_POST['realestate_status'];
+	$legal_control = $_POST['legal_control'];
+	$RegistrationTitleNo = $_POST['RegistrationTitleNo'];
+	$ArithmosFilSxed = $_POST['ArithmosFilSxed'];
+	$currency = $_POST['currency'];
+	$vat = $_POST['vat'];
+	$RegistartionTitle = $_POST['RegistartionTitle'];
+	$AgentUsername= $_POST['AgentUsername'];
+	$OrderCode = $_POST['OrderCode'];
+	$TypeCode = $_POST['TypeCode'];
+	$OrderStart = $_POST['OrderStart'];
+	$OrderStop = $_POST['OrderStop'];
+	$AgentRewardPercentage= $_POST['AgentRewardPercentage'];
+	$AgentReward= $_POST['AgentReward'];	
+	$available_from = $_POST['AvailableFrom'];
+	$transfer_cost= $_POST['TransferCost'];
+	$transfer_vat= $_POST['TransferVAT'];
+	$astreet_no = $_POST['astreet_no'];
 	$acountry = $_POST['acountry'];
 	$apostal_code = $_POST['apostal_code'];
-        $lat = $_POST['lat'];
-	$long = $_POST['long'];
-	$aregion_code = $_POST['aregion_code'];
-	$registration_title_no = $_POST['registration_title_no'];
+	$Latitude = $_POST['Latitude'];
+	$Longitude = $_POST['Longitude'];
+	$purpose = $_POST['purpose'];
 	$piece_no = $_POST['piece_no'];
 	$folder_no = $_POST['folder_no'];
-	$blueprint_no = $_POST['blueprint_no'];
-	$arithmos_ad_oik = $_POST['arithmos_ad_oik'];
-	$legal_control = $_POST['legal_control'];
-	$initial_price = $_POST['initial_price'];
-	$estimated_price = $_POST['estimated_price'];
-	$mortage_loan = $_POST['mortage_loan'];
-	$objective_value = $_POST['objective_value'];
-	$final_price = $_POST['final_price'];
-	$corner = $_POST['corner'];
-	$zone = $_POST['zone'];
-	$available_from = $_POST['available_from'];
-	$date_added = $_POST['date_added'];
-	$registration_purpose = $_POST['registration_purpose'];
+	$ArithmosAdOik = $_POST['ArithmosAdOik'];
 	$price = $_POST['price'];
-	$currency = $_POST['currency'];
-	$price_per_tm = $_POST['price_per_tm'];
-	$tm = $_POST['tm'];
-	$vat = $_POST['vat'];
+	$MortgageLoan = $_POST['ipothiki'];
+	$notes= $_POST['notes'];
 	$short_desc = $_POST['short_desc'];
 	$desc = $_POST['desc'];
-	$about_renting = $_POST['about_renting'];
-	$recommended_by = $_POST['recommended_by'];
-	$rating = $_POST['rating'];
-	$registration_title = $_POST['registration_title'];
-	$owner_id = $_POST['owner_id'];
-	$owner_rating = $_POST['owner_rating'];
-	$agent_rating = $_POST['agent_rating'];
-	$order_code = $_POST['order_code'];
-	$type_order = $_POST['type_order'];
-	$exclusive = $_POST['exclusive'];
-	$order_start = $_POST['order_start'];
-	$order_stop = $_POST['order_stop'];
-	$category = $_POST['category'];
-	$notes= $_POST['notes'];
-	$notify_colleague= $_POST['notify_colleague'];
-	$username= $_POST['username'];
-	$realestate_status = $_POST['realestate_status'];
-	$agent_reward_percentage= $_POST['agent_reward_percentage'];
-	$agent_reward= $_POST['agent_reward'];
-	$view_address= $_POST['view_address'];
-	$transfer_cost= $_POST['transfer_cost'];
-	$transfer_vat= $_POST['transfer_vat'];
-	$consideration_exchange= $_POST['consideration_exchange'];
+	$consideration_exchange= $_POST['ConsiderationExchange'];
 
-
-	$sql = "INSERT INTO RealEstate (AStreetNo, AStreet, Acity, AreaTM, ACountry, APostalCode,ALatitude, ALongitude, ARegionCode,RegistrationTitleNo, PieceNo, FolderNo, ArithmosFilSxed, ArithmosAdOik, LegalControl,
-	InitialPrice, EstimatedPrice, MortgageLoan, ObjectiveValue, FinalPrice,Corner,Zone, AvailableFrom, DateRegistered, RegistrationPurpose, Price, Currency, PricePerTM, TM, VAT,
-	ShortDescription, Description, AboutRenting, RecommendedBy, Rating, RegistrationTitle, OwnerID, OwnerRating, AgentRating, OrderCode, TypeOrder, Exclusive, OrderStart,
-	OrderStop, Category, Notes, NotifyColleague, AgentUsername, RealEstateStatus, AgentRewardPercentage, AgentReward, ViewAddress,TransferCost, TransferVAT, ConsiderationExchange)
-	VALUES ('$astreet_no', '$astreet', '$acity', '$area_tm', '$acountry', '$apostal_code', '$lat', '$long', '$aregion_code','$registration_title_no', '$piece_no', '$folder_no', '$blueprint_no', '$arithmos_ad_oik', '$legal_control', '$initial_price', '$estimated_price', '$mortage_loan', '$objective_value', '$final_price','$corner', '$zone', '$available_from','$date_added', 
-	'$registration_purpose', '$price', '$currency', '$price_per_tm', '$tm', '$vat', '$short_desc', '$desc', '$about_renting', '$recommended_by', '$rating', '$registration_title', '$owner_id', 
-	'$owner_rating', '$agent_rating', '$order_code', '$type_order', '$exclusive','$order_start', '$order_stop','$category', '$notes', '$notify_colleague', '$username', '$realestate_status', '$agent_reward_percentage', '$agent_reward', '$view_address','$transfer_cost', '$transfer_vat', '$consideration_exchange')";
+	$sql = "INSERT INTO RealEstate (AStreet, Acity,ARegionCode,Zone,AreaTM,RealEstateStatus,LegalControl,RegistrationTitleNo,ArithmosFilSxed,Currency,
+	VAT,RegistrationTitle,AgentUsername,OrderCode, TypeOrder,OrderStart,OrderStop,AgentRewardPercentage,
+	AgentReward,AvailableFrom,TransferCost, TransferVAT,AStreetNo,ACountry,APostalCode,Latitude,Longitude,
+	RegistrationPurpose,PieceNo, FolderNo, ArithmosAdOik,Price,MortgageLoan,Notes,ShortDescription, Description,ConsiderationExchange,Category)
+	VALUES ('$astreet','$acity','$region','$zone','$area_tm','$realestate_status','$legal_control',
+	'$RegistrationTitleNo','$ArithmosFilSxed','$currency',
+	'$vat','$RegistartionTitle','$AgentUsername','$OrderCode','$TypeCode','$OrderStart',
+	'$OrderStop','$AgentRewardPercentage','$AgentReward','$available_from','$transfer_cost',
+	'$transfer_vat','$astreet_no','$acountry','$apostal_code','$Latitude','$Longitude',
+	'$purpose','$piece_no','$folder_no','$ArithmosAdOik','$price','$MortgageLoan',
+	'$notes','$short_desc','$desc','$consideration_exchange','$category')";
 
 	$result = mysqli_query($conn,$sql)
 	or die("Error: !".mysqli_error($conn));
-	$_SESSION['addedProperty'] = "You've successfully added the property!";
+
+	$sqls = "SELECT RealEstateNo FROM RealEstate WHERE PieceNo=$piece_no";
+	$results = mysqli_query($conn, $sqls);
+	$row = mysqli_fetch_assoc($results);
+	$id = $row['RealEstateNo'];
+
+	if (isset($_POST['REA1'])) {
+		$sql11 = "INSERT INTO REAppearance (RealEstateNo, AppearanceNo) VALUES ('$id', '".$_POST['REA1']."')";
+		$result11 = mysqli_query($conn,$sql11);
+	}
+	if (isset($_POST['REA2'])) {
+		$sql11 = "INSERT INTO REAppearance (RealEstateNo, AppearanceNo) VALUES ('$id', '".$_POST['REA2']."')";
+		$result11 = mysqli_query($conn,$sql11);
+	}
+	if (isset($_POST['REA3'])) {
+		$sql11 = "INSERT INTO REAppearance (RealEstateNo, AppearanceNo) VALUES ('$id', '".$_POST['REA3']."')";
+		$result11 = mysqli_query($conn,$sql11);
+	}
+	if (isset($_POST['REA4'])) {
+		$sql11 = "INSERT INTO REAppearance (RealEstateNo, AppearanceNo) VALUES ('$id', '".$_POST['REA4']."')";
+		$result11 = mysqli_query($conn,$sql11);
+	}
+	if (isset($_POST['REA5'])) {
+		$sql11 = "INSERT INTO REAppearance (RealEstateNo, AppearanceNo) VALUES ('$id', '".$_POST['REA5']."')";
+		$result11 = mysqli_query($conn,$sql11);
+	}
+	if (isset($_POST['REA6'])) {
+		$sql11 = "INSERT INTO REAppearance (RealEstateNo, AppearanceNo) VALUES ('$id', '".$_POST['REA6']."')";
+		$result11 = mysqli_query($conn,$sql11);
+	}
+	if (isset($_POST['REA7'])) {
+		$sql11 = "INSERT INTO REAppearance (RealEstateNo, AppearanceNo) VALUES ('$id', '".$_POST['REA7']."')";
+		$result11 = mysqli_query($conn,$sql11);
+	}
+	if (isset($_POST['REA8'])) {
+		$sql11 = "INSERT INTO REAppearance (RealEstateNo, AppearanceNo) VALUES ('$id', '".$_POST['REA8']."')";
+		$result11 = mysqli_query($conn,$sql11);
+	}
+	if (isset($_POST['REA9'])) {
+		$sql11 = "INSERT INTO REAppearance (RealEstateNo, AppearanceNo) VALUES ('$id', '".$_POST['REA9']."')";
+		$result11 = mysqli_query($conn,$sql11);
+	}
+	if (isset($_POST['REV1'])) {
+		$sql11 = "INSERT INTO REView (RealEstateNo, ViewNo) VALUES ('$id', '".$_POST['REV1']."')";
+		$result11 = mysqli_query($conn,$sql11);
+	}
+	if (isset($_POST['REV2'])) {
+		$sql11 = "INSERT INTO REView (RealEstateNo, ViewNo) VALUES ('$id', '".$_POST['REV2']."')";
+		$result11 = mysqli_query($conn,$sql11);
+	}
+	if (isset($_POST['REV3'])) {
+		$sql11 = "INSERT INTO REView (RealEstateNo, ViewNo) VALUES ('$id', '".$_POST['REV3']."')";
+		$result11 = mysqli_query($conn,$sql11);
+	}
+	if (isset($_POST['REV4'])) {
+		$sql11 = "INSERT INTO REView (RealEstateNo, ViewNo) VALUES ('$id', '".$_POST['REV4']."')";
+		$result11 = mysqli_query($conn,$sql11);
+	}
+	if (isset($_POST['REV5'])) {
+		$sql11 = "INSERT INTO REView (RealEstateNo, ViewNo) VALUES ('$id', '".$_POST['REV5']."')";
+		$result11 = mysqli_query($conn,$sql11);
+	}
+	if (isset($_POST['REV6'])) {
+		$sql11 = "INSERT INTO REView (RealEstateNo, ViewNo) VALUES ('$id', '".$_POST['REV6']."')";
+		$result11 = mysqli_query($conn,$sql11);
+	}
+
 	mysqli_close($conn);
-	header("Location: broker_manage.php");
+	if ($category=="Ξενοδοχείο")
+		header("Location: addHotel.php?piece_no=$piece_no&category=$category");
+	else if ($category=="Επαγγελματικός χώρος")
+		header("Location: addOffice.php?piece_no=$piece_no&category=$category");
+	else if ($category=="Γη")
+		header("Location: addLand.php?piece_no=$piece_no&category=$category");
+	else if ($category=="Κατοικία")
+		header("Location: addRecident.php?piece_no=$piece_no&category=$category");
 }
 ?>
-
-
-
