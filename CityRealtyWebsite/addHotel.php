@@ -1,222 +1,230 @@
-<?php session_start(); ?>
+<?php session_start(); 
+$conn = mysqli_connect("localhost", "USERNAME", "PASSWORD", "DATABASE");
+if (!$conn) {
+	die("Connection failed: " . mysqli_connect_error());
+}
+mysqli_query($conn,"SET NAMES utf8");
+$category = $_GET['category'];
+$piece_no = $_GET['piece_no'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
+<head>
 
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="">
-		<meta name="author" content="">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-		<title>Insert Property</title>
+	<title>Insert Property</title>
 
-		<!-- Bootstrap Core CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap Core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 
-		<!-- Custom CSS -->
-		<link href="css/sb-admin.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="css/sb-admin.css" rel="stylesheet">
 
-		<!-- Custom Fonts -->
-		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!-- Custom Fonts -->
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-		<!--Navbar style-->
-		<style type="text/css">
-			#menu {
-				overflow: hidden;
-			}
-			#menu li {
-				display: block;
-				position: relative;
-				float: left;
-			}
-			#menu li:first-child {
-				margin-left: 0px;
-				border-bottom: solid #000000
-			}
-			#menu li:last-child {
-				margin-left: 100px;
-			}
-			#menu li a {
-				display: block;
-				color: #333;
-				font-size: 18px;
-				text-align: center;
-				text-decoration: none;
-				text-transform: uppercase;
-			}
-			#menu li span {
-				display: none;
-			}
-			#menu li.active span {
-				display: block;
-				position: absolute;
-				width: 100%;
-				text-align: center;
-			}
-			#menu li.active a {
-				background-color: #c03e62;
-				outline: #FFF;
-				outline-style: dashed;
-				color: #CCC;
-				text-decoration: none;
-			}
-			#menu li a:hover {
-				text-decoration: none;
-				background-image: none;
-				background-color: #c03e62;
-				outline: #FFF;
-			}
-		</style>
+	<!--Navbar style-->
+	<style type="text/css">
+		#menu {
+			overflow: hidden;
+		}
+		#menu li {
+			display: block;
+			position: relative;
+			float: left;
+		}
+		#menu li:first-child {
+			margin-left: 0px;
+			border-bottom: solid #000000
+		}
+		#menu li:last-child {
+			margin-left: 100px;
+		}
+		#menu li a {
+			display: block;
+			color: #333;
+			font-size: 18px;
+			text-align: center;
+			text-decoration: none;
+			text-transform: uppercase;
+		}
+		#menu li span {
+			display: none;
+		}
+		#menu li.active span {
+			display: block;
+			position: absolute;
+			width: 100%;
+			text-align: center;
+		}
+		#menu li.active a {
+			background-color: #c03e62;
+			outline: #FFF;
+			outline-style: dashed;
+			color: #CCC;
+			text-decoration: none;
+		}
+		#menu li a:hover {
+			text-decoration: none;
+			background-image: none;
+			background-color: #c03e62;
+			outline: #FFF;
+		}
+	</style>
 
-		<!--Dropdown style-->
-		<style>
-			.dropdown-content {
-				list-style: none;
-				display: none;
-				position: absolute;
-				background-color: #f9f9f9;
-				min-width: 160px;
-				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-			}
-			.dropdown-content a {
-				color: #337ab7;
-				padding: 12px 16px;
-				text-decoration: none;
-				display: block;
-				text-align: left;
-			}
-			.dropdown-content a:hover {
-				background-color: #f1f1f1
-			}
-			.dropdown:hover .dropdown-content {
-				display: block;
-			}
+	<!--Dropdown style-->
+	<style>
+		.dropdown-content {
+			list-style: none;
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			min-width: 160px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		}
+		.dropdown-content a {
+			color: #337ab7;
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+			text-align: left;
+		}
+		.dropdown-content a:hover {
+			background-color: #f1f1f1
+		}
+		.dropdown:hover .dropdown-content {
+			display: block;
+		}
 
-			#content #mainwrap #tabs .column.col3 #title2 #title3 #title4 h2 {
-				font-family: Arial, Helvetica, sans-serif;
-				font-size: 26em;
-				font-style: normal;
-				line-height: normal;
-				font-weight: bold;
-				font-variant: normal;
-			}
-			#content #mainwrap #RealEstateTab .column.col3 #title2 h2 {
-				font-size: large;
-				font-style: normal;
-				line-height: normal;
-				font-weight: bold;
-				font-variant: normal;
-				text-decoration: underline;
-			}
-			#content #mainwrap #RealEstateTab {
-				border: 5px solid black;
-				border-style: solid;
-				background: #FFFFFF;
-			}
-			#content #mainwrap #tabs {
-				border: 5px solid black;
-				border-style: solid;
-				background: #FFFFFF;
-			}
-			.fieldGroup {
-				color: #c03e62;
-			}
-			.field {
-				color: #000000;
-				width: 30%;
-			}
-			.value {
-				color: #333333;
-				text-decoration: none;
-			}
-			table {
-				border: 0px solid black;
-				padding: 5px;
-				text-align: left;
-				width: 100%;
-			}
-			th, td {
-				border: 0px solid black;
-				padding: 3px;
-				text-align: left;
-			}
+		#content #mainwrap #tabs .column.col3 #title2 #title3 #title4 h2 {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 26em;
+			font-style: normal;
+			line-height: normal;
+			font-weight: bold;
+			font-variant: normal;
+		}
+		#content #mainwrap #RealEstateTab .column.col3 #title2 h2 {
+			font-size: large;
+			font-style: normal;
+			line-height: normal;
+			font-weight: bold;
+			font-variant: normal;
+			text-decoration: underline;
+		}
+		#content #mainwrap #RealEstateTab {
+			border: 5px solid black;
+			border-style: solid;
+			background: #FFFFFF;
+		}
+		#content #mainwrap #tabs {
+			border: 5px solid black;
+			border-style: solid;
+			background: #FFFFFF;
+		}
+		.fieldGroup {
+			color: #c03e62;
+		}
+		.field {
+			color: #000000;
+			width: 30%;
+		}
+		.value {
+			color: #333333;
+			text-decoration: none;
+		}
+		table {
+			border: 0px solid black;
+			padding: 5px;
+			text-align: left;
+			width: 100%;
+		}
+		th, td {
+			border: 0px solid black;
+			padding: 3px;
+			text-align: left;
+		}
 
-			#content #mainwrap #menu {
-				padding: 20px;
-				overflow: hidden;
-			}
-			#mainwrap {
-				overflow: hidden;
-				position: relative;
-				margin: 0 auto;
-			}
-			#content {
-				overflow: hidden;
-				position: relative;
-			}
+		#content #mainwrap #menu {
+			padding: 20px;
+			overflow: hidden;
+		}
+		#mainwrap {
+			overflow: hidden;
+			position: relative;
+			margin: 0 auto;
+		}
+		#content {
+			overflow: hidden;
+			position: relative;
+		}
 
-			#pagecontainer {
-				position: relative;
-				width: 9999px;
-			}
+		#pagecontainer {
+			position: relative;
+			width: 9999px;
+		}
 
-			.section {
-				float: left;
-				position: relative;
-				width: 100%;
-				padding: 30px;
-				overflow: hidden;
-			}
+		.section {
+			float: left;
+			position: relative;
+			width: 100%;
+			padding: 30px;
+			overflow: hidden;
+		}
 
-			#RealEstateTab #tabs {
-				overflow-y: scroll;
-			}
+		#RealEstateTab #tabs {
+			overflow-y: scroll;
+		}
 
-			#tabs {
-				display: none;
-			}
+		#tabs {
+			display: none;
+		}
 
-			.section_title {
-				color: #c03e62;
-				text-shadow: 1px 1px 1px #000000;
-			}
+		.section_title {
+			color: #c03e62;
+			text-shadow: 1px 1px 1px #000000;
+		}
 
-			.note {
-				bottom: 20px;
-				width: 95%;
-				padding-left: 50px;
-				padding-top: 1000px;
-			}
-		</style>
+		.note {
+			bottom: 20px;
+			width: 95%;
+			padding-left: 50px;
+			padding-top: 1000px;
+		}
+	</style>
 
-	</head>
+</head>
 
-	<body>
+<body>
 
-		<div id="wrapper">
+	<div id="wrapper">
 
-			<!-- Navigation -->
-			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">Προσθήκη νέου ακινήτου</a>
-				</div>
-				<!-- Top Menu Items -->
-				<ul class="nav navbar-right top-nav">
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['id']; ?>
+		<!-- Navigation -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Προσθήκη νέου ακινήτου</a>
+			</div>
+			<!-- Top Menu Items -->
+			<ul class="nav navbar-right top-nav">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['id']; ?>
 						<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
@@ -259,20 +267,20 @@
 
 					<div class="row">
 						
-							<!-- Start of section : TABS (content) -->
-							<div style="clear:both"></div>
-							<div id="content">
-								<div id="mainwrap">
-									<!-- Real Estate details -->
-									<div>
-										<h3 id="title" class="section_title"> Λεπτομέρειες και Χαρακτηριστικά </h3>
-									</div>
+						<!-- Start of section : TABS (content) -->
+						<div style="clear:both"></div>
+						<div id="content">
+							<div id="mainwrap">
+								<!-- Real Estate details -->
+								<div>
+									<h3 id="title" class="section_title"> Λεπτομέρειες και Χαρακτηριστικά </h3>
+								</div>
 
-									<!-- Start of first "tab" -->
-									<div style="clear:both"></div>
-									<div id="RealEstateTab" class="section">
-									<form role="form" id="form1" action="addProperty.php" method="post">
-										<div id="ksenodoxeio">
+								<!-- Start of first "tab" -->
+								<div style="clear:both"></div>
+								<div id="RealEstateTab" class="section">
+									<?php echo "<form role='form' id='form1' action='addProperty2.php?piece_no=".$piece_no."&category=".$category."' method='post'>"; ?>
+									<div id="ksenodoxeio">
 										<div class="col-md-6"><!--1i stili-->
 											<label>Τύπος Κτηρίου</label>
 											<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
@@ -313,7 +321,7 @@
 													<option value="Class C">Class C</option>
 													<option value="Class D">Class D</option>
 													<option value="Unknown">Unknown</option>
-												</select>
+												</select><br>
 											</div>
 											<div class="col-md-6">
 												<br><label>Αριθμός Επιπέδων</label>
@@ -324,7 +332,41 @@
 													<option value="3">3</option>
 													<option value="4">4</option>
 													<option value="5">5</option>
-												</select>
+												</select><br>
+											</div>
+											<div>
+												<br><label>Πληροφορίες Τοποθεσίας</label><br>
+												<?php $sql="SELECT * FROM BLocationDetailsChoices";
+												$result = mysqli_query($conn, $sql);
+												$i=0;
+												while($row=mysqli_fetch_assoc($result)) {
+													if ($i<6) {
+														echo "<div class='col-md-6 checkbox'>";
+														if ($i==1)
+															echo "<br>";
+														echo"<input name='BL".$row['DetailNo']."' type='checkbox' value='".$row['DetailNo']."'> ".$row['Description']."</div>";
+													}
+													else
+														echo "<div class='col-md-6 checkbox'><input name='BL".$row['DetailNo']."' type='checkbox' value='".$row['DetailNo']."'> ".$row['Description']."</div>";
+													$i++;
+												} ?>
+											</div>		
+											<div>
+												<br><label>Επιπλέον Χαρακτηριστικά</label><br>
+												<?php $sql="SELECT * FROM BDetailsChoices";
+												$result = mysqli_query($conn, $sql);
+												$i=0;
+												while($row=mysqli_fetch_assoc($result)) {
+													if ($i<6) {
+														echo "<div class='col-md-6 checkbox'>";
+														if ($i==1)
+															echo "<br>";
+														echo"<input name='BD".$row['DetailNo']."' type='checkbox' value='".$row['DetailNo']."'> ".$row['Description']."</div>";
+													}
+													else
+														echo "<div class='col-md-6 checkbox'><input name='BD".$row['DetailNo']."' type='checkbox' value='".$row['DetailNo']."'> ".$row['Description']."</div>";
+													$i++;
+												} ?>
 											</div>		
 										</div><!--end of 1i stili-->
 
@@ -399,48 +441,82 @@
 												</select>
 												<br>
 											</div>
+											<div>
+												<br><label>Τύπος Δαπέδων</label><br>
+												<?php $sql="SELECT * FROM BFloorTypeChoices";
+												$result = mysqli_query($conn, $sql);
+												$i=0;
+												while($row=mysqli_fetch_assoc($result)) {
+													if ($i<3) {
+														echo "<div class='col-md-6 checkbox'>";
+														if ($i==1)
+															echo "<br>";
+														echo"<input name='BFl".$row['FloorTypeNo']."' type='checkbox' value='".$row['FloorTypeNo']."'> ".$row['Description']."</div>";
+													}
+													else
+														echo "<div class='col-md-6 checkbox'><input name='BFl".$row['FloorTypeNo']."' type='checkbox' value='".$row['FloorTypeNo']."'> ".$row['Description']."</div>";
+													$i++;
+												} ?>
+											</div>	
+											<div>
+												<br><label>Τύπος Κουφωμάτων</label><br>
+												<?php $sql="SELECT * FROM BFramesChoices";
+												$result = mysqli_query($conn, $sql);
+												$i=0;
+												while($row=mysqli_fetch_assoc($result)) {
+													if ($i<9) {
+														echo "<div class='col-md-6 checkbox'>";
+														if ($i==1)
+															echo "<br>";
+														echo"<input name='BFr".$row['FrameNo']."' type='checkbox' value='".$row['FrameNo']."'> ".$row['Description']."</div>";
+													}
+													else
+														echo "<div class='col-md-6 checkbox'><input name='BFr".$row['FrameNo']."' type='checkbox' value='".$row['FrameNo']."'> ".$row['Description']."</div>";
+													$i++;
+												} ?>
+											</div>
 										</div><!--end of 2i stili-->
 
 									</div><!--end of ksenodoxeio-->
-										
 
-										<br>
-										<br>
-										<br>
 
-										<div style="float:right;">
-												<button type="submit" name="send" class="btn btn-success">
-													Καταχώρηση Ακινήτου
-												</button>
-											</div>
-										</form>
+									<br>
+									<br>
+									<br>
+
+									<div style="float:right;">
+										<button type="submit" name="send" class="btn btn-success">
+											Καταχώρηση Ακινήτου
+										</button>
 									</div>
-						
-						<!-- End of first "tab" -->
+								</form>
+							</div>
 
+							<!-- End of first "tab" -->
+
+						</div>
+						<!-- /.main wrap -->
 					</div>
-					<!-- /.main wrap -->
+					<!-- /. End of section : TABS (content) -->
+
 				</div>
-				<!-- /. End of section : TABS (content) -->
+				<!-- /.row -->
 
 			</div>
-			<!-- /.row -->
-
-		</div>
-		<!-- /.container-fluid -->
+			<!-- /.container-fluid -->
 
 		</div>
 		<!-- /#page-wrapper -->
 
-		</div>
-		<!-- /#wrapper -->
+	</div>
+	<!-- /#wrapper -->
 
-		<!-- jQuery -->
-		<script src="js/jquery.js"></script>
+	<!-- jQuery -->
+	<script src="js/jquery.js"></script>
 
-		<!-- Bootstrap Core JavaScript -->
-		<script src="js/bootstrap.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
 
-	</body>
+</body>
 
 </html>
