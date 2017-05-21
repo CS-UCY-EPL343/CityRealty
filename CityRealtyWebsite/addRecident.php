@@ -298,7 +298,7 @@
 											</div>
 
 											<br><label>Εμβαδόν Ταράτσας Ιδιοκτήτη (τ.μ.)</label>
-											<input type="text" class="form-control" required placeholder="25.6" name="RooftopArea">
+											<input type="text" class="form-control" placeholder="25.6" name="RooftopArea">
 											<br>
 
 										</div><!--end of 1i stili-->
@@ -311,6 +311,7 @@
 											</div>
 											<div class="col-md-6">
 												<label>Αριθμός master Υπνοδωματίων</label>
+												<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
 												<input type="text" class="form-control" required placeholder="1" name="MasterBedroom">
 											</div>
 
@@ -322,8 +323,7 @@
 											</div>
 											<div class="col-md-6">
 												<br><label>Εμβαδόν Μπαλκονιών(τ.μ.)</label>
-												<span runat="server" ID="required" style="color:Red;" visible="false"> *</span>
-												<input type="text" class="form-control" required placeholder="25.6" name="BalconyArea">
+												<input type="text" class="form-control" placeholder="25.6" name="BalconyArea">
 												<br>
 											</div>
 											<label>Επιπλωμένο</label>
